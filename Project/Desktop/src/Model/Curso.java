@@ -12,6 +12,8 @@ public class Curso {
     private String temas;
     private int duracionTotalSemanas;
     private double costo;
+    private int cupo;
+    private String  aula;
     private Timestamp diaHorario;
     private int cargaHoraria;
 
@@ -70,6 +72,22 @@ public class Curso {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+    
+    public int getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
+
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
+    }
 
     public Timestamp getDiaHorario() {
         return diaHorario;
@@ -90,7 +108,7 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(int idCurso, String nombreCurso, String descripcion, Date fechaInicio, String temas, int duracionTotalSemanas, double costo, Timestamp diaHorario, int cargaHoraria) {
+    public Curso(int idCurso, String nombreCurso, String descripcion, Date fechaInicio, String temas, int duracionTotalSemanas, double costo, int cupo, String aula, Timestamp diaHorario, int cargaHoraria) {
         this.idCurso = idCurso;
         this.nombreCurso = nombreCurso;
         this.descripcion = descripcion;
@@ -98,14 +116,17 @@ public class Curso {
         this.temas = temas;
         this.duracionTotalSemanas = duracionTotalSemanas;
         this.costo = costo;
+        this.cupo = cupo;
+        this.aula = aula;
         this.diaHorario = diaHorario;
         this.cargaHoraria = cargaHoraria;
     }
 
     @Override
     public String toString() {
-        return "Curso{" + "idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", temas=" + temas + ", duracionTotalSemanas=" + duracionTotalSemanas + ", costo=" + costo + ", diaHorario=" + diaHorario + ", cargaHoraria=" + cargaHoraria + '}';
+        return "Curso{" + "idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", temas=" + temas + ", duracionTotalSemanas=" + duracionTotalSemanas + ", costo=" + costo + ", cupo=" + cupo + ", aula=" + aula + ", diaHorario=" + diaHorario + ", cargaHoraria=" + cargaHoraria + '}';
     }
+    
     
     
     
