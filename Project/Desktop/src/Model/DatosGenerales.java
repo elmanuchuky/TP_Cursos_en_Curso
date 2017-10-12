@@ -5,8 +5,8 @@ import java.util.Date;
 public class DatosGenerales {
     
     private int idDatosGenerales;
-    private String nombreMatriculado;
-    private String apellidoMatriculado;
+    private String nombre;
+    private String apellido;
     private int tipoDni;
     private int dni;
     private Date fechaNacimiento;
@@ -21,20 +21,20 @@ public class DatosGenerales {
         this.idDatosGenerales = idDatosGenerales;
     }
 
-    public String getNombreMatriculado() {
-        return nombreMatriculado;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreMatriculado(String nombreMatriculado) {
-        this.nombreMatriculado = nombreMatriculado;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidoMatriculado() {
-        return apellidoMatriculado;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidoMatriculado(String apellidoMatriculado) {
-        this.apellidoMatriculado = apellidoMatriculado;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public int getTipoDni() {
@@ -80,10 +80,10 @@ public class DatosGenerales {
     public DatosGenerales() {
     }
 
-    public DatosGenerales(int idDatosGenerales, String nombreMatriculado, String apellidoMatriculado, int tipoDni, int dni, Date fechaNacimiento, String telefono, String email) {
+    public DatosGenerales(int idDatosGenerales, String nombre, String apellido, int tipoDni, int dni, Date fechaNacimiento, String telefono, String email) {
         this.idDatosGenerales = idDatosGenerales;
-        this.nombreMatriculado = nombreMatriculado;
-        this.apellidoMatriculado = apellidoMatriculado;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.tipoDni = tipoDni;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
@@ -93,7 +93,7 @@ public class DatosGenerales {
 
     @Override
     public String toString() {
-        return "DatosGenerales{" + "idDatosGenerales=" + idDatosGenerales + ", nombreMatriculado=" + nombreMatriculado + ", apellidoMatriculado=" + apellidoMatriculado + ", tipoDni=" + tipoDni + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", email=" + email + '}';
+        return "DatosGenerales{" + "idDatosGenerales=" + idDatosGenerales + ", nombre=" + nombre + ", apellido=" + apellido + ", tipoDni=" + tipoDni + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", email=" + email + '}';
     }
     
     
