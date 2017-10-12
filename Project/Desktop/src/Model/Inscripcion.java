@@ -7,8 +7,8 @@ public class Inscripcion {
     private int idInscripcion;
     private Curso curso;
     private Cursante cursante;
-    private boolean estado;
-    private boolean aprobado;
+    private int estado;
+    private int aprobado;
     private Date fechaRealizada;
 
     public int getIdInscripcion() {
@@ -35,19 +35,19 @@ public class Inscripcion {
         this.cursante = cursante;
     }
 
-    public boolean isEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
-    public boolean isAprobado() {
+    public int getAprobado() {
         return aprobado;
     }
 
-    public void setAprobado(boolean aprobado) {
+    public void setAprobado(int aprobado) {
         this.aprobado = aprobado;
     }
 
@@ -62,7 +62,7 @@ public class Inscripcion {
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripcion, Curso curso, Cursante cursante, boolean estado, boolean aprobado, Date fechaRealizada) {
+    public Inscripcion(int idInscripcion, Curso curso, Cursante cursante, int estado, int aprobado, Date fechaRealizada) {
         this.idInscripcion = idInscripcion;
         this.curso = curso;
         this.cursante = cursante;
