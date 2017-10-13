@@ -71,8 +71,8 @@ CREATE PROCEDURE sp_insert_pago
 @mMonto decimal(18,0)
 AS
 BEGIN
-	INSERT INTO Pagos(id_inscripcion, monto)
-	VALUES (@mIdInscripcion, @mMonto)
+	INSERT INTO Pagos(id_inscripcion, monto, fecha_pago)
+	VALUES (@mIdInscripcion, @mMonto, getdate())
 END
 --Datos Generales
 GO
