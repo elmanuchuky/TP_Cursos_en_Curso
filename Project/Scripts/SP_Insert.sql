@@ -30,7 +30,7 @@ BEGIN
 	DECLARE @mPrecioTotal decimal(18,0)
 	SELECT @mPrecioTotal = c.costo
 	FROM Cursos c WHERE c.id_curso = @mIdCurso
-	INSERT INTO Inscripciones (id_curso, id_cursante, id_estado, fecha_realizada, approbado)
+	INSERT INTO Inscripciones (id_curso, id_cursante, id_estado, fecha_realizada, aprobado)
 	VALUES (@mIdCurso, @mIdCursante, 1, convert(date, getdate()), null)
 END
 --Cursos
