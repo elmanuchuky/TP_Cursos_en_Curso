@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import java.util.Calendar;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Yasmin
@@ -14,10 +17,47 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     /**
      * Creates new form AsistenciaMostrar
      */
+    private int interfas;
+    
     public AsistenciaMostrar() {
         initComponents();
+        cargarDiaCombo();
+        cargaCmb();
     }
 
+    public AsistenciaMostrar(int x) {
+        initComponents();
+        cargarDiaCombo();
+        cargaCmb();
+        
+        interfas = x;
+        switch (interfas){
+            case 1: //Curso
+                cmbCursos.enable(true);
+                cmbAnio.enable(false);
+                cmbMes.enable(false);
+                cmbDia.enable(false);
+                txtMail.enable(false);
+                break;
+            case 2: //Curso & Fecha
+                cmbCursos.enable(true);
+                cmbAnio.enable(true);
+                cmbMes.enable(true);
+                cmbDia.enable(true);
+                txtMail.enable(false);
+                break;
+            case 3://Curso & Alumno
+                cmbCursos.enable(true);
+                cmbAnio.enable(false);
+                cmbMes.enable(false);
+                cmbDia.enable(false);
+                txtMail.enable(true);
+                break;
+        }
+                
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +67,136 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtTablaAsistencias = new javax.swing.JTable();
+        cmbCursos = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cmbAnio = new javax.swing.JComboBox();
+        cmbMes = new javax.swing.JComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        cmbDia = new javax.swing.JComboBox();
+        txtMail = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Asistencias (Vista)");
+
+        jtTablaAsistencias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Alumno", "Fercha 1", "Fercha 2", "Fercha 3"
+            }
+        ));
+        jScrollPane1.setViewportView(jtTablaAsistencias);
+
+        jLabel1.setText("Curso");
+
+        jLabel2.setText("Fecha");
+
+        jLabel3.setText("/");
+
+        cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
+        cmbAnio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAnioActionPerformed(evt);
+            }
+        });
+
+        cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
+        cmbMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMesActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("/");
+
+        cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
+
+        jLabel4.setText("Mail");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 21, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioActionPerformed
+        cargaCmb();
+    }//GEN-LAST:event_cmbAnioActionPerformed
+
+    private void cmbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMesActionPerformed
+        cargaCmb();
+    }//GEN-LAST:event_cmbMesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +232,70 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void cargaCmb() {
+        DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
+        
+        int anio = 1900;
+        int mes = 1;
+ 
+        Calendar cal= Calendar.getInstance(); 
+        int year = cal.get(Calendar.YEAR); 
+        
+        while (anio <= year) {            
+            modelAnio.addElement(anio);
+            anio++;
+        }
+        cmbAnio.setModel(modelAnio);
+        
+        while (mes <= 12) {            
+            modelMes.addElement(mes);
+            mes++;
+        }
+        cmbMes.setModel(modelMes);
+        
+    }
+    private void cargarDiaCombo() {
+        DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
+        int dia = 1;
+        int mes = cmbMes.getSelectedIndex()+1;
+
+        while (dia <= 28) {            
+            modelDia.addElement(dia);
+            dia++;
+        } 
+        
+        if(mes == 2){
+            if((int)cmbAnio.getSelectedItem()%4 == 0 && ((int)cmbAnio.getSelectedItem()%100 != 0 || (int)cmbAnio.getSelectedItem()%400 == 0)){
+                modelDia.addElement(dia);
+            }
+        }else if(mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12){
+            while (dia <= 31) {            
+                modelDia.addElement(dia);
+                dia++;
+            }
+        }else{
+            while (dia <= 30) {            
+                modelDia.addElement(dia);
+                dia++;
+            }
+        }
+        cmbDia.setModel(modelDia);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbAnio;
+    private javax.swing.JComboBox cmbCursos;
+    private javax.swing.JComboBox cmbDia;
+    private javax.swing.JComboBox cmbMes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtTablaAsistencias;
+    private javax.swing.JTextField txtMail;
     // End of variables declaration//GEN-END:variables
 }

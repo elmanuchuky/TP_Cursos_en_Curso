@@ -36,28 +36,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         lblImagen = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
+        jmbBarraMenu = new javax.swing.JMenuBar();
+        jmRegistrar = new javax.swing.JMenu();
+        jmiRegistrarMatriculaddo = new javax.swing.JMenuItem();
+        jmiRegistrarInscripto = new javax.swing.JMenu();
+        jmiRegistrarInscriptoMatriculado = new javax.swing.JMenuItem();
+        jmiRegistrarInscriptoFamilia = new javax.swing.JMenuItem();
+        jmiRegistrarInscriptoOtro = new javax.swing.JMenuItem();
+        jmiRegistrarCurso = new javax.swing.JMenuItem();
+        jmiRegistrarPago = new javax.swing.JMenuItem();
+        jmAsistencia = new javax.swing.JMenu();
+        jmiAsistenciaRegistrar = new javax.swing.JMenuItem();
+        jmiRegistrarInscripto1 = new javax.swing.JMenu();
+        jmiAsistenciaMostrarXCurso = new javax.swing.JMenuItem();
+        jmiAsistenciaMostrarXFecha = new javax.swing.JMenuItem();
+        jmiAsistenciaMostrarXCursante = new javax.swing.JMenuItem();
+        jmEditar = new javax.swing.JMenu();
+        jmiEditarMatriculado = new javax.swing.JMenuItem();
+        jmiEditarIscripcion = new javax.swing.JMenu();
+        jmiEditarIscripcionMatriculado = new javax.swing.JMenuItem();
+        jmiEditarIscripcionFamilia = new javax.swing.JMenuItem();
+        jmiEditarIscripcionOtro = new javax.swing.JMenuItem();
+        jmiEditarCurso = new javax.swing.JMenuItem();
+        jmConsulta = new javax.swing.JMenu();
+        jmiConsultaCursos = new javax.swing.JMenuItem();
+        jmiConsultaPreInscripcion = new javax.swing.JMenuItem();
+        jmiConsultaInscripto = new javax.swing.JMenuItem();
+        jmiConsultaPagos = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Principal");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -66,225 +76,308 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoPrincipal.jpg"))); // NOI18N
 
-        jMenu1.setText("Registar");
+        jmRegistrar.setText("Registar");
 
-        jMenuItem1.setText("Matriculado");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarMatriculaddo.setText("Matriculado");
+        jmiRegistrarMatriculaddo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiRegistrarMatriculaddoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jmRegistrar.add(jmiRegistrarMatriculaddo);
 
-        jMenuItem2.setText("Inscripción");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarInscripto.setText("Inscripción");
+
+        jmiRegistrarInscriptoMatriculado.setText("Matriculado");
+        jmiRegistrarInscriptoMatriculado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiRegistrarInscriptoMatriculadoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jmiRegistrarInscripto.add(jmiRegistrarInscriptoMatriculado);
 
-        jMenuItem3.setText("Curso");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarInscriptoFamilia.setText("Familiar");
+        jmiRegistrarInscriptoFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jmiRegistrarInscriptoFamiliaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jmiRegistrarInscripto.add(jmiRegistrarInscriptoFamilia);
 
-        jMenuItem4.setText("Pago");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarInscriptoOtro.setText("Otro");
+        jmiRegistrarInscriptoOtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jmiRegistrarInscriptoOtroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        jmiRegistrarInscripto.add(jmiRegistrarInscriptoOtro);
 
-        jMenuBar1.add(jMenu1);
+        jmRegistrar.add(jmiRegistrarInscripto);
 
-        jMenu5.setText("Asistencia");
-
-        jMenuItem9.setText("Registrar");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarCurso.setText("Curso");
+        jmiRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jmiRegistrarCursoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem9);
+        jmRegistrar.add(jmiRegistrarCurso);
 
-        jMenuItem11.setText("Mostrar");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarPago.setText("Pago");
+        jmiRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jmiRegistrarPagoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem11);
+        jmRegistrar.add(jmiRegistrarPago);
 
-        jMenuBar1.add(jMenu5);
+        jmbBarraMenu.add(jmRegistrar);
 
-        jMenu3.setText("Editar");
+        jmAsistencia.setText("Asistencia");
 
-        jMenuItem5.setText("Matriculado");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jmiAsistenciaRegistrar.setText("Registrar");
+        jmiAsistenciaRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jmiAsistenciaRegistrarActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jmAsistencia.add(jmiAsistenciaRegistrar);
 
-        jMenuItem6.setText("Inscripcion");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistrarInscripto1.setText("Mostrar");
+
+        jmiAsistenciaMostrarXCurso.setText("Por Curso");
+        jmiAsistenciaMostrarXCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jmiAsistenciaMostrarXCursoActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem6);
+        jmiRegistrarInscripto1.add(jmiAsistenciaMostrarXCurso);
 
-        jMenuItem7.setText("Curso");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jmiAsistenciaMostrarXFecha.setText("Por Curso/Fecha ");
+        jmiAsistenciaMostrarXFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jmiAsistenciaMostrarXFechaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem7);
+        jmiRegistrarInscripto1.add(jmiAsistenciaMostrarXFecha);
 
-        jMenuItem8.setText("Pago");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jmiAsistenciaMostrarXCursante.setText("Por Curso/Cursante");
+        jmiAsistenciaMostrarXCursante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jmiAsistenciaMostrarXCursanteActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem8);
+        jmiRegistrarInscripto1.add(jmiAsistenciaMostrarXCursante);
 
-        jMenuBar1.add(jMenu3);
+        jmAsistencia.add(jmiRegistrarInscripto1);
 
-        jMenu4.setText("Consultas");
+        jmbBarraMenu.add(jmAsistencia);
 
-        jMenuItem12.setText("Cursos");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jmEditar.setText("Editar");
+
+        jmiEditarMatriculado.setText("Matriculado");
+        jmiEditarMatriculado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jmiEditarMatriculadoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem12);
+        jmEditar.add(jmiEditarMatriculado);
 
-        jMenuItem13.setText("Pre_inscriptos");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+        jmiEditarIscripcion.setText("Inscripción");
+
+        jmiEditarIscripcionMatriculado.setText("Matriculado");
+        jmiEditarIscripcionMatriculado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+                jmiEditarIscripcionMatriculadoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem13);
+        jmiEditarIscripcion.add(jmiEditarIscripcionMatriculado);
 
-        jMenuItem14.setText("Inscriptos");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+        jmiEditarIscripcionFamilia.setText("Familiar");
+        jmiEditarIscripcionFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
+                jmiEditarIscripcionFamiliaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem14);
+        jmiEditarIscripcion.add(jmiEditarIscripcionFamilia);
 
-        jMenuItem15.setText("Pagos");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+        jmiEditarIscripcionOtro.setText("Otro");
+        jmiEditarIscripcionOtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
+                jmiEditarIscripcionOtroActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem15);
+        jmiEditarIscripcion.add(jmiEditarIscripcionOtro);
 
-        jMenuBar1.add(jMenu4);
+        jmEditar.add(jmiEditarIscripcion);
 
-        setJMenuBar(jMenuBar1);
+        jmiEditarCurso.setText("Curso");
+        jmiEditarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEditarCursoActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmiEditarCurso);
+
+        jmbBarraMenu.add(jmEditar);
+
+        jmConsulta.setText("Consultas");
+
+        jmiConsultaCursos.setText("Cursos");
+        jmiConsultaCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultaCursosActionPerformed(evt);
+            }
+        });
+        jmConsulta.add(jmiConsultaCursos);
+
+        jmiConsultaPreInscripcion.setText("Pre_inscriptos");
+        jmiConsultaPreInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultaPreInscripcionActionPerformed(evt);
+            }
+        });
+        jmConsulta.add(jmiConsultaPreInscripcion);
+
+        jmiConsultaInscripto.setText("Inscriptos");
+        jmiConsultaInscripto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultaInscriptoActionPerformed(evt);
+            }
+        });
+        jmConsulta.add(jmiConsultaInscripto);
+
+        jmiConsultaPagos.setText("Pagos");
+        jmiConsultaPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultaPagosActionPerformed(evt);
+            }
+        });
+        jmConsulta.add(jmiConsultaPagos);
+
+        jmbBarraMenu.add(jmConsulta);
+
+        setJMenuBar(jmbBarraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiRegistrarMatriculaddoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarMatriculaddoActionPerformed
         RegistrarMatriculado rm = new RegistrarMatriculado();
         rm.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiRegistrarMatriculaddoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       RegistrarInscripto ri = new RegistrarInscripto();
-       ri.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jmiRegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarCursoActionPerformed
        RegistrarCurso rc = new RegistrarCurso();
        rc.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jmiRegistrarCursoActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jmiRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarPagoActionPerformed
        RegistrarPago rp = new RegistrarPago();
        rp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jmiRegistrarPagoActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jmiAsistenciaRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaRegistrarActionPerformed
        AsistenciaRegistrar ar = new AsistenciaRegistrar();
        ar.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jmiAsistenciaRegistrarActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-       AsistenciaMostrar am = new AsistenciaMostrar();
-       am.setVisible(true);
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jmiEditarMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarMatriculadoActionPerformed
         EditarMatriculado em = new EditarMatriculado();
         em.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jmiEditarMatriculadoActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        EditarInscripcion ei = new EditarInscripcion();
-        ei.setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jmiEditarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarCursoActionPerformed
         EditarCurso ec = new EditarCurso();
         ec.setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_jmiEditarCursoActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        EditarPago ep = new EditarPago();
-        ep.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void jmiConsultaCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaCursosActionPerformed
         ConsultaCurso cc = new ConsultaCurso();
         cc.setVisible(true);
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    }//GEN-LAST:event_jmiConsultaCursosActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    private void jmiConsultaPreInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaPreInscripcionActionPerformed
         ConsultaPreInscripcion cpi = new ConsultaPreInscripcion();
         cpi.setVisible(true);
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+    }//GEN-LAST:event_jmiConsultaPreInscripcionActionPerformed
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+    private void jmiConsultaInscriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaInscriptoActionPerformed
         ConsultaInscripcion ci = new ConsultaInscripcion();
         ci.setVisible(true);
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
+    }//GEN-LAST:event_jmiConsultaInscriptoActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+    private void jmiConsultaPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaPagosActionPerformed
         ConsultaPago cp = new ConsultaPago();
         cp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
+    }//GEN-LAST:event_jmiConsultaPagosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        VentanaCerrarSesion vp = new VentanaCerrarSesion();
-        this.setVisible(true);
-        vp.setVisible(true);
+//        VentanaCerrarSesion vp = new VentanaCerrarSesion();
+//        this.setVisible(true);
+//        vp.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jmiRegistrarInscriptoMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
+       RegistrarInscripto ri = new RegistrarInscripto(1);//Matriculado
+       ri.setVisible(true);
+    }//GEN-LAST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
+
+    private void jmiRegistrarInscriptoFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoFamiliaActionPerformed
+       RegistrarInscripto ri = new RegistrarInscripto(2);//Familiar
+       ri.setVisible(true);
+    }//GEN-LAST:event_jmiRegistrarInscriptoFamiliaActionPerformed
+
+    private void jmiRegistrarInscriptoOtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoOtroActionPerformed
+       RegistrarInscripto ri = new RegistrarInscripto(3);//Otro
+       ri.setVisible(true);
+    }//GEN-LAST:event_jmiRegistrarInscriptoOtroActionPerformed
+
+    private void jmiEditarIscripcionMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionMatriculadoActionPerformed
+        EditarInscripcion ei = new EditarInscripcion(1);//Matriculado
+        ei.setVisible(true);
+    }//GEN-LAST:event_jmiEditarIscripcionMatriculadoActionPerformed
+
+    private void jmiEditarIscripcionFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionFamiliaActionPerformed
+        EditarInscripcion ei = new EditarInscripcion(2);//Familiar
+        ei.setVisible(true);
+    }//GEN-LAST:event_jmiEditarIscripcionFamiliaActionPerformed
+
+    private void jmiEditarIscripcionOtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionOtroActionPerformed
+        EditarInscripcion ei = new EditarInscripcion(3);//Otro
+        ei.setVisible(true);
+    }//GEN-LAST:event_jmiEditarIscripcionOtroActionPerformed
+
+    private void jmiAsistenciaMostrarXCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXCursoActionPerformed
+        AsistenciaMostrar am = new AsistenciaMostrar (1);
+        am.setVisible(true);
+    }//GEN-LAST:event_jmiAsistenciaMostrarXCursoActionPerformed
+
+    private void jmiAsistenciaMostrarXFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXFechaActionPerformed
+        AsistenciaMostrar am = new AsistenciaMostrar (2);
+        am.setVisible(true);
+    }//GEN-LAST:event_jmiAsistenciaMostrarXFechaActionPerformed
+
+    private void jmiAsistenciaMostrarXCursanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXCursanteActionPerformed
+        AsistenciaMostrar am = new AsistenciaMostrar (3);
+        am.setVisible(true);
+    }//GEN-LAST:event_jmiAsistenciaMostrarXCursanteActionPerformed
 
     
     
@@ -325,28 +418,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JMenu jmAsistencia;
+    private javax.swing.JMenu jmConsulta;
+    private javax.swing.JMenu jmEditar;
+    private javax.swing.JMenu jmRegistrar;
+    private javax.swing.JMenuBar jmbBarraMenu;
+    private javax.swing.JMenuItem jmiAsistenciaMostrarXCursante;
+    private javax.swing.JMenuItem jmiAsistenciaMostrarXCurso;
+    private javax.swing.JMenuItem jmiAsistenciaMostrarXFecha;
+    private javax.swing.JMenuItem jmiAsistenciaRegistrar;
+    private javax.swing.JMenuItem jmiConsultaCursos;
+    private javax.swing.JMenuItem jmiConsultaInscripto;
+    private javax.swing.JMenuItem jmiConsultaPagos;
+    private javax.swing.JMenuItem jmiConsultaPreInscripcion;
+    private javax.swing.JMenuItem jmiEditarCurso;
+    private javax.swing.JMenu jmiEditarIscripcion;
+    private javax.swing.JMenuItem jmiEditarIscripcionFamilia;
+    private javax.swing.JMenuItem jmiEditarIscripcionMatriculado;
+    private javax.swing.JMenuItem jmiEditarIscripcionOtro;
+    private javax.swing.JMenuItem jmiEditarMatriculado;
+    private javax.swing.JMenuItem jmiRegistrarCurso;
+    private javax.swing.JMenu jmiRegistrarInscripto;
+    private javax.swing.JMenu jmiRegistrarInscripto1;
+    private javax.swing.JMenuItem jmiRegistrarInscriptoFamilia;
+    private javax.swing.JMenuItem jmiRegistrarInscriptoMatriculado;
+    private javax.swing.JMenuItem jmiRegistrarInscriptoOtro;
+    private javax.swing.JMenuItem jmiRegistrarMatriculaddo;
+    private javax.swing.JMenuItem jmiRegistrarPago;
     private javax.swing.JLabel lblImagen;
     // End of variables declaration//GEN-END:variables
 }
