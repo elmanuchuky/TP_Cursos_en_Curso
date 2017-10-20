@@ -32,7 +32,8 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jltListado = new javax.swing.JList();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consultar Inscripcion");
 
         jLabel3.setText("Curso");
 
