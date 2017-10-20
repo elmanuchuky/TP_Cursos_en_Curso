@@ -64,13 +64,24 @@ public class EditarCurso extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        cmbCursos = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Curso");
 
+        txtAula.setEnabled(false);
+
+        txtDuracion.setEnabled(false);
+
+        jScrollPane1.setEnabled(false);
+
         txtaTema.setColumns(20);
         txtaTema.setRows(5);
+        txtaTema.setEnabled(false);
         jScrollPane1.setViewportView(txtaTema);
+
+        txtNombre.setEnabled(false);
 
         jLabel11.setText("Semanas");
 
@@ -80,6 +91,7 @@ public class EditarCurso extends javax.swing.JFrame {
 
         jLabel8.setText("Cupo");
 
+        cmbMinutos.setEnabled(false);
         cmbMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMinutosActionPerformed(evt);
@@ -88,20 +100,33 @@ public class EditarCurso extends javax.swing.JFrame {
 
         jLabel7.setText("Aula");
 
+        cmbHora.setEnabled(false);
+
         jLabel6.setText("Duracion");
 
         jLabel5.setText("Costo");
 
+        jScrollPane2.setEnabled(false);
+
         txtaDescripcion.setColumns(20);
         txtaDescripcion.setRows(5);
+        txtaDescripcion.setEnabled(false);
         jScrollPane2.setViewportView(txtaDescripcion);
 
         jLabel14.setText(":");
 
+        txtCargaHoraria.setEnabled(false);
+
         jLabel1.setText("Nombre");
 
-        btnRegistrar.setText("Registrar");
+        txtCosto.setEnabled(false);
 
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setEnabled(false);
+
+        txtCupo.setEnabled(false);
+
+        cmbAnio.setEnabled(false);
         cmbAnio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAnioActionPerformed(evt);
@@ -110,8 +135,11 @@ public class EditarCurso extends javax.swing.JFrame {
 
         jLabel13.setText("/");
 
+        cmbDia.setEnabled(false);
+
         jLabel12.setText("/");
 
+        cmbMes1.setEnabled(false);
         cmbMes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMes1ActionPerformed(evt);
@@ -124,6 +152,14 @@ public class EditarCurso extends javax.swing.JFrame {
 
         jLabel2.setText("Descripcion");
 
+        jLabel15.setText("Cursos");
+
+        cmbCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCursosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,14 +167,6 @@ public class EditarCurso extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRegistrar)
@@ -187,13 +215,28 @@ public class EditarCurso extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbCursos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -237,8 +280,9 @@ public class EditarCurso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnRegistrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRegistrar)
+                .addGap(7, 7, 7))
         );
 
         pack();
@@ -255,6 +299,24 @@ public class EditarCurso extends javax.swing.JFrame {
     private void cmbMes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMes1ActionPerformed
         cargarDiaCombo();
     }//GEN-LAST:event_cmbMes1ActionPerformed
+
+    private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
+        txtNombre.setEnabled(true);
+        txtaDescripcion.setEnabled(true);
+        txtaTema.setEnabled(true);
+        txtAula.setEnabled(true);
+        txtDuracion.setEnabled(true);
+        txtCargaHoraria.setEnabled(true);
+        txtCosto.setEnabled(true);
+        txtCupo.setEnabled(true);
+        cmbAnio.setEnabled(true);
+        cmbDia.setEnabled(true);
+        cmbHora.setEnabled(true);
+        cmbMes1.setEnabled(true);
+        cmbMinutos.setEnabled(true);
+        btnRegistrar.setEnabled(true);
+        //ahi va el metodo de filtrado
+    }//GEN-LAST:event_cmbCursosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,6 +428,7 @@ public class EditarCurso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox cmbAnio;
+    private javax.swing.JComboBox cmbCursos;
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbHora;
     private javax.swing.JComboBox cmbMes1;
@@ -376,6 +439,7 @@ public class EditarCurso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

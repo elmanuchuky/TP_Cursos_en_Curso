@@ -1,5 +1,6 @@
 package Model;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -8,13 +9,13 @@ public class Curso {
     private int idCurso;
     private String nombreCurso;
     private String descripcion;
-    private Date fechaInicio;
+    private String fechaInicio;
     private String temas;
     private int duracionTotalSemanas;
     private double costo;
     private int cupo;
     private String  aula;
-    private Timestamp diaHorario;
+    private String diaHorario;
     private int cargaHoraria;
 
     public int getIdCurso() {
@@ -41,11 +42,11 @@ public class Curso {
         this.descripcion = descripcion;
     }
 
-    public Date getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -89,11 +90,11 @@ public class Curso {
         this.aula = aula;
     }
 
-    public Timestamp getDiaHorario() {
+    public String getDiaHorario() {
         return diaHorario;
     }
 
-    public void setDiaHorario(Timestamp diaHorario) {
+    public void setDiaHorario(String diaHorario) {
         this.diaHorario = diaHorario;
     }
 
@@ -108,8 +109,8 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(int idCurso, String nombreCurso, String descripcion, Date fechaInicio, String temas, int duracionTotalSemanas, double costo, int cupo, String aula, Timestamp diaHorario, int cargaHoraria) {
-        this.idCurso = idCurso;
+    public Curso(String nombreCurso, String descripcion, String fechaInicio, String temas, int duracionTotalSemanas, double costo, int cupo, String aula, String diaHorario, int cargaHoraria) {
+        this.idCurso = -1;
         this.nombreCurso = nombreCurso;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
@@ -121,7 +122,7 @@ public class Curso {
         this.diaHorario = diaHorario;
         this.cargaHoraria = cargaHoraria;
     }
-
+    
     @Override
     public String toString() {
         return "Curso{" + "idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", temas=" + temas + ", duracionTotalSemanas=" + duracionTotalSemanas + ", costo=" + costo + ", cupo=" + cupo + ", aula=" + aula + ", diaHorario=" + diaHorario + ", cargaHoraria=" + cargaHoraria + '}';
