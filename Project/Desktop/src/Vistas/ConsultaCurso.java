@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import javax.swing.JRadioButton;
+
 /**
  *
  * @author Yasmin
@@ -16,6 +18,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
      */
     public ConsultaCurso() {
         initComponents();
+        truFalsRaddio(1);
     }
 
     /**
@@ -27,21 +30,82 @@ public class ConsultaCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        rbtTodos = new javax.swing.JRadioButton();
+        rbtProximo = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jltListado = new javax.swing.JList();
+        rbtActuales = new javax.swing.JRadioButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta Curso");
+
+        rbtTodos.setSelected(true);
+        rbtTodos.setText("Todos");
+        rbtTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtTodosActionPerformed(evt);
+            }
+        });
+
+        rbtProximo.setText("proximos");
+        rbtProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtProximoActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jltListado);
+
+        rbtActuales.setText("Actuales");
+        rbtActuales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtActualesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(rbtTodos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtActuales)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtProximo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtTodos)
+                    .addComponent(rbtProximo)
+                    .addComponent(rbtActuales))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rbtTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtTodosActionPerformed
+        truFalsRaddio(1);
+        //Llamar a la consulta que muestre todos los cursos
+    }//GEN-LAST:event_rbtTodosActionPerformed
+
+    private void rbtProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtProximoActionPerformed
+        truFalsRaddio(2);
+        //Llamar a la consulta cursos proximos
+    }//GEN-LAST:event_rbtProximoActionPerformed
+
+    private void rbtActualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtActualesActionPerformed
+        truFalsRaddio(3);
+        //Llamar a la consulta cursos Actuales
+    }//GEN-LAST:event_rbtActualesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,6 +142,32 @@ public class ConsultaCurso extends javax.swing.JFrame {
         });
     }
 
+    
+    private void truFalsRaddio ( int x){
+       switch (x){
+           case 1:
+               rbtProximo.setSelected(false);
+               rbtTodos.setSelected(true);
+               rbtActuales.setSelected(false);
+               break;
+            case 2:
+                rbtProximo.setSelected(true);
+                rbtTodos.setSelected(false);
+                rbtActuales.setSelected(false);
+                break;
+            case 3:
+                rbtProximo.setSelected(false);
+                rbtTodos.setSelected(false);
+                rbtActuales.setSelected(true);
+                break;
+       }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList jltListado;
+    private javax.swing.JRadioButton rbtActuales;
+    private javax.swing.JRadioButton rbtProximo;
+    private javax.swing.JRadioButton rbtTodos;
     // End of variables declaration//GEN-END:variables
 }

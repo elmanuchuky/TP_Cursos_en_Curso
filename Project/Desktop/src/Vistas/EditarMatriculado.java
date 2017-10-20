@@ -52,15 +52,18 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cmbDia = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnMoificar = new javax.swing.JButton();
+        txtLegajo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Matriculado");
 
         jLabel3.setText("Nombre");
 
+        txtProfecion.setEnabled(false);
+
         cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
+        cmbAnio.setEnabled(false);
         cmbAnio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAnioActionPerformed(evt);
@@ -71,7 +74,10 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
         jLabel9.setText("Mail");
 
+        txtNombre.setEnabled(false);
+
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
+        cmbMes.setEnabled(false);
         cmbMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMesActionPerformed(evt);
@@ -82,23 +88,39 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
         jLabel6.setText("Documento");
 
+        txtMail.setEnabled(false);
+
+        cmbTipoDocumento.setEnabled(false);
+
+        txtDocumento.setEnabled(false);
+
         jLabel12.setText("/");
 
         jLabel4.setText("Apellido");
 
         jLabel8.setText("Telfeono");
 
+        txtTelefono.setEnabled(false);
+
+        txtApellido.setEnabled(false);
+
         jLabel2.setText("/");
 
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
+        cmbDia.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Legajo");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("000000");
-
         btnMoificar.setText("Modificar");
+        btnMoificar.setEnabled(false);
+
+        txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLegajoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,8 +176,8 @@ public class EditarMatriculado extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(189, 189, 189)
                         .addComponent(jLabel1)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel5)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +186,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel5))
+                    .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,6 +229,21 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private void cmbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMesActionPerformed
         cargarDiaCombo();
     }//GEN-LAST:event_cmbMesActionPerformed
+
+    private void txtLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLegajoActionPerformed
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtDocumento.setEnabled(true);
+        txtMail.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        txtProfecion.setEnabled(true);
+        cmbTipoDocumento.setEnabled(true);
+        cmbDia.setEnabled(true);
+        cmbMes.setEnabled(true);
+        cmbAnio.setEnabled(true);
+        btnMoificar.setEnabled(true);
+        //proseso almacenado que filtar
+    }//GEN-LAST:event_txtLegajoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,13 +343,13 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtLegajo;
     private javax.swing.JTextField txtMail;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtProfecion;
