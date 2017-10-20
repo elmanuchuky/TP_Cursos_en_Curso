@@ -4,22 +4,32 @@ CREATE PROCEDURE sp_inscriptos_por_curso
 @mIdCurso int
 AS
 BEGIN
-	SELECT dg.nombre + ' ' + dg.apellido Cursante, td.tipo + ' ' + dg.dni Documento
+	SELECT dg.apellido + ' ' + dg.nombre Inscriptio, td.tipo + ' ' + dg.dni Documento
 	FROM Inscripciones i join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales join Tipos_Dni td on td.id_tipo_dni = dg.id_tipo_dni
 	WHERE i.id_estado = 2 AND i.id_curso = @mIdCurso
 END
 
---Listado de inscriptos por cursos por comenzar (sin parametros, no seria vista?)
+--sp_ver_pagos_x_mail
 GO
-CREATE PROCEDURE sp_preinscriptos_curso_x_comenzar
+CREATE PROCEDURE sp_ver_pagos_x_mail
+@mMail varchar(100)
 AS
 BEGIN
-	SELECT c.nombre Curso, dg.nombre + ' ' + dg.apellido Cursante, td.tipo + ' ' + dg.dni Documento
-	FROM Inscripciones i join Cursos c on c.id_curso = i.id_curso join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales join Tipos_Dni td on td.id_tipo_dni = dg.id_tipo_dni
-	WHERE i.id_estado = 1 AND c.fecha_inicio > getdate()
-	ORDER BY 1
+	SELECT c.nombre Curso, p.monto Pago, p.fecha_pago Fecha
+	FROM Pagos p join Inscripciones i on p.id_inscripcion = i.id_inscripcion join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales =cu.id_datos_generales join Cursos c on c.id_curso = i.id_curso
+	WHERE dg.mail like @mMail
 END
 
+--sp_ver_adeudado_x_mail
+GO
+CREATE PROCEDURE sp_ver_adeudado_x_mail
+@mMail varchar(100)
+AS
+BEGIN
+	SELECT c.nombre Curso, (c.costo - vm.[Monto pagado]) Pago
+	FROM Inscripciones i join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales =cu.id_datos_generales join Cursos c on c.id_curso = i.id_curso join vw_listar_pagos_totales vm on vm.Id = i.id_inscripcion
+	WHERE dg.mail like @mMail
+END
 --Asistencia de un curso por fecha
 GO
 CREATE PROCEDURE sp_consultar_asistencia_x_fecha_x_curso
