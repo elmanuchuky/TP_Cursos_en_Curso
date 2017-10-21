@@ -123,9 +123,13 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
     
-    @Override
-    public String toString() {
+    
+    public String toStringDatosCompletos() {
         return "Curso{" + "idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", temas=" + temas + ", duracionTotalSemanas=" + duracionTotalSemanas + ", costo=" + costo + ", cupo=" + cupo + ", aula=" + aula + ", diaHorario=" + diaHorario + ", cargaHoraria=" + cargaHoraria + '}';
+    }
+    @Override
+    public String toString(){
+        return nombreCurso + " - "+ fechaInicio;
     }
     
     

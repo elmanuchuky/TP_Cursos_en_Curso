@@ -46,17 +46,18 @@ public class GestorCurso {
     public void modificar(Curso c) throws SQLException, ClassNotFoundException{
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection con = DriverManager.getConnection(conexion, user,pass);
-        PreparedStatement comando = con.prepareStatement("exec SP_UPDATE_CURSOS ?,?,?,?,?,?,?,?,?,?");
-        comando.setString(1, c.getNombreCurso());
-        comando.setString(2, c.getDescripcion()); 
-        comando.setString(3,c.getFechaInicio());
-        comando.setString(4, c.getTemas());
-        comando.setInt(5, c.getDuracionTotalSemanas());
-        comando.setDouble(6, c.getCosto());
-        comando.setInt(7, c.getCupo());
-        comando.setString(8, c.getAula());
-        comando.setString(9, c.getDiaHorario());
-        comando.setInt(10, c.getCargaHoraria());
+        PreparedStatement comando = con.prepareStatement("exec sp_update_curso_largo ?,?,?,?,?,?,?,?,?,?,?");
+        comando.setInt(1, c.getIdCurso());
+        comando.setString(2, c.getNombreCurso());
+        comando.setString(3, c.getDescripcion()); 
+        comando.setString(4,c.getFechaInicio());
+        comando.setString(5, c.getTemas());
+        comando.setInt (6, c.getDuracionTotalSemanas());
+        comando.setDouble(7, c.getCosto());
+        comando.setInt(8, c.getCupo());
+        comando.setString(9, c.getAula());
+        comando.setString(10, c.getDiaHorario());
+        comando.setInt(11, c.getCargaHoraria());
         comando.executeUpdate();
         comando.close();
         con.close();
@@ -89,13 +90,40 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
+    public ArrayList<Curso> TodosCursos() throws SQLException, ClassNotFoundException{
+        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        ArrayList<Curso> cursos = new ArrayList<Curso>();
+        Connection con = DriverManager.getConnection(conexion, user,pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("select * from Cursos");
+        while(query.next()){
+            Curso c = new Curso();
+            
+            c.setIdCurso(query.getInt("id_curso"));
+            c.setNombreCurso(query.getString("nombre"));
+            c.setDescripcion(query.getString("descripcion"));
+            c.setFechaInicio(query.getString("fecha_inicio"));
+            c.setTemas(query.getString("temas"));
+            c.setDuracionTotalSemanas(query.getInt("duracion_total_semanas"));
+            c.setCosto(query.getDouble("costo"));
+            c.setCupo(query.getInt("cupo"));
+            c.setAula(query.getString("aula"));
+            c.setDiaHorario(query.getString("dia_horario"));
+            c.setCargaHoraria(query.getInt("carga_horaria"));
+            cursos.add(c);
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return cursos;
+    }
     
     public Curso obtenerCurso(int i) throws ClassNotFoundException, SQLException{
         Curso c = new Curso();
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection con  = DriverManager.getConnection(conexion,user,pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("select * from Curso where id_curso ="+ i);
+        ResultSet query = comando.executeQuery("select * from Cursos where id_curso ="+ i);
         if(query.next()){
             c.setNombreCurso(query.getString("nombre"));
             c.setDescripcion(query.getString("descripcion"));
@@ -106,6 +134,7 @@ public class GestorCurso {
             c.setCosto(query.getInt("costo"));
             c.setAula(query.getString("aula"));
             c.setDiaHorario(query.getString("dia_horario"));
+            c.setCargaHoraria(query.getInt("carga_horaria"));
         }
         query.close();
         comando.close();

@@ -5,7 +5,13 @@
  */
 package Vistas;
 
+import Model.Curso;
+import Model.GestorCurso;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -14,15 +20,30 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class EditarCurso extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditarCurso
-     */
+    GestorCurso g = new GestorCurso();
+    int id;
+    String nombre;
+    String descripcion;
+    String tema;
+    int duracion;
+    String fecha;
+    String aula;
+    int cupo;
+    double precio;
+    String hora;
+    int cargaHoraria;
     public EditarCurso() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
-        
+        try {
+            cargarCursosFiltro(g.TodosCursos());
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -65,7 +86,7 @@ public class EditarCurso extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        cmbCursos = new javax.swing.JComboBox();
+        cmbCursosFiltro = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Curso");
@@ -123,6 +144,11 @@ public class EditarCurso extends javax.swing.JFrame {
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.setEnabled(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         txtCupo.setEnabled(false);
 
@@ -154,9 +180,9 @@ public class EditarCurso extends javax.swing.JFrame {
 
         jLabel15.setText("Cursos");
 
-        cmbCursos.addActionListener(new java.awt.event.ActionListener() {
+        cmbCursosFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCursosActionPerformed(evt);
+                cmbCursosFiltroActionPerformed(evt);
             }
         });
 
@@ -225,7 +251,7 @@ public class EditarCurso extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cmbCursos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbCursosFiltro, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -235,7 +261,7 @@ public class EditarCurso extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbCursosFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,23 +326,73 @@ public class EditarCurso extends javax.swing.JFrame {
         cargarDiaCombo();
     }//GEN-LAST:event_cmbMes1ActionPerformed
 
-    private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
-        txtNombre.setEnabled(true);
-        txtaDescripcion.setEnabled(true);
-        txtaTema.setEnabled(true);
-        txtAula.setEnabled(true);
-        txtDuracion.setEnabled(true);
-        txtCargaHoraria.setEnabled(true);
-        txtCosto.setEnabled(true);
-        txtCupo.setEnabled(true);
-        cmbAnio.setEnabled(true);
-        cmbDia.setEnabled(true);
-        cmbHora.setEnabled(true);
-        cmbMes1.setEnabled(true);
-        cmbMinutos.setEnabled(true);
-        btnRegistrar.setEnabled(true);
-        //ahi va el metodo de filtrado
-    }//GEN-LAST:event_cmbCursosActionPerformed
+    private void cmbCursosFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosFiltroActionPerformed
+        try {
+            txtNombre.setEnabled(true);
+            txtaDescripcion.setEnabled(true);
+            txtaTema.setEnabled(true);
+            txtAula.setEnabled(true);
+            txtDuracion.setEnabled(true);
+            txtCargaHoraria.setEnabled(true);
+            txtCosto.setEnabled(true);
+            txtCupo.setEnabled(true);
+            cmbAnio.setEnabled(true);
+            cmbDia.setEnabled(true);
+            cmbHora.setEnabled(true);
+            cmbMes1.setEnabled(true);
+            cmbMinutos.setEnabled(true);
+            btnRegistrar.setEnabled(true);
+            
+            id = ((Curso)cmbCursosFiltro.getSelectedItem()).getIdCurso();
+            
+            Curso c = g.obtenerCurso(id);
+            
+            txtNombre.setText(c.getNombreCurso());
+            txtaDescripcion.setText(c.getDescripcion());
+            txtaTema.setText(c.getTemas());
+            txtDuracion.setText(""+c.getDuracionTotalSemanas());
+            txtAula.setText(c.getAula());
+            txtCupo.setText(""+c.getCupo());
+            txtCargaHoraria.setText(""+c.getCargaHoraria());
+            txtCosto.setText(""+c.getCosto());
+            
+            String[] datosFecha = c.getFechaInicio().split("-");
+            String[] datoshora = c.getDiaHorario().split(" |:");
+            
+            cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0]))-1900));
+            cmbMes1.setSelectedIndex(Integer.parseInt(datosFecha[1])-1);
+            cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2])-1);
+            cmbHora.setSelectedIndex(Integer.parseInt(datoshora[1]));
+            cmbMinutos.setSelectedIndex(Integer.parseInt(datoshora[2]));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cmbCursosFiltroActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        nombre = txtNombre.getText();
+        descripcion= txtaDescripcion.getText();
+        tema = txtaTema.getText();
+        duracion = Integer.parseInt(txtDuracion.getText());
+        fecha = cmbDia.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+        aula = txtAula.getText();
+        cupo = Integer.parseInt(txtCupo.getText());
+        precio = Double.parseDouble(txtCosto.getText());
+        hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
+        cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
+        
+        Curso c = new Curso(nombre,descripcion,fecha,tema,duracion,precio,cupo,aula,hora,cargaHoraria);
+        c.setIdCurso(id);
+        try {
+            g.modificar(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,7 +504,7 @@ public class EditarCurso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox cmbAnio;
-    private javax.swing.JComboBox cmbCursos;
+    private javax.swing.JComboBox cmbCursosFiltro;
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbHora;
     private javax.swing.JComboBox cmbMes1;
@@ -459,4 +535,15 @@ public class EditarCurso extends javax.swing.JFrame {
     private javax.swing.JTextArea txtaDescripcion;
     private javax.swing.JTextArea txtaTema;
     // End of variables declaration//GEN-END:variables
+
+public void cargarCursosFiltro(ArrayList listaGenerica)
+    {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        for (Object elemento : listaGenerica) {
+            model.addElement(elemento);
+        }
+        
+        cmbCursosFiltro.setModel(model);
+    }
 }
