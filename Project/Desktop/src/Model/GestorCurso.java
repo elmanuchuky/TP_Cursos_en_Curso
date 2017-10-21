@@ -63,33 +63,6 @@ public class GestorCurso {
         con.close();
     }
     
-    public ArrayList<Curso> proximosCursos() throws SQLException, ClassNotFoundException{
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        ArrayList<Curso> cursos = new ArrayList<Curso>();
-        Connection con = DriverManager.getConnection(conexion, user,pass);
-        Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("");
-        while(query.next()){
-            Curso c = new Curso();
-            
-            c.setIdCurso(query.getInt("id_curso"));
-            c.setNombreCurso(query.getString("nombre"));
-            c.setDescripcion(query.getString("descripcion"));
-            c.setFechaInicio(query.getString("fecha_inicio"));
-            c.setTemas(query.getString("temas"));
-            c.setDuracionTotalSemanas(query.getInt("duracion_total_semanas"));
-            c.setCosto(query.getDouble("costo"));
-            c.setCupo(query.getInt("cupo"));
-            c.setAula(query.getString("aula"));
-            c.setDiaHorario(query.getString("dia_horario"));
-            c.setCargaHoraria(query.getInt("carga_horaria"));
-            cursos.add(c);
-        }
-        query.close();
-        comando.close();
-        con.close();
-        return cursos;
-    }
     public ArrayList<Curso> TodosCursos() throws SQLException, ClassNotFoundException{
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -140,5 +113,71 @@ public class GestorCurso {
         comando.close();
         con.close();
         return c;
+    }
+    
+    public ArrayList<Curso> proximosCursos() throws SQLException, ClassNotFoundException {
+        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        ArrayList<Curso> cursos = new ArrayList<Curso>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_proximos");
+        while (query.next()) {
+            Curso c = new Curso();
+
+            c.setIdCurso(query.getInt("Id"));
+            c.setNombreCurso(query.getString("Curso"));
+            c.setDescripcion(query.getString("Descripcion"));
+            c.setFechaInicio(query.getString("Inicio"));
+            c.setTemas(query.getString("Temas"));
+            c.setDuracionTotalSemanas(query.getInt("Cantidad de semana"));
+            c.setCosto(query.getDouble("Costo"));
+            c.setCupo(query.getInt("cupo"));
+            c.setAula(query.getString("aula"));
+            c.setDiaHorario(query.getString("Dia + Horario"));
+            c.setCargaHoraria(query.getInt("Carga horaria por dia"));
+            cursos.add(c);
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return cursos;
+    }
+
+    public ArrayList<ComboCurso> ComboCursosActuales() throws SQLException, ClassNotFoundException {
+        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        ArrayList<ComboCurso> cursos = new ArrayList<ComboCurso>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("exec vw_cursos_actuales_combo");
+        while (query.next()) {
+            ComboCurso c = new ComboCurso();
+            c.setId(query.getInt("Id"));
+            c.setNombre(query.getString("Curso"));
+            cursos.add(c);
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return cursos;
+    }
+
+    public ArrayList<ComboNuevoCursante> ComboCursosIncribir() throws SQLException, ClassNotFoundException {
+        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        ArrayList<ComboNuevoCursante> cursos = new ArrayList<ComboNuevoCursante>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("exec vw_curso_proximo_combo");
+        while (query.next()) {
+            ComboNuevoCursante c = new ComboNuevoCursante();
+
+            c.setId(query.getInt("Id"));
+            c.setNombre(query.getString("Curso"));
+            c.setFecha(query.getString("Fecha de Inicio"));
+            cursos.add(c);
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return cursos;
     }
 }
