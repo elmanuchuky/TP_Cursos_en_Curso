@@ -100,7 +100,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         cmbTipoDocumento = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Reguistrar Inscripción");
+        setTitle("Registrar Inscripción");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);

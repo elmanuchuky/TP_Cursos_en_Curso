@@ -47,7 +47,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         cmbCursos = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
 
-        setTitle("Pagos");
+        setTitle("Pago");
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(445, 193));
         setPreferredSize(new java.awt.Dimension(445, 193));
