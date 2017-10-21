@@ -42,6 +42,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta Curso");
         setIconImage(getIconImage());
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         rbtTodos.setSelected(true);

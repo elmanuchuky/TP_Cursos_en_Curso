@@ -44,6 +44,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Pagos");
         setIconImage(getIconImage());
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setText("Mail");

@@ -72,6 +72,7 @@ public class EditarCurso extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(580, 360));
         setPreferredSize(new java.awt.Dimension(580, 360));
+        setResizable(false);
 
         btnRegistrar.setText("Registrar");
 

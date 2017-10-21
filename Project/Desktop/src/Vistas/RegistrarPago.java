@@ -49,6 +49,9 @@ public class RegistrarPago extends javax.swing.JFrame {
 
         setTitle("Pagos");
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(445, 193));
+        setPreferredSize(new java.awt.Dimension(445, 193));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

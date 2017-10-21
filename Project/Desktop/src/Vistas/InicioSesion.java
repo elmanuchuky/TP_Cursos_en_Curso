@@ -43,6 +43,8 @@ public class InicioSesion extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(261, 274));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

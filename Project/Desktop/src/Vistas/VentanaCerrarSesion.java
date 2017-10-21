@@ -39,7 +39,9 @@ public class VentanaCerrarSesion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(363, 121));
         setUndecorated(true);
+        setResizable(false);
 
         btnSi.setText("Si");
         btnSi.addActionListener(new java.awt.event.ActionListener() {

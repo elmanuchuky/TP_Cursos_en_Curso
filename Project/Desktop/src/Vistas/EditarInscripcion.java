@@ -75,6 +75,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Inscripcion");
         setIconImage(getIconImage());
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cmbTipoDocumento.setEnabled(false);

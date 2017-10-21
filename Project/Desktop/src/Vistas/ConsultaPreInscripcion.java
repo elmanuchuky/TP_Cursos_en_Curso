@@ -37,6 +37,7 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Pre-Inscripto");
         setIconImage(getIconImage());
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jScrollPane1.setViewportView(jltListado);

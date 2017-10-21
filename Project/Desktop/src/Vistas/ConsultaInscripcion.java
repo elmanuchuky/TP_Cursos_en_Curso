@@ -39,6 +39,8 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Inscripcion");
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(720, 382));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel3.setText("Curso");

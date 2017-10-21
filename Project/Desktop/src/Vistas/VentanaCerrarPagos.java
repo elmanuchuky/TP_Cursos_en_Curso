@@ -48,6 +48,8 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(396, 114));
+        setResizable(false);
 
         lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblFraseGeneral.setText("Esta Seguro que Quiere Cerrar la Ventana de Pagos???");

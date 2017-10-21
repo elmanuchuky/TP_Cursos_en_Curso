@@ -62,6 +62,8 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Matriculado");
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(553, 209));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));

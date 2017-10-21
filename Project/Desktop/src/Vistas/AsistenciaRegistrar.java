@@ -47,6 +47,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registra Asistencia");
         setIconImage(getIconImage());
+        setResizable(false);
 
         jLabel3.setText("Curso");
 

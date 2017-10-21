@@ -71,6 +71,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(600, 380));
         setPreferredSize(new java.awt.Dimension(600, 380));
+        setResizable(false);
 
         btnRegistrar.setText("Registrar");
 
