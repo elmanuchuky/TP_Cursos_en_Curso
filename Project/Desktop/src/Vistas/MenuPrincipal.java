@@ -70,7 +70,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setTitle("Principal");
         setIconImage(getIconImage());
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
