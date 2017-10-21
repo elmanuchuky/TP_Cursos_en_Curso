@@ -160,8 +160,15 @@ public class ConsultaCurso extends javax.swing.JFrame {
             }
         });
     }
-
     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList jltListado;
+    private javax.swing.JRadioButton rbtActuales;
+    private javax.swing.JRadioButton rbtProximo;
+    private javax.swing.JRadioButton rbtTodos;
+    // End of variables declaration//GEN-END:variables
+
     private void truFalsRaddio ( int x){
        switch (x){
            case 1:
@@ -181,12 +188,4 @@ public class ConsultaCurso extends javax.swing.JFrame {
                 break;
        }
     }
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList jltListado;
-    private javax.swing.JRadioButton rbtActuales;
-    private javax.swing.JRadioButton rbtProximo;
-    private javax.swing.JRadioButton rbtTodos;
-    // End of variables declaration//GEN-END:variables
 }

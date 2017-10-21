@@ -444,6 +444,36 @@ public class EditarInscripcion extends javax.swing.JFrame {
         });
     }
     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox cmbAnio;
+    private javax.swing.JComboBox<String> cmbCursos;
+    private javax.swing.JComboBox cmbDia;
+    private javax.swing.JComboBox cmbMes;
+    private javax.swing.JComboBox<String> cmbTipoDocumento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtLegajo;
+    private javax.swing.JTextField txtMail;
+    private javax.swing.JTextField txtMailBusquea;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtProfecion;
+    private javax.swing.JTextField txtTelefono;
+    // End of variables declaration//GEN-END:variables
+
+
       private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
@@ -509,32 +539,4 @@ public class EditarInscripcion extends javax.swing.JFrame {
         btnModificar.setEnabled(true);
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JComboBox cmbAnio;
-    private javax.swing.JComboBox<String> cmbCursos;
-    private javax.swing.JComboBox cmbDia;
-    private javax.swing.JComboBox cmbMes;
-    private javax.swing.JComboBox<String> cmbTipoDocumento;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtDocumento;
-    private javax.swing.JTextField txtLegajo;
-    private javax.swing.JTextField txtMail;
-    private javax.swing.JTextField txtMailBusquea;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtProfecion;
-    private javax.swing.JTextField txtTelefono;
-    // End of variables declaration//GEN-END:variables
 }

@@ -316,6 +316,40 @@ public class RegistrarCurso extends javax.swing.JFrame {
         });
     }
 
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JComboBox cmbAnio;
+    private javax.swing.JComboBox cmbDia;
+    private javax.swing.JComboBox cmbHora;
+    private javax.swing.JComboBox cmbMes1;
+    private javax.swing.JComboBox cmbMinutos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField txtAula;
+    private javax.swing.JTextField txtCargaHoraria;
+    private javax.swing.JTextField txtCosto;
+    private javax.swing.JTextField txtCupo;
+    private javax.swing.JTextField txtDuracion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextArea txtaDescripcion;
+    private javax.swing.JTextArea txtaTema;
+    // End of variables declaration//GEN-END:variables
+
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
@@ -387,37 +421,4 @@ public class RegistrarCurso extends javax.swing.JFrame {
         }
         cmbMinutos.setModel(modelM);
     }
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JComboBox cmbAnio;
-    private javax.swing.JComboBox cmbDia;
-    private javax.swing.JComboBox cmbHora;
-    private javax.swing.JComboBox cmbMes1;
-    private javax.swing.JComboBox cmbMinutos;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField txtAula;
-    private javax.swing.JTextField txtCargaHoraria;
-    private javax.swing.JTextField txtCosto;
-    private javax.swing.JTextField txtCupo;
-    private javax.swing.JTextField txtDuracion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextArea txtaDescripcion;
-    private javax.swing.JTextArea txtaTema;
-    // End of variables declaration//GEN-END:variables
 }

@@ -245,7 +245,22 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbAnio;
+    private javax.swing.JComboBox cmbCursos;
+    private javax.swing.JComboBox cmbDia;
+    private javax.swing.JComboBox cmbMes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtTablaAsistencias;
+    private javax.swing.JTextField txtMail;
+    // End of variables declaration//GEN-END:variables
+
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
@@ -296,19 +311,4 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         }
         cmbDia.setModel(modelDia);
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cmbAnio;
-    private javax.swing.JComboBox cmbCursos;
-    private javax.swing.JComboBox cmbDia;
-    private javax.swing.JComboBox cmbMes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtTablaAsistencias;
-    private javax.swing.JTextField txtMail;
-    // End of variables declaration//GEN-END:variables
 }
