@@ -5,16 +5,25 @@
  */
 package Vistas;
 
+import Model.GestorPago;
+import Model.Pago;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Yasmin
  */
 public class RegistrarPago extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarPago
-     */
+    GestorPago g;
+    String correo;
+    int id;
+    double monto;
+    
     public RegistrarPago() {
+        g = new GestorPago();
         initComponents();
     }
 
@@ -114,7 +123,7 @@ public class RegistrarPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnCargaActionPerformed
 
     /**

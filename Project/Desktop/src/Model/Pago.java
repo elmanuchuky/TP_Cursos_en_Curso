@@ -3,9 +3,18 @@ package Model;
 public class Pago {
     
     private int idPago;
-    private Inscripcion inscripcion;
+    private int inscripcion;
     private double monto;
+    private String fechaPago;
 
+    public String getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(String fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+    
     public int getIdPago() {
         return idPago;
     }
@@ -14,11 +23,11 @@ public class Pago {
         this.idPago = idPago;
     }
 
-    public Inscripcion getInscripcion() {
+    public int getInscripcion() {
         return inscripcion;
     }
 
-    public void setInscripcion(Inscripcion inscripcion) {
+    public void setInscripcion(int inscripcion) {
         this.inscripcion = inscripcion;
     }
 
@@ -33,16 +42,22 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(int idPago, Inscripcion inscripcion, double monto) {
+    public Pago(int idPago, int inscripcion, double monto, String fechaPago) {
         this.idPago = idPago;
         this.inscripcion = inscripcion;
         this.monto = monto;
+        this.fechaPago = fechaPago;
     }
 
+    public Pago(int inscripcion, double monto) {
+        this.inscripcion = inscripcion;
+        this.monto = monto;
+    }
     @Override
     public String toString() {
-        return "Pago{" + "idPago=" + idPago + ", inscripcion=" + inscripcion + ", monto=" + monto + '}';
+        return "Pago{" + "idPago=" + idPago + ", inscripcion=" + inscripcion + ", monto=" + monto + ", fechaPago=" + fechaPago + '}';
     }
+
     
     
     
