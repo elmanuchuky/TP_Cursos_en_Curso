@@ -9,7 +9,7 @@ public class DatosGenerales {
     private String apellido;
     private int tipoDni;
     private int dni;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String telefono;
     private String email;
 
@@ -53,11 +53,11 @@ public class DatosGenerales {
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -80,7 +80,7 @@ public class DatosGenerales {
     public DatosGenerales() {
     }
 
-    public DatosGenerales(int idDatosGenerales, String nombre, String apellido, int tipoDni, int dni, Date fechaNacimiento, String telefono, String email) {
+    public DatosGenerales(int idDatosGenerales, String nombre, String apellido, int tipoDni, int dni, String fechaNacimiento, String telefono, String email) {
         this.idDatosGenerales = idDatosGenerales;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -95,7 +95,4 @@ public class DatosGenerales {
     public String toString() {
         return "DatosGenerales{" + "idDatosGenerales=" + idDatosGenerales + ", nombre=" + nombre + ", apellido=" + apellido + ", tipoDni=" + tipoDni + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", email=" + email + '}';
     }
-    
-    
-    
 }
