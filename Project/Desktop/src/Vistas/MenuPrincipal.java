@@ -6,6 +6,8 @@
 package Vistas;
 
 import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javafx.scene.layout.Background;
 import javax.swing.JFrame;
 
@@ -66,8 +68,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("jMenu2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
+        setIconImage(getIconImage());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -326,9 +328,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiConsultaPagosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-//        VentanaCerrarSesion vp = new VentanaCerrarSesion();
-//        this.setVisible(true);
-//        vp.setVisible(true);
+        VentanaCerrarSesion vp = new VentanaCerrarSesion();
+        this.setVisible(true);
+        vp.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void jmiRegistrarInscriptoMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
@@ -376,6 +378,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         am.setVisible(true);
     }//GEN-LAST:event_jmiAsistenciaMostrarXCursanteActionPerformed
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
     
     
     /**

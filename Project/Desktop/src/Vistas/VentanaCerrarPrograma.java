@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -36,6 +38,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
+        setIconImage(getIconImage());
         setUndecorated(true);
 
         btnSi.setText("Si");
@@ -96,6 +99,14 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
         is.setVisible(true);
     }//GEN-LAST:event_btnNoActionPerformed
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
