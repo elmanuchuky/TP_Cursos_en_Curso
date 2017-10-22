@@ -37,7 +37,8 @@ public class ConsultaCurso extends javax.swing.JFrame {
         jltListado = new javax.swing.JList();
         rbtActuales = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consultar Cursos");
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(825, 450));
         setResizable(false);
