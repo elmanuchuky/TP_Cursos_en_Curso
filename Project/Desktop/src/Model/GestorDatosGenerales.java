@@ -67,10 +67,24 @@ public class GestorDatosGenerales {
         ResultSet query = stmtId.executeQuery("SELECT MAX(id_datos_generales) id FROM Datos_Generales");
         int resultado = 0;
         if (query.next()) {
-            resultado =(query.getInt("id"));
+            resultado = (query.getInt("id"));
         }
         query.close();
         stmtId.close();
         return resultado;
+    }
+
+    public int obtenerDatosPorLegajo(int legajo) throws SQLException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmtId = con.createStatement();
+        ResultSet query = stmtId.executeQuery("SELECT m.id_datos_generales id FROM Matriculados m join Datos_Generales dg on m.id_datos_generales = dg.id_datos_generales WHERE m.legajo_matriculado = " + legajo);
+        int idDG = 0;
+        if (query.next()) {
+            idDG = query.getInt("id");
+        }
+        query.close();
+        stmtId.close();
+        con.close();
+        return idDG;
     }
 }
