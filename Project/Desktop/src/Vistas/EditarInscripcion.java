@@ -35,20 +35,20 @@ public class EditarInscripcion extends javax.swing.JFrame {
         
         instancia = x;
         
-        switch (instancia){
-            case 1://matriculado
-                txtProfecion.enable(true);
-                txtLegajo.enable(true);
-                break;
-            case 2://Familiar
-                txtProfecion.enable(false);
-                txtLegajo.enable(true);
-                break;
-            case 3://Otro
-                txtProfecion.enable(false);
-                txtLegajo.enable(false);
-                break;
-        }
+//        switch (instancia){
+//            case 1://matriculado
+//                txtProfecion.setEnabled(true);
+//                txtLegajo.setEnabled(true);
+//                break;
+//            case 2://Familiar
+//                txtProfecion.setEnabled(false);
+//                txtLegajo.setEnabled(true);
+//                break;
+//            case 3://Otro
+//                txtProfecion.setEnabled(false);
+//                txtLegajo.setEnabled(false);
+//                break;
+//        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,7 +90,8 @@ public class EditarInscripcion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Inscripcion");
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(549, 270));
+        setMinimumSize(new java.awt.Dimension(576, 275));
+        setPreferredSize(new java.awt.Dimension(900, 400));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
