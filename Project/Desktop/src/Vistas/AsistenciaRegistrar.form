@@ -8,7 +8,7 @@
       <Connection component="Form" name="iconImage" type="property"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[399, 289]"/>
+      <Dimension value="[366, 400]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
