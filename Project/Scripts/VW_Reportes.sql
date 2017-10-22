@@ -120,3 +120,18 @@ CREATE VIEW vw_consultar_matriculados
 AS
 SELECT m.legajo_matriculado Legajo, dg.apellido + ', ' + dg.nombre Matriculado, td.tipo + ' ' + dg.dni Documento, dg.fecha_nacimiento [Fecha de nacimiento], dg.telefono Telefono, dg.mail Mail, m.profesion Profesion
 FROM Matriculados m join Datos_Generales dg on dg.id_datos_generales = m.id_datos_generales join Tipos_Dni td on td.id_tipo_dni = dg.id_tipo_dni
+
+-- vw_cursos_actuales_combo   id, curso
+GO
+CREATE VIEW vw_cursos_actuales_combo
+AS
+SELECT c.id_curso id, c.nombre curso, *
+FROM Cursos c
+WHERE GETDATE() BETWEEN c.fecha_inicio AND DATEADD(WEEK,c.duracion_total_semanas, c.fecha_inicio)
+-- vw_cursos_proximos_combo   id, curso, fecha
+GO
+CREATE VIEW vw_cursos_proximos_combo
+AS
+SELECT c.id_curso id, c.nombre curso, c.fecha_inicio fecha
+FROM Cursos c
+WHERE c.fecha_inicio > GETDATE()
