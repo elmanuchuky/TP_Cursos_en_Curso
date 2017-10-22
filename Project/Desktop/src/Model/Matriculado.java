@@ -1,10 +1,9 @@
 package Model;
 
 public class Matriculado {
-    
-    private int idMatriculado;
+private int idMatriculado;
     private int legajoMatriculado;
-    private DatosGenerales datos;
+    private int datos;
     private String profesion;
 
     public int getIdMatriculado() {
@@ -23,11 +22,11 @@ public class Matriculado {
         this.legajoMatriculado = legajoMatriculado;
     }
 
-    public DatosGenerales getDatos() {
+    public int getDatos() {
         return datos;
     }
 
-    public void setDatos(DatosGenerales datos) {
+    public void setDatos(int datos) {
         this.datos = datos;
     }
 
@@ -42,7 +41,7 @@ public class Matriculado {
     public Matriculado() {
     }
 
-    public Matriculado(int idMatriculado, int legajoMatriculado, DatosGenerales datos, String profesion) {
+    public Matriculado(int idMatriculado, int legajoMatriculado, int datos, String profesion) {
         this.idMatriculado = idMatriculado;
         this.legajoMatriculado = legajoMatriculado;
         this.datos = datos;
@@ -53,7 +52,4 @@ public class Matriculado {
     public String toString() {
         return "Matriculado{" + "idMatriculado=" + idMatriculado + ", legajoMatriculado=" + legajoMatriculado + ", datos=" + datos + ", profesion=" + profesion + '}';
     }
-    
-    
-    
 }
