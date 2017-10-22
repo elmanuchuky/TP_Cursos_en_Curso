@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 
@@ -58,6 +60,12 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         
     }
     
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,6 +90,9 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asistencias (Vista)");
+        setIconImage(getIconImage());
+        setPreferredSize(new java.awt.Dimension(659, 300));
+        setResizable(false);
 
         jtTablaAsistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
