@@ -7,6 +7,8 @@ package Vistas;
 
 import Model.Curso;
 import Model.GestorCurso;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -90,6 +92,8 @@ public class EditarCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Curso");
+        setIconImage(getIconImage());
+        setResizable(false);
 
         txtAula.setEnabled(false);
 
@@ -314,17 +318,28 @@ public class EditarCurso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMinutosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMinutosActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        nombre = txtNombre.getText();
+        descripcion= txtaDescripcion.getText();
+        tema = txtaTema.getText();
+        duracion = Integer.parseInt(txtDuracion.getText());
+        fecha = cmbDia.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+        aula = txtAula.getText();
+        cupo = Integer.parseInt(txtCupo.getText());
+        precio = Double.parseDouble(txtCosto.getText());
+        hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
+        cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
 
-    private void cmbAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioActionPerformed
-        cargarDiaCombo();
-    }//GEN-LAST:event_cmbAnioActionPerformed
-
-    private void cmbMes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMes1ActionPerformed
-        cargarDiaCombo();
-    }//GEN-LAST:event_cmbMes1ActionPerformed
+        Curso c = new Curso(nombre,descripcion,fecha,tema,duracion,precio,cupo,aula,hora,cargaHoraria);
+        c.setIdCurso(id);
+        try {
+            g.modificar(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void cmbCursosFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosFiltroActionPerformed
         try {
@@ -342,11 +357,11 @@ public class EditarCurso extends javax.swing.JFrame {
             cmbMes1.setEnabled(true);
             cmbMinutos.setEnabled(true);
             btnRegistrar.setEnabled(true);
-            
+
             id = ((Curso)cmbCursosFiltro.getSelectedItem()).getIdCurso();
-            
+
             Curso c = g.obtenerCurso(id);
-            
+
             txtNombre.setText(c.getNombreCurso());
             txtaDescripcion.setText(c.getDescripcion());
             txtaTema.setText(c.getTemas());
@@ -355,10 +370,10 @@ public class EditarCurso extends javax.swing.JFrame {
             txtCupo.setText(""+c.getCupo());
             txtCargaHoraria.setText(""+c.getCargaHoraria());
             txtCosto.setText(""+c.getCosto());
-            
+
             String[] datosFecha = c.getFechaInicio().split("-");
             String[] datoshora = c.getDiaHorario().split(" |:");
-            
+
             cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0]))-1900));
             cmbMes1.setSelectedIndex(Integer.parseInt(datosFecha[1])-1);
             cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2])-1);
@@ -371,29 +386,27 @@ public class EditarCurso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbCursosFiltroActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        nombre = txtNombre.getText();
-        descripcion= txtaDescripcion.getText();
-        tema = txtaTema.getText();
-        duracion = Integer.parseInt(txtDuracion.getText());
-        fecha = cmbDia.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
-        aula = txtAula.getText();
-        cupo = Integer.parseInt(txtCupo.getText());
-        precio = Double.parseDouble(txtCosto.getText());
-        hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
-        cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
-        
-        Curso c = new Curso(nombre,descripcion,fecha,tema,duracion,precio,cupo,aula,hora,cargaHoraria);
-        c.setIdCurso(id);
-        try {
-            g.modificar(c);
-        } catch (SQLException ex) {
-            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void cmbMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMinutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMinutosActionPerformed
 
+    private void cmbMes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMes1ActionPerformed
+        cargarDiaCombo();
+    }//GEN-LAST:event_cmbMes1ActionPerformed
+
+    private void cmbAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioActionPerformed
+        cargarDiaCombo();
+    }//GEN-LAST:event_cmbAnioActionPerformed
+
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

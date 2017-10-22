@@ -7,6 +7,8 @@ package Vistas;
 
 import Model.Curso;
 import Model.GestorCurso;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -78,7 +80,10 @@ public class RegistrarCurso extends javax.swing.JFrame {
         cmbMinutos = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Reguistrar Curso");
+        setTitle("Registrar Curso");
+        setIconImage(getIconImage());
+        setPreferredSize(new java.awt.Dimension(490, 291));
+        setResizable(false);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -295,6 +300,15 @@ public class RegistrarCurso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

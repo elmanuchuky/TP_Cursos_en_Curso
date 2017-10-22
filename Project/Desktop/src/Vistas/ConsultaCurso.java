@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Yasmin
@@ -26,23 +29,102 @@ public class ConsultaCurso extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        rbtTodos = new javax.swing.JRadioButton();
+        rbtProximo = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jltListado = new javax.swing.JList();
+        rbtActuales = new javax.swing.JRadioButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consultar Cursos");
+        setIconImage(getIconImage());
+        setPreferredSize(new java.awt.Dimension(825, 450));
+        setResizable(false);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        rbtTodos.setSelected(true);
+        rbtTodos.setText("Todos");
+        rbtTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtTodosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 31, 0, 0);
+        getContentPane().add(rbtTodos, gridBagConstraints);
+
+        rbtProximo.setText("proximos");
+        rbtProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtProximoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 2, 0, 0);
+        getContentPane().add(rbtProximo, gridBagConstraints);
+
+        jScrollPane1.setViewportView(jltListado);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 377;
+        gridBagConstraints.ipady = 248;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
+
+        rbtActuales.setText("Actuales");
+        rbtActuales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtActualesActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 2, 0, 0);
+        getContentPane().add(rbtActuales, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rbtTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtTodosActionPerformed
+        truFalsRaddio(1);
+        //Llamar a la consulta que muestre todos los cursos
+    }//GEN-LAST:event_rbtTodosActionPerformed
+
+    private void rbtProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtProximoActionPerformed
+        truFalsRaddio(2);
+        //Llamar a la consulta cursos proximos
+    }//GEN-LAST:event_rbtProximoActionPerformed
+
+    private void rbtActualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtActualesActionPerformed
+        truFalsRaddio(3);
+        //Llamar a la consulta cursos Actuales
+    }//GEN-LAST:event_rbtActualesActionPerformed
+
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +161,31 @@ public class ConsultaCurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList jltListado;
+    private javax.swing.JRadioButton rbtActuales;
+    private javax.swing.JRadioButton rbtProximo;
+    private javax.swing.JRadioButton rbtTodos;
     // End of variables declaration//GEN-END:variables
+
+
+    private void truFalsRaddio ( int x){
+       switch (x){
+           case 1:
+               rbtProximo.setSelected(false);
+               rbtTodos.setSelected(true);
+               rbtActuales.setSelected(false);
+               break;
+            case 2:
+                rbtProximo.setSelected(true);
+                rbtTodos.setSelected(false);
+                rbtActuales.setSelected(false);
+                break;
+            case 3:
+                rbtProximo.setSelected(false);
+                rbtTodos.setSelected(false);
+                rbtActuales.setSelected(true);
+                break;
+       }
+    }
 }
