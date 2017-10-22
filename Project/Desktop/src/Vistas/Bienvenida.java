@@ -54,6 +54,7 @@ public class Bienvenida extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         setIconImage(getIconImage());
         setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);

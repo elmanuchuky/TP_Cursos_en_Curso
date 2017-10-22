@@ -40,6 +40,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         setTitle("Registra Asistencia");
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(399, 289));
+        setResizable(false);
 
         jLabel3.setText("Curso");
 
