@@ -101,7 +101,8 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         setTitle("Registrar Inscripción");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(600, 300));
+        setMinimumSize(new java.awt.Dimension(600, 320));
+        setPreferredSize(new java.awt.Dimension(600, 320));
         setResizable(false);
 
         cmbMes.addActionListener(new java.awt.event.ActionListener() {

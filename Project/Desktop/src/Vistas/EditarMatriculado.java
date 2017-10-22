@@ -61,7 +61,8 @@ public class EditarMatriculado extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Matriculado");
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(541, 236));
+        setMinimumSize(new java.awt.Dimension(548, 240));
+        setPreferredSize(new java.awt.Dimension(600, 300));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
