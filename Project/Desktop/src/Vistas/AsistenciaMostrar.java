@@ -91,7 +91,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asistencias (Vista)");
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(659, 300));
         setResizable(false);
 
         jtTablaAsistencias.setModel(new javax.swing.table.DefaultTableModel(
