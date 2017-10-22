@@ -52,8 +52,5 @@ public class Matriculado {
     @Override
     public String toString() {
         return "Matriculado{" + "idMatriculado=" + idMatriculado + ", legajoMatriculado=" + legajoMatriculado + ", datos=" + datos + ", profesion=" + profesion + '}';
-    }
-    
-    
-    
+    }    
 }
