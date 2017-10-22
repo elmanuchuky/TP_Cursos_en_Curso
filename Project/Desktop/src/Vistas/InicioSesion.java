@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -38,7 +40,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(getIconImage());
         setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -123,6 +127,12 @@ public class InicioSesion extends javax.swing.JFrame {
         vcp.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
     /**
      * @param args the command line arguments
      */
