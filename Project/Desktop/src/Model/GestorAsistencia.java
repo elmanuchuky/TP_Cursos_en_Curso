@@ -76,12 +76,65 @@ public class GestorAsistencia {
          return vmAsistencias;
     }
     
+    //OBTENER ASISTENCIA POR CURSO
+    
     public ArrayList<vwAsistenciaMostrar> obtenerAsistenciasPorCurso(int idCurso) throws ClassNotFoundException, SQLException{
         
          forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          ArrayList<vwAsistenciaMostrar> lista = new ArrayList<>();
          Connection con = DriverManager.getConnection(conexion, user, pass);
          PreparedStatement comando = con.prepareStatement("exec sp_obtener_asistencias_por_curso ?"); //idCurso)
+         comando.setInt(1, idCurso);
+         ResultSet consulta = comando.executeQuery();
+         while(consulta.next()){
+             vwAsistenciaMostrar vma = new vwAsistenciaMostrar();
+             vma.setNombreCompleto(consulta.getString(0));
+             vma.setFechaAsistencia(consulta.getString(1));
+             vma.setEstaPresente(consulta.getBoolean(2));
+             lista.add(vma);
+         }
+         consulta.close();
+         comando.close();
+         con.close();
+         
+         return lista;
+    }
+    
+    //OBTENER ASISTENCIA POR CURSO O POR FECHA
+    
+    public ArrayList<vwAsistenciaMostrar> obtenerAsistenciasPorCursoOFecha(int idCurso, String fecha) throws ClassNotFoundException, SQLException{
+        
+         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+         ArrayList<vwAsistenciaMostrar> lista = new ArrayList<>();
+         Connection con = DriverManager.getConnection(conexion, user, pass);
+         PreparedStatement comando = con.prepareStatement("exec sp_obtener_asistencias_por_curso_o_fecha ?, ?"); //idCurso, fecha_asistencia
+         comando.setInt(1, idCurso);
+         comando.setString(2, fecha);
+         ResultSet consulta = comando.executeQuery();
+         while(consulta.next()){
+             vwAsistenciaMostrar vma = new vwAsistenciaMostrar();
+             vma.setNombreCompleto(consulta.getString(0));
+             vma.setFechaAsistencia(consulta.getString(1));
+             vma.setEstaPresente(consulta.getBoolean(2));
+             lista.add(vma);
+         }
+         consulta.close();
+         comando.close();
+         con.close();
+         
+         return lista;
+    }
+    
+    //OBTENER ASISTENCIA POR CURSO O POR EMAIL
+    
+    public ArrayList<vwAsistenciaMostrar> obtenerAsistenciasPorCursoOEmail(int idCurso, String email) throws ClassNotFoundException, SQLException{
+        
+         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+         ArrayList<vwAsistenciaMostrar> lista = new ArrayList<>();
+         Connection con = DriverManager.getConnection(conexion, user, pass);
+         PreparedStatement comando = con.prepareStatement("exec sp_obtener_asistencias_por_curso_o_por_email ?, ?"); //idCurso, mail
+         comando.setInt(1, idCurso);
+         comando.setString(2, email);
          ResultSet consulta = comando.executeQuery();
          while(consulta.next()){
              vwAsistenciaMostrar vma = new vwAsistenciaMostrar();
