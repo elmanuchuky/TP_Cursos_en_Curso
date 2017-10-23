@@ -49,6 +49,7 @@ public class GestorAsistencia {
         comando.setInt(1, a.getInscripcion());
         comando.setString(2, a.getFechaAsistencia());
         comando.setBoolean(3, a.isEstaPresente());
+        comando.executeUpdate();
         comando.close();
         con.close();
     }   
@@ -75,27 +76,25 @@ public class GestorAsistencia {
          return vmAsistencias;
     }
     
-    public ArrayList<vwAsistenciaMostrar> obtenerAsistencias(int idCurso, String fecha, String email) throws ClassNotFoundException, SQLException{
+    public ArrayList<vwAsistenciaMostrar> obtenerAsistenciasPorCurso(int idCurso) throws ClassNotFoundException, SQLException{
         
          forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         ArrayList<vwAsistenciaMostrar> vmAsistencias = new ArrayList<>();
+         ArrayList<vwAsistenciaMostrar> lista = new ArrayList<>();
          Connection con = DriverManager.getConnection(conexion, user, pass);
-         Statement comando = con.createStatement();
-         ResultSet consulta = comando.executeQuery("exec sp_listado_asistencia_filtros " + idCurso +" "+ fecha +" "+ email);
-         //puede filtrar por curso, o por curso y fecha, o curso y email, debe devolver nombre completo
-         //(apellido + nombre Cursante), fecha_asistencia y si esta_presente o no
+         PreparedStatement comando = con.prepareStatement("exec sp_obtener_asistencias_por_curso ?"); //idCurso)
+         ResultSet consulta = comando.executeQuery();
          while(consulta.next()){
              vwAsistenciaMostrar vma = new vwAsistenciaMostrar();
              vma.setNombreCompleto(consulta.getString(0));
              vma.setFechaAsistencia(consulta.getString(1));
              vma.setEstaPresente(consulta.getBoolean(2));
-             vmAsistencias.add(vma);
+             lista.add(vma);
          }
          consulta.close();
          comando.close();
          con.close();
          
-         return vmAsistencias;
+         return lista;
     }
     
 }
