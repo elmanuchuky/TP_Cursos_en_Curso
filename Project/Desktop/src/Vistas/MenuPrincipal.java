@@ -91,6 +91,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmRegistrar.add(jmiRegistrarMatriculaddo);
 
+        jmiRegistrarInscripto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/}.png"))); // NOI18N
         jmiRegistrarInscripto.setText("Inscripción");
 
         jmiRegistrarInscriptoMatriculado.setText("Matriculado");
@@ -119,6 +120,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmRegistrar.add(jmiRegistrarInscripto);
 
+        jmiRegistrarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/document.png"))); // NOI18N
         jmiRegistrarCurso.setText("Curso");
         jmiRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +195,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmEditar.add(jmiEditarMatriculado);
 
+        jmiEditarIscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/}.png"))); // NOI18N
         jmiEditarIscripcion.setText("Inscripción");
 
         jmiEditarIscripcionMatriculado.setText("Matriculado");
@@ -221,6 +224,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmEditar.add(jmiEditarIscripcion);
 
+        jmiEditarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/document.png"))); // NOI18N
         jmiEditarCurso.setText("Curso");
         jmiEditarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
