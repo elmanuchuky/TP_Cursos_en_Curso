@@ -138,7 +138,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmbBarraMenu.add(jmRegistrar);
 
-        jmAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calendar (2).png"))); // NOI18N
+        jmAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calender (1).png"))); // NOI18N
         jmAsistencia.setText("Asistencia");
 
         jmiAsistenciaRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/document (1).png"))); // NOI18N

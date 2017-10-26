@@ -99,7 +99,7 @@
         <Menu class="javax.swing.JMenu" name="jmAsistencia">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/calendar (2).png"/>
+              <Image iconType="3" name="/Imagenes/calender (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Asistencia"/>
           </Properties>
