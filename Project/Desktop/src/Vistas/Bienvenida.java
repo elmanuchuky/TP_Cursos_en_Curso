@@ -64,6 +64,7 @@ public class Bienvenida extends javax.swing.JFrame {
         lblImagenInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IMG_8324-1.png"))); // NOI18N
 
         barra.setBackground(new java.awt.Color(0, 0, 204));
+        barra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         barra.setForeground(new java.awt.Color(0, 0, 0));
         barra.setToolTipText("");
         barra.setString("Cargando Programa ...");

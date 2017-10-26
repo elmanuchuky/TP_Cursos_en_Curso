@@ -43,6 +43,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -51,6 +52,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(14, 24, 0, 0);
         getContentPane().add(jLabel3, gridBagConstraints);
 
+        cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbCursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCursosActionPerformed(evt);
@@ -65,6 +67,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 0, 0);
         getContentPane().add(cmbCursos, gridBagConstraints);
 
+        jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jltListado);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

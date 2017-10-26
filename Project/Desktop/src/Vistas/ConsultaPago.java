@@ -47,6 +47,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Mail");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -55,6 +56,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         getContentPane().add(jLabel2, gridBagConstraints);
 
+        txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMailActionPerformed(evt);
@@ -70,6 +72,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 18, 0, 0);
         getContentPane().add(txtMail, gridBagConstraints);
 
+        jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jltListado);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -85,6 +88,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
+        jltListado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(jltListado1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -100,7 +104,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
         getContentPane().add(jScrollPane2, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Deudas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -110,7 +114,7 @@ public class ConsultaPago extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Pagos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

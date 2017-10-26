@@ -41,6 +41,7 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jltListado);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

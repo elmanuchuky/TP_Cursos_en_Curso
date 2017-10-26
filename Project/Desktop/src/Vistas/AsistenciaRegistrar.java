@@ -42,8 +42,12 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(366, 400));
         setResizable(false);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
 
+        cmbCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        tRegistrarAsistencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tRegistrarAsistencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -69,6 +73,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tRegistrarAsistencia);
 
+        btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setText("Registrar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

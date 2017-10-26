@@ -44,6 +44,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        rbtTodos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbtTodos.setSelected(true);
         rbtTodos.setText("Todos");
         rbtTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +59,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(7, 31, 0, 0);
         getContentPane().add(rbtTodos, gridBagConstraints);
 
+        rbtProximo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbtProximo.setText("proximos");
         rbtProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +73,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(7, 2, 0, 0);
         getContentPane().add(rbtProximo, gridBagConstraints);
 
+        jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jltListado);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -86,6 +89,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
+        rbtActuales.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbtActuales.setText("Actuales");
         rbtActuales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
