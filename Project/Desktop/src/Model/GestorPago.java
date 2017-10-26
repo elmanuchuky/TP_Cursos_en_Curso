@@ -80,8 +80,9 @@ public class GestorPago {
         ArrayList<VMPagosXMail> lista = new ArrayList<>();
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        Statement stmtIns = con.createStatement(); // idCurso, idCursante
-        ResultSet query = stmtIns.executeQuery("exec sp_ver_pagos_x_mail " + mail);
+        PreparedStatement stmt = con.prepareStatement("exec sp_ver_pagos_x_mail ?"); // idCurso, idCursante
+        stmt.setString(1, mail);
+        ResultSet query = stmt.executeQuery();
 
         while (query.next()) {
             VMPagosXMail datos = new VMPagosXMail();
@@ -93,7 +94,7 @@ public class GestorPago {
             lista.add(datos);
         }
         query.close();
-        stmtIns.close();
+        stmt.close();
         con.close();
         return lista;
     }
@@ -102,8 +103,9 @@ public class GestorPago {
     public VMPagosXMail mostrarDeuda(String mail) throws ClassNotFoundException, SQLException {
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        Statement stmtIns = con.createStatement(); // idCurso, idCursante
-        ResultSet query = stmtIns.executeQuery("sp_ver_adeudado_x_mail " + mail);
+        PreparedStatement stmt = con.prepareStatement("sp_ver_adeudado_x_mail ?"); // idCurso, idCursante
+        stmt.setString(1, mail);
+        ResultSet query = stmt.executeQuery();
 
         VMPagosXMail datos = new VMPagosXMail();
         if (query.next()) {
@@ -112,7 +114,7 @@ public class GestorPago {
             datos.setMonto(query.getFloat("Pago"));
         }
         query.close();
-        stmtIns.close();
+        stmt.close();
         con.close();
         return datos;
     }
@@ -121,8 +123,9 @@ public class GestorPago {
         ArrayList<VMPagosXMail> lista = new ArrayList<>();
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        Statement stmtIns = con.createStatement(); // idCurso, idCursante
-        ResultSet query = stmtIns.executeQuery("sp_consultar_pagos_totales_x_inscripto " + i);
+        PreparedStatement stmt = con.prepareStatement("sp_consultar_pagos_totales_x_inscripto ?"); // idCurso, idCursante
+        stmt.setInt(1, i);
+        ResultSet query = stmt.executeQuery();
 
         if (query.next()) {
             VMPagosXMail datos = new VMPagosXMail();
@@ -131,7 +134,7 @@ public class GestorPago {
             datos.setMonto(query.getFloat("Pago"));
         }
         query.close();
-        stmtIns.close();
+        stmt.close();
         con.close();
         return lista;
     }

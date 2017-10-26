@@ -127,8 +127,9 @@ public class GestorInscripcion {
         ArrayList<VMNombreDocumento> lista = new ArrayList<>();
         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        Statement stmtIns = con.createStatement(); // idCurso, idCursante
-        ResultSet query = stmtIns.executeQuery("exec sp_inscriptos_por_curso " + i);
+        PreparedStatement stmtIns = con.prepareStatement("exec sp_inscriptos_por_curso ?"); // idCurso, idCursante
+        stmtIns.setInt(1, i);
+        ResultSet query = stmtIns.executeQuery();
 
         while (query.next()) {
             VMNombreDocumento datos = new VMNombreDocumento();
