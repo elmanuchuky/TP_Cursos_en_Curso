@@ -24,6 +24,11 @@
       </Layout>
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jmbBarraMenu">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+      </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jmRegistrar">
           <Properties>
@@ -31,10 +36,16 @@
               <Image iconType="3" name="/Imagenes/add (2).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registar"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarMatriculaddo">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/user.png"/>
                 </Property>
@@ -50,10 +61,16 @@
                   <Image iconType="3" name="/Imagenes/}.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inscripci&#xf3;n"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarInscriptoMatriculado">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Matriculado"/>
                   </Properties>
                   <Events>
@@ -62,6 +79,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarInscriptoFamilia">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Familiar"/>
                   </Properties>
                   <Events>
@@ -70,6 +90,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarInscriptoOtro">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Otro"/>
                   </Properties>
                   <Events>
@@ -80,6 +103,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarCurso">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/document.png"/>
                 </Property>
@@ -91,6 +117,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarPago">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/send.png"/>
                 </Property>
@@ -108,10 +137,16 @@
               <Image iconType="3" name="/Imagenes/calender (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Asistencia"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiAsistenciaRegistrar">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/document (1).png"/>
                 </Property>
@@ -127,10 +162,16 @@
                   <Image iconType="3" name="/Imagenes/list2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Mostrar"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiAsistenciaMostrarXCurso">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Por Curso"/>
                   </Properties>
                   <Events>
@@ -139,6 +180,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiAsistenciaMostrarXFecha">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Por Curso/Fecha "/>
                   </Properties>
                   <Events>
@@ -147,6 +191,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiAsistenciaMostrarXCursante">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Por Curso/Cursante"/>
                   </Properties>
                   <Events>
@@ -163,10 +210,16 @@
               <Image iconType="3" name="/Imagenes/gear.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiEditarMatriculado">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/user.png"/>
                 </Property>
@@ -182,10 +235,16 @@
                   <Image iconType="3" name="/Imagenes/}.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inscripci&#xf3;n"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiEditarIscripcionMatriculado">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Matriculado"/>
                   </Properties>
                   <Events>
@@ -194,6 +253,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiEditarIscripcionFamilia">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Familiar"/>
                   </Properties>
                   <Events>
@@ -202,6 +264,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmiEditarIscripcionOtro">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Otro"/>
                   </Properties>
                   <Events>
@@ -212,6 +277,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jmiEditarCurso">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/document.png"/>
                 </Property>
@@ -229,10 +297,16 @@
               <Image iconType="3" name="/Imagenes/search.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consultas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiConsultaCursos">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cursos"/>
               </Properties>
               <Events>
@@ -241,6 +315,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiConsultaPreInscripcion">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pre_inscriptos"/>
               </Properties>
               <Events>
@@ -249,6 +326,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiConsultaInscripto">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Inscriptos"/>
               </Properties>
               <Events>
@@ -257,6 +337,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiConsultaPagos">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pagos"/>
               </Properties>
               <Events>

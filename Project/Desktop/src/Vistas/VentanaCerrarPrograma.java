@@ -42,6 +42,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
+        btnSi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSi.setText("Si");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +50,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
             }
         });
 
+        btnNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNo.setText("No");
         btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +58,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
             }
         });
 
-        lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblFraseGeneral.setText("Desea Cerrar el Programa ???");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,7 +85,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSi)
                     .addComponent(btnNo))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
