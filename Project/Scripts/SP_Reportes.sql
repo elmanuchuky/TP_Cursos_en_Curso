@@ -95,14 +95,31 @@ BEGIN
 	DECLARE @mMonto int
 	SELECT @mMonto = i.monto
 	FROM inserted i
+	DECLARE @mMaximo int
+	SELECT @mMaximo = c.costo
+	FROM Cursos c join Inscripciones i on i.id_curso = c.id_curso
+	WHERE i.id_inscripcion = @mIdInscrip
 	DECLARE @mCantidad int
-	SELECT @mCantidad = COUNT(*)
+	SELECT @mCantidad = SUM(p.monto)
 	FROM Pagos p
 	WHERE p.id_inscripcion = @mIdInscrip
 	IF (@mCantidad is null)
 	BEGIN
+		SET @mCantidad = 0
+	END
+	DECLARE @mPagar int
+	IF ((@mMonto + @mCantidad) > @mMaximo)
+	BEGIN
+		SET @mPagar = (@mMaximo - @mCantidad)
+		EXEC sp_insert_pago @mIdInscrip, @mPagar
+	END
+	ELSE
+	BEGIN
+		EXEC sp_insert_pago @mIdInscrip, @mMonto
+	END
+	IF ((@mMonto + @mCantidad) >= (@mMaximo / 2))
+	BEGIN
 		UPDATE Inscripciones SET id_estado = 2
 		WHERE id_inscripcion = @mIdInscrip
 	END
-	EXEC sp_insert_pago @mIdInscrip, @mMonto
 END
