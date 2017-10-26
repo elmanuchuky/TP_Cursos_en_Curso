@@ -9,10 +9,20 @@ BEGIN
 	INSERT INTO Cursantes (id_matriculado, es_familia, id_datos_generales)
 	VALUES (@mIdMatriculado, @mEsFamilia, @mIdDatosGenerales)
 END
---Matriculados
+--Matriculados interno
+GO
+CREATE PROCEDURE sp_insert_matriculado_interno
+@mLegajoMatriculado int,
+@mIdDatosGenerales int,
+@mProfesion varchar(50)
+AS
+BEGIN
+	INSERT INTO Matriculados (legajo_matriculado, id_datos_generales, profesion)
+	VALUES (@mLegajoMatriculado, @mIdDatosGenerales, @mProfesion)
+END
+--Matriculados externo
 GO
 CREATE PROCEDURE sp_insert_matriculado
-@mLegajoMatriculado int,
 @mIdDatosGenerales int,
 @mProfesion varchar(50)
 AS
