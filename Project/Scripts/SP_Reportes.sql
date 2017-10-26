@@ -123,3 +123,22 @@ BEGIN
 		WHERE id_inscripcion = @mIdInscrip
 	END
 END
+
+--Trigger tg_generar_legajo
+GO
+CREATE TRIGGER tg_generar_legajo ON Matriculados
+INSTEAD OF INSERT
+AS
+BEGIN
+	DECLARE @mBase int
+	SET @mBase = ((10 + (YEAR(GETDATE()) - 2016)) * 10000)
+	SELECT @mBase += MAX(m.id_matriculado)
+	FROM Matriculados m
+	DECLARE @mIdDatosGenerales int
+	SELECT @mIdDatosGenerales = i.id_datos_generales
+	FROM inserted i
+	DECLARE @mProfesion varchar(50)
+	SELECT @mProfesion = i.profesion
+	FROM inserted i
+	EXEC sp_insert_matriculado_interno @mBase, @mIdDatosGenerales, @mProfesion
+END
