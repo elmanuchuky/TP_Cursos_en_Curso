@@ -71,22 +71,22 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
         getContentPane().add(jLabel3, gridBagConstraints);
 
         txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtProfecion.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 29;
+        gridBagConstraints.gridx = 25;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.gridwidth = 56;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 194;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 16, 0, 10);
+        gridBagConstraints.insets = new java.awt.Insets(18, 34, 0, 0);
         getContentPane().add(txtProfecion, gridBagConstraints);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -98,11 +98,12 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 56;
+        gridBagConstraints.gridx = 42;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 57;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 10);
+        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 17);
         getContentPane().add(cmbAnio, gridBagConstraints);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -110,7 +111,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 14;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.gridwidth = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 4, 0, 0);
         getContentPane().add(jLabel7, gridBagConstraints);
@@ -121,7 +122,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
         getContentPane().add(jLabel9, gridBagConstraints);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -145,7 +146,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 54;
+        gridBagConstraints.gridx = 40;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -157,7 +158,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 3, 0, 0);
         getContentPane().add(jLabel10, gridBagConstraints);
@@ -167,9 +168,9 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
         getContentPane().add(jLabel6, gridBagConstraints);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -177,11 +178,11 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 53;
+        gridBagConstraints.gridwidth = 39;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 442;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 10);
+        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 0);
         getContentPane().add(txtMail, gridBagConstraints);
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -210,7 +211,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 55;
+        gridBagConstraints.gridx = 41;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -222,7 +223,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 0, 0, 0);
@@ -235,7 +236,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
         getContentPane().add(jLabel8, gridBagConstraints);
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -253,19 +254,19 @@ public class EditarMatriculado extends javax.swing.JFrame {
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtApellido.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 29;
+        gridBagConstraints.gridx = 25;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.gridwidth = 56;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 206;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 10);
+        gridBagConstraints.insets = new java.awt.Insets(18, 22, 0, 0);
         getContentPane().add(txtApellido, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 53;
+        gridBagConstraints.gridx = 39;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -276,7 +277,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         cmbDia.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 52;
+        gridBagConstraints.gridx = 38;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -294,14 +295,15 @@ public class EditarMatriculado extends javax.swing.JFrame {
         getContentPane().add(jLabel1, gridBagConstraints);
 
         btnMoificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMoificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btnMoificar.setText("Modificar");
         btnMoificar.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 40;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 59;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 90, 11, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 11, 11, 17);
         getContentPane().add(btnMoificar, gridBagConstraints);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -313,7 +315,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 14;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.gridwidth = 12;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 86;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
