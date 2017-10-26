@@ -116,8 +116,8 @@ public class GestorCurso {
             c.setTemas(query.getString("Temas"));
             c.setDuracionTotalSemanas(query.getInt("Cantidad de semana"));
             c.setCosto(query.getDouble("Costo"));
-            c.setCupo(query.getInt("cupo"));
-            c.setAula(query.getString("aula"));
+            c.setCupo(query.getInt("Cupo"));
+            c.setAula(query.getString("Aula"));
             String dia = dias[query.getInt("Dia")];
             String horario = query.getString("Horario");
             c.setDiaHorario(dia +" "+ horario);
@@ -134,7 +134,7 @@ public class GestorCurso {
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_proximos");
+        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_en_curso");
         while (query.next()) {
             Curso c = new Curso();
 
@@ -145,6 +145,7 @@ public class GestorCurso {
             c.setTemas(query.getString("Temas"));
             c.setDuracionTotalSemanas(query.getInt("Cantidad de semana"));
             c.setCosto(query.getDouble("Costo"));
+            c.setAula(query.getString("Aula"));
             String dia = dias[query.getInt("Dia")];
             String horario = query.getString("Horario");
             c.setDiaHorario(dia +" "+ horario);
@@ -173,6 +174,7 @@ public class GestorCurso {
             c.setTemas(query.getString("Temas"));
             c.setDuracionTotalSemanas(query.getInt("Cantidad de semanas"));
             c.setCosto(query.getDouble("Costo"));
+            c.setAula(query.getString("Aula"));
             String dia = dias[query.getInt("Dia")];
             String horario = query.getString("Horario");
             c.setDiaHorario(dia +" "+ horario);
