@@ -51,9 +51,11 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(396, 114));
         setResizable(false);
 
-        lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblFraseGeneral.setText("Esta Seguro que Quiere Cerrar la Ventana de Pagos???");
 
+        btnNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit.png"))); // NOI18N
         btnNo.setText("No");
         btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +63,8 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
             }
         });
 
+        btnSi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tick (1).png"))); // NOI18N
         btnSi.setText("Si");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,11 +77,11 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(227, Short.MAX_VALUE)
-                .addComponent(btnSi, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSi)
                 .addGap(18, 18, 18)
-                .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addComponent(btnNo)
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblFraseGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

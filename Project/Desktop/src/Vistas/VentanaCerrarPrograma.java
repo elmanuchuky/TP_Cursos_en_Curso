@@ -42,6 +42,8 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
+        btnSi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tick (1).png"))); // NOI18N
         btnSi.setText("Si");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +51,8 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
             }
         });
 
+        btnNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit.png"))); // NOI18N
         btnNo.setText("No");
         btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +60,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
             }
         });
 
-        lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblFraseGeneral.setText("Desea Cerrar el Programa ???");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,14 +69,14 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFraseGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 184, Short.MAX_VALUE)
-                        .addComponent(btnSi, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSi)))
                 .addGap(18, 18, 18)
-                .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addComponent(btnNo)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +87,7 @@ public class VentanaCerrarPrograma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSi)
                     .addComponent(btnNo))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

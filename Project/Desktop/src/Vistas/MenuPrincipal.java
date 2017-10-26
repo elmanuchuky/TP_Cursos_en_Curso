@@ -79,9 +79,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoPrincipal.jpg"))); // NOI18N
 
+        jmbBarraMenu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jmRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add (2).png"))); // NOI18N
         jmRegistrar.setText("Registar");
+        jmRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiRegistrarMatriculaddo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarMatriculaddo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
         jmiRegistrarMatriculaddo.setText("Matriculado");
         jmiRegistrarMatriculaddo.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +97,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmiRegistrarInscripto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/}.png"))); // NOI18N
         jmiRegistrarInscripto.setText("Inscripción");
+        jmiRegistrarInscripto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiRegistrarInscriptoMatriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarInscriptoMatriculado.setText("Matriculado");
         jmiRegistrarInscriptoMatriculado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +108,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmiRegistrarInscripto.add(jmiRegistrarInscriptoMatriculado);
 
+        jmiRegistrarInscriptoFamilia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarInscriptoFamilia.setText("Familiar");
         jmiRegistrarInscriptoFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +117,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmiRegistrarInscripto.add(jmiRegistrarInscriptoFamilia);
 
+        jmiRegistrarInscriptoOtro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarInscriptoOtro.setText("Otro");
         jmiRegistrarInscriptoOtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +128,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmRegistrar.add(jmiRegistrarInscripto);
 
+        jmiRegistrarCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/document.png"))); // NOI18N
         jmiRegistrarCurso.setText("Curso");
         jmiRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +138,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmRegistrar.add(jmiRegistrarCurso);
 
+        jmiRegistrarPago.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/send.png"))); // NOI18N
         jmiRegistrarPago.setText("Pago");
         jmiRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +152,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calender (1).png"))); // NOI18N
         jmAsistencia.setText("Asistencia");
+        jmAsistencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiAsistenciaRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiAsistenciaRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/document (1).png"))); // NOI18N
         jmiAsistenciaRegistrar.setText("Registrar");
         jmiAsistenciaRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +166,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmiRegistrarInscripto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/list2.png"))); // NOI18N
         jmiRegistrarInscripto1.setText("Mostrar");
+        jmiRegistrarInscripto1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiAsistenciaMostrarXCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiAsistenciaMostrarXCurso.setText("Por Curso");
         jmiAsistenciaMostrarXCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +177,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmiRegistrarInscripto1.add(jmiAsistenciaMostrarXCurso);
 
+        jmiAsistenciaMostrarXFecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiAsistenciaMostrarXFecha.setText("Por Curso/Fecha ");
         jmiAsistenciaMostrarXFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +186,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmiRegistrarInscripto1.add(jmiAsistenciaMostrarXFecha);
 
+        jmiAsistenciaMostrarXCursante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiAsistenciaMostrarXCursante.setText("Por Curso/Cursante");
         jmiAsistenciaMostrarXCursante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +201,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gear.png"))); // NOI18N
         jmEditar.setText("Editar");
+        jmEditar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiEditarMatriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiEditarMatriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
         jmiEditarMatriculado.setText("Matriculado");
         jmiEditarMatriculado.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +215,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmiEditarIscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/}.png"))); // NOI18N
         jmiEditarIscripcion.setText("Inscripción");
+        jmiEditarIscripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiEditarIscripcionMatriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiEditarIscripcionMatriculado.setText("Matriculado");
         jmiEditarIscripcionMatriculado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +226,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmiEditarIscripcion.add(jmiEditarIscripcionMatriculado);
 
+        jmiEditarIscripcionFamilia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiEditarIscripcionFamilia.setText("Familiar");
         jmiEditarIscripcionFamilia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +235,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmiEditarIscripcion.add(jmiEditarIscripcionFamilia);
 
+        jmiEditarIscripcionOtro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiEditarIscripcionOtro.setText("Otro");
         jmiEditarIscripcionOtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +246,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmEditar.add(jmiEditarIscripcion);
 
+        jmiEditarCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiEditarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/document.png"))); // NOI18N
         jmiEditarCurso.setText("Curso");
         jmiEditarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +260,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search.png"))); // NOI18N
         jmConsulta.setText("Consultas");
+        jmConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jmiConsultaCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiConsultaCursos.setText("Cursos");
         jmiConsultaCursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +271,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmConsulta.add(jmiConsultaCursos);
 
+        jmiConsultaPreInscripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiConsultaPreInscripcion.setText("Pre_inscriptos");
         jmiConsultaPreInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +280,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmConsulta.add(jmiConsultaPreInscripcion);
 
+        jmiConsultaInscripto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiConsultaInscripto.setText("Inscriptos");
         jmiConsultaInscripto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +289,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jmConsulta.add(jmiConsultaInscripto);
 
+        jmiConsultaPagos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiConsultaPagos.setText("Pagos");
         jmiConsultaPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
