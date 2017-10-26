@@ -6,23 +6,24 @@ horaria del mismo*/
 GO
 CREATE VIEW vw_consultar_cursos_todos
 AS
-SELECT c.id_curso Id, c.nombre Curso, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
+SELECT c.id_curso Id, c.nombre Curso, c.aula Aula, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
 FROM Cursos c
 --En curso
 GO
 CREATE VIEW vw_consultar_cursos_en_curso
 AS
-SELECT c.id_curso Id, c.nombre Curso, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
+SELECT c.id_curso Id, c.nombre Curso, c.aula Aula, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
 FROM Cursos c
 WHERE GETDATE() BETWEEN c.fecha_inicio AND DATEADD(WEEK,c.duracion_total_semanas, c.fecha_inicio)
 --Proximos
 GO
 CREATE VIEW vw_consultar_cursos_proximos
 AS
-SELECT c.id_curso Id, c.nombre Curso, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
+SELECT c.id_curso Id, c.nombre Curso, c.aula Aula, c.cupo Cupo, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
 FROM Cursos c
 WHERE GETDATE() < c.fecha_inicio
 --vw_listar_pagos_totales
+--Se usa internamente para la siguiente consulta
 GO
 CREATE VIEW vw_listar_pagos_totales
 AS
@@ -35,7 +36,7 @@ CREATE VIEW vw_preinscriptos_cursos_x_comenzar_o_en_curso
 AS
 SELECT c.nombre Curso, dg.apellido + ' ' + dg.nombre Cursante, td.tipo + ' ' + dg.dni Documento, c.fecha_inicio [Fecha de inicio], vm.[Monto pagado] [Monto pagado], c.costo [Total del curso]
 FROM Inscripciones i join Cursos c on c.id_curso = i.id_curso join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales join Tipos_Dni td on td.id_tipo_dni = dg.id_tipo_dni join vw_listar_pagos_totales vm on vm.Id = i.id_inscripcion
-WHERE i.id_estado = 1 AND GETDATE() BETWEEN c.fecha_inicio AND DATEADD(WEEK,c.duracion_total_semanas, c.fecha_inicio)
+WHERE i.id_estado = 1 AND GETDATE() < c.fecha_inicio
 ORDER BY 4, 1, 2
 /*Lista de Inscripciones con porcentaje de presentismo que superan o igualan el 80%*/
 GO
