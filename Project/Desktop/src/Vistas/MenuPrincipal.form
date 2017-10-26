@@ -27,11 +27,17 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jmRegistrar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/add (2).png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Registar"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarMatriculaddo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/user.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Matriculado"/>
               </Properties>
               <Events>
@@ -79,6 +85,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiRegistrarPago">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/send.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pago"/>
               </Properties>
               <Events>
@@ -89,11 +98,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmAsistencia">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/calender (1).png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Asistencia"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiAsistenciaRegistrar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/document (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
               <Events>
@@ -102,6 +117,9 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="jmiRegistrarInscripto1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/list2.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mostrar"/>
               </Properties>
               <SubComponents>
@@ -135,11 +153,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmEditar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/gear.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiEditarMatriculado">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/user.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Matriculado"/>
               </Properties>
               <Events>
@@ -189,6 +213,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmConsulta">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/search.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
           <SubComponents>
@@ -268,7 +295,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="lblImagen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
