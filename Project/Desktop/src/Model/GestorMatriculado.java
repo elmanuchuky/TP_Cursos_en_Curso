@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,7 @@ public class GestorMatriculado {
         comando2.setString(2, m.getProfesion());
         comando2.executeUpdate();
         comando2.close();
+            JOptionPane.showMessageDialog(null, "anda");
         con.close();
     }
 
