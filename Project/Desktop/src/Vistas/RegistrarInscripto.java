@@ -415,7 +415,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         DatosGenerales dg = new DatosGenerales();
                         dg.setNombre(txtNombre.getText());
                         dg.setApellido(txtApellido.getText());
-                        //dg.setTipoDni((())cmbTipoDocumento.getSelectedItem()).getId());
+                        dg.setTipoDni(((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
                         dg.setDni(Integer.parseInt(txtDocumento.getText()));
                         dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
@@ -423,7 +423,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
-            }
+                    }
                 }
             break;
             case 3://Otro
