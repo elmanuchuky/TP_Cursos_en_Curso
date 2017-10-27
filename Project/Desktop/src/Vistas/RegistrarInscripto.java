@@ -29,12 +29,14 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
     }
     
     public RegistrarInscripto (int x) {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
         
         instancia = x;
         switch (instancia){

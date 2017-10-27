@@ -25,12 +25,14 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         initComponents();
         cargarDiaCombo();
         cargaCmb();
+        this.setLocationRelativeTo(null);
     }
 
     public AsistenciaMostrar(int x) {
         initComponents();
         cargarDiaCombo();
         cargaCmb();
+        this.setLocationRelativeTo(null);
         
         interfas = x;
         switch (interfas){
@@ -90,6 +92,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asistencias (Vista)");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);
 

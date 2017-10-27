@@ -19,6 +19,7 @@ public class RegistrarPago extends javax.swing.JFrame {
      */
     public RegistrarPago() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public RegistrarPago(String mail,int i, String monto) {
@@ -26,6 +27,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         txtMail.setText(mail);
         cmbCursos.setSelectedIndex(i);
         txtMonto.setText(monto);
+        this.setLocationRelativeTo(null);
     }
     
     
@@ -48,6 +50,7 @@ public class RegistrarPago extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pago");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(445, 193));
         setResizable(false);

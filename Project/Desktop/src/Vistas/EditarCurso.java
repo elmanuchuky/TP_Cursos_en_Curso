@@ -39,6 +39,8 @@ public class EditarCurso extends javax.swing.JFrame {
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
+        this.setLocationRelativeTo(null);
+        
         try {
             cargarCursosFiltro(g.TodosCursos());
         } catch (SQLException ex) {
@@ -93,6 +95,7 @@ public class EditarCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Curso");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
