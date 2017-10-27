@@ -8,6 +8,9 @@ package Vistas;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.layout.Background;
 import javax.swing.JFrame;
 
@@ -341,8 +344,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmiRegistrarMatriculaddoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarMatriculaddoActionPerformed
         if (vRegistrarMatriculado == false) {
             vRegistrarMatriculado = true;
-            RegistrarMatriculado rm = new RegistrarMatriculado();
-            rm.setVisible(true);
+            RegistrarMatriculado rm;
+            try {
+                rm = new RegistrarMatriculado();
+                rm.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jmiRegistrarMatriculaddoActionPerformed
 
