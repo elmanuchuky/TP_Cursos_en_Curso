@@ -229,4 +229,24 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
+    
+    public ArrayList<ComboNuevoCursante> ComboCursoProximoyActuales() throws SQLException, ClassNotFoundException {
+        forName(ClasForName);
+        ArrayList<ComboNuevoCursante> cursos = new ArrayList<ComboNuevoCursante>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_en_curso_y_proximos");
+        while (query.next()) {
+            ComboNuevoCursante c = new ComboNuevoCursante();
+
+            c.setId(query.getInt("Id"));
+            c.setNombre(query.getString("Curso"));
+            c.setFecha(query.getString("Fecha de Inicio"));
+            cursos.add(c);
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return cursos;
+    }
 }

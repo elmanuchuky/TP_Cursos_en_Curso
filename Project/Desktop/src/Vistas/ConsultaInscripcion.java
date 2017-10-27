@@ -24,7 +24,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
     public ConsultaInscripcion() {
         g = new GestorCurso();
         try {
-            cargarComboCurso(g.ComboCursosActuales());
+            cargarComboCurso(g.ComboCursoProximoyActuales());
         } catch (SQLException ex) {
             Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

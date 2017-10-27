@@ -23,7 +23,7 @@ public class RegistrarPago extends javax.swing.JFrame {
     public RegistrarPago() {
         g = new GestorCurso();
         try {
-            cargarComboCurso(g.ComboCursosActuales());
+            cargarComboCurso(g.ComboCursoProximoyActuales());
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
