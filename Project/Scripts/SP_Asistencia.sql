@@ -3,7 +3,7 @@ CREATE PROCEDURE sp_listado_cursantes_x_curso
 AS
 BEGIN
 	SELECT dg.apellido + ', ' + dg.nombre Cursante
-	FROM Asistencias a join Inscripciones i on i.id_inscripcion = a.id_inscripcion join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales
+	FROM Inscripciones i join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales
 	WHERE i.id_curso = @mIdCurso
 	ORDER BY dg.apellido, dg.nombre
 END
