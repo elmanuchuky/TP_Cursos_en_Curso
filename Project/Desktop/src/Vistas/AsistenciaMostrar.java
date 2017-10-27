@@ -5,9 +5,14 @@
  */
 package Vistas;
 
+import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -16,13 +21,19 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class AsistenciaMostrar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AsistenciaMostrar
-     */
+    GestorCurso g;
     private int interfas;
-    
+
     public AsistenciaMostrar() {
         initComponents();
+        g = new GestorCurso();
+        try {
+            cargarComboCurso(g.ComboCursosActuales());
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cargarDiaCombo();
         cargaCmb();
         this.setLocationRelativeTo(null);
@@ -33,9 +44,9 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         cargarDiaCombo();
         cargaCmb();
         this.setLocationRelativeTo(null);
-        
+
         interfas = x;
-        switch (interfas){
+        switch (interfas) {
             case 1: //Curso
                 cmbCursos.enable(true);
                 cmbAnio.enable(false);
@@ -58,16 +69,16 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
                 txtMail.enable(true);
                 break;
         }
-                
-        
+
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -258,51 +269,52 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
-        
+
         int anio = 1900;
         int mes = 1;
- 
-        Calendar cal= Calendar.getInstance(); 
-        int year = cal.get(Calendar.YEAR); 
-        
-        while (anio <= year) {            
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+
+        while (anio <= year) {
             modelAnio.addElement(anio);
             anio++;
         }
         cmbAnio.setModel(modelAnio);
-        
-        while (mes <= 12) {            
+
+        while (mes <= 12) {
             modelMes.addElement(mes);
             mes++;
         }
         cmbMes.setModel(modelMes);
-        
+
     }
+
     private void cargarDiaCombo() {
         DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
         int dia = 1;
-        int mes = cmbMes.getSelectedIndex()+1;
+        int mes = cmbMes.getSelectedIndex() + 1;
 
-        while (dia <= 28) {            
+        while (dia <= 28) {
             modelDia.addElement(dia);
             dia++;
-        } 
-        
-        if(mes == 2){
-            if((int)cmbAnio.getSelectedItem()%4 == 0 && ((int)cmbAnio.getSelectedItem()%100 != 0 || (int)cmbAnio.getSelectedItem()%400 == 0)){
+        }
+
+        if (mes == 2) {
+            if ((int) cmbAnio.getSelectedItem() % 4 == 0 && ((int) cmbAnio.getSelectedItem() % 100 != 0 || (int) cmbAnio.getSelectedItem() % 400 == 0)) {
                 modelDia.addElement(dia);
             }
-        }else if(mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12){
-            while (dia <= 31) {            
+        } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+            while (dia <= 31) {
                 modelDia.addElement(dia);
                 dia++;
             }
-        }else{
-            while (dia <= 30) {            
+        } else {
+            while (dia <= 30) {
                 modelDia.addElement(dia);
                 dia++;
             }
@@ -324,4 +336,14 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     private javax.swing.JTable jtTablaAsistencias;
     private javax.swing.JTextField txtMail;
     // End of variables declaration//GEN-END:variables
+public void cargarComboCurso(ArrayList listaGenerica) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        for (Object elemento : listaGenerica) {
+            model.addElement(elemento);
+        }
+
+        cmbCursos.setModel(model);
+    }
+
 }
