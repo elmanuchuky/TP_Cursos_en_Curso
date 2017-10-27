@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/GestorInscripcion.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/GestorCurso.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/Cursante.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/Asistencia.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/Curso.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/DatosGenerales.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/GestorPago.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/Matriculado.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/ComboNuevoCursante.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/ComboCurso.java</file>
-            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Model/Pago.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/VentanaCerrarPrograma.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/ConsultaPago.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/RegistrarPago.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/AsistenciaMostrar.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/RegistrarCurso.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/ConsultaPreInscripcion.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/VentanaCerrarPagos.java</file>
+            <file>file:/C:/Facultad/Metodologia%20de%20Sistemas/Proyecto/TP_Cursos_en_Curso/Project/Desktop/src/Vistas/RegistrarMatriculado.java</file>
         </group>
     </open-files>
 </project-private>
