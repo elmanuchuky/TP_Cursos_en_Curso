@@ -25,15 +25,17 @@ public class GestorMatriculado {
     String pass = adv.getPass();
     String ClasForName = adv.getClasForName();
 
-    public void agregarMatriculado(Matriculado m) throws SQLException {
+//agrega un nuevo matriculado
+    public void agregarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        PreparedStatement comando = con.prepareStatement("exec sp_insert_matriculado ?,?,?");
-        comando.setInt(1, m.getLegajoMatriculado());
-        comando.setInt(2, m.getDatos());
-        comando.setString(3, m.getProfesion());
-
-        comando.executeUpdate();
-        comando.close();
+        GestorDatosGenerales gd = new GestorDatosGenerales();
+        gd.agregarDatosGenerales(d);
+        m.setDatos(gd.obtenerUltimoId());
+        PreparedStatement comando2 = con.prepareStatement("exec sp_insert_matriculado ?,?");
+        comando2.setInt(1, m.getDatos());
+        comando2.setString(2, m.getProfesion());
+        comando2.executeUpdate();
+        comando2.close();
         con.close();
     }
 
