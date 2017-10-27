@@ -30,85 +30,71 @@ public class ConsultaCurso extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         rbtTodos = new javax.swing.JRadioButton();
         rbtProximo = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jltListado = new javax.swing.JList();
         rbtActuales = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Cursos");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(825, 450));
+        setMinimumSize(new java.awt.Dimension(460, 325));
+        setPreferredSize(new java.awt.Dimension(460, 325));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(null);
 
-        rbtTodos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        rbtTodos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtTodos.setSelected(true);
         rbtTodos.setText("Todos");
+        rbtTodos.setOpaque(false);
         rbtTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtTodosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 31, 0, 0);
-        getContentPane().add(rbtTodos, gridBagConstraints);
+        getContentPane().add(rbtTodos);
+        rbtTodos.setBounds(10, 10, 69, 25);
 
-        rbtProximo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        rbtProximo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtProximo.setText("proximos");
+        rbtProximo.setOpaque(false);
         rbtProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtProximoActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 2, 0, 0);
-        getContentPane().add(rbtProximo, gridBagConstraints);
+        getContentPane().add(rbtProximo);
+        rbtProximo.setBounds(160, 10, 89, 25);
 
         jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jltListado);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 377;
-        gridBagConstraints.ipady = 248;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 0, 0, 0);
-        getContentPane().add(jScrollPane1, gridBagConstraints);
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 34, 460, 290);
 
-        rbtActuales.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        rbtActuales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtActuales.setText("Actuales");
+        rbtActuales.setOpaque(false);
         rbtActuales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtActualesActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 2, 0, 0);
-        getContentPane().add(rbtActuales, gridBagConstraints);
+        getContentPane().add(rbtActuales);
+        rbtActuales.setBounds(80, 10, 90, 25);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/purple-polygonal-960x540.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 480, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +162,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList jltListado;
     private javax.swing.JRadioButton rbtActuales;
