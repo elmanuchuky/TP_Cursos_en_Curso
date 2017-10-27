@@ -246,7 +246,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 descripcion = txtaDescripcion.getText();
                 tema = txtaTema.getText();
                 duracion = Integer.parseInt(txtDuracion.getText());
-                fecha = cmbDia.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                fecha = cmbMes1.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
                 aula = txtAula.getText();
                 cupo = Integer.parseInt(txtCupo.getText());
                 precio = Double.parseDouble(txtCosto.getText());

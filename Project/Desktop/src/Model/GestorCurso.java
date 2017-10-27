@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,7 +111,7 @@ public class GestorCurso {
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_proximos");
+        ResultSet query = comando.executeQuery("SELECT * FROM vw_consultar_cursos_proximos");
         while (query.next()) {
             Curso c = new Curso();
 
@@ -139,7 +140,7 @@ public class GestorCurso {
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_en_curso");
+        ResultSet query = comando.executeQuery("SELECT * FROM vw_consultar_cursos_en_curso");
         while (query.next()) {
             Curso c = new Curso();
 
@@ -168,7 +169,7 @@ public class GestorCurso {
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user,pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_todos");
+        ResultSet query = comando.executeQuery("SELECT * FROM vw_consultar_cursos_todos");
         while(query.next()){
             Curso c = new Curso();
             
@@ -197,7 +198,7 @@ public class GestorCurso {
         ArrayList<ComboCurso> cursos = new ArrayList<ComboCurso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_cursos_actuales_combo");
+        ResultSet query = comando.executeQuery("SELECT * FROM vw_cursos_actuales_combo");
         while (query.next()) {
             ComboCurso c = new ComboCurso();
             c.setId(query.getInt("Id"));
@@ -215,13 +216,12 @@ public class GestorCurso {
         ArrayList<ComboNuevoCursante> cursos = new ArrayList<ComboNuevoCursante>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_curso_proximo_combo");
+        ResultSet query = comando.executeQuery("SELECT * FROM vw_cursos_proximos_combo");
         while (query.next()) {
             ComboNuevoCursante c = new ComboNuevoCursante();
-
             c.setId(query.getInt("Id"));
             c.setNombre(query.getString("Curso"));
-            c.setFecha(query.getString("Fecha de Inicio"));
+            c.setFecha(query.getString("fecha"));
             cursos.add(c);
         }
         query.close();
@@ -235,7 +235,7 @@ public class GestorCurso {
         ArrayList<ComboNuevoCursante> cursos = new ArrayList<ComboNuevoCursante>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("exec vw_consultar_cursos_en_curso_y_proximos");
+        ResultSet query = comando.executeQuery("SELECT * FROM vw_consultar_cursos_en_curso_y_proximos");
         while (query.next()) {
             ComboNuevoCursante c = new ComboNuevoCursante();
 
