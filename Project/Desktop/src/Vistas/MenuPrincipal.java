@@ -20,9 +20,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal
      */
+    public static boolean vRegistrarMatriculado = false;
+    public static boolean vRegistrarInscripcion = false;//3
+    public static boolean vRegistrarCurso = false;
+    public static boolean vRegistrarPago = false;
+    
+    public static boolean vEditarMatriculado = false;
+    public static boolean vEditarInscripcion = false;//3
+    public static boolean vEditarCurso = false;
+    
+    public static boolean vAsistenciasRegistrar = false;
+    public static boolean vAsistenciasMostrar = false;//3
+    
+    public static boolean vConsultaCurso = false;
+    public static boolean vConsultaPreInscripcion = false;
+    public static boolean vConsultaInscripcion = false;
+    public static boolean vConsultaPago = false;
+    
     public MenuPrincipal() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -321,18 +339,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiRegistrarMatriculaddoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarMatriculaddoActionPerformed
-        RegistrarMatriculado rm = new RegistrarMatriculado();
-        rm.setVisible(true);
+        if (vRegistrarMatriculado == false) {
+            vRegistrarMatriculado = true;
+            RegistrarMatriculado rm = new RegistrarMatriculado();
+            rm.setVisible(true);
+        }
     }//GEN-LAST:event_jmiRegistrarMatriculaddoActionPerformed
 
     private void jmiRegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarCursoActionPerformed
-       RegistrarCurso rc = new RegistrarCurso();
-       rc.setVisible(true);
+        if (vRegistrarCurso == false) {
+            vRegistrarCurso = true;
+            RegistrarCurso rc = new RegistrarCurso();
+            rc.setVisible(true);
+        }
     }//GEN-LAST:event_jmiRegistrarCursoActionPerformed
 
     private void jmiRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarPagoActionPerformed
-       RegistrarPago rp = new RegistrarPago();
-       rp.setVisible(true);
+        if (vRegistrarPago == false) {
+            vRegistrarPago = true;
+            RegistrarPago rp = new RegistrarPago();
+            rp.setVisible(true);
+        }
     }//GEN-LAST:event_jmiRegistrarPagoActionPerformed
 
     private void jmiAsistenciaRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaRegistrarActionPerformed
@@ -377,18 +404,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jmiRegistrarInscriptoMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
-       RegistrarInscripto ri = new RegistrarInscripto(1);//Matriculado
-       ri.setVisible(true);
+        if (vRegistrarInscripcion == false) {
+            vRegistrarInscripcion = true;
+            RegistrarInscripto ri = new RegistrarInscripto(1);//Matriculado
+            ri.setVisible(true);
+        }
     }//GEN-LAST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
 
     private void jmiRegistrarInscriptoFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoFamiliaActionPerformed
-       RegistrarInscripto ri = new RegistrarInscripto(2);//Familiar
-       ri.setVisible(true);
+        if (vRegistrarInscripcion == false) {
+            vRegistrarInscripcion = true;
+            RegistrarInscripto ri = new RegistrarInscripto(2);//Familiar
+            ri.setVisible(true);
+        }
     }//GEN-LAST:event_jmiRegistrarInscriptoFamiliaActionPerformed
 
     private void jmiRegistrarInscriptoOtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoOtroActionPerformed
-       RegistrarInscripto ri = new RegistrarInscripto(3);//Otro
-       ri.setVisible(true);
+        if (vRegistrarInscripcion == false) {
+            vRegistrarInscripcion = true;
+            RegistrarInscripto ri = new RegistrarInscripto(3);//Otro
+            ri.setVisible(true);
+        }
     }//GEN-LAST:event_jmiRegistrarInscriptoOtroActionPerformed
 
     private void jmiEditarIscripcionMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionMatriculadoActionPerformed

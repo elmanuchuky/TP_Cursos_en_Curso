@@ -39,6 +39,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpsContrasenia = new javax.swing.JPasswordField();
 
+        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setLocation(new java.awt.Point(0, 0));

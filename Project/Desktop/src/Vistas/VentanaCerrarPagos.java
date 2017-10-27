@@ -23,6 +23,7 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
     
     public VentanaCerrarPagos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public VentanaCerrarPagos(String mail,int i, String monto) {
@@ -30,6 +31,7 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
         this.mail = mail;
         this.i = i;
         this.monto = monto;
+        this.setLocationRelativeTo(null);
     }
     
     /**
@@ -110,6 +112,7 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         RegistrarPago rp = new RegistrarPago();
+        MenuPrincipal.vRegistrarPago = false;
         this.setVisible(false);
         rp.setVisible(false);
     }//GEN-LAST:event_btnSiActionPerformed

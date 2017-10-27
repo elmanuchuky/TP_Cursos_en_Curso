@@ -107,6 +107,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(600, 320));
         setPreferredSize(new java.awt.Dimension(680, 320));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cmbMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -397,6 +402,10 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private void cmbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMesActionPerformed
         cargarDiaCombo();
     }//GEN-LAST:event_cmbMesActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vRegistrarInscripcion = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override
