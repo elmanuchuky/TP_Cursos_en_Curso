@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -103,7 +104,7 @@ public class GestorInscripcion {
         }
     }
 
-    public void agregarInscripcionMatriculado(int idCurso, int legajo) throws ClassNotFoundException {
+    public void agregarInscripcionMatriculado(int legajo, int idCurso) throws ClassNotFoundException {
         forName(ClasForName);
         try {
             GestorMatriculado gm = new GestorMatriculado();
@@ -123,6 +124,7 @@ public class GestorInscripcion {
             stmtIns.close();
             con.close();
         } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, ex.toString() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
         }
     }
     // reporte donde se mostrara un listado del nombre completo con su correspondiente documento
