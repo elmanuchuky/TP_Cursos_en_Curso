@@ -6,10 +6,10 @@ package Model;
  * @author Yasmin
  */
 public class AccesoDatosVariable {
-    String  conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
+    String  conexion = "jdbc:sqlserver://LAPTOP-5AEIROHB\\SQLEXPRESS;databaseName=Colegio_Informatica_Metodologia";
     String ClasForName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    String user = "";
-    String pass = "";
+    String user = "sa";
+    String pass = "1234";
 
     public AccesoDatosVariable() {
     }

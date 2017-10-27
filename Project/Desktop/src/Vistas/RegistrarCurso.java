@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -240,23 +241,22 @@ public class RegistrarCurso extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
-
-            nombre = txtNombre.getText();
-            descripcion = txtaDescripcion.getText();
-            tema = txtaTema.getText();
-            duracion = Integer.parseInt(txtDuracion.getText());
-            fecha = cmbDia.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
-            aula = txtAula.getText();
-            cupo = Integer.parseInt(txtCupo.getText());
-            precio = Double.parseDouble(txtCosto.getText());
-            hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
-            cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
-            Curso c = new Curso(nombre, descripcion, fecha, tema, duracion, precio, cupo, aula, hora, cargaHoraria);
-            g.agregar(c);
+            if (esValido()){
+                nombre = txtNombre.getText();
+                descripcion = txtaDescripcion.getText();
+                tema = txtaTema.getText();
+                duracion = Integer.parseInt(txtDuracion.getText());
+                fecha = cmbMes1.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                aula = txtAula.getText();
+                cupo = Integer.parseInt(txtCupo.getText());
+                precio = Double.parseDouble(txtCosto.getText());
+                hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
+                cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
+                Curso c = new Curso(nombre, descripcion, fecha, tema, duracion, precio, cupo, aula, hora, cargaHoraria);
+                g.agregar(c);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(RegistrarCurso.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegistrarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -412,4 +412,48 @@ public class RegistrarCurso extends javax.swing.JFrame {
     private javax.swing.JTextArea txtaDescripcion;
     private javax.swing.JTextArea txtaTema;
     // End of variables declaration//GEN-END:variables
+
+    private boolean esValido() {
+        if (txtNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio!");
+            return false;
+        }
+        if (txtaDescripcion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo descripcion no debe estar vacio!");
+            return false;
+        }
+        if (txtaTema.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo tema no debe estar vacio!");
+            return false;
+        }
+        if (txtAula.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo aula no debe estar vacio!");
+            return false;
+        }
+        try {
+            Integer.parseInt(txtDuracion.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo duracion debe ser un numero!");
+            return false;
+        }
+        try {
+            Integer.parseInt(txtCargaHoraria.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo carga horaria debe ser un numero!");
+            return false;
+        }
+        try {
+            Integer.parseInt(txtCupo.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo cupo debe ser un numero!");
+            return false;
+        }
+        try {
+            Double.parseDouble(txtCosto.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo costo debe ser un numero!");
+            return false;
+        }
+        return true;
+    }
 }

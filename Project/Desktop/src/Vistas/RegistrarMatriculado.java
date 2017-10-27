@@ -5,9 +5,16 @@
  */
 package Vistas;
 
+import Model.DatosGenerales;
+import Model.GestorMatriculado;
+import Model.Matriculado;
+import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -15,12 +22,16 @@ import javax.swing.DefaultComboBoxModel;
  * @author Yasmin
  */
 public class RegistrarMatriculado extends javax.swing.JFrame {
+
     private int instancia;
-            
+    String fecha;
+    GestorMatriculado gm;
+
     public RegistrarMatriculado() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        gm = new GestorMatriculado();
         this.setLocationRelativeTo(null);
     }
 
@@ -295,16 +306,26 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        switch (instancia){
-            case 1://matriculado
+        if (validacion()) {
+            DatosGenerales d = new DatosGenerales();
+            Matriculado m = new Matriculado();
+            d.setNombre(txtNombre.getText());
+            d.setApellido(txtApellido.getText());
+            d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
+            d.setDni(Integer.parseInt(txtDocumento.getText()));
+            fecha = cmbDia.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
+            d.setFechaNacimiento(fecha);
+            d.setTelefono(txtTelefono.getText());
+            d.setEmail(txtMail.getText());
+            m.setProfesion(txtProfecion.getText());
 
-            break;
-            case 2://Familiar
-
-            break;
-            case 3://Otro
-
-            break;
+            try {
+                gm.agregarMatriculado(m, d);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -320,14 +341,13 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         MenuPrincipal.vRegistrarMatriculado = false;
     }//GEN-LAST:event_formWindowClosing
 
-    
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -363,59 +383,58 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         });
     }
 
-    
-      private void cargaCmb() {
+    private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
-        
+
         int anio = 1900;
         int mes = 1;
- 
-        Calendar cal= Calendar.getInstance(); 
-        int year = cal.get(Calendar.YEAR); 
-        
-        while (anio <= year) {            
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+
+        while (anio <= year) {
             modelAnio.addElement(anio);
             anio++;
         }
         cmbAnio.setModel(modelAnio);
-        
-        while (mes <= 12) {            
+
+        while (mes <= 12) {
             modelMes.addElement(mes);
             mes++;
         }
         cmbMes.setModel(modelMes);
-        
+
     }
 
     private void cargarDiaCombo() {
         DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
         int dia = 1;
-        int mes = cmbMes.getSelectedIndex()+1;
+        int mes = cmbMes.getSelectedIndex() + 1;
 
-        while (dia <= 28) {            
+        while (dia <= 28) {
             modelDia.addElement(dia);
             dia++;
-        } 
-        
-        if(mes == 2){
-            if((int)cmbAnio.getSelectedItem()%4 == 0 && ((int)cmbAnio.getSelectedItem()%100 != 0 || (int)cmbAnio.getSelectedItem()%400 == 0)){
+        }
+
+        if (mes == 2) {
+            if ((int) cmbAnio.getSelectedItem() % 4 == 0 && ((int) cmbAnio.getSelectedItem() % 100 != 0 || (int) cmbAnio.getSelectedItem() % 400 == 0)) {
                 modelDia.addElement(dia);
             }
-        }else if(mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12){
-            while (dia <= 31) {            
+        } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+            while (dia <= 31) {
                 modelDia.addElement(dia);
                 dia++;
             }
-        }else{
-            while (dia <= 30) {            
+        } else {
+            while (dia <= 30) {
                 modelDia.addElement(dia);
                 dia++;
             }
         }
         cmbDia.setModel(modelDia);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox cmbAnio;
@@ -438,4 +457,38 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+    public boolean validacion() {
+        if (txtNombre.getText().length() == 0) {
+            return false;
+        }
+        if (txtApellido.getText().length() == 0) {
+            return false;
+        }
+        if (txtDocumento.getText().length() == 0) {
+            return false;
+        }
+        if (txtMail.getText().length() == 0) {
+            return false;
+        }
+        if (txtTelefono.getText().length() == 0) {
+            return false;
+        }
+        if (txtProfecion.getText().length() == 0) {
+            return false;
+        }
+        if (cmbTipoDocumento.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbDia.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbMes.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbAnio.getSelectedIndex() == -1) {
+            return false;
+        }
+        return true;
+    }
+
 }

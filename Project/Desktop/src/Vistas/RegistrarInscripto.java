@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Model.ComboNuevoCursante;
+import Model.DatosGenerales;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
@@ -14,6 +16,9 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import Model.GestorCurso;
+import Model.GestorInscripcion;
+import Model.GestorTipoDni;
+import Model.TipoDni;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,17 +36,9 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     GestorCurso g;
     
     public RegistrarInscripto() {
-        g = new GestorCurso();
         initComponents();
         cargaCmb();
         cargarDiaCombo();
-        try {
-            cargarComboCurso(g.ComboCursosIncribir());
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
-        }
         this.setLocationRelativeTo(null);
     }
     
@@ -49,6 +46,17 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        g = new GestorCurso();
+        GestorTipoDni gtd = new GestorTipoDni();
+        try {            
+            cargarComboCurso(g.ComboCursosIncribir());
+            cargarComboTipoDni(gtd.obtenerTodos());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setLocationRelativeTo(null);
         
         instancia = x;
@@ -214,7 +222,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 197;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 209;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 6, 0, 19);
         getContentPane().add(cmbCursos, gridBagConstraints);
 
@@ -395,12 +402,32 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCarcgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarcgarActionPerformed
+        GestorInscripcion gi = new GestorInscripcion();
         switch (instancia){
             case 1://matriculado
-
+                if (esValidoM()){
+                    try {
+                        gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                    } catch (ClassNotFoundException ex) {
+                    }
+                }
             break;
             case 2://Familiar
-
+                if (esValidoF()){
+                    try {
+                        DatosGenerales dg = new DatosGenerales();
+                        dg.setNombre(txtNombre.getText());
+                        dg.setApellido(txtApellido.getText());
+                        //dg.setTipoDni((())cmbTipoDocumento.getSelectedItem()).getId());
+                        dg.setDni(Integer.parseInt(txtDocumento.getText()));
+                        dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
+                        dg.setEmail(txtMail.getText());
+                        dg.setTelefono(txtTelefono.getText());
+                        gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                    } catch (ClassNotFoundException ex) {
+                    } catch (SQLException ex) {
+            }
+                }
             break;
             case 3://Otro
 
@@ -552,5 +579,69 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         }
         
         cmbCursos.setModel(model);
+    }
+
+    private boolean esValidoM() {
+        try {
+            Integer.parseInt(txtLegajo.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El legajo debe ser un numero");
+            return false;            
+        }
+        if (cmbCursos.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            return false;            
+        }
+        return true;
+    }
+
+    private boolean esValidoF() {
+        try{
+            Integer.parseInt(txtDocumento.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            return false;
+        }
+        try{
+            Integer.parseInt(txtLegajo.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El legajo debe ser un numero");
+            return false;
+        }
+        if (txtNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            return false;
+        }
+        if (txtApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            return false;
+        }
+        if (txtMail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            return false;
+        }
+        if (txtTelefono.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            return false;
+        }
+        if (cmbTipoDocumento.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione un tipo de documento!");
+            return false;
+        }
+        if (cmbCursos.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            return false;
+        }
+        return true;
+    }
+
+    private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        for (Object elemento : obtenerTodos) {
+            model.addElement(elemento);
+        }
+        
+        cmbTipoDocumento.setModel(model);
     }
 }
