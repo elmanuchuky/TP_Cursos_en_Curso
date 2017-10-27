@@ -87,6 +87,7 @@ public class GestorInscripcion {
             GestorCursante gc = new GestorCursante();
 
             gdg.agregarDatosGenerales(dg);
+JOptionPane.showMessageDialog(null, "" + legajo + "..." + cursoId + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
             int ultimogdg = gdg.obtenerUltimoId();
             int matriculado = gm.obtenerMatriculado(legajo);
             gc.agregarCursanteFamilia(matriculado, ultimogdg);
@@ -101,6 +102,7 @@ public class GestorInscripcion {
             stmtIns.close();
             con.close();
         } catch (SQLException ex) {
+JOptionPane.showMessageDialog(null, ex.toString() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
         }
     }
 
