@@ -363,8 +363,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiRegistrarPagoActionPerformed
 
     private void jmiAsistenciaRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaRegistrarActionPerformed
-       AsistenciaRegistrar ar = new AsistenciaRegistrar();
-       ar.setVisible(true);
+        if (vAsistenciasRegistrar == false) {
+            vAsistenciasRegistrar = true;
+            AsistenciaRegistrar ar = new AsistenciaRegistrar();
+            ar.setVisible(true);
+        }
     }//GEN-LAST:event_jmiAsistenciaRegistrarActionPerformed
 
     private void jmiEditarMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarMatriculadoActionPerformed
@@ -459,18 +462,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiEditarIscripcionOtroActionPerformed
 
     private void jmiAsistenciaMostrarXCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXCursoActionPerformed
-        AsistenciaMostrar am = new AsistenciaMostrar (1);
-        am.setVisible(true);
+        if (vAsistenciasMostrar == false) {
+            vAsistenciasMostrar = true;
+            AsistenciaMostrar am = new AsistenciaMostrar (1);
+            am.setVisible(true);
+        }
     }//GEN-LAST:event_jmiAsistenciaMostrarXCursoActionPerformed
 
     private void jmiAsistenciaMostrarXFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXFechaActionPerformed
-        AsistenciaMostrar am = new AsistenciaMostrar (2);
-        am.setVisible(true);
+        if (vAsistenciasMostrar == false) {
+            vAsistenciasMostrar = true;
+            AsistenciaMostrar am = new AsistenciaMostrar (2);
+            am.setVisible(true);
+        }
     }//GEN-LAST:event_jmiAsistenciaMostrarXFechaActionPerformed
 
     private void jmiAsistenciaMostrarXCursanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXCursanteActionPerformed
-        AsistenciaMostrar am = new AsistenciaMostrar (3);
-        am.setVisible(true);
+        if (vAsistenciasMostrar == false) {
+            vAsistenciasMostrar = true;
+            AsistenciaMostrar am = new AsistenciaMostrar (3);
+            am.setVisible(true);
+        }
     }//GEN-LAST:event_jmiAsistenciaMostrarXCursanteActionPerformed
 
     

@@ -95,6 +95,11 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jtTablaAsistencias.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtTablaAsistencias.setModel(new javax.swing.table.DefaultTableModel(
@@ -223,6 +228,10 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     private void cmbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMesActionPerformed
         cargaCmb();
     }//GEN-LAST:event_cmbMesActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vAsistenciasMostrar = false;
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
