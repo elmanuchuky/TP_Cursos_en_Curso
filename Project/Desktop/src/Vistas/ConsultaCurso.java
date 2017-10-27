@@ -44,6 +44,11 @@ public class ConsultaCurso extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(825, 450));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         rbtTodos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -122,6 +127,10 @@ public class ConsultaCurso extends javax.swing.JFrame {
         truFalsRaddio(3);
         //Llamar a la consulta cursos Actuales
     }//GEN-LAST:event_rbtActualesActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vConsultaCurso = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override

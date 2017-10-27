@@ -57,6 +57,11 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(366, 400));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
@@ -138,6 +143,10 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vAsistenciasRegistrar = false;
+    }//GEN-LAST:event_formWindowClosing
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
