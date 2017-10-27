@@ -430,7 +430,22 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 }
             break;
             case 3://Otro
-
+                if (esValidoO()){
+                    try {
+                        DatosGenerales dg = new DatosGenerales();
+                        dg.setNombre(txtNombre.getText());
+                        dg.setApellido(txtApellido.getText());
+                        dg.setTipoDni(((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
+                        dg.setDni(Integer.parseInt(txtDocumento.getText()));
+                        dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
+                        dg.setEmail(txtMail.getText());
+                        dg.setTelefono(txtTelefono.getText());
+                        JOptionPane.showMessageDialog(null, dg.getTipoDni() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- " + ((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
+                        gi.agregarInscripcionOtro(dg, ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                        limpiarControles();
+                    } catch (ClassNotFoundException ex) {
+                    }
+                }
             break;
         }
     }//GEN-LAST:event_btnCarcgarActionPerformed
@@ -635,6 +650,40 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         return true;
     }
 
+    private boolean esValidoO() {
+        try{
+            Integer.parseInt(txtDocumento.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            return false;
+        }
+        if (txtNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            return false;
+        }
+        if (txtApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            return false;
+        }
+        if (txtMail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            return false;
+        }
+        if (txtTelefono.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            return false;
+        }
+        if (cmbTipoDocumento.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione un tipo de documento!");
+            return false;
+        }
+        if (cmbCursos.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            return false;
+        }
+        return true;
+    }
+
     private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         
@@ -643,5 +692,19 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         }
         
         cmbTipoDocumento.setModel(model);
+    }
+
+    private void limpiarControles() {
+        txtApellido.setText("");
+        txtDocumento.setText("");
+        txtLegajo.setText("");
+        txtMail.setText("");
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        cmbTipoDocumento.setSelectedIndex(-1);
+        cmbCursos.setSelectedIndex(-1);
+        cmbAnio.setSelectedIndex(0);
+        cmbMes.setSelectedIndex(0);
+        cmbDia.setSelectedIndex(0);
     }
 }
