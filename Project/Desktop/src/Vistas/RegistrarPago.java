@@ -10,9 +10,17 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import Model.GestorCurso;
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPHeaderCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfString;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author Yasmin
@@ -20,6 +28,7 @@ import java.util.logging.Logger;
 public class RegistrarPago extends javax.swing.JFrame {
 
     GestorCurso g;
+
     public RegistrarPago() {
         g = new GestorCurso();
         try {
@@ -149,7 +158,13 @@ public class RegistrarPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
-        // TODO add your handling code here:
+        try {
+            //codigo de carga
+
+            imprimirComprobante();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCargaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -223,4 +238,46 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         cmbCursos.setModel(model);
     }
 
+    public void imprimirComprobante() throws FileNotFoundException {
+
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("Comprobante.pdf"));
+            doc.open();
+
+            Font letraTitulo = FontFactory.getFont("Verdana", 24, BaseColor.BLUE);
+
+            doc.add(new Paragraph("COMPROBANTE DE PAGO", letraTitulo));
+//            for (Consulta1DTO item : lista) {
+//                Paragraph p = new Paragraph();
+//                p.add("Responsable: " + item.getNombreResponsable());
+//                p.add("\n - Cantidad: " + item.getCantidad());
+//                doc.add(p);
+//            }
+
+            //Con  una tabla
+//            PdfPTable tabla = new PdfPTable(2);
+//
+//            tabla.addCell("RESPONSABLE");
+//            tabla.addCell("CANTIDAD");
+//            for (Consulta1DTO item : lista) {
+//                tabla.addCell(item.getNombreResponsable());
+//                tabla.addCell(String.valueOf(item.getCantidad()));
+//            }
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(tabla);
+//            
+//            for (int i = 0; i < 10; i++) {
+//                doc.add(new Paragraph("Parrafo numero " + i));
+//            }
+            doc.close();
+
+        } catch (DocumentException ex) {
+        } catch (FileNotFoundException ex) {
+        }
+    }
 }
