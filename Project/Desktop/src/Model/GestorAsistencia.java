@@ -55,7 +55,7 @@ public class GestorAsistencia {
     }   
 //PASAR AL GESTOR DE INSCRIPCIONES SI LLEGAMOS CON EL TIEMPO
     
-    public ArrayList<vwAsistenciaRegistrar> obtenerAsistenciaCursanteCurso(int idCurso) throws ClassNotFoundException, SQLException{
+   /* public ArrayList<vwAsistenciaRegistrar> obtenerAsistenciaCursanteCurso(int idCurso) throws ClassNotFoundException, SQLException{
         
          forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          ArrayList<vwAsistenciaRegistrar> vmAsistencias = new ArrayList<>();
@@ -75,29 +75,62 @@ public class GestorAsistencia {
          
          return vmAsistencias;
     }
-    
+    */
     //OBTENER ASISTENCIA POR CURSO
     
-    public ArrayList<vmAsistenciaMostrar> obtenerAsistenciasPorCurso(int idCurso) throws ClassNotFoundException, SQLException{
-        
-         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         ArrayList<vmAsistenciaMostrar> lista = new ArrayList<>();
-         Connection con = DriverManager.getConnection(conexion, user, pass);
-         PreparedStatement comando = con.prepareStatement("exec sp_obtener_asistencias_por_curso ?"); //idCurso)
-         comando.setInt(1, idCurso);
-         ResultSet consulta = comando.executeQuery();
-         while(consulta.next()){
-             vmAsistenciaMostrar vma = new vmAsistenciaMostrar();
-             vma.setNombreCompleto(consulta.getString(0));
-             vma.setFechaAsistencia(consulta.getString(1));
-             vma.setEstaPresente(consulta.getBoolean(2));
-             lista.add(vma);
-         }
-         consulta.close();
-         comando.close();
-         con.close();
-         
-         return lista;
+    
+    
+    public ArrayList<ArrayList<String>> obtenerAsistenciasPorCurso(int idCurso) throws ClassNotFoundException, SQLException{
+
+        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        ArrayList<ArrayList<String>> lista = new ArrayList<>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement comando = con.prepareStatement("exec sp_fechas_x_curso ?"); 
+        comando.setInt(1, idCurso);
+        ResultSet consulta = comando.executeQuery();
+        ArrayList<String> fechas = new ArrayList<>();
+        fechas.add("Alumno");
+        while(consulta.next()){
+            fechas.add(consulta.getString("Fecha"));
+        }
+        consulta.close();
+        comando.close();
+        boolean esPrimero = true;
+        for (String fecha : fechas) {
+            if (esPrimero){
+                esPrimero = false;
+                ArrayList<String> alumnos = new ArrayList<>();
+                alumnos.add(fecha);
+                PreparedStatement comando2 = con.prepareStatement("exec sp_listado_cursantes_x_curso ?"); 
+                comando.setInt(1, idCurso);
+                ResultSet consulta2 = comando2.executeQuery();
+                while (consulta2.next()){
+                    alumnos.add(consulta2.getString("Cursante"));
+                }
+                consulta2.close();
+                comando2.close();
+                lista.add(alumnos);
+            }else{
+                ArrayList<String> presentes = new ArrayList<>();
+                presentes.add(fecha);
+                PreparedStatement comando2 = con.prepareStatement("exec sp_asistencia_x_curso_x_fecha ?, ?"); 
+                comando.setInt(1, idCurso);
+                comando.setString(2, fecha);
+                ResultSet consulta2 = comando2.executeQuery();
+                while (consulta2.next()){
+                    boolean estaPresente = consulta2.getBoolean("Presente");
+                    if (estaPresente)
+                        presentes.add("P");
+                    else
+                        presentes.add("A");
+                }
+                consulta2.close();
+                comando2.close();
+                lista.add(presentes);
+            }
+        }
+        con.close();
+        return lista;
     }
     
     //OBTENER ASISTENCIA POR CURSO O POR FECHA
