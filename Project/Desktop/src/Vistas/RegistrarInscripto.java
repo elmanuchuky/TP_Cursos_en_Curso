@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Model.ComboNuevoCursante;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,7 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import Model.GestorCurso;
+import Model.GestorInscripcion;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -397,7 +399,13 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private void btnCarcgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarcgarActionPerformed
         switch (instancia){
             case 1://matriculado
-
+                if (esValidoM()){
+                    GestorInscripcion gi = new GestorInscripcion();
+                    try {
+                        gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                    } catch (ClassNotFoundException ex) {
+                    }
+                }
             break;
             case 2://Familiar
 
@@ -552,5 +560,19 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         }
         
         cmbCursos.setModel(model);
+    }
+
+    private boolean esValidoM() {
+        try {
+            Integer.parseInt(txtLegajo.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El legajo debe ser un numero");
+            return false;            
+        }
+        if (cmbCursos.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            return false;            
+        }
+        return true;
     }
 }
