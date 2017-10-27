@@ -7,30 +7,40 @@ package Vistas;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import Model.GestorCurso;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Yasmin
  */
 public class RegistrarPago extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarPago
-     */
+    GestorCurso g;
     public RegistrarPago() {
+        g = new GestorCurso();
+        try {
+            cargarComboCurso(g.ComboCursosActuales());
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
-    public RegistrarPago(String mail,int i, String monto) {
+
+    public RegistrarPago(String mail, int i, String monto) {
         initComponents();
         txtMail.setText(mail);
         cmbCursos.setSelectedIndex(i);
         txtMonto.setText(monto);
         this.setLocationRelativeTo(null);
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,20 +156,19 @@ public class RegistrarPago extends javax.swing.JFrame {
         String mail = txtMail.getText();
         int i = cmbCursos.getSelectedIndex();
         String monto = txtMonto.getText();
-        
-        VentanaCerrarPagos vep = new VentanaCerrarPagos(mail , i , monto);
+
+        VentanaCerrarPagos vep = new VentanaCerrarPagos(mail, i, monto);
         this.setVisible(true);
         vep.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
-    
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -204,4 +213,14 @@ public class RegistrarPago extends javax.swing.JFrame {
     private javax.swing.JTextField txtMail;
     private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
+public void cargarComboCurso(ArrayList listaGenerica) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        for (Object elemento : listaGenerica) {
+            model.addElement(elemento);
+        }
+
+        cmbCursos.setModel(model);
+    }
+
 }

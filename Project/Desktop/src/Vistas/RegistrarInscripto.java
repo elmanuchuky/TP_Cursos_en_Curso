@@ -13,6 +13,10 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import Model.GestorCurso;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,11 +28,20 @@ public class RegistrarInscripto extends javax.swing.JFrame {
      * Creates new form RegistrarInscripto
      */
     private int instancia;
+    GestorCurso g;
     
     public RegistrarInscripto() {
+        g = new GestorCurso();
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        try {
+            cargarComboCurso(g.ComboCursosIncribir());
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setLocationRelativeTo(null);
     }
     
@@ -528,5 +541,16 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         }
         cmbDia.setModel(modelDia);
+    }
+    
+    public void cargarComboCurso(ArrayList listaGenerica)
+    {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        for (Object elemento : listaGenerica) {
+            model.addElement(elemento);
+        }
+        
+        cmbCursos.setModel(model);
     }
 }

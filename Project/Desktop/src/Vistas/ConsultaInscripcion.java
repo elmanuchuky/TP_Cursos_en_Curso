@@ -5,8 +5,14 @@
  */
 package Vistas;
 
+import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -14,10 +20,16 @@ import java.awt.Toolkit;
  */
 public class ConsultaInscripcion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ConsultaInscripcion
-     */
+    GestorCurso g;
     public ConsultaInscripcion() {
+        g = new GestorCurso();
+        try {
+            cargarComboCurso(g.ComboCursosActuales());
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -98,6 +110,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -139,4 +152,14 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList jltListado;
     // End of variables declaration//GEN-END:variables
+    public void cargarComboCurso(ArrayList listaGenerica) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        for (Object elemento : listaGenerica) {
+            model.addElement(elemento);
+        }
+
+        cmbCursos.setModel(model);
+    }
+
 }
