@@ -388,23 +388,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiEditarCursoActionPerformed
 
     private void jmiConsultaCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaCursosActionPerformed
-        ConsultaCurso cc = new ConsultaCurso();
-        cc.setVisible(true);
+        if (vConsultaCurso == false) {
+            vConsultaCurso = true;
+            ConsultaCurso cc = new ConsultaCurso();
+            cc.setVisible(true);
+        }
     }//GEN-LAST:event_jmiConsultaCursosActionPerformed
 
     private void jmiConsultaPreInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaPreInscripcionActionPerformed
-        ConsultaPreInscripcion cpi = new ConsultaPreInscripcion();
-        cpi.setVisible(true);
+        if (vConsultaPreInscripcion == false) {
+            vConsultaPreInscripcion = true;
+            ConsultaPreInscripcion cpi = new ConsultaPreInscripcion();
+            cpi.setVisible(true);
+        }
     }//GEN-LAST:event_jmiConsultaPreInscripcionActionPerformed
 
     private void jmiConsultaInscriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaInscriptoActionPerformed
-        ConsultaInscripcion ci = new ConsultaInscripcion();
-        ci.setVisible(true);
+        if (vConsultaInscripcion == false) {
+            vConsultaInscripcion = true;
+            ConsultaInscripcion ci = new ConsultaInscripcion();
+            ci.setVisible(true);
+        }
     }//GEN-LAST:event_jmiConsultaInscriptoActionPerformed
 
     private void jmiConsultaPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaPagosActionPerformed
-        ConsultaPago cp = new ConsultaPago();
-        cp.setVisible(true);
+        if (vConsultaPago == false) {
+            vConsultaPago = true;
+            ConsultaPago cp = new ConsultaPago();
+            cp.setVisible(true);
+        }
     }//GEN-LAST:event_jmiConsultaPagosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

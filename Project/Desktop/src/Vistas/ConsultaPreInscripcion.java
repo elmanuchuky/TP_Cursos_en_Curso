@@ -41,6 +41,11 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(732, 409));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -60,6 +65,10 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vConsultaPreInscripcion = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override

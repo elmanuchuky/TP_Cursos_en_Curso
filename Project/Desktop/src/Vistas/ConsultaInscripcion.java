@@ -43,6 +43,11 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(720, 382));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -91,6 +96,10 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
     private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
         //Consulta con parametro de curso, solo miestra inscriptos en el curso
     }//GEN-LAST:event_cmbCursosActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vConsultaInscripcion = false;
+    }//GEN-LAST:event_formWindowClosing
 
     @Override
     public Image getIconImage() {
