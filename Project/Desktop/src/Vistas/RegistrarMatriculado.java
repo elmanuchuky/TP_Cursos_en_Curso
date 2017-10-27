@@ -306,24 +306,26 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        DatosGenerales d = new DatosGenerales();
-        Matriculado m = new Matriculado();
-        d.setNombre(txtNombre.getText());
-        d.setApellido(txtApellido.getText());
-        d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
-        d.setDni(Integer.parseInt(txtDocumento.getText()));
-        fecha = cmbDia.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
-        d.setFechaNacimiento(fecha);
-        d.setTelefono(txtTelefono.getText());
-        d.setEmail(txtMail.getText());
-        m.setProfesion(txtProfecion.getText());
+        if (validacion()) {
+            DatosGenerales d = new DatosGenerales();
+            Matriculado m = new Matriculado();
+            d.setNombre(txtNombre.getText());
+            d.setApellido(txtApellido.getText());
+            d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
+            d.setDni(Integer.parseInt(txtDocumento.getText()));
+            fecha = cmbDia.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
+            d.setFechaNacimiento(fecha);
+            d.setTelefono(txtTelefono.getText());
+            d.setEmail(txtMail.getText());
+            m.setProfesion(txtProfecion.getText());
 
-        try {
-            gm.agregarMatriculado(m, d);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                gm.agregarMatriculado(m, d);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -455,4 +457,38 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+    public boolean validacion() {
+        if (txtNombre.getText().length() == 0) {
+            return false;
+        }
+        if (txtApellido.getText().length() == 0) {
+            return false;
+        }
+        if (txtDocumento.getText().length() == 0) {
+            return false;
+        }
+        if (txtMail.getText().length() == 0) {
+            return false;
+        }
+        if (txtTelefono.getText().length() == 0) {
+            return false;
+        }
+        if (txtProfecion.getText().length() == 0) {
+            return false;
+        }
+        if (cmbTipoDocumento.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbDia.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbMes.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbAnio.getSelectedIndex() == -1) {
+            return false;
+        }
+        return true;
+    }
+
 }
