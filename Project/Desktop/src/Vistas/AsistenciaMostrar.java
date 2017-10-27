@@ -37,25 +37,25 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         interfas = x;
         switch (interfas){
             case 1: //Curso
-                cmbCursos.enable(true);
-                cmbAnio.enable(false);
-                cmbMes.enable(false);
-                cmbDia.enable(false);
-                txtMail.enable(false);
+                cmbCursos.setEnabled(true);
+                cmbAnio.setEnabled(false);
+                cmbMes.setEnabled(false);
+                cmbDia.setEnabled(false);
+                txtMail.setEnabled(false);
                 break;
             case 2: //Curso & Fecha
-                cmbCursos.enable(true);
-                cmbAnio.enable(true);
-                cmbMes.enable(true);
-                cmbDia.enable(true);
-                txtMail.enable(false);
+                cmbCursos.setEnabled(true);
+                cmbAnio.setEnabled(true);
+                cmbMes.setEnabled(true);
+                cmbDia.setEnabled(true);
+                txtMail.setEnabled(false);
                 break;
             case 3://Curso & Alumno
-                cmbCursos.enable(true);
-                cmbAnio.enable(false);
-                cmbMes.enable(false);
-                cmbDia.enable(false);
-                txtMail.enable(true);
+                cmbCursos.setEnabled(true);
+                cmbAnio.setEnabled(false);
+                cmbMes.setEnabled(false);
+                cmbDia.setEnabled(false);
+                txtMail.setEnabled(true);
                 break;
         }
                 
