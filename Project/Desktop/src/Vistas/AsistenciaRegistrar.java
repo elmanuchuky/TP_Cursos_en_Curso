@@ -50,23 +50,33 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         btRegistrar = new javax.swing.JButton();
         lblDiaAsistencia = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registra Asistencia");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(366, 400));
+        setMinimumSize(new java.awt.Dimension(405, 397));
+        setPreferredSize(new java.awt.Dimension(405, 397));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 23, 36, 17);
 
         cmbCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(cmbCurso);
+        cmbCurso.setBounds(64, 20, 283, 23);
 
         tRegistrarAsistencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tRegistrarAsistencia.setModel(new javax.swing.table.DefaultTableModel(
@@ -94,52 +104,39 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tRegistrarAsistencia);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 61, 399, 256);
+
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btRegistrar.setText("Registrar");
+        getContentPane().add(btRegistrar);
+        btRegistrar.setBounds(280, 330, 107, 25);
 
         lblDiaAsistencia.setText("Asistencia para el dia");
         lblDiaAsistencia.setToolTipText("");
+        getContentPane().add(lblDiaAsistencia);
+        lblDiaAsistencia.setBounds(10, 335, 101, 14);
 
         btnModificar.setText("Modificar");
+        getContentPane().add(btnModificar);
+        btnModificar.setBounds(190, 330, 75, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(52, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblDiaAsistencia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btRegistrar))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btRegistrar)
-                        .addComponent(btnModificar))
-                    .addComponent(lblDiaAsistencia))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(300, 0, 100, 170);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 300, 170);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(300, 200, 100, 170);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 200, 300, 170);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,7 +190,11 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JButton btRegistrar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox cmbCurso;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDiaAsistencia;
     private javax.swing.JTable tRegistrarAsistencia;
