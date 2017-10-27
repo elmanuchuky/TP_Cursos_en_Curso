@@ -17,12 +17,16 @@ import java.sql.Statement;
  * @author Fernando M. de Lima
  */
 public class GestorDatosGenerales {
-    String conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
-    String user = "Gabriel";
-    String pass = "1234";
+
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String ClasForName = adv.getClasForName();
 
     public void agregarDatosGenerales(DatosGenerales d) throws ClassNotFoundException, SQLException {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        Class.forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement comando = con.prepareStatement("exec sp_insert_datosGenerales ?,?,?,?,?,?,?");
         comando.setString(1, d.getNombre());
@@ -40,7 +44,7 @@ public class GestorDatosGenerales {
     }
 
     public void modificarDatosGenerales(DatosGenerales d) throws ClassNotFoundException, SQLException {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        Class.forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement comando = con.prepareStatement("exec sp_update_datosGenerales ?,?,?,?,?,?,?,?");
         comando.setInt(1, d.getIdDatosGenerales());
@@ -59,7 +63,7 @@ public class GestorDatosGenerales {
 
     public int obtenerUltimoId() throws ClassNotFoundException, SQLException {
         // Recuperar el id de ese dato general (puede ser con mail)
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        Class.forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement stmtId = con.createStatement();
         ResultSet query = stmtId.executeQuery("SELECT MAX(id_datos_generales) id FROM Datos_Generales");

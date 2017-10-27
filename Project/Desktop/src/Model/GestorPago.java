@@ -18,14 +18,17 @@ import java.util.ArrayList;
  *
  * @author Gabriel
  */
-public class GestorPago {
-
-    String conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
-    String user = "Gabriel";
-    String pass = "1234";
+public class GestorPago {    
+    
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String ClasForName = adv.getClasForName();
 
     public void agregarPago(Pago p) throws ClassNotFoundException, SQLException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement comando = con.prepareStatement("exec sp_insert_pago ?,?");
         comando.setInt(1, p.getInscripcion());
@@ -37,7 +40,7 @@ public class GestorPago {
     }
 
     public ArrayList<Pago> obtenerTodos() throws ClassNotFoundException, SQLException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<Pago> pagos = new ArrayList<Pago>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
@@ -58,7 +61,7 @@ public class GestorPago {
     }
 
     public Pago obtenerPago(int i) throws ClassNotFoundException, SQLException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
         ResultSet query = comando.executeQuery("Select * from Pagos where id_pago = " + i);
@@ -78,7 +81,7 @@ public class GestorPago {
     //poder ver los pagos realizados filtrando por el mail
     public ArrayList<VMPagosXMail> VerPagosPorMail(String mail) throws ClassNotFoundException, SQLException {
         ArrayList<VMPagosXMail> lista = new ArrayList<>();
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement stmt = con.prepareStatement("exec sp_ver_pagos_x_mail ?"); // idCurso, idCursante
         stmt.setString(1, mail);
@@ -101,7 +104,7 @@ public class GestorPago {
 
     //muestra lo adeudado filtrando por mail
     public VMPagosXMail mostrarDeuda(String mail) throws ClassNotFoundException, SQLException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement stmt = con.prepareStatement("sp_ver_adeudado_x_mail ?"); // idCurso, idCursante
         stmt.setString(1, mail);
@@ -121,7 +124,7 @@ public class GestorPago {
 // mostrar pagos de una persona con fecha y el monto
     public ArrayList<VMPagosXMail> PagosPorFecha(int i) throws ClassNotFoundException, SQLException {
         ArrayList<VMPagosXMail> lista = new ArrayList<>();
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement stmt = con.prepareStatement("sp_consultar_pagos_totales_x_inscripto ?"); // idCurso, idCursante
         stmt.setInt(1, i);
