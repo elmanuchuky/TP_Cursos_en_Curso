@@ -8,6 +8,13 @@ CREATE VIEW vw_consultar_cursos_todos
 AS
 SELECT c.id_curso Id, c.nombre Curso, c.aula Aula, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
 FROM Cursos c
+--En curso y proximos
+GO
+CREATE VIEW vw_consultar_cursos_en_curso_y_proximos
+AS
+SELECT c.id_curso Id, c.nombre Curso, c.aula Aula, c.temas Temas, c.descripcion Descripcion, c.fecha_inicio Inicio, c.duracion_total_semanas [Cantidad de semanas], c.costo Costo, DATEPART(dw,c.dia_horario) Dia, RIGHT(CONVERT(VARCHAR, c.dia_horario, 100),7) Horario, c.carga_horaria [Carga horaria por dia]
+FROM Cursos c
+WHERE DATEADD(WEEK,c.duracion_total_semanas, c.fecha_inicio)  > GETDATE()
 --En curso
 GO
 CREATE VIEW vw_consultar_cursos_en_curso
