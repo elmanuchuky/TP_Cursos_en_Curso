@@ -98,6 +98,11 @@ public class EditarCurso extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         txtAula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -548,6 +553,10 @@ public class EditarCurso extends javax.swing.JFrame {
     private void cmbAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioActionPerformed
         cargarDiaCombo();
     }//GEN-LAST:event_cmbAnioActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vEditarCurso = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override

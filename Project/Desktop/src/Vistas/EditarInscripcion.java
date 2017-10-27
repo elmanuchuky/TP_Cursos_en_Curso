@@ -96,6 +96,11 @@ public class EditarInscripcion extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(576, 275));
         setPreferredSize(new java.awt.Dimension(900, 400));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -449,6 +454,10 @@ public class EditarInscripcion extends javax.swing.JFrame {
         }
         //proseso almacenado que filtar
     }//GEN-LAST:event_txtMailBusqueaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vEditarInscripcion = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override
