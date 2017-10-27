@@ -51,11 +51,8 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try {            
             cargarComboCurso(g.ComboCursosIncribir());
             cargarComboTipoDni(gtd.obtenerTodos());
-
         } catch (SQLException ex) {
-            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegistrarInscripto.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setLocationRelativeTo(null);
         

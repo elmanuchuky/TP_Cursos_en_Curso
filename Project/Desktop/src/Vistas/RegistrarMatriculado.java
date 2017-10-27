@@ -7,15 +7,18 @@ package Vistas;
 
 import Model.DatosGenerales;
 import Model.GestorMatriculado;
+import Model.GestorTipoDni;
 import Model.Matriculado;
 import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,11 +30,13 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     String fecha;
     GestorMatriculado gm;
 
-    public RegistrarMatriculado() {
+    public RegistrarMatriculado() throws ClassNotFoundException, SQLException {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         gm = new GestorMatriculado();
+        GestorTipoDni gtd = new GestorTipoDni();
+        cargarComboTipoDni(gtd.obtenerTodos());
         this.setLocationRelativeTo(null);
     }
 
@@ -313,7 +318,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             d.setApellido(txtApellido.getText());
             d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
             d.setDni(Integer.parseInt(txtDocumento.getText()));
-            fecha = cmbDia.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
+            fecha = cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
             d.setFechaNacimiento(fecha);
             d.setTelefono(txtTelefono.getText());
             d.setEmail(txtMail.getText());
@@ -378,7 +383,13 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarMatriculado().setVisible(true);
+                try {
+                    new RegistrarMatriculado().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -458,22 +469,30 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
     public boolean validacion() {
-        if (txtNombre.getText().length() == 0) {
+        try{
+            Integer.parseInt(txtDocumento.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
             return false;
         }
-        if (txtApellido.getText().length() == 0) {
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
             return false;
         }
-        if (txtDocumento.getText().length() == 0) {
+        if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
             return false;
         }
-        if (txtMail.getText().length() == 0) {
+        if (txtMail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
             return false;
         }
-        if (txtTelefono.getText().length() == 0) {
+        if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
             return false;
         }
-        if (txtProfecion.getText().length() == 0) {
+        if (txtProfecion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo profesion no debe estar vacio");
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
@@ -490,5 +509,14 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         }
         return true;
     }
-
+    
+    private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        for (Object elemento : obtenerTodos) {
+            model.addElement(elemento);
+        }
+        
+        cmbTipoDocumento.setModel(model);
+    }
 }
