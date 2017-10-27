@@ -17,9 +17,13 @@ import java.sql.Statement;
  * @author Fernando M. de Lima
  */
 public class GestorMatriculado {
-    String conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
-    String user = "Gabriel";
-    String pass = "1234";
+
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String ClasForName = adv.getClasForName();
 
     public void agregarMatriculado(Matriculado m) throws SQLException {
         Connection con = DriverManager.getConnection(conexion, user, pass);

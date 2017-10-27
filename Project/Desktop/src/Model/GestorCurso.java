@@ -19,9 +19,14 @@ import java.util.ArrayList;
  * @author Gabriel
  */
 public class GestorCurso {
-    String conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
-    String user = "Gabriel";
-    String pass = "1234";
+
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String ClasForName = adv.getClasForName();
+    
     String[] dias = new String[7];
 
     public GestorCurso() {
@@ -34,7 +39,7 @@ public class GestorCurso {
         dias[6] = "Sabado";
     }
     public void agregar(Curso c) throws SQLException, ClassNotFoundException{
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion,user,pass);
         PreparedStatement comando = con.prepareStatement("exec sp_insert_curso ?,?,?,?,?,?,?,?,?,?");
         comando.setString(1, c.getNombreCurso());
@@ -54,7 +59,7 @@ public class GestorCurso {
     }
     
     public void modificar(Curso c) throws SQLException, ClassNotFoundException{
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user,pass);
         PreparedStatement comando = con.prepareStatement("exec sp_update_curso_largo ?,?,?,?,?,?,?,?,?,?,?");
         comando.setInt(1, c.getIdCurso());
@@ -78,7 +83,7 @@ public class GestorCurso {
     
     public Curso obtenerCurso(int i) throws ClassNotFoundException, SQLException{
         Curso c = new Curso();
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con  = DriverManager.getConnection(conexion,user,pass);
         Statement comando = con.createStatement();
         ResultSet query = comando.executeQuery("select * from Cursos where id_curso ="+ i);
@@ -101,7 +106,7 @@ public class GestorCurso {
     }
     
     public ArrayList<Curso> proximosCursos() throws SQLException, ClassNotFoundException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
@@ -130,7 +135,7 @@ public class GestorCurso {
         return cursos;
     }
     public ArrayList<Curso> obtenerCursoEnCurso() throws SQLException, ClassNotFoundException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
@@ -159,7 +164,7 @@ public class GestorCurso {
     }
     
     public ArrayList<Curso> TodosCursos() throws SQLException, ClassNotFoundException{
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<Curso> cursos = new ArrayList<Curso>();
         Connection con = DriverManager.getConnection(conexion, user,pass);
         Statement comando = con.createStatement();
@@ -188,7 +193,7 @@ public class GestorCurso {
     }
 
     public ArrayList<ComboCurso> ComboCursosActuales() throws SQLException, ClassNotFoundException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<ComboCurso> cursos = new ArrayList<ComboCurso>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
@@ -206,7 +211,7 @@ public class GestorCurso {
     }
 
     public ArrayList<ComboNuevoCursante> ComboCursosIncribir() throws SQLException, ClassNotFoundException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<ComboNuevoCursante> cursos = new ArrayList<ComboNuevoCursante>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();

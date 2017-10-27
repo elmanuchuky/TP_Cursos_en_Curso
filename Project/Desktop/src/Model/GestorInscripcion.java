@@ -21,9 +21,12 @@ import java.util.ArrayList;
  */
 public class GestorInscripcion {
 
-    String conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
-    String user = "Gabriel";
-    String pass = "1234";
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String ClasForName = adv.getClasForName();
 
 //    public ArrayList<Inscripcion> obtenerTodas() throws ClassNotFoundException {
 //        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -52,7 +55,7 @@ public class GestorInscripcion {
 //        return resultado;
 //    }
     public void agregarInscripcionOtro(DatosGenerales dg, int idCurso) throws ClassNotFoundException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         try {
             GestorDatosGenerales gdg = new GestorDatosGenerales();
             GestorCursante gc = new GestorCursante();
@@ -76,7 +79,7 @@ public class GestorInscripcion {
     }
 
     public void agregarInscripcionFamiliar(DatosGenerales dg, int legajo, int cursoId) throws ClassNotFoundException, SQLException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         try {
             GestorDatosGenerales gdg = new GestorDatosGenerales();
             GestorMatriculado gm = new GestorMatriculado();
@@ -101,7 +104,7 @@ public class GestorInscripcion {
     }
 
     public void agregarInscripcionMatriculado(int idCurso, int legajo) throws ClassNotFoundException {
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         try {
             GestorMatriculado gm = new GestorMatriculado();
             GestorDatosGenerales gdg = new GestorDatosGenerales();
@@ -125,7 +128,7 @@ public class GestorInscripcion {
     // reporte donde se mostrara un listado del nombre completo con su correspondiente documento
     public ArrayList<VMNombreDocumento> listado(int i) throws ClassNotFoundException, SQLException {
         ArrayList<VMNombreDocumento> lista = new ArrayList<>();
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement stmtIns = con.prepareStatement("exec sp_inscriptos_por_curso ?"); // idCurso, idCursante
         stmtIns.setInt(1, i);

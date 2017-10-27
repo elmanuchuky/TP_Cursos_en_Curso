@@ -18,11 +18,16 @@ import java.util.ArrayList;
  * @author Gabriel
  */
 public class GestorTipoDni {
-    String conexion = "jdbc:sqlserver://localhost:1412;databaseName=Colegio_Informatica_Metodologia";
-    String user = "Gabriel";
-    String pass = "1234";
+    
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String ClasForName = adv.getClasForName();
+    
     public ArrayList<TipoDni> obtenerTodos() throws ClassNotFoundException, SQLException{
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(ClasForName);
         ArrayList<TipoDni> documentos = new ArrayList<TipoDni>();
         Connection con = DriverManager.getConnection(conexion, user,pass);
         Statement comando = con.createStatement();
