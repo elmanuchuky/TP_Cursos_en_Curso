@@ -368,13 +368,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAsistenciaRegistrarActionPerformed
 
     private void jmiEditarMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarMatriculadoActionPerformed
-        EditarMatriculado em = new EditarMatriculado();
-        em.setVisible(true);
+        if (vEditarMatriculado == false) {
+            vEditarMatriculado = true;
+            EditarMatriculado em = new EditarMatriculado();
+            em.setVisible(true);
+        }
+      
     }//GEN-LAST:event_jmiEditarMatriculadoActionPerformed
 
     private void jmiEditarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarCursoActionPerformed
-        EditarCurso ec = new EditarCurso();
-        ec.setVisible(true);
+        if (vEditarCurso == false) {
+            vEditarCurso = true;
+            EditarCurso ec = new EditarCurso();
+            ec.setVisible(true);
+        }
     }//GEN-LAST:event_jmiEditarCursoActionPerformed
 
     private void jmiConsultaCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaCursosActionPerformed
@@ -399,7 +406,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         VentanaCerrarSesion vp = new VentanaCerrarSesion();
-        this.setVisible(true);
+        this.setVisible(false);
         vp.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
@@ -428,18 +435,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiRegistrarInscriptoOtroActionPerformed
 
     private void jmiEditarIscripcionMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionMatriculadoActionPerformed
-        EditarInscripcion ei = new EditarInscripcion(1);//Matriculado
-        ei.setVisible(true);
+        if (vEditarInscripcion == false) {
+            vEditarInscripcion = true;
+            EditarInscripcion ei = new EditarInscripcion(1);//Matriculado
+            ei.setVisible(true);
+        }
     }//GEN-LAST:event_jmiEditarIscripcionMatriculadoActionPerformed
 
     private void jmiEditarIscripcionFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionFamiliaActionPerformed
-        EditarInscripcion ei = new EditarInscripcion(2);//Familiar
-        ei.setVisible(true);
+        if (vEditarInscripcion == false) {
+            vEditarInscripcion = true;
+            EditarInscripcion ei = new EditarInscripcion(2);//Familiar
+            ei.setVisible(true);
+        }
     }//GEN-LAST:event_jmiEditarIscripcionFamiliaActionPerformed
 
     private void jmiEditarIscripcionOtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarIscripcionOtroActionPerformed
-        EditarInscripcion ei = new EditarInscripcion(3);//Otro
-        ei.setVisible(true);
+        if (vEditarInscripcion == false) {
+            vEditarInscripcion = true;
+            EditarInscripcion ei = new EditarInscripcion(3);//Otro
+            ei.setVisible(true);
+        }
     }//GEN-LAST:event_jmiEditarIscripcionOtroActionPerformed
 
     private void jmiAsistenciaMostrarXCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaMostrarXCursoActionPerformed

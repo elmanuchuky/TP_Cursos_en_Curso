@@ -66,6 +66,11 @@ public class EditarMatriculado extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 300));
         setPreferredSize(new java.awt.Dimension(700, 300));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -349,6 +354,10 @@ public class EditarMatriculado extends javax.swing.JFrame {
         btnMoificar.setEnabled(true);
         //proseso almacenado que filtar
     }//GEN-LAST:event_txtLegajoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vEditarMatriculado = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override
