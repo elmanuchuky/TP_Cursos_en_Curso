@@ -19,6 +19,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
      */
     public ConsultaInscripcion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,6 +39,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta Inscripcion");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(720, 382));
         setResizable(false);

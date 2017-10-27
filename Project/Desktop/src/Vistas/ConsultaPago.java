@@ -19,6 +19,7 @@ public class ConsultaPago extends javax.swing.JFrame {
      */
     public ConsultaPago() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -42,6 +43,7 @@ public class ConsultaPago extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta Pago");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(635, 510));
         setResizable(false);

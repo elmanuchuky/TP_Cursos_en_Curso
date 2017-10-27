@@ -26,12 +26,14 @@ public class EditarInscripcion extends javax.swing.JFrame {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
     }
 
     public EditarInscripcion (int x) {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
         
         instancia = x;
         
@@ -89,6 +91,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Inscripcion");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(576, 275));
         setPreferredSize(new java.awt.Dimension(900, 400));

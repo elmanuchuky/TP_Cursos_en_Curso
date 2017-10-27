@@ -19,6 +19,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
      */
     public AsistenciaRegistrar() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,6 +39,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registra Asistencia");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(366, 400));
         setResizable(false);

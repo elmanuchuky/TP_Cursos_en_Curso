@@ -23,6 +23,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -60,6 +61,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Matriculado");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(700, 300));
         setPreferredSize(new java.awt.Dimension(700, 300));

@@ -19,6 +19,7 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
      */
     public ConsultaPreInscripcion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,6 +37,7 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta Pre-Inscripto");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(732, 409));
         setResizable(false);

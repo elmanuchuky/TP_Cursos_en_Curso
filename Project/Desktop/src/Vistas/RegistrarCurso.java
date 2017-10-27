@@ -42,6 +42,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -81,9 +82,10 @@ public class RegistrarCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Curso");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
+        setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(630, 350));
-        setPreferredSize(new java.awt.Dimension(630, 350));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

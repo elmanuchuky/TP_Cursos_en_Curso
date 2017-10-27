@@ -15,17 +15,13 @@ import javax.swing.DefaultComboBoxModel;
  * @author Yasmin
  */
 public class RegistrarMatriculado extends javax.swing.JFrame {
-
-    /**
-     * Creates new form RegistrarMatriculado
-     */
-    
     private int instancia;
             
     public RegistrarMatriculado() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -61,6 +57,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Matriculado");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
