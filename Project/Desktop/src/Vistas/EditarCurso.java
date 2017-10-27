@@ -34,20 +34,21 @@ public class EditarCurso extends javax.swing.JFrame {
     double precio;
     String hora;
     int cargaHoraria;
+    
     public EditarCurso() {
         initComponents();
-        cargaCmb();
+        //cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
         this.setLocationRelativeTo(null);
-        
+        /*
         try {
             cargarCursosFiltro(g.TodosCursos());
         } catch (SQLException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     /**
