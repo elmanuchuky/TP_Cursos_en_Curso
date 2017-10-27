@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,7 +75,10 @@ public class GestorInscripcion {
             stmtIns.executeUpdate();
             stmtIns.close();
             con.close();
+
         } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, ex.toString() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
+
         }
     }
 
