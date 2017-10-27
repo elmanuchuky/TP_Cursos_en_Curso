@@ -28,7 +28,7 @@ public class GestorDatosGenerales {
     public void agregarDatosGenerales(DatosGenerales d) throws ClassNotFoundException, SQLException {
         Class.forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        PreparedStatement comando = con.prepareStatement("exec sp_insert_datosGenerales ?,?,?,?,?,?,?");
+        PreparedStatement comando = con.prepareStatement("exec sp_insert_datos_generales ?,?,?,?,?,?,?");
         comando.setString(1, d.getNombre());
         comando.setString(2, d.getApellido());
         comando.setInt(3, d.getTipoDni());
@@ -46,7 +46,7 @@ public class GestorDatosGenerales {
     public void modificarDatosGenerales(DatosGenerales d) throws ClassNotFoundException, SQLException {
         Class.forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        PreparedStatement comando = con.prepareStatement("exec sp_update_datosGenerales ?,?,?,?,?,?,?,?");
+        PreparedStatement comando = con.prepareStatement("exec sp_update_datos_generales ?,?,?,?,?,?,?,?");
         comando.setInt(1, d.getIdDatosGenerales());
         comando.setString(2, d.getNombre());
         comando.setString(3, d.getApellido());
