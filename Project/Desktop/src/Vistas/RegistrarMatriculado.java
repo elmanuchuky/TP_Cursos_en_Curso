@@ -26,6 +26,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -61,8 +62,14 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Matriculado");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cmbMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -313,6 +320,10 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private void cmbAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAnioActionPerformed
         cargarDiaCombo();
     }//GEN-LAST:event_cmbAnioActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vRegistrarMatriculado = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override

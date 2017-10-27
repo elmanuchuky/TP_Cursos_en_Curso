@@ -42,6 +42,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -81,10 +82,16 @@ public class RegistrarCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Curso");
+        setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(630, 350));
         setPreferredSize(new java.awt.Dimension(630, 350));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -252,6 +259,10 @@ public class RegistrarCurso extends javax.swing.JFrame {
             Logger.getLogger(RegistrarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vRegistrarCurso = false;
+    }//GEN-LAST:event_formWindowClosing
 
     
     @Override
