@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Model.GestorPago;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -166,7 +167,8 @@ public class ConsultaPago extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
  
     private void cargarListas() {
-        // Consultar monto adeudado Y pagos de un iscripto
+        GestorPago gp = new GestorPago();
+        
     }
  
 }
