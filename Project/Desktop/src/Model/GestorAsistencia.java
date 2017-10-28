@@ -20,16 +20,17 @@ import java.util.ArrayList;
  */
 public class GestorAsistencia {
 
-    String conexion = "jdbc:sqlserver://localhost:1433;databaseName=Colegio_Informatica_Metodologia";
-    String user = "sa";
-    String pass = "Server1552";
+    AccesoDatosVariable adv = new AccesoDatosVariable();
+    String conexion = adv.getConexion();
+    String user = adv.getUser();
+    String pass = adv.getPass();
+    String classForName = adv.getClasForName();
     GestorInscripcion gi = new GestorInscripcion();
 
-    //vw_cursos_actuales_combo cargar combo de cursos
-    //sp_listado_cursantes_x_curso
+    
     public void agregarAsistencia(Asistencia a) throws ClassNotFoundException, SQLException {
 
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(classForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement comando = con.prepareStatement("exec sp_insert_asistencia ?, ?, ?");
         comando.setInt(1, a.getInscripcion());
@@ -43,7 +44,7 @@ public class GestorAsistencia {
 
     public void modificarAsistencia(Asistencia a) throws ClassNotFoundException, SQLException {
 
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(classForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement comando = con.prepareStatement("exec sp_update_asistencia ?, ?, ?");
         comando.setInt(1, a.getInscripcion());
@@ -53,33 +54,12 @@ public class GestorAsistencia {
         comando.close();
         con.close();
     }
-//PASAR AL GESTOR DE INSCRIPCIONES SI LLEGAMOS CON EL TIEMPO
 
-    /* public ArrayList<vwAsistenciaRegistrar> obtenerAsistenciaCursanteCurso(int idCurso) throws ClassNotFoundException, SQLException{
-        
-         forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         ArrayList<vwAsistenciaRegistrar> vmAsistencias = new ArrayList<>();
-         Connection con = DriverManager.getConnection(conexion, user, pass);
-         Statement comando = con.createStatement();
-         ResultSet consulta = comando.executeQuery("exec sp_listado_cursantes_x_curso " + idCurso);
-         while(consulta.next()){
-             vwAsistenciaRegistrar vma = new vwAsistenciaRegistrar();
-             vma.setIdInscripcion(consulta.getInt(0));
-             vma.setNombreCompleto(consulta.getString(1));
-             vma.setEstaPresente(consulta.getBoolean(2));
-             vmAsistencias.add(vma);
-         }
-         consulta.close();
-         comando.close();
-         con.close();
-         
-         return vmAsistencias;
-    }
-     */
     //OBTENER ASISTENCIA POR CURSO
+    
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCurso(int idCurso) throws ClassNotFoundException, SQLException {
 
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(classForName);
         ArrayList<ArrayList<String>> lista = new ArrayList<>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement comando = con.prepareStatement("exec sp_fechas_x_curso ?");
@@ -135,7 +115,7 @@ public class GestorAsistencia {
     
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCursoPorFecha(int idCurso, String fecha) throws ClassNotFoundException, SQLException {
 
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(classForName);
         ArrayList<ArrayList<String>> lista = new ArrayList<>();
         ArrayList<String> alumnos = new ArrayList<>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
@@ -175,7 +155,7 @@ public class GestorAsistencia {
     
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCursoPorMail(int idCurso, String email) throws ClassNotFoundException, SQLException {
 
-        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        forName(classForName);
         ArrayList<ArrayList<String>> lista = new ArrayList<>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
         ArrayList<String> fechas = new ArrayList<>();
