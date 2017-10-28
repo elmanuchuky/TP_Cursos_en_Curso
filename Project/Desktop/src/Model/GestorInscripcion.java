@@ -100,6 +100,54 @@ public class GestorInscripcion {
         } catch (SQLException ex) {
         }
     }
+    public boolean existeMailEnCurso(String mail, int idCurso) throws ClassNotFoundException {
+        forName(ClasForName);
+        try {
+            // Insertar nueva inscripcion
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            PreparedStatement stmtIns = con.prepareStatement("SELECT * FROM Datos_Generales dg join Cursantes cu on cu.id_datos_generales = dg.id_datos_generales join Inscripciones i on i.id_cursante = cu.id_cursante WHERE id_curso = ? AND dg.mail like ?"); // idCurso, idCursante
+            stmtIns.setInt(1, idCurso);
+            stmtIns.setString(2, mail);
+            ResultSet query = stmtIns.executeQuery();
+            if (query.next()){
+                query.close();
+                stmtIns.close();
+                con.close();
+                return true;
+            }
+            query.close();
+            stmtIns.close();
+            con.close();
+        } catch (SQLException ex) {
+            return true;
+        }
+        return false;
+    }
+    
+    public int obtenerInscripcionConMailYCurso(String mail, int idCurso) throws ClassNotFoundException {
+        forName(ClasForName);
+        try {
+            // Insertar nueva inscripcion
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            PreparedStatement stmtIns = con.prepareStatement("SELECT i.id_inscripcion id FROM Datos_Generales dg join Cursantes cu on cu.id_datos_generales = dg.id_datos_generales join Inscripciones i on i.id_cursante = cu.id_cursante WHERE id_curso = ? AND dg.mail like ?"); // idCurso, idCursante
+            stmtIns.setInt(1, idCurso);
+            stmtIns.setString(2, mail);
+            ResultSet query = stmtIns.executeQuery();
+            if (query.next()){
+                int a = query.getInt("id");
+                query.close();
+                stmtIns.close();
+                con.close();
+                return a;
+            }
+            query.close();
+            stmtIns.close();
+            con.close();
+        } catch (SQLException ex) {
+            return -1;
+        }
+        return -1;
+    }
     // reporte donde se mostrara un listado del nombre completo con su correspondiente documento
     public ArrayList<VMNombreDocumento> listado(int i) throws ClassNotFoundException, SQLException {
         ArrayList<VMNombreDocumento> lista = new ArrayList<>();

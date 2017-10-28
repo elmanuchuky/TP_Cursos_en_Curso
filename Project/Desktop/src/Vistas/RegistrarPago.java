@@ -5,11 +5,15 @@
  */
 package Vistas;
 
+import Model.ComboNuevoCursante;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import Model.GestorCurso;
+import Model.GestorInscripcion;
+import Model.GestorPago;
+import Model.Pago;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -22,6 +26,7 @@ import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -160,11 +165,27 @@ public class RegistrarPago extends javax.swing.JFrame {
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
         try {
             //codigo de carga
-            
+            if (esValido()){
+                if (existeMail()){
+                    GestorPago gp = new GestorPago();
+                    GestorInscripcion gi = new GestorInscripcion();
+                    Pago p = new Pago();
+                    p.setMonto(Double.parseDouble(txtMonto.getText()));
+                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId()));
+
+                    gp.agregarPago(p);
+                }else{
+                    JOptionPane.showMessageDialog(null, "No existe un mail relacionado a ese curso!");
+                }
+            }
             imprimirComprobante();
         } catch (FileNotFoundException ex) {
         } catch (BadElementException ex) {
         } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnCargaActionPerformed
 
@@ -311,5 +332,32 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
+    }
+
+    private boolean esValido() {
+        if (txtMail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            return false;
+        }
+        if (cmbCursos.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un curso!");
+            return false;
+        }
+        try{
+            double a = Double.parseDouble(txtMonto.getText());
+            if (a < 0){
+                JOptionPane.showMessageDialog(null, "El campo monto debe ser un numero positivo!");
+                return false;
+            }
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo monto debe ser un numero positivo!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean existeMail() throws ClassNotFoundException {
+        GestorInscripcion gi = new GestorInscripcion();
+        return gi.existeMailEnCurso(txtMail.getText(), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
     }
 }
