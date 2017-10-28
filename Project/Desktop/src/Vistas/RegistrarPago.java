@@ -160,14 +160,11 @@ public class RegistrarPago extends javax.swing.JFrame {
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
         try {
             //codigo de carga
-
+            
             imprimirComprobante();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         } catch (BadElementException ex) {
-            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnCargaActionPerformed
 
