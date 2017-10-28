@@ -16,6 +16,10 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,12 +33,14 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     Calendar fecha;
     int anio;
     int mes;
-    int dia;    
-    
-    public AsistenciaRegistrar() {
-        
+    int dia;
+
+    public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
+
         initComponents();
+        cargarTablaAsistencia();
         g = new GestorCurso();
+        ga = new GestorAsistencia();
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -47,10 +53,9 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         anio = fecha.get(Calendar.YEAR);
         mes = fecha.get(Calendar.MONTH);
         dia = fecha.get(Calendar.DAY_OF_MONTH);
-        
-        lblDiaAsistencia.setText(""+dia+"/"+(mes+1)+"/"+anio);
-        
-                
+
+        lblDiaAsistencia.setText("" + dia + "/" + (mes + 1) + "/" + anio);
+
     }
 
     /**
@@ -171,8 +176,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
     private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_btRegistrarActionPerformed
     @Override
     public Image getIconImage() {
@@ -211,7 +216,13 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AsistenciaRegistrar().setVisible(true);
+                try {
+                    new AsistenciaRegistrar().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -229,13 +240,34 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JLabel lblDiaAsistencia;
     private javax.swing.JTable tRegistrarAsistencia;
     // End of variables declaration//GEN-END:variables
-    
-//    public void cargarTablaAsistencia(){
-//            
-//          DefaultTableModel modelo = new DefaultTableModel();
-//          
-//        }
-    
+
+    public void cargarTablaAsistencia() throws ClassNotFoundException, SQLException {
+        Object[][] data = new Object[5][2];
+        int i = 0;
+        for (String object : ga.obtenerCursantesPorCurso(1)) {
+            data[i][0] = object;
+            data[i][1] = false;
+            i++;
+        }
+                
+
+        String[] cols = {"String", "Boolean"};
+        DefaultTableModel model = new DefaultTableModel(data, cols) {
+            @Override
+            public Class<?> getColumnClass(int column) {
+                if (column == 1) {
+                    return Boolean.class;
+                } else {
+                    return String.class;
+                }
+            }
+        };
+
+        tRegistrarAsistencia = new JTable(model);
+        JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
+
+    }
+
     public void cargarComboCurso(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 

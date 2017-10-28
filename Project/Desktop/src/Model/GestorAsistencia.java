@@ -190,4 +190,23 @@ public class GestorAsistencia {
 
         return lista;
     }
+    
+    public ArrayList<String> obtenerCursantesPorCurso(int idCurso) throws ClassNotFoundException, SQLException {
+
+        forName(classForName);
+        ArrayList<String> alumnos = new ArrayList<>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement comando = con.prepareStatement("exec sp_listado_cursantes_x_curso ?");
+        comando.setInt(1, idCurso);
+        ResultSet consulta = comando.executeQuery();
+        alumnos.add("Alumnno");
+        while (consulta.next()) {
+            alumnos.add(consulta.getString("Cursante"));
+        }
+        consulta.close();
+        comando.close();
+        con.close();
+        
+        return alumnos;
+    }
 }
