@@ -29,32 +29,6 @@ public class GestorInscripcion {
     String pass = adv.getPass();
     String ClasForName = adv.getClasForName();
 
-//    public ArrayList<Inscripcion> obtenerTodas() throws ClassNotFoundException {
-//        forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//        ArrayList<Inscripcion> resultado = new ArrayList<Inscripcion>();
-//        try {
-//            Connection con = DriverManager.getConnection(conexion, user, pass);
-//            //Ahora a la conexión le decimos que nos cree un Statement para ejecutar la consulta
-//            Statement stmt = con.createStatement();
-//            //Ejecutamos la consulta SQL. Esto nos devolverá un ResultSet con las filas correspondientes
-//            ResultSet query = stmt.executeQuery("SELECT * FROM Personas");
-//
-//            while (query.next()) {
-//                String nombre = query.getString("nombre");
-//                String apellido = query.getString("apellido");
-//                int edad = query.getInt("edad");
-//
-//                Inscripcion i = new Inscripcion();
-//                resultado.add(i);
-//            }
-//            query.close();
-//            stmt.close();
-//            con.close();
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return resultado;
-//    }
     public void agregarInscripcionOtro(DatosGenerales dg, int idCurso) throws ClassNotFoundException {
         forName(ClasForName);
         try {
@@ -87,7 +61,6 @@ public class GestorInscripcion {
             GestorCursante gc = new GestorCursante();
 
             gdg.agregarDatosGenerales(dg);
-JOptionPane.showMessageDialog(null, "" + legajo + "..." + cursoId + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
             int ultimogdg = gdg.obtenerUltimoId();
             int matriculado = gm.obtenerMatriculado(legajo);
             gc.agregarCursanteFamilia(matriculado, ultimogdg);
@@ -102,7 +75,6 @@ JOptionPane.showMessageDialog(null, "" + legajo + "..." + cursoId + " ----------
             stmtIns.close();
             con.close();
         } catch (SQLException ex) {
-JOptionPane.showMessageDialog(null, ex.toString() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
         }
     }
 
@@ -126,7 +98,6 @@ JOptionPane.showMessageDialog(null, ex.toString() + " --------------------------
             stmtIns.close();
             con.close();
         } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, ex.toString() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
         }
     }
     // reporte donde se mostrara un listado del nombre completo con su correspondiente documento

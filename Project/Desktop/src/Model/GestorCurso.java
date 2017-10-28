@@ -87,7 +87,7 @@ public class GestorCurso {
         forName(ClasForName);
         Connection con  = DriverManager.getConnection(conexion,user,pass);
         Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("select * from Cursos where id_curso ="+ i);
+        ResultSet query = comando.executeQuery("select * from Cursos where id_curso = "+ i);
         if(query.next()){
             c.setNombreCurso(query.getString("nombre"));
             c.setDescripcion(query.getString("descripcion"));
@@ -241,7 +241,7 @@ public class GestorCurso {
 
             c.setId(query.getInt("Id"));
             c.setNombre(query.getString("Curso"));
-            c.setFecha(query.getString("Fecha de Inicio"));
+            c.setFecha(query.getString("inicio"));
             cursos.add(c);
         }
         query.close();
