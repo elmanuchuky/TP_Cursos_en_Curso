@@ -5,14 +5,22 @@
  */
 package Vistas;
 
+import Model.GestorAsistencia;
 import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,8 +29,18 @@ import javax.swing.DefaultComboBoxModel;
 public class AsistenciaRegistrar extends javax.swing.JFrame {
 
     GestorCurso g;
-    public AsistenciaRegistrar() {
+    GestorAsistencia ga;
+    Calendar fecha;
+    int anio;
+    int mes;
+    int dia;
+
+    public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
+
+        initComponents();
+        cargarTablaAsistencia();
         g = new GestorCurso();
+        ga = new GestorAsistencia();
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -30,8 +48,14 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        initComponents();
-        this.setLocationRelativeTo(null);
+        ga = new GestorAsistencia();
+        fecha = new GregorianCalendar();
+        anio = fecha.get(Calendar.YEAR);
+        mes = fecha.get(Calendar.MONTH);
+        dia = fecha.get(Calendar.DAY_OF_MONTH);
+
+        lblDiaAsistencia.setText("" + dia + "/" + (mes + 1) + "/" + anio);
+
     }
 
     /**
@@ -110,6 +134,11 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btRegistrar.setText("Registrar");
+        btRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btRegistrar);
         btRegistrar.setBounds(280, 330, 107, 25);
 
@@ -144,6 +173,12 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vAsistenciasRegistrar = false;
     }//GEN-LAST:event_formWindowClosing
+
+    private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_btRegistrarActionPerformed
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -181,7 +216,13 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AsistenciaRegistrar().setVisible(true);
+                try {
+                    new AsistenciaRegistrar().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -199,6 +240,34 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JLabel lblDiaAsistencia;
     private javax.swing.JTable tRegistrarAsistencia;
     // End of variables declaration//GEN-END:variables
+
+    public void cargarTablaAsistencia() throws ClassNotFoundException, SQLException {
+        Object[][] data = new Object[5][2];
+        int i = 0;
+        for (String object : ga.obtenerCursantesPorCurso(1)) {
+            data[i][0] = object;
+            data[i][1] = false;
+            i++;
+        }
+                
+
+        String[] cols = {"String", "Boolean"};
+        DefaultTableModel model = new DefaultTableModel(data, cols) {
+            @Override
+            public Class<?> getColumnClass(int column) {
+                if (column == 1) {
+                    return Boolean.class;
+                } else {
+                    return String.class;
+                }
+            }
+        };
+
+        tRegistrarAsistencia = new JTable(model);
+        JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
+
+    }
+
     public void cargarComboCurso(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
