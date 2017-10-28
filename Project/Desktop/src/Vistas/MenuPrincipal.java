@@ -375,8 +375,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmiAsistenciaRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAsistenciaRegistrarActionPerformed
        if (vAsistenciasRegistrar == false) {
             vAsistenciasRegistrar = true;
-            AsistenciaRegistrar ar = new AsistenciaRegistrar();
-            ar.setVisible(true);
+            AsistenciaRegistrar ar;
+           try {
+                ar = new AsistenciaRegistrar();
+                ar.setVisible(true);
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (SQLException ex) {
+               Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
     }//GEN-LAST:event_jmiAsistenciaRegistrarActionPerformed
 

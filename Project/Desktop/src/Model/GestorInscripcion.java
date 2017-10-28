@@ -46,6 +46,7 @@ public class GestorInscripcion {
             PreparedStatement stmtIns = con.prepareStatement("exec sp_insert_inscripcion ?, ?"); // idCurso, idCursante
             stmtIns.setInt(1, idCurso);
             stmtIns.setInt(2, ultimoCursante);
+            JOptionPane.showMessageDialog(null, "NO!    " + ultimoCursante);
             stmtIns.executeUpdate();
             stmtIns.close();
             con.close();
@@ -74,6 +75,11 @@ public class GestorInscripcion {
             stmtIns.executeUpdate();
             stmtIns.close();
             con.close();
+            GestorPago gp = new GestorPago();
+            Pago p = new Pago();
+            p.setInscripcion(obtenerInscripcionConMailYCurso(dg.getEmail(), cursoId));
+            p.setMonto(0.0);
+            gp.agregarPago(p);
         } catch (SQLException ex) {
         }
     }
