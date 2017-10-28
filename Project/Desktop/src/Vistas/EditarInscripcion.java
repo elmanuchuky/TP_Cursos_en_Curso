@@ -87,6 +87,10 @@ public class EditarInscripcion extends javax.swing.JFrame {
         cmbAnio = new javax.swing.JComboBox();
         txtMailBusquea = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Inscripcion");
@@ -256,6 +260,26 @@ public class EditarInscripcion extends javax.swing.JFrame {
         getContentPane().add(jLabel11);
         jLabel11.setBounds(22, 20, 21, 17);
 
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel14.setText("jLabel13");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(480, 300, 250, 40);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel15.setText("jLabel13");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(-10, 0, 480, 300);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel16.setText("jLabel13");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(470, 0, 310, 300);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel17.setText("jLabel13");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(0, 300, 480, 40);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -361,6 +385,10 @@ public class EditarInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

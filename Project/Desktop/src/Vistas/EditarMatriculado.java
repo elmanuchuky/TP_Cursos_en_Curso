@@ -57,6 +57,8 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnMoificar = new javax.swing.JButton();
         txtLegajo = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Matriculado");
@@ -201,6 +203,16 @@ public class EditarMatriculado extends javax.swing.JFrame {
         getContentPane().add(txtLegajo);
         txtLegajo.setBounds(330, 10, 92, 28);
 
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel15.setText("jLabel13");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(480, 0, 480, 300);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel16.setText("jLabel13");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(0, 0, 480, 300);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -333,6 +345,8 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

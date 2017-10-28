@@ -91,6 +91,10 @@ public class EditarCurso extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         cmbCursosFiltro = new javax.swing.JComboBox();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Curso");
@@ -288,6 +292,26 @@ public class EditarCurso extends javax.swing.JFrame {
         });
         getContentPane().add(cmbCursosFiltro);
         cmbCursosFiltro.setBounds(90, 18, 470, 23);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel16.setText("jLabel13");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(0, 0, 480, 300);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel17.setText("jLabel13");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(480, 0, 160, 300);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel18.setText("jLabel13");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(-10, 260, 480, 130);
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
+        jLabel19.setText("jLabel13");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(440, 240, 140, 130);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -506,6 +530,10 @@ public class EditarCurso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
