@@ -23,6 +23,7 @@ public class GestorAsistencia {
     String conexion = "jdbc:sqlserver://localhost:1433;databaseName=Colegio_Informatica_Metodologia";
     String user = "sa";
     String pass = "Server1552";
+    GestorInscripcion gi = new GestorInscripcion();
 
     //vw_cursos_actuales_combo cargar combo de cursos
     //sp_listado_cursantes_x_curso
@@ -190,7 +191,7 @@ public class GestorAsistencia {
         ArrayList<String> presentes = new ArrayList<>();
         PreparedStatement comando2 = con.prepareStatement("exec sp_asistencia_x_inscripto_x_curso ?, ?");
         comando2.setInt(1, idCurso);
-        comando2.setString(2, email);
+        comando2.setInt(2, gi.obtenerInscripcionConMailYCurso(email, idCurso));   
         ResultSet consulta2 = comando.executeQuery();
         presentes.add(email);
         while (consulta2.next()) {
