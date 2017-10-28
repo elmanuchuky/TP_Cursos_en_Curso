@@ -5,16 +5,26 @@
  */
 package Vistas;
 
+import Model.DatosGenerales;
+import Model.GestorMatriculado;
+import Model.Matriculado;
+import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Yasmin
  */
 public class EditarMatriculado extends javax.swing.JFrame {
+
+    GestorMatriculado gm;
 
     /**
      * Creates new form EditarMatriculado
@@ -23,6 +33,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
+        gm = new GestorMatriculado();
         this.setLocationRelativeTo(null);
     }
 
@@ -191,6 +202,11 @@ public class EditarMatriculado extends javax.swing.JFrame {
         btnMoificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btnMoificar.setText("Modificar");
         btnMoificar.setEnabled(false);
+        btnMoificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoificarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnMoificar);
         btnMoificar.setBounds(520, 210, 105, 25);
 
@@ -242,6 +258,32 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vEditarMatriculado = false;
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnMoificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoificarActionPerformed
+        if (validacion()) {
+            DatosGenerales d = new DatosGenerales();
+            Matriculado m = new Matriculado();
+            d.setNombre(txtNombre.getText());
+            d.setApellido(txtApellido.getText());
+            d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
+            d.setDni(Integer.parseInt(txtDocumento.getText()));
+            String fecha = cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+            d.setFechaNacimiento(fecha);
+            d.setTelefono(txtTelefono.getText());
+            d.setEmail(txtMail.getText());
+            m.setProfesion(txtProfecion.getText());
+            m.setLegajoMatriculado(Integer.parseInt(txtLegajo.getText()));
+
+            try {
+                gm.modificarMatriculado(m, d);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMoificarActionPerformed
 
     
     @Override
@@ -362,4 +404,46 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validacion() {
+        try{
+            Integer.parseInt(txtDocumento.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            return false;
+        }
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            return false;
+        }
+        if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            return false;
+        }
+        if (txtMail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            return false;
+        }
+        if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            return false;
+        }
+        if (txtProfecion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo profesion no debe estar vacio");
+            return false;
+        }
+        if (cmbTipoDocumento.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbDia.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbMes.getSelectedIndex() == -1) {
+            return false;
+        }
+        if (cmbAnio.getSelectedIndex() == -1) {
+            return false;
+        }
+        return true;
+    }
 }

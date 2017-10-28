@@ -40,6 +40,22 @@ public class GestorMatriculado {
             JOptionPane.showMessageDialog(null, "anda");
         con.close();
     }
+    
+//agrega un nuevo matriculado
+    public void modificarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        GestorDatosGenerales gd = new GestorDatosGenerales();
+        gd.modificarDatosGenerales(d);
+        m.setDatos(gd.obtenerDatosPorLegajo(m.getLegajoMatriculado()));
+        PreparedStatement comando2 = con.prepareStatement("exec sp_update_matriculado ?, ?, ?");
+        comando2.setInt(1, m.getIdMatriculado());
+        comando2.setInt(2, m.getDatos());
+        comando2.setString(3, m.getProfesion());
+        comando2.executeUpdate();
+        comando2.close();
+            JOptionPane.showMessageDialog(null, "anda");
+        con.close();
+    }
 
     // Recuperar el id del matriculado con el legajo
     public int obtenerMatriculado(int legajo) throws SQLException {
