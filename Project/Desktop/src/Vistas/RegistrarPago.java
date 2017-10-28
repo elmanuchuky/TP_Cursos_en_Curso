@@ -20,12 +20,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font.FontStyle;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPHeaderCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 
 /**
@@ -165,7 +167,6 @@ public class RegistrarPago extends javax.swing.JFrame {
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
 
         try {
-            imprimirComprobante();
             //codigo de carga
             if (esValido()) {
                 if (existeMail()) {
@@ -174,8 +175,12 @@ public class RegistrarPago extends javax.swing.JFrame {
                     Pago p = new Pago();
                     p.setMonto(Double.parseDouble(txtMonto.getText()));
                     p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId()));
+                    java.util.Date fecha = new java.util.Date();
 
+                    Timestamp tm = new Timestamp(fecha.getTime());
+                    String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
+                    imprimirComprobante(tm,fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
                 } else {
                     JOptionPane.showMessageDialog(null, "No existe un mail relacionado a ese curso!");
                 }
@@ -264,21 +269,21 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         cmbCursos.setModel(model);
     }
 
-    public void imprimirComprobante() throws FileNotFoundException, BadElementException, IOException {
-
+    public void imprimirComprobante(Timestamp tm,String fecha, String curso, double monto, int id) throws FileNotFoundException, BadElementException, IOException {
+        String nombreArchivo = "" + tm;
         try {
             Document doc = new Document();
-            PdfWriter.getInstance(doc, new FileOutputStream("Comprobante.pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta_Recibos\\"+nombreArchivo+".pdf"));
             doc.open();
 
             //seteamos el titulo
-            Font letraTitulo = FontFactory.getFont("Verdana", 24, BaseColor.BLACK);
+            Font letraTitulo = FontFactory.getFont("Verdana", 24, Font.UNDERLINE);
             Paragraph title = new Paragraph("COMPROBANTE DE PAGO \n \n", letraTitulo);
             title.setAlignment(Element.ALIGN_CENTER);
 
             //seteamos el contenido del mensaje
-            Font letraContenido = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
-            Paragraph contenido = new Paragraph("Se recibe de la insitucion .... en concentimiento de .... del curso .... \n \n", letraContenido);
+            Font letraContenido = FontFactory.getFont("Verdana", 15, BaseColor.BLACK);
+            Paragraph contenido = new Paragraph("Se recibe del Colegio de Ciencias Informáticas de Córdoba, en concentimiento del pago realizado, con respecto a lo abonado en el curso de " + curso + " \n \n", letraContenido);
 
             //seteamos la imagen
             com.itextpdf.text.Image firma = com.itextpdf.text.Image.getInstance("src/Imagenes/FirmaSello.png");
@@ -289,21 +294,42 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             //seteamos la letra de saldo
             Font letraSaldo = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
-            Paragraph contenidoSuma = new Paragraph("\n Suma de ...", letraSaldo);
+            Paragraph contenidoSuma = new Paragraph("Se ha cobrado:         " + monto, letraSaldo);
 
             //seteamos los datos del margen derecho superior
             Font formatoDato = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
-            Paragraph dato = new Paragraph("Recibo Nro. .... \n  + isnertefecha", formatoDato);
-
+            Paragraph dato = new Paragraph("        Recibo Nro. " + id + "\n         " + fecha, formatoDato);
+            dato.setAlignment(Element.ALIGN_RIGHT);
+            //encabezado con imagenes y datos
             PdfPTable tabla = new PdfPTable(2);
             tabla.addCell(iml);
             tabla.addCell(dato);
 
+            //cuerpo con sus respectivos datos
+            PdfPTable cuerpo = new PdfPTable(1);
+            PdfPCell celda1 = new PdfPCell(contenido);
+            celda1.setBorder(Rectangle.NO_BORDER);
+            cuerpo.addCell(celda1);
+            cuerpo.setSpacingAfter(40);
+            cuerpo.setSpacingBefore(20);
+
+            //pie de recibo
+            PdfPTable saldoFirma = new PdfPTable(2);
+            PdfPCell saldo = new PdfPCell(contenidoSuma);
+            saldo.setBorder(Rectangle.NO_BORDER);
+            PdfPCell firmacell = new PdfPCell(firma);
+            firmacell.setBorder(Rectangle.NO_BORDER);
+            saldoFirma.addCell(saldo);
+            saldoFirma.addCell(firmacell);
+
+            //pasamos al documento (por orden) las cosas que deseamos mostrar
             doc.add(tabla);
             doc.add(title);
-            doc.add(contenido);
-            doc.add(contenidoSuma);
-            doc.add(firma);
+            doc.add(cuerpo);
+            doc.add(saldoFirma);
+//            doc.add(contenido);
+//            doc.add(contenidoSuma);
+//            doc.add(firma);
 
             doc.close();
 //            for (Consulta1DTO item : lista) {
