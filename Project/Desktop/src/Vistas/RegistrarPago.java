@@ -15,11 +15,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.itextpdf.text.*;
+import com.itextpdf.text.Font.FontStyle;
 import com.itextpdf.text.pdf.PdfPHeaderCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -164,6 +166,10 @@ public class RegistrarPago extends javax.swing.JFrame {
             imprimirComprobante();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadElementException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnCargaActionPerformed
 
@@ -238,18 +244,46 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         cmbCursos.setModel(model);
     }
 
-    public void imprimirComprobante() throws FileNotFoundException {
+    public void imprimirComprobante() throws FileNotFoundException, BadElementException, IOException {
 
-        Document doc = new Document();
         try {
+            Document doc = new Document();
             PdfWriter.getInstance(doc, new FileOutputStream("Comprobante.pdf"));
             doc.open();
-
+            
+            
+            //seteamos el titulo
             Font letraTitulo = FontFactory.getFont("Verdana", 24, BaseColor.BLACK);
-
-            Paragraph title = new Paragraph("COMPROBANTE DE PAGO", letraTitulo);
+            Paragraph title = new Paragraph("COMPROBANTE DE PAGO \n \n", letraTitulo);
             title.setAlignment(Element.ALIGN_CENTER);
+            
+            //seteamos el contenido del mensaje
+            Font letraContenido = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
+            Paragraph contenido = new Paragraph("Se recibe de la insitucion .... en concentimiento de .... del curso .... \n \n", letraContenido);
+            
+            //seteamos la imagen
+            com.itextpdf.text.Image im = com.itextpdf.text.Image.getInstance("src/Imagenes/FirmaSello.png");
+            im.setAlignment(Element.ALIGN_RIGHT);
+            
+            //seteamos la letra de saldo
+            Font letraSaldo = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
+            Paragraph contenidoSuma = new Paragraph("\n Suma de ...", letraSaldo);
+            
+            //seteamos los datos del margen derecho superior
+            Font formatoDato = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
+            Paragraph dato = new Paragraph("Recibo Nro. .... \n  + isnertefecha", formatoDato);
+            
+            PdfPTable tabla = new PdfPTable(2);
+            tabla.addCell(im);
+            tabla.addCell(dato);
+            
+            doc.add(tabla);
             doc.add(title);
+            doc.add(contenido);
+            doc.add(contenidoSuma);
+            doc.add(im);
+            
+            doc.close();
 //            for (Consulta1DTO item : lista) {
 //                Paragraph p = new Paragraph();
 //                p.add("Responsable: " + item.getNombreResponsable());
@@ -276,10 +310,11 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 //            for (int i = 0; i < 10; i++) {
 //                doc.add(new Paragraph("Parrafo numero " + i));
 //            }
-            doc.close();
 
         } catch (DocumentException ex) {
+            System.out.println(ex);
         } catch (FileNotFoundException ex) {
+            System.out.println(ex);
         }
     }
 }
