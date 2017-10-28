@@ -5,14 +5,18 @@
  */
 package Vistas;
 
+import Model.GestorAsistencia;
 import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,7 +25,15 @@ import javax.swing.DefaultComboBoxModel;
 public class AsistenciaRegistrar extends javax.swing.JFrame {
 
     GestorCurso g;
+    GestorAsistencia ga;
+    Calendar fecha;
+    int anio;
+    int mes;
+    int dia;    
+    
     public AsistenciaRegistrar() {
+        
+        initComponents();
         g = new GestorCurso();
         try {
             cargarComboCurso(g.ComboCursosActuales());
@@ -30,8 +42,15 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        initComponents();
-        this.setLocationRelativeTo(null);
+        ga = new GestorAsistencia();
+        fecha = new GregorianCalendar();
+        anio = fecha.get(Calendar.YEAR);
+        mes = fecha.get(Calendar.MONTH);
+        dia = fecha.get(Calendar.DAY_OF_MONTH);
+        
+        lblDiaAsistencia.setText(""+dia+"/"+(mes+1)+"/"+anio);
+        
+                
     }
 
     /**
@@ -110,6 +129,11 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btRegistrar.setText("Registrar");
+        btRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btRegistrar);
         btRegistrar.setBounds(280, 330, 107, 25);
 
@@ -144,6 +168,12 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vAsistenciasRegistrar = false;
     }//GEN-LAST:event_formWindowClosing
+
+    private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btRegistrarActionPerformed
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -199,6 +229,13 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JLabel lblDiaAsistencia;
     private javax.swing.JTable tRegistrarAsistencia;
     // End of variables declaration//GEN-END:variables
+    
+//    public void cargarTablaAsistencia(){
+//            
+//          DefaultTableModel modelo = new DefaultTableModel();
+//          
+//        }
+    
     public void cargarComboCurso(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
