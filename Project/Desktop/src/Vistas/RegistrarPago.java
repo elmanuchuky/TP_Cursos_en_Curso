@@ -245,9 +245,11 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             PdfWriter.getInstance(doc, new FileOutputStream("Comprobante.pdf"));
             doc.open();
 
-            Font letraTitulo = FontFactory.getFont("Verdana", 24, BaseColor.BLUE);
+            Font letraTitulo = FontFactory.getFont("Verdana", 24, BaseColor.BLACK);
 
-            doc.add(new Paragraph("COMPROBANTE DE PAGO", letraTitulo));
+            Paragraph title = new Paragraph("COMPROBANTE DE PAGO", letraTitulo);
+            title.setAlignment(Element.ALIGN_CENTER);
+            doc.add(title);
 //            for (Consulta1DTO item : lista) {
 //                Paragraph p = new Paragraph();
 //                p.add("Responsable: " + item.getNombreResponsable());
