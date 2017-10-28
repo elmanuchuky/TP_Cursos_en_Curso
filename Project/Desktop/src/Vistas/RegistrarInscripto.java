@@ -116,6 +116,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtLegajo = new javax.swing.JTextField();
         cmbTipoDocumento = new javax.swing.JComboBox<>();
+        btnNuevoMAtriculado = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -257,6 +258,17 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         getContentPane().add(cmbTipoDocumento);
         cmbTipoDocumento.setBounds(90, 100, 65, 23);
 
+        btnNuevoMAtriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNuevoMAtriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addMatriculado.png"))); // NOI18N
+        btnNuevoMAtriculado.setText("Nuevo");
+        btnNuevoMAtriculado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoMAtriculadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNuevoMAtriculado);
+        btnNuevoMAtriculado.setBounds(440, 220, 100, 25);
+
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel11.setText("jLabel1");
         getContentPane().add(jLabel11);
@@ -330,6 +342,19 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         MenuPrincipal.vRegistrarInscripcion = false;
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnNuevoMAtriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoMAtriculadoActionPerformed
+        if (MenuPrincipal.vRegistrarMatriculado == false) {
+            MenuPrincipal.vRegistrarMatriculado = true;
+            RegistrarMatriculado rm;
+            try {
+                rm = new RegistrarMatriculado();
+                rm.setVisible(true);
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnNuevoMAtriculadoActionPerformed
+
     
     @Override
     public Image getIconImage() {
@@ -375,6 +400,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarcgar;
+    private javax.swing.JButton btnNuevoMAtriculado;
     private javax.swing.JComboBox cmbAnio;
     private javax.swing.JComboBox<String> cmbCursos;
     private javax.swing.JComboBox cmbDia;
