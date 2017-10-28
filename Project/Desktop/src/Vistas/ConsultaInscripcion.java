@@ -22,6 +22,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
 
     GestorCurso g;
     public ConsultaInscripcion() {
+        initComponents();
         g = new GestorCurso();
         try {
             cargarComboCurso(g.ComboCursoProximoyActuales());
@@ -30,7 +31,6 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        initComponents();
         this.setLocationRelativeTo(null);
     }
 

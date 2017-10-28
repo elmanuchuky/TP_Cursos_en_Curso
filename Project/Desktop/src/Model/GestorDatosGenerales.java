@@ -89,4 +89,25 @@ public class GestorDatosGenerales {
         con.close();
         return idDG;
     }
+    
+    public DatosGenerales obtenerDatosGenerales(int id) throws SQLException{
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmtId = con.createStatement();
+        ResultSet query = stmtId.executeQuery("SELECT * FROM Datos_Generales dg join Matriculados m on m.id_datos_generales = dg.id_datos_generales WHERE m.id_matriculado = " + id);
+        DatosGenerales dg = new DatosGenerales();
+        if (query.next()) {
+            dg.setApellido(query.getString("apellido"));
+            dg.setDni(query.getInt("dni"));
+            dg.setNombre(query.getString("nombre"));
+            dg.setIdDatosGenerales(query.getInt("id_datos_generales"));
+            dg.setTipoDni(query.getInt("id_tipo_dni"));
+            dg.setFechaNacimiento(query.getString("fecha_nacimiento"));
+            dg.setTelefono(query.getString("telefono"));
+            dg.setEmail(query.getString("mail"));
+        }
+        query.close();
+        stmtId.close();
+        con.close();
+        return dg;
+    }
 }

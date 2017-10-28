@@ -312,7 +312,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
 
-        int anio = 1900;
+        int anio = 2015;
         int mes = 1;
 
         Calendar cal = Calendar.getInstance();

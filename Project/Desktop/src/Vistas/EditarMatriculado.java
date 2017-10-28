@@ -6,12 +6,15 @@
 package Vistas;
 
 import Model.DatosGenerales;
+import Model.GestorDatosGenerales;
 import Model.GestorMatriculado;
+import Model.GestorTipoDni;
 import Model.Matriculado;
 import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,11 +32,13 @@ public class EditarMatriculado extends javax.swing.JFrame {
     /**
      * Creates new form EditarMatriculado
      */
-    public EditarMatriculado() {
+    public EditarMatriculado() throws ClassNotFoundException, SQLException {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         gm = new GestorMatriculado();
+        GestorTipoDni gtd = new GestorTipoDni();
+        cargarComboTipoDni(gtd.obtenerTodos());
         this.setLocationRelativeTo(null);
     }
 
@@ -67,6 +72,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         cmbDia = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         btnMoificar = new javax.swing.JButton();
+        cmdGo = new javax.swing.JButton();
         txtLegajo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -210,10 +216,31 @@ public class EditarMatriculado extends javax.swing.JFrame {
         getContentPane().add(btnMoificar);
         btnMoificar.setBounds(520, 210, 105, 25);
 
+        cmdGo.setText("GO");
+        cmdGo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdGoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmdGo);
+        cmdGo.setBounds(430, 10, 70, 30);
+
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtLegajo.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtLegajoInputMethodTextChanged(evt);
+            }
+        });
         txtLegajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLegajoActionPerformed(evt);
+            }
+        });
+        txtLegajo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                none(evt);
             }
         });
         getContentPane().add(txtLegajo);
@@ -241,17 +268,6 @@ public class EditarMatriculado extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbMesActionPerformed
 
     private void txtLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLegajoActionPerformed
-        txtNombre.setEnabled(true);
-        txtApellido.setEnabled(true);
-        txtDocumento.setEnabled(true);
-        txtMail.setEnabled(true);
-        txtTelefono.setEnabled(true);
-        txtProfecion.setEnabled(true);
-        cmbTipoDocumento.setEnabled(true);
-        cmbDia.setEnabled(true);
-        cmbMes.setEnabled(true);
-        cmbAnio.setEnabled(true);
-        btnMoificar.setEnabled(true);
         //proseso almacenado que filtar
     }//GEN-LAST:event_txtLegajoActionPerformed
 
@@ -285,7 +301,36 @@ public class EditarMatriculado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMoificarActionPerformed
 
-    
+    private void none(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_none
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_none
+
+    private void txtLegajoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtLegajoInputMethodTextChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtLegajoInputMethodTextChanged
+
+    private void cmdGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGoActionPerformed
+        // TODO add your handling code here:
+        GestorMatriculado gm = new GestorMatriculado();
+        GestorDatosGenerales gdg = new GestorDatosGenerales();
+        try {
+            int idDG = gm.obtenerMatriculado(Integer.parseInt(txtLegajo.getText()));
+            if (idDG > 0){
+                habilitar(true);
+                    JOptionPane.showMessageDialog(null, gdg.obtenerDatosGenerales(idDG).toString());
+                cargarControles(gdg.obtenerDatosGenerales(idDG));
+            }else{
+                habilitar(false);
+                limpiarControles();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cmdGoActionPerformed
+
+   
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -322,7 +367,13 @@ public class EditarMatriculado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarMatriculado().setVisible(true);
+                try {
+                    new EditarMatriculado().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(EditarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -384,6 +435,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbMes;
     private javax.swing.JComboBox<String> cmbTipoDocumento;
+    private javax.swing.JButton cmdGo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -445,5 +497,53 @@ public class EditarMatriculado extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+    
+    private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        for (Object elemento : obtenerTodos) {
+            model.addElement(elemento);
+        }
+        
+        cmbTipoDocumento.setModel(model);
+    }
+
+    private void habilitar(boolean b) {
+        txtNombre.setEnabled(b);
+        txtApellido.setEnabled(b);
+        txtDocumento.setEnabled(b);
+        txtMail.setEnabled(b);
+        txtTelefono.setEnabled(b);
+        txtProfecion.setEnabled(b);
+        cmbTipoDocumento.setEnabled(b);
+        cmbDia.setEnabled(b);
+        cmbMes.setEnabled(b);
+        cmbAnio.setEnabled(b);
+        btnMoificar.setEnabled(b);
+    }
+
+    private void cargarControles(DatosGenerales dg) {
+        txtApellido.setText(dg.getApellido());
+        txtDocumento.setText("" + dg.getDni());
+        txtMail.setText(dg.getEmail());
+        txtNombre.setText(dg.getNombre());
+        txtTelefono.setText(dg.getTelefono());
+        cmbTipoDocumento.setSelectedIndex(0);
+        cmbAnio.setSelectedIndex(0);
+        cmbMes.setSelectedIndex(0);
+        cmbDia.setSelectedIndex(0);
+    }
+
+    private void limpiarControles() {
+        txtApellido.setText("");
+        txtDocumento.setText("");
+        txtMail.setText("");
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        cmbTipoDocumento.setSelectedIndex(-1);
+        cmbAnio.setSelectedIndex(0);
+        cmbMes.setSelectedIndex(0);
+        cmbDia.setSelectedIndex(0);
     }
 }
