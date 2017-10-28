@@ -91,7 +91,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         cmbMes = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
@@ -117,20 +116,22 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtLegajo = new javax.swing.JTextField();
         cmbTipoDocumento = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Inscripción");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(600, 320));
-        setPreferredSize(new java.awt.Dimension(680, 320));
+        setMinimumSize(new java.awt.Dimension(680, 280));
+        setPreferredSize(new java.awt.Dimension(680, 280));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(null);
 
         cmbMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes.addActionListener(new java.awt.event.ActionListener() {
@@ -138,22 +139,13 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 cmbMesActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 112;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        getContentPane().add(cmbMes, gridBagConstraints);
+        getContentPane().add(cmbMes);
+        cmbMes.setBounds(532, 100, 50, 23);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Mail");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
-        getContentPane().add(jLabel9, gridBagConstraints);
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(10, 140, 21, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.addActionListener(new java.awt.event.ActionListener() {
@@ -161,109 +153,49 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 cmbAnioActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 114;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        getContentPane().add(cmbAnio, gridBagConstraints);
+        getContentPane().add(cmbAnio);
+        cmbAnio.setBounds(602, 100, 60, 23);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
-        getContentPane().add(jLabel3, gridBagConstraints);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 60, 55, 17);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 16;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 7, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(210, 20, 38, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 111;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 4, 0, 0);
-        getContentPane().add(jLabel2, gridBagConstraints);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(520, 100, 7, 17);
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 157;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 15, 0, 0);
-        getContentPane().add(txtTelefono, gridBagConstraints);
+        getContentPane().add(txtTelefono);
+        txtTelefono.setBounds(80, 180, 240, 23);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 70;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 197;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 209;
-        gridBagConstraints.insets = new java.awt.Insets(7, 6, 0, 19);
-        getContentPane().add(cmbCursos, gridBagConstraints);
+        getContentPane().add(cmbCursos);
+        cmbCursos.setBounds(260, 20, 400, 23);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Apellido");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 16;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 20;
-        gridBagConstraints.ipadx = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 7, 0, 0);
-        getContentPane().add(jLabel4, gridBagConstraints);
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(330, 60, 50, 17);
 
         txtDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 117;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 0);
-        getContentPane().add(txtDocumento, gridBagConstraints);
+        getContentPane().add(txtDocumento);
+        txtDocumento.setBounds(160, 100, 150, 23);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 112;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 461;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 15, 0, 0);
-        getContentPane().add(txtMail, gridBagConstraints);
+        getContentPane().add(txtMail);
+        txtMail.setBounds(77, 140, 580, 23);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
-        getContentPane().add(jLabel6, gridBagConstraints);
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(10, 100, 73, 17);
 
         btnCarcgar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCarcgar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -273,127 +205,67 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 btnCarcgarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 112;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 155;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 11, 19);
-        getContentPane().add(btnCarcgar, gridBagConstraints);
+        getContentPane().add(btnCarcgar);
+        btnCarcgar.setBounds(560, 220, 93, 25);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Profecion");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 16;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 20, 0, 0);
-        getContentPane().add(jLabel10, gridBagConstraints);
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(330, 180, 57, 17);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 157;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        getContentPane().add(txtNombre, gridBagConstraints);
+        getContentPane().add(txtNombre);
+        txtNombre.setBounds(80, 60, 230, 23);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 26;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 45;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 4, 0, 0);
-        getContentPane().add(jLabel7, gridBagConstraints);
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(320, 100, 126, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Legajo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 17, 0, 0);
-        getContentPane().add(jLabel5, gridBagConstraints);
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(10, 20, 55, 17);
 
         txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 70;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 154;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 203;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 24, 0, 0);
-        getContentPane().add(txtProfecion, gridBagConstraints);
+        getContentPane().add(txtProfecion);
+        txtProfecion.setBounds(400, 180, 260, 23);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 110;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
-        getContentPane().add(cmbDia, gridBagConstraints);
+        getContentPane().add(cmbDia);
+        cmbDia.setBounds(460, 100, 50, 23);
 
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 45;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 70;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 237;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        getContentPane().add(txtApellido, gridBagConstraints);
+        getContentPane().add(txtApellido);
+        txtApellido.setBounds(383, 60, 280, 23);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Telfeono");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 17, 0, 0);
-        getContentPane().add(jLabel8, gridBagConstraints);
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(10, 180, 52, 17);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 113;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 4, 0, 0);
-        getContentPane().add(jLabel12, gridBagConstraints);
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(590, 100, 7, 17);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 157;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 4, 0, 0);
-        getContentPane().add(txtLegajo, gridBagConstraints);
+        getContentPane().add(txtLegajo);
+        txtLegajo.setBounds(80, 20, 110, 23);
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 33;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        getContentPane().add(cmbTipoDocumento, gridBagConstraints);
+        getContentPane().add(cmbTipoDocumento);
+        cmbTipoDocumento.setBounds(90, 100, 65, 23);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel11.setText("jLabel1");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(-110, 0, 300, 430);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel13.setText("jLabel1");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(180, 0, 500, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -510,7 +382,9 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbTipoDocumento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

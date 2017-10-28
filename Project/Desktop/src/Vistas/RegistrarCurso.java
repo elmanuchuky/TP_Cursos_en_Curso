@@ -60,7 +60,6 @@ public class RegistrarCurso extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaTema = new javax.swing.JTextArea();
@@ -80,20 +79,23 @@ public class RegistrarCurso extends javax.swing.JFrame {
         txtaDescripcion = new javax.swing.JTextArea();
         cmbHora = new javax.swing.JComboBox();
         cmbMinutos = new javax.swing.JComboBox();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Curso");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(630, 350));
+        setMinimumSize(new java.awt.Dimension(580, 400));
+        setPreferredSize(new java.awt.Dimension(580, 400));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -103,67 +105,78 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+        getContentPane().add(btnRegistrar);
+        btnRegistrar.setBounds(450, 330, 107, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 20, 49, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Descripcion");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 45, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 60, 70, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Temas");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 123, 51, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 150, 51, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Costo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        jLabel5.setText("Costo $");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(240, 290, 48, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Duracion");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        jLabel6.setText("Duracion en Semanas");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(10, 250, 140, 17);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Aula");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(10, 290, 25, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Cupo");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(130, 290, 33, 17);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Carga Horaria");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(10, 330, 83, 17);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Hora");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("Semanas");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(380, 290, 29, 17);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 11, 492, -1));
+        getContentPane().add(txtNombre);
+        txtNombre.setBounds(90, 20, 470, 23);
 
         txtaTema.setColumns(20);
         txtaTema.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtaTema.setRows(5);
         jScrollPane1.setViewportView(txtaTema);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 108, 490, 60));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(90, 140, 470, 80);
 
         txtDuracion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 59, -1));
+        getContentPane().add(txtDuracion);
+        txtDuracion.setBounds(150, 250, 90, 23);
 
         txtAula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 50, -1));
+        getContentPane().add(txtAula);
+        txtAula.setBounds(50, 290, 70, 23);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Fecha de Inicio");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(250, 250, 90, 17);
 
         cmbMes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes1.addActionListener(new java.awt.event.ActionListener() {
@@ -171,18 +184,22 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 cmbMes1ActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbMes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 58, -1));
+        getContentPane().add(cmbMes1);
+        cmbMes1.setBounds(420, 250, 58, 23);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 8, -1));
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(480, 250, 8, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(cmbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 54, -1));
+        getContentPane().add(cmbDia);
+        cmbDia.setBounds(350, 250, 54, 23);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("/");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 8, -1));
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(410, 250, 8, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setAutoscrolls(true);
@@ -191,30 +208,37 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 cmbAnioActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 79, -1));
+        getContentPane().add(cmbAnio);
+        cmbAnio.setBounds(490, 250, 70, 23);
 
         txtCupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtCupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 50, -1));
+        getContentPane().add(txtCupo);
+        txtCupo.setBounds(170, 290, 60, 23);
 
         txtCosto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 53, -1));
+        getContentPane().add(txtCosto);
+        txtCosto.setBounds(300, 290, 70, 23);
 
         txtCargaHoraria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtCargaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 56, -1));
+        getContentPane().add(txtCargaHoraria);
+        txtCargaHoraria.setBounds(110, 330, 80, 23);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText(":");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 8, -1));
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(490, 290, 8, 17);
 
         txtaDescripcion.setColumns(20);
         txtaDescripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtaDescripcion.setRows(5);
         jScrollPane2.setViewportView(txtaDescripcion);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 45, 492, 59));
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(90, 60, 470, 70);
 
         cmbHora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(cmbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 57, -1));
+        getContentPane().add(cmbHora);
+        cmbHora.setBounds(430, 290, 57, 23);
 
         cmbMinutos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMinutos.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +246,18 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 cmbMinutosActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 60, -1));
+        getContentPane().add(cmbMinutos);
+        cmbMinutos.setBounds(500, 290, 60, 23);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel15.setText("jLabel1");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(80, 0, 500, 380);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel16.setText("jLabel1");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(0, 0, 240, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -389,10 +424,11 @@ public class RegistrarCurso extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbMinutos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
