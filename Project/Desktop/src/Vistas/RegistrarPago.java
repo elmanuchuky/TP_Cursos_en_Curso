@@ -163,25 +163,29 @@ public class RegistrarPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
+
         try {
+            imprimirComprobante();
             //codigo de carga
-            if (esValido()){
-                if (existeMail()){
+            if (esValido()) {
+                if (existeMail()) {
                     GestorPago gp = new GestorPago();
                     GestorInscripcion gi = new GestorInscripcion();
                     Pago p = new Pago();
                     p.setMonto(Double.parseDouble(txtMonto.getText()));
-                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId()));
+                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId()));
 
                     gp.agregarPago(p);
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "No existe un mail relacionado a ese curso!");
                 }
             }
-            imprimirComprobante();
         } catch (FileNotFoundException ex) {
+            System.out.println(ex);
         } catch (BadElementException ex) {
+            System.out.println(ex);
         } catch (IOException ex) {
+            System.out.println(ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -266,39 +270,41 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             Document doc = new Document();
             PdfWriter.getInstance(doc, new FileOutputStream("Comprobante.pdf"));
             doc.open();
-            
-            
+
             //seteamos el titulo
             Font letraTitulo = FontFactory.getFont("Verdana", 24, BaseColor.BLACK);
             Paragraph title = new Paragraph("COMPROBANTE DE PAGO \n \n", letraTitulo);
             title.setAlignment(Element.ALIGN_CENTER);
-            
+
             //seteamos el contenido del mensaje
             Font letraContenido = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
             Paragraph contenido = new Paragraph("Se recibe de la insitucion .... en concentimiento de .... del curso .... \n \n", letraContenido);
-            
+
             //seteamos la imagen
-            com.itextpdf.text.Image im = com.itextpdf.text.Image.getInstance("src/Imagenes/FirmaSello.png");
-            im.setAlignment(Element.ALIGN_RIGHT);
-            
+            com.itextpdf.text.Image firma = com.itextpdf.text.Image.getInstance("src/Imagenes/FirmaSello.png");
+            firma.setAlignment(Element.ALIGN_RIGHT);
+
+            //seteamos la imagen
+            com.itextpdf.text.Image iml = com.itextpdf.text.Image.getInstance("src/Imagenes/LogoPago.png");
+
             //seteamos la letra de saldo
             Font letraSaldo = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
             Paragraph contenidoSuma = new Paragraph("\n Suma de ...", letraSaldo);
-            
+
             //seteamos los datos del margen derecho superior
             Font formatoDato = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
             Paragraph dato = new Paragraph("Recibo Nro. .... \n  + isnertefecha", formatoDato);
-            
+
             PdfPTable tabla = new PdfPTable(2);
-            tabla.addCell(im);
+            tabla.addCell(iml);
             tabla.addCell(dato);
-            
+
             doc.add(tabla);
             doc.add(title);
             doc.add(contenido);
             doc.add(contenidoSuma);
-            doc.add(im);
-            
+            doc.add(firma);
+
             doc.close();
 //            for (Consulta1DTO item : lista) {
 //                Paragraph p = new Paragraph();
@@ -326,7 +332,6 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 //            for (int i = 0; i < 10; i++) {
 //                doc.add(new Paragraph("Parrafo numero " + i));
 //            }
-
         } catch (DocumentException ex) {
             System.out.println(ex);
         } catch (FileNotFoundException ex) {
@@ -335,21 +340,21 @@ public void cargarComboCurso(ArrayList listaGenerica) {
     }
 
     private boolean esValido() {
-        if (txtMail.getText().isEmpty()){
+        if (txtMail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
             return false;
         }
-        if (cmbCursos.getSelectedIndex() == -1){
+        if (cmbCursos.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un curso!");
             return false;
         }
-        try{
+        try {
             double a = Double.parseDouble(txtMonto.getText());
-            if (a < 0){
+            if (a < 0) {
                 JOptionPane.showMessageDialog(null, "El campo monto debe ser un numero positivo!");
                 return false;
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "El campo monto debe ser un numero positivo!");
             return false;
         }
@@ -358,6 +363,6 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     private boolean existeMail() throws ClassNotFoundException {
         GestorInscripcion gi = new GestorInscripcion();
-        return gi.existeMailEnCurso(txtMail.getText(), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+        return gi.existeMailEnCurso(txtMail.getText(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
     }
 }
