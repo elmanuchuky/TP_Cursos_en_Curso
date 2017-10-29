@@ -5,8 +5,17 @@
  */
 package Vistas;
 
+import Model.Curso;
+import Model.GestorCurso;
+import Model.GestorInscripcion;
+import Model.VMPagosXMail;
+import Model.VMPresinscripto;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -17,8 +26,9 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
     /**
      * Creates new form ConsultaPreInscripcion
      */
-    public ConsultaPreInscripcion() {
+    public ConsultaPreInscripcion() throws ClassNotFoundException, SQLException {
         initComponents();
+        cargarLista();
         this.setLocationRelativeTo(null);
     }
 
@@ -104,7 +114,13 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaPreInscripcion().setVisible(true);
+                try {
+                    new ConsultaPreInscripcion().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ConsultaPreInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConsultaPreInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -114,4 +130,13 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList jltListado;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarLista() throws ClassNotFoundException, SQLException {
+        GestorInscripcion gi = new GestorInscripcion();
+        DefaultListModel lm = new DefaultListModel();
+        for (VMPresinscripto elemento : gi.listadoPreinscriptos()) {
+            lm.addElement(elemento.toString());
+        }
+        jltListado.setModel(lm);
+    }
 }

@@ -229,7 +229,6 @@ public class ConsultaCurso extends javax.swing.JFrame {
                 jtxtaCursos.setText(jtxtaCursos.getText() + elemento.toStringDatosCompletosTodos());
             }
         } catch (ClassNotFoundException ex) {
-        } catch (SQLException ex) {
         }
     }
 

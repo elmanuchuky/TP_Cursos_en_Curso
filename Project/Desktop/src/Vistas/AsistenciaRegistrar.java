@@ -244,13 +244,15 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     public void cargarTablaAsistencia() throws ClassNotFoundException, SQLException {
         Object[][] data = new Object[5][2];
         int i = 0;
-        for (String object : ga.obtenerCursantesPorCurso(1)) {
-            data[i][0] = object;
+        for (int j = 0; j < 5; j++) {
+            data[i][0] = "" + j;
             data[i][1] = false;
             i++;
         }
-                
+        //DefaultTableModel model = new DefaultTableModel(data, cols) {
 
+        //tRegistrarAsistencia.setModel(data);
+        /*
         String[] cols = {"String", "Boolean"};
         DefaultTableModel model = new DefaultTableModel(data, cols) {
             @Override
@@ -265,7 +267,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         tRegistrarAsistencia = new JTable(model);
         JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
-
+        */
     }
 
     public void cargarComboCurso(ArrayList listaGenerica) {
