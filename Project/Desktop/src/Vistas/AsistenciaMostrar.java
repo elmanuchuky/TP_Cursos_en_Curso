@@ -5,8 +5,10 @@
  */
 package Vistas;
 
+import Model.ComboCurso;
 import Model.Curso;
 import Model.DatosGenerales;
+import Model.GestorAsistencia;
 import Model.GestorCurso;
 import Model.GestorDatosGenerales;
 import java.awt.Image;
@@ -27,6 +29,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -58,6 +61,15 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         initComponents();
         cargarDiaCombo();
         cargaCmb();
+        g = new GestorCurso();
+        try {
+            
+            cargarComboCurso(g.ComboCursosActuales());
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setLocationRelativeTo(null);
 
         interfas = x;
@@ -117,6 +129,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         txtMail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -180,7 +193,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(80, 30, 73, 23);
+        jButton1.setBounds(80, 30, 79, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -229,7 +242,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(61, 45, 601, 23);
+        txtMail.setBounds(61, 45, 520, 23);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Mail");
@@ -239,6 +252,15 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 300, 170);
+
+        jButton2.setText("Filtrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(590, 40, 67, 25);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -276,29 +298,53 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /*
         try {
-            Curso c = g.obtenerCurso(((Curso)cmbCursos.getSelectedItem()).getIdCurso());
+            Curso c = g.obtenerCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
             DatosGenerales d = gd.obtenerDatosGeneralesXMail(txtMail.getText());
             String alumno = d.getNombre() + " " + d.getApellido();
-            String documento = ""+ d.getDni();
+            String documento = "" + d.getDni();
             String fechaInicio = c.getFechaInicio();
-            String fechaFinal = g.obtenerFechaFinalCurso(c.getFechaInicio(),c.getDuracionTotalSemanas());
+            String fechaFinal = g.obtenerFechaFinalCurso(c.getFechaInicio(), c.getDuracionTotalSemanas());
 //            String[] datoshora = c.getDiaHorario().split(" |:");
-            String horas = ""+c.getCargaHoraria();
+            String horas = "" + c.getCargaHoraria();
             String nombreCurso = c.getDescripcion();
-            generarCertificado(alumno,documento,fechaInicio,fechaFinal,horas,nombreCurso);
-            
+            generarCertificado(alumno, documento, fechaInicio, fechaFinal, horas, nombreCurso);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas,String curso){
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        switch (interfas) {
+            case 1: //Curso
+
+                break;
+            case 2: {
+            try {
+                //Curso & Fecha
+                cargarCursoYFecha();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                break;
+            case 3://Curso & Alumno
+                break;
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas, String curso) {
         try {
             Document doc = new Document(PageSize.A4.rotate());
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\Certificado"+alumno+".pdf"));
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\Certificado" + alumno + ".pdf"));
 
             doc.open();
 
@@ -312,21 +358,20 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             float height = doc.getPageSize().getHeight();
             writer.getDirectContentUnder().addImage(certificado, width, 0, 0, height, 0, 0);
 
-            
             //seteamos el contenido del mensaje
             Font letraContenido = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
             Paragraph contenido = new Paragraph("  ", letraContenido);
-            Paragraph contenido1 = new Paragraph("Se hace constar que el alumno "+alumno+", con Documento Nro: "+documento+"\n Asistió y aprobó el curso "+curso, letraContenido);
+            Paragraph contenido1 = new Paragraph("Se hace constar que el alumno " + alumno + ", con Documento Nro: " + documento + "\n Asistió y aprobó el curso " + curso, letraContenido);
             contenido1.setIndentationLeft(90);
             contenido1.setSpacingBefore(120);
-            
+
             //seteamos el contenido del mensaje
             Font letraContenido2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
-            Paragraph contenido2 = new Paragraph("con una duracion de "+horas+" horas semanales  \n desde: "+fechaInicio+"hasta: "+fechaCierre, letraContenido2);
+            Paragraph contenido2 = new Paragraph("con una duracion de " + horas + " horas semanales  \n desde: " + fechaInicio + "hasta: " + fechaCierre, letraContenido2);
             contenido2.setIndentationLeft(0);
             contenido2.setSpacingBefore(70);
             contenido2.setAlignment(Element.ALIGN_CENTER);
-            
+
             //pasamos al documento (por orden) las cosas que deseamos mostrar
             doc.add(contenido);
             doc.add(contenido1);
@@ -341,6 +386,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -431,6 +477,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbMes;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -454,6 +501,36 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         }
 
         cmbCursos.setModel(model);
+    }
+
+    private void cargarCursoYFecha() throws ClassNotFoundException, SQLException {
+        int count = 0;
+        GestorAsistencia ga = new GestorAsistencia();
+        String fecha = cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+
+        count = ga.obtenerAsistenciasPorCursoPorFechaCantidad(((ComboCurso) (cmbCursos.getSelectedItem())).getId(), fecha);
+        Object[][] data = new Object[count][2];
+        int i = 0;
+        for (ArrayList<String> s : ga.obtenerAsistenciasPorCursoPorFecha(((ComboCurso) (cmbCursos.getSelectedItem())).getId(), fecha)) {
+            data[i][0] = s.get(0);
+            data[i][1] = s.get(1);
+            i++;
+        }
+
+        String[] cols = {"Alumnos", "Presente"};
+        DefaultTableModel model = new DefaultTableModel(data, cols) {
+            @Override
+            public Class<?> getColumnClass(int column) {
+                if (column == 1) {
+                    return String.class;
+                } else {
+                    return String.class;
+                }
+            }
+        };
+
+        jtTablaAsistencias.setModel(model);//new JTable(model);
+        //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));       
     }
 
 }

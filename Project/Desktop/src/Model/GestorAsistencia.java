@@ -152,6 +152,22 @@ public class GestorAsistencia {
         return lista;
     }
 
+    public int obtenerAsistenciasPorCursoPorFechaCantidad(int idCurso, String fecha) throws ClassNotFoundException, SQLException {
+
+        forName(classForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement comando = con.prepareStatement("exec sp_listado_cursantes_x_curso ?");
+        comando.setInt(1, idCurso);
+        int i = 0;
+        ResultSet consulta = comando.executeQuery();
+        while (consulta.next()) {
+            i++;
+        }
+        consulta.close();
+        comando.close();
+        return i;
+    }
+
     //OBTENER ASISTENCIA POR CURSO POR MAIL
     
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCursoPorMail(int idCurso, String email) throws ClassNotFoundException, SQLException {
