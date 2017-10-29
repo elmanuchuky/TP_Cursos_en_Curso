@@ -100,6 +100,7 @@ public class GestorInscripcion {
         } catch (SQLException ex) {
         }
     }
+  
     public boolean existeMailEnCurso(String mail, int idCurso) throws ClassNotFoundException {
         forName(ClasForName);
         try {

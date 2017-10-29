@@ -5,9 +5,20 @@
  */
 package Vistas;
 
+import Model.Curso;
+import Model.DatosGenerales;
+import Model.GestorCurso;
+import Model.GestorDatosGenerales;
+import Model.GestorInscripcion;
+import Model.GestorMatriculado;
+import Model.Matriculado;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -21,36 +32,57 @@ public class EditarInscripcion extends javax.swing.JFrame {
      */
     
     private int instancia;
+    private String mailFiltro;
+//    private int cursoFiltro;
+    private int legajo;
+    private int idInscripcion;
+    GestorInscripcion gi;
+    GestorCurso gc;
+    GestorDatosGenerales dg;
+    GestorMatriculado gm ;
+
     
     public EditarInscripcion() {
         initComponents();
-        cargaCmb();
+        cargaCmbMesAnip();
         cargarDiaCombo();
+        gc = new GestorCurso();
+        try {
+            cargarComboCurso(gc.ComboCursoProximoyActuales());
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
         this.setLocationRelativeTo(null);
     }
 
     public EditarInscripcion (int x) {
         initComponents();
-        cargaCmb();
+        cargaCmbMesAnip();
         cargarDiaCombo();
+        gc = new GestorCurso();
+        try {
+            cargarComboCurso(gc.ComboCursoProximoyActuales());
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
         this.setLocationRelativeTo(null);
         
         instancia = x;
         
-//        switch (instancia){
-//            case 1://matriculado
-//                txtProfecion.setEnabled(true);
-//                txtLegajo.setEnabled(true);
-//                break;
-//            case 2://Familiar
-//                txtProfecion.setEnabled(false);
-//                txtLegajo.setEnabled(true);
-//                break;
-//            case 3://Otro
-//                txtProfecion.setEnabled(false);
-//                txtLegajo.setEnabled(false);
-//                break;
-//        }
+        switch (instancia){
+            case 1://matriculado
+                txtMailBusquea.setEnabled(false);
+                txtLegajo.setEnabled(true);
+            break;
+            case 2://Familiar
+                txtMailBusquea.setEnabled(true);
+                txtLegajo.setEnabled(true);
+            break;
+            case 3://Otro
+                txtMailBusquea.setEnabled(false);
+                txtLegajo.setEnabled(false);
+            break;
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +125,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Editar Inscripcion");
+        setTitle("Editar Inscripto");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(680, 330));
@@ -117,7 +149,11 @@ public class EditarInscripcion extends javax.swing.JFrame {
         jLabel2.setBounds(500, 150, 8, 17);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cmbCursos.setEnabled(false);
+        cmbCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCursosActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbCursos);
         cmbCursos.setBounds(270, 60, 380, 23);
 
@@ -154,7 +190,6 @@ public class EditarInscripcion extends javax.swing.JFrame {
         txtApellido.setBounds(382, 110, 270, 23);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtLegajo.setEnabled(false);
         getContentPane().add(txtLegajo);
         txtLegajo.setBounds(80, 60, 110, 23);
 
@@ -176,7 +211,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMail.setEnabled(false);
         getContentPane().add(txtMail);
-        txtMail.setBounds(86, 189, 460, 23);
+        txtMail.setBounds(86, 189, 560, 23);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
@@ -306,29 +341,16 @@ public class EditarInscripcion extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbAnioActionPerformed
 
     private void txtMailBusqueaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailBusqueaActionPerformed
-        switch (instancia){
-            case 1://matriculado
-            activDesactiv ();
-            txtProfecion.setEnabled(true);
-            txtLegajo.setEnabled(true);
-            break;
-            case 2://Familiar
-            activDesactiv ();
-            txtProfecion.setEnabled(false);
-            txtLegajo.setEnabled(true);
-            break;
-            case 3://Otro
-            activDesactiv ();
-            txtProfecion.setEnabled(false);
-            txtLegajo.setEnabled(false);
-            break;
-        }
-        //proseso almacenado que filtar
+       //proseso almacenado que filtar
     }//GEN-LAST:event_txtMailBusqueaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vEditarInscripcion = false;
     }//GEN-LAST:event_formWindowClosing
+
+    private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCursosActionPerformed
 
     
     @Override
@@ -407,8 +429,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
-
-      private void cargaCmb() {
+    private void cargaCmbMesAnip() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
         
@@ -431,7 +452,15 @@ public class EditarInscripcion extends javax.swing.JFrame {
         cmbMes.setModel(modelMes);
         
     }
+    public void cargarComboCurso(ArrayList listaGenerica) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
 
+        for (Object elemento : listaGenerica) {
+            model.addElement(elemento);
+        }
+
+        cmbCursos.setModel(model);
+    }
     private void cargarDiaCombo() {
         DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
         int dia = 1;
@@ -459,18 +488,112 @@ public class EditarInscripcion extends javax.swing.JFrame {
         }
         cmbDia.setModel(modelDia);
     }
-    private void activDesactiv (){
+    private void activDesactivMatriculado (){
+        btnModificar.setEnabled(true);
+    }
+    private void activDesactivFamilia (){
         txtNombre.setEnabled(true);
         txtApellido.setEnabled(true);
         txtDocumento.setEnabled(true);
-        txtMail.setEnabled(true);
         txtTelefono.setEnabled(true);
-        cmbCursos.setEnabled(true);
+        txtMail.setEnabled(true);
         cmbTipoDocumento.setEnabled(true);
         cmbDia.setEnabled(true);
         cmbMes.setEnabled(true);
         cmbAnio.setEnabled(true);
         btnModificar.setEnabled(true);
     }
+    private void activDesactivOtros (){
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtDocumento.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        txtMail.setEnabled(true);
+        cmbTipoDocumento.setEnabled(true);
+        cmbDia.setEnabled(true);
+        cmbMes.setEnabled(true);
+        cmbAnio.setEnabled(true);
+        btnModificar.setEnabled(true);
+    }
+    
+    private void filtoMailyLegajo (){
+        DatosGenerales datos = new DatosGenerales();
+        Matriculado mat = new Matriculado();
+        
+        gi = new GestorInscripcion();
+        dg = new GestorDatosGenerales();
+        gm = new GestorMatriculado();
+        
+        mailFiltro = txtMailBusquea.getText();
+        legajo = Integer.parseInt(txtLegajo.getText());
+        
+        switch (instancia){
+            case 1://matriculado
+            try {//obtenerMatriculadoxLegajo
+                activDesactivMatriculado ();
+                
+                mat = gm.obtenerMatriculadoxLegajo(legajo);
+                datos = dg.obtenerDatosGenerales(mat.getDatos());
+                
+                txtNombre.setText(datos.getNombre());
+                txtApellido.setText(datos.getApellido());
+                txtDocumento.setText("" + datos.getDni());
+                txtTelefono.setText(datos.getTelefono());
+                txtMail.setText(datos.getEmail());
+                txtProfecion.setText(mat.getProfesion());
+                cmbTipoDocumento.setSelectedItem(datos.getTipoDni());
+                String[] datosFecha = datos.getFechaNacimiento().split("-");
+                cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0]))-1900));
+                cmbMes.setSelectedIndex(Integer.parseInt(datosFecha[1])-1);
+                cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2])-1);
+                
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            break;
+            case 2://Familiar
+                try {
+                activDesactivFamilia ();
+                
+                datos = dg.obtenerDatosGeneralesXMail(mailFiltro);
+                
+                txtNombre.setText(datos.getNombre());
+                txtApellido.setText(datos.getApellido());
+                txtDocumento.setText("" + datos.getDni());
+                txtTelefono.setText(datos.getTelefono());
+                txtMail.setText(datos.getEmail());
+                cmbTipoDocumento.setSelectedItem(datos.getTipoDni());
+                String[] datosFecha = datos.getFechaNacimiento().split("-");
+                cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0]))-1900));
+                cmbMes.setSelectedIndex(Integer.parseInt(datosFecha[1])-1);
+                cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2])-1);
+                
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            break;
+            case 3://Otro
+                try {
+                activDesactivOtros();
+                
+                datos = dg.obtenerDatosGeneralesXMail(mailFiltro);
+                
+                txtNombre.setText(datos.getNombre());
+                txtApellido.setText(datos.getApellido());
+                txtDocumento.setText("" + datos.getDni());
+                txtTelefono.setText(datos.getTelefono());
+                txtMail.setText(datos.getEmail());
+                cmbTipoDocumento.setSelectedItem(datos.getTipoDni());
+                
+                String[] datosFecha = datos.getFechaNacimiento().split("-");
 
+                cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0]))-1900));
+                cmbMes.setSelectedIndex(Integer.parseInt(datosFecha[1])-1);
+                cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2])-1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            break;
+        }
+    }
 }

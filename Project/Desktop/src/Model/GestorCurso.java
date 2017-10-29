@@ -39,6 +39,7 @@ public class GestorCurso {
         dias[5] = "Viernes";
         dias[6] = "Sabado";
     }
+    
     public void agregar(Curso c) throws SQLException, ClassNotFoundException{
         forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion,user,pass);
@@ -78,9 +79,6 @@ public class GestorCurso {
         comando.close();
         con.close();
     }
-    
-    
-    
     
     public Curso obtenerCurso(int i) throws ClassNotFoundException, SQLException{
         Curso c = new Curso();
@@ -135,6 +133,7 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
+    
     public ArrayList<Curso> obtenerCursoEnCurso() throws SQLException, ClassNotFoundException {
         forName(ClasForName);
         ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -249,4 +248,6 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
+    
+    
 }

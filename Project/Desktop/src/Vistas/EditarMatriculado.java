@@ -31,6 +31,8 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
     /**
      * Creates new form EditarMatriculado
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public EditarMatriculado() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -202,7 +204,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Legajo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(250, 10, 61, 22);
+        jLabel1.setBounds(220, 10, 61, 22);
 
         btnMoificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnMoificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -223,7 +225,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdGo);
-        cmdGo.setBounds(430, 10, 70, 30);
+        cmdGo.setBounds(400, 10, 70, 30);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtLegajo.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -244,7 +246,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtLegajo);
-        txtLegajo.setBounds(330, 10, 92, 28);
+        txtLegajo.setBounds(300, 10, 92, 28);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
         jLabel15.setText("jLabel13");
