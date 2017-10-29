@@ -13,6 +13,7 @@ import Model.GestorDatosGenerales;
 import Model.GestorInscripcion;
 import Model.GestorMatriculado;
 import Model.Matriculado;
+import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,18 +33,23 @@ public class EditarInscripcion extends javax.swing.JFrame {
     /**
      * Creates new form EditarInscripcion
      */
-    
-    private int instancia;
-    private String mailFiltro;
-//    private int cursoFiltro;
-    private int legajo;
-    private int idInscripcion;
     GestorInscripcion gi;
     GestorCurso gc;
     GestorDatosGenerales dg;
     GestorMatriculado gm ;
     GestorCursante cg;
-
+    private int instancia;
+    private String mailFiltro;
+    private int legajo;
+    
+    private String nombre;
+    private String apellido;
+    private int tipoDni;
+    private int dni;
+    private String fechaNacimiento;
+    private String telefono;
+    private String email;
+    private String profecion;
     
     public EditarInscripcion() {
         initComponents();
@@ -171,6 +178,11 @@ public class EditarInscripcion extends javax.swing.JFrame {
         txtApellido.setBounds(382, 110, 270, 23);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLegajoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtLegajo);
         txtLegajo.setBounds(80, 60, 110, 23);
 
@@ -307,13 +319,74 @@ public class EditarInscripcion extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         switch (instancia){
             case 1://matriculado
+                try {
+                    if (esValidoMatriculado()){
+                        gm = new GestorMatriculado();
 
+                        nombre = txtNombre.getText();
+                        apellido = txtApellido.getText();
+                        tipoDni = ((TipoDni)cmbTipoDocumento.getSelectedItem()).getId();
+                        dni = Integer.parseInt(txtDocumento.getText());
+                        fechaNacimiento = cmbDia.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                        telefono = txtTelefono.getText();
+                        email = txtMail.getText();
+                        profecion = txtProfecion.getText();
+
+                        int id_mat = gm.obtenerMatriculado(Integer.parseInt(txtLegajo.getText()));
+                        int id_datos = dg.obtenerDatosPorLegajo(Integer.parseInt(txtLegajo.getText()));
+                        
+                        Matriculado m = new Matriculado(id_mat, legajo, id_datos, profecion);
+                        DatosGenerales d = new DatosGenerales(id_datos, nombre, apellido, tipoDni, dni, fechaNacimiento, telefono, email);
+
+                        gm.modificarMatriculado(m, d);
+                    }
+                } catch (SQLException | ClassNotFoundException ex) {
+                    Logger.getLogger(EditarInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             break;
             case 2://Familiar
+                try {
+                    if (esValidoMatriculado()){
+                        dg = new GestorDatosGenerales();
 
+                        nombre = txtNombre.getText();
+                        apellido = txtApellido.getText();
+                        tipoDni = ((TipoDni)cmbTipoDocumento.getSelectedItem()).getId();
+                        dni = Integer.parseInt(txtDocumento.getText());
+                        fechaNacimiento = cmbDia.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                        telefono = txtTelefono.getText();
+                        email = txtMail.getText();
+
+                        int id_datos = dg.obtenerDatosPorLegajo(Integer.parseInt(txtLegajo.getText()));
+                        DatosGenerales d = new DatosGenerales(id_datos, nombre, apellido, tipoDni, dni, fechaNacimiento, telefono, email);
+
+                        dg.modificarDatosGenerales(d);
+                    }
+                } catch (SQLException | ClassNotFoundException ex) {
+                    Logger.getLogger(EditarInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             break;
             case 3://Otro
+                try {
+                    if (esValidoMatriculado()){
+                        dg = new GestorDatosGenerales();
 
+                        nombre = txtNombre.getText();
+                        apellido = txtApellido.getText();
+                        tipoDni = ((TipoDni)cmbTipoDocumento.getSelectedItem()).getId();
+                        dni = Integer.parseInt(txtDocumento.getText());
+                        fechaNacimiento = cmbDia.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                        telefono = txtTelefono.getText();
+                        email = txtMail.getText();
+                        
+                        int id_datos = dg.obtenerDatosPorLegajo(Integer.parseInt(txtLegajo.getText()));
+                        DatosGenerales d = new DatosGenerales(id_datos, nombre, apellido, tipoDni, dni, fechaNacimiento, telefono, email);
+
+                        dg.modificarDatosGenerales(d);
+                    }
+                } catch (SQLException | ClassNotFoundException ex) {
+                    Logger.getLogger(EditarInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             break;
         }
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -327,12 +400,16 @@ public class EditarInscripcion extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbAnioActionPerformed
 
     private void txtMailBusqueaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailBusqueaActionPerformed
-       //proseso almacenado que filtar
+       filtoMailyLegajo();
     }//GEN-LAST:event_txtMailBusqueaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vEditarInscripcion = false;
     }//GEN-LAST:event_formWindowClosing
+
+    private void txtLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLegajoActionPerformed
+        filtoMailyLegajo();
+    }//GEN-LAST:event_txtLegajoActionPerformed
 
     
     @Override
@@ -462,9 +539,20 @@ public class EditarInscripcion extends javax.swing.JFrame {
         cmbDia.setModel(modelDia);
     }
     private void activDesactivMatriculado (){
+        txtLegajo.setEnabled(false);
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtDocumento.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        txtMail.setEnabled(true);
+        cmbTipoDocumento.setEnabled(true);
+        cmbDia.setEnabled(true);
+        cmbMes.setEnabled(true);
+        cmbAnio.setEnabled(true);
         btnModificar.setEnabled(true);
     }
     private void activDesactivFamilia (){
+        txtLegajo.setEnabled(false);
         txtNombre.setEnabled(true);
         txtApellido.setEnabled(true);
         txtDocumento.setEnabled(true);
@@ -575,5 +663,99 @@ public class EditarInscripcion extends javax.swing.JFrame {
                 }
             break;
         }
+    }
+    
+    private boolean esValidoMatriculado (){
+        if (txtNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio!");
+            return false;
+        }
+        if (txtProfecion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo profecion no debe estar vacio!");
+            return false;
+        }
+        if (txtApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio!");
+            return false;
+        }
+        if (txtMail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio!");
+            return false;
+        }
+        try {
+            Integer.parseInt(txtDocumento.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo documento debe ser un numero!");
+            return false;
+        }
+        
+        try {
+            Integer.parseInt(txtTelefono.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo telefono debe ser un numero!");
+            return false;
+        }
+        if(cmbTipoDocumento.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un tipo de documento!");
+            return false;
+        }
+        if(cmbDia.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un día!");
+            return false;
+        }
+        if(cmbMes.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un mes!");
+            return false;
+        }
+        if(cmbAnio.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un año!");
+            return false;
+        }  
+        return (true);
+    }
+    
+    private boolean esValido (){
+        if (txtNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio!");
+            return false;
+        }
+        if (txtApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio!");
+            return false;
+        }
+        if (txtMail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio!");
+            return false;
+        }
+        try {
+            Integer.parseInt(txtDocumento.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo documento debe ser un numero!");
+            return false;
+        }
+        
+        try {
+            Integer.parseInt(txtTelefono.getText());
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "El campo telefono debe ser un numero!");
+            return false;
+        }
+        if(cmbTipoDocumento.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un tipo de documento!");
+            return false;
+        }
+        if(cmbDia.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un día!");
+            return false;
+        }
+        if(cmbMes.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un mes!");
+            return false;
+        }
+        if(cmbAnio.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "Debe elegir un año!");
+            return false;
+        }  
+        return (true);
     }
 }

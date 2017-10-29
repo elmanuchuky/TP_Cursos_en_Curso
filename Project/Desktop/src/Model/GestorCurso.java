@@ -287,4 +287,18 @@ public class GestorCurso {
         con.close();
         return curso;
     }
+
+    public String obtenerFechaFinalCurso(String fechaInicio, int duracionTotalSemanas) throws SQLException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement stmtIdCu = con.prepareStatement("exec sp_obtener_fecha_fin ?,? ");
+        ResultSet queryCu = stmtIdCu.executeQuery();
+        String curso = "";
+        if (queryCu.next()) {
+            curso = queryCu.getString(1);
+        }
+        queryCu.close();
+        stmtIdCu.close();
+        con.close();
+        return curso;
+    }
 }
