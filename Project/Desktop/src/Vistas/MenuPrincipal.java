@@ -416,8 +416,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmiConsultaPreInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaPreInscripcionActionPerformed
         if (vConsultaPreInscripcion == false) {
             vConsultaPreInscripcion = true;
-            ConsultaPreInscripcion cpi = new ConsultaPreInscripcion();
-            cpi.setVisible(true);
+            ConsultaPreInscripcion cpi;
+            try {
+                cpi = new ConsultaPreInscripcion();
+                cpi.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jmiConsultaPreInscripcionActionPerformed
 
