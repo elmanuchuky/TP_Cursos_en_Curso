@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -88,13 +89,16 @@ public class GestorPago {
         ResultSet query = stmt.executeQuery();
 
         while (query.next()) {
-            VMPagosXMail datos = new VMPagosXMail();
+            if (query.getInt("Pago") > 0){
+            
+                VMPagosXMail datos = new VMPagosXMail();
 
-            datos.setNombre(query.getString("Curso"));
-            datos.setMonto(query.getFloat("Pago"));
-            datos.setFecha(query.getString("Fecha"));
+                datos.setNombre(query.getString("Curso"));
+                datos.setMonto(query.getFloat("Pago"));
+                datos.setFecha(query.getString("Fecha"));
 
-            lista.add(datos);
+                lista.add(datos);
+            }
         }
         query.close();
         stmt.close();
@@ -103,23 +107,26 @@ public class GestorPago {
     }
 
     //muestra lo adeudado filtrando por mail
-    public VMPagosXMail mostrarDeuda(String mail) throws ClassNotFoundException, SQLException {
+    public ArrayList<VMDeudasXMail> mostrarDeuda(String mail) throws ClassNotFoundException, SQLException {
+        ArrayList<VMDeudasXMail> lista = new ArrayList<>();
         forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement stmt = con.prepareStatement("sp_ver_adeudado_x_mail ?"); // idCurso, idCursante
         stmt.setString(1, mail);
         ResultSet query = stmt.executeQuery();
+            JOptionPane.showMessageDialog(null, "2");
 
-        VMPagosXMail datos = new VMPagosXMail();
-        if (query.next()) {
+        while (query.next()) {
+            VMDeudasXMail datos = new VMDeudasXMail();
 
             datos.setNombre(query.getString("Curso"));
             datos.setMonto(query.getFloat("Pago"));
+            lista.add(datos);
         }
         query.close();
         stmt.close();
         con.close();
-        return datos;
+        return lista;
     }
 // mostrar pagos de una persona con fecha y el monto
     public ArrayList<VMPagosXMail> PagosPorFecha(int i) throws ClassNotFoundException, SQLException {

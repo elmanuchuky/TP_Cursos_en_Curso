@@ -100,9 +100,7 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
         //Consulta con parametro de curso, solo miestra inscriptos en el curso
         GestorInscripcion gi = new GestorInscripcion();
         DefaultListModel lm = new DefaultListModel();
-JOptionPane.showMessageDialog(null, "2");
         try {
-JOptionPane.showMessageDialog(null, gi.listado(((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId()) + " - " + ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
             for (VMNombreDocumento elemento : gi.listado(((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId())) {
                 lm.addElement(elemento.toString());
             }
