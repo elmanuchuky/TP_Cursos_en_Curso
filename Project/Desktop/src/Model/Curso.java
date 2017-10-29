@@ -123,16 +123,12 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
     
-    
-    public String toStringDatosCompletos() {
-        return "Curso{" + "idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", temas=" + temas + ", duracionTotalSemanas=" + duracionTotalSemanas + ", costo=" + costo + ", cupo=" + cupo + ", aula=" + aula + ", diaHorario=" + diaHorario + ", cargaHoraria=" + cargaHoraria + '}';
+    public String toStringDatosCompletosTodos() {
+        return nombreCurso + ": " + descripcion + "\n" + temas + "\nFecha de inicio: " + fechaInicio + "    Duracion en semanas: " + duracionTotalSemanas + "   Carga horaria: " + cargaHoraria + "\nCupo: " + cupo + "    Costo: $" + costo + "\n\n";
     }
+    
     @Override
     public String toString(){
         return nombreCurso + " - "+ fechaInicio;
     }
-    
-    
-    
-    
 }
