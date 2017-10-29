@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -118,7 +120,7 @@ public class GestorCurso {
             c.setDescripcion(query.getString("Descripcion"));
             c.setFechaInicio(query.getString("Inicio"));
             c.setTemas(query.getString("Temas"));
-            c.setDuracionTotalSemanas(query.getInt("Cantidad de semana"));
+            c.setDuracionTotalSemanas(query.getInt("Cantidad de semanas"));
             c.setCosto(query.getDouble("Costo"));
             c.setCupo(query.getInt("Cupo"));
             c.setAula(query.getString("Aula"));
@@ -133,34 +135,39 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
-    
-    public ArrayList<Curso> obtenerCursoEnCurso() throws SQLException, ClassNotFoundException {
-        forName(ClasForName);
-        ArrayList<Curso> cursos = new ArrayList<Curso>();
-        Connection con = DriverManager.getConnection(conexion, user, pass);
-        Statement comando = con.createStatement();
-        ResultSet query = comando.executeQuery("SELECT * FROM vw_consultar_cursos_en_curso");
-        while (query.next()) {
-            Curso c = new Curso();
 
-            c.setIdCurso(query.getInt("Id"));
-            c.setNombreCurso(query.getString("Curso"));
-            c.setDescripcion(query.getString("Descripcion"));
-            c.setFechaInicio(query.getString("Inicio"));
-            c.setTemas(query.getString("Temas"));
-            c.setDuracionTotalSemanas(query.getInt("Cantidad de semana"));
-            c.setCosto(query.getDouble("Costo"));
-            c.setAula(query.getString("Aula"));
-            String dia = dias[query.getInt("Dia")];
-            String horario = query.getString("Horario");
-            c.setDiaHorario(dia +" "+ horario);
-            c.setCargaHoraria(query.getInt("Carga horaria por dia"));
-            cursos.add(c);
+    public ArrayList<Curso> obtenerCursoEnCurso() throws ClassNotFoundException {
+            ArrayList<Curso> cursos = new ArrayList<Curso>();
+        try {
+            forName(ClasForName);
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            Statement comando = con.createStatement();
+            ResultSet query = comando.executeQuery("SELECT * FROM vw_consultar_cursos_en_curso");
+            while (query.next()) {
+                Curso c = new Curso();
+                
+                c.setIdCurso(query.getInt("Id"));
+                c.setNombreCurso(query.getString("Curso"));
+                c.setDescripcion(query.getString("Descripcion"));
+                c.setFechaInicio(query.getString("Inicio"));
+                c.setTemas(query.getString("Temas"));
+                c.setDuracionTotalSemanas(query.getInt("Cantidad de semanas"));
+                c.setCosto(query.getDouble("Costo"));
+                c.setAula(query.getString("Aula"));
+                String dia = dias[query.getInt("Dia")];
+                String horario = query.getString("Horario");
+                c.setDiaHorario(dia +" "+ horario);
+                c.setCargaHoraria(query.getInt("Carga horaria por dia"));
+                cursos.add(c);
+            }
+            query.close();
+            comando.close();
+            con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
-        query.close();
-        comando.close();
-        con.close();
-        return cursos;
+            return cursos;
     }
     
     public ArrayList<Curso> TodosCursos() throws SQLException, ClassNotFoundException{

@@ -5,8 +5,15 @@
  */
 package Vistas;
 
+import Model.Curso;
+import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +26,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
      */
     public ConsultaCurso() {
         initComponents();
+        cargarTodos();
         this.setLocationRelativeTo(null);
     }
 
@@ -33,9 +41,9 @@ public class ConsultaCurso extends javax.swing.JFrame {
 
         rbtTodos = new javax.swing.JRadioButton();
         rbtProximo = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jltListado = new javax.swing.JList();
         rbtActuales = new javax.swing.JRadioButton();
+        txtaCursos = new javax.swing.JScrollPane();
+        jtxtaCursos = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -73,13 +81,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rbtProximo);
-        rbtProximo.setBounds(160, 10, 89, 25);
-
-        jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jScrollPane1.setViewportView(jltListado);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 34, 460, 290);
+        rbtProximo.setBounds(160, 10, 93, 25);
 
         rbtActuales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtActuales.setText("Actuales");
@@ -92,6 +94,15 @@ public class ConsultaCurso extends javax.swing.JFrame {
         getContentPane().add(rbtActuales);
         rbtActuales.setBounds(80, 10, 90, 25);
 
+        jtxtaCursos.setColumns(20);
+        jtxtaCursos.setLineWrap(true);
+        jtxtaCursos.setRows(5);
+        jtxtaCursos.setEnabled(false);
+        txtaCursos.setViewportView(jtxtaCursos);
+
+        getContentPane().add(txtaCursos);
+        txtaCursos.setBounds(10, 40, 440, 270);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/purple-polygonal-960x540.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 480, 430);
@@ -101,17 +112,24 @@ public class ConsultaCurso extends javax.swing.JFrame {
 
     private void rbtTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtTodosActionPerformed
         truFalsRaddio(1);
+        if (rbtTodos.isSelected()){
+            cargarTodos();
+        }
         //Llamar a la consulta que muestre todos los cursos
     }//GEN-LAST:event_rbtTodosActionPerformed
 
     private void rbtProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtProximoActionPerformed
         truFalsRaddio(2);
-        //Llamar a la consulta cursos proximos
+        if (rbtProximo.isSelected()){
+            cargarProximos();
+        }        //Llamar a la consulta cursos proximos
     }//GEN-LAST:event_rbtProximoActionPerformed
 
     private void rbtActualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtActualesActionPerformed
         truFalsRaddio(3);
-        //Llamar a la consulta cursos Actuales
+        if (rbtActuales.isSelected()){
+            cargarActuales();
+        }        //Llamar a la consulta cursos Actuales
     }//GEN-LAST:event_rbtActualesActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -163,11 +181,11 @@ public class ConsultaCurso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList jltListado;
+    private javax.swing.JTextArea jtxtaCursos;
     private javax.swing.JRadioButton rbtActuales;
     private javax.swing.JRadioButton rbtProximo;
     private javax.swing.JRadioButton rbtTodos;
+    private javax.swing.JScrollPane txtaCursos;
     // End of variables declaration//GEN-END:variables
 
 
@@ -189,5 +207,40 @@ public class ConsultaCurso extends javax.swing.JFrame {
                 rbtActuales.setSelected(true);
                 break;
        }
+    }
+
+    private void cargarTodos() {
+        GestorCurso gc = new GestorCurso();
+        jtxtaCursos.setText("");
+        try {
+            for (Curso elemento : gc.TodosCursos()) {
+                jtxtaCursos.setText(jtxtaCursos.getText() + elemento.toStringDatosCompletosTodos());
+            }
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
+    }
+
+    private void cargarActuales() {
+        GestorCurso gc = new GestorCurso();
+        jtxtaCursos.setText("");
+        try {
+            for (Curso elemento : gc.obtenerCursoEnCurso()) {
+                jtxtaCursos.setText(jtxtaCursos.getText() + elemento.toStringDatosCompletosTodos());
+            }
+        } catch (ClassNotFoundException ex) {
+        }
+    }
+
+    private void cargarProximos() {
+        GestorCurso gc = new GestorCurso();
+        jtxtaCursos.setText("");
+        try {
+            for (Curso elemento : gc.proximosCursos()) {
+                jtxtaCursos.setText(jtxtaCursos.getText() + elemento.toStringDatosCompletosTodos());
+            }
+        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+        }
     }
 }

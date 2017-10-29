@@ -5,9 +5,19 @@
  */
 package Vistas;
 
+import Model.ComboNuevoCursante;
+import Model.GestorInscripcion;
 import Model.GestorPago;
+import Model.VMDeudasXMail;
+import Model.VMNombreDocumento;
+import Model.VMPagosXMail;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -103,6 +113,8 @@ public class ConsultaPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
+        JOptionPane.showMessageDialog(null, "2");
+
         cargarListas();
     }//GEN-LAST:event_txtMailActionPerformed
 
@@ -168,7 +180,22 @@ public class ConsultaPago extends javax.swing.JFrame {
  
     private void cargarListas() {
         GestorPago gp = new GestorPago();
-        
+        GestorInscripcion gi = new GestorInscripcion();
+        DefaultListModel lm1 = new DefaultListModel();
+        DefaultListModel lm = new DefaultListModel();
+        try {
+            for (VMDeudasXMail elemento : gp.mostrarDeuda(txtMail.getText())) {
+                lm1.addElement(elemento.toString());
+            }
+            jltListado1.setModel(lm1);
+            for (VMPagosXMail elemento : gp.VerPagosPorMail(txtMail.getText())) {
+                lm.addElement(elemento.toString());
+            }
+            jltListado.setModel(lm);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
- 
 }

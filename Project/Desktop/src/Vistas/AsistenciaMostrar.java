@@ -14,6 +14,16 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import com.itextpdf.text.*;
+import com.itextpdf.text.Font.FontStyle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPHeaderCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfString;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  *
@@ -91,6 +101,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTablaAsistencias = new javax.swing.JTable();
         cmbCursos = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -156,6 +167,15 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
         cmbCursos.setBounds(68, 11, 330, 23);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(80, 30, 73, 23);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -250,9 +270,57 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         MenuPrincipal.vAsistenciasMostrar = false;
     }//GEN-LAST:event_formWindowClosing
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas,String curso){
+        String nombreArchivo = "";
+        try {
+            Document doc = new Document(PageSize.A4.rotate());
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\Certificado"+alumno+".pdf"));
+
+            doc.open();
+
+//            //seteamos el titulo
+//            Font letraTitulo = FontFactory.getFont("Verdana", 24, Font.UNDERLINE);
+//            Paragraph title = new Paragraph("Certificado", letraTitulo);
+//            title.setAlignment(Element.ALIGN_CENTER);
+            //seteamos la imagen de certificado que utilizaremos
+            com.itextpdf.text.Image certificado = com.itextpdf.text.Image.getInstance("src/Imagenes/certificado.jpg");
+            float width = doc.getPageSize().getWidth();
+            float height = doc.getPageSize().getHeight();
+            writer.getDirectContentUnder().addImage(certificado, width, 0, 0, height, 0, 0);
+
+            
+            //seteamos el contenido del mensaje
+            Font letraContenido = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
+            Paragraph contenido = new Paragraph("  ", letraContenido);
+            Paragraph contenido1 = new Paragraph("Se hace constar que el alumno "+alumno+", con Documento Nro: "+documento+"\n Asistió y aprobó el curso "+curso, letraContenido);
+            contenido1.setIndentationLeft(90);
+            contenido1.setSpacingBefore(120);
+            
+            //seteamos el contenido del mensaje
+            Font letraContenido2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
+            Paragraph contenido2 = new Paragraph("con una duracion de "+horas+" horas semanales  \n desde: "+fechaInicio+"hasta: "+fechaCierre, letraContenido2);
+            contenido2.setIndentationLeft(0);
+            contenido2.setSpacingBefore(70);
+            contenido2.setAlignment(Element.ALIGN_CENTER);
+            
+            //pasamos al documento (por orden) las cosas que deseamos mostrar
+            doc.add(contenido);
+            doc.add(contenido1);
+            doc.add(contenido2);
+
+            doc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (DocumentException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -342,6 +410,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbCursos;
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbMes;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

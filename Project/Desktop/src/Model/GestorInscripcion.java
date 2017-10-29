@@ -171,6 +171,27 @@ public class GestorInscripcion {
         con.close();
         return lista;
     }
+     public ArrayList<VMPresinscripto> listadoPreinscriptos() throws ClassNotFoundException, SQLException {
+        ArrayList<VMPresinscripto> lista = new ArrayList<>();
+        forName(ClasForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement stmtIns = con.prepareStatement("SELECT * FROM vw_preinscriptos_cursos_x_comenzar_o_en_curso ORDER BY 4, 1, 2"); // idCurso, idCursante
+        ResultSet query = stmtIns.executeQuery();
+
+        while (query.next()) {
+            VMPresinscripto datos = new VMPresinscripto();
+            
+            datos.setNombreCompleto(query.getString("Cursante"));
+            datos.setDocumento(query.getString("Documento"));
+            datos.setCurso(query.getString("Curso"));
+            datos.setPagado(query.getDouble("Monto Pagado"));
+            lista.add(datos);
+        }
+        query.close();
+        stmtIns.close();
+        con.close();
+        return lista;
+    }
     
     
 }

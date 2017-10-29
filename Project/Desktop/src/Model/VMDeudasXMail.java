@@ -7,12 +7,11 @@ package Model;
 
 /**
  *
- * @author Gabriel
+ * @author Fernando M. de Lima
  */
-public class VMPagosXMail {
+public class VMDeudasXMail {
     String nombre;
     float monto;
-    String fecha;
 
     public String getNombre() {
         return nombre;
@@ -30,26 +29,18 @@ public class VMPagosXMail {
         this.monto = monto;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
 
     
-    public VMPagosXMail() {
+    public VMDeudasXMail() {
     }
 
-    public VMPagosXMail(String nombre, float monto, String fecha) {
+    public VMDeudasXMail(String nombre, float monto) {
         this.nombre = nombre;
         this.monto = monto;
-        this.fecha = fecha;
     }
 
     @Override
     public String toString() {
-        return nombre + " - $" + monto + " - " + fecha;
+        return nombre + " - $" + monto;
     }
 }
