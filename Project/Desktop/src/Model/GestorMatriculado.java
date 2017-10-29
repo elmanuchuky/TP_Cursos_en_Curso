@@ -26,7 +26,7 @@ public class GestorMatriculado {
     String pass = adv.getPass();
     String ClasForName = adv.getClasForName();
 
-//agrega un nuevo matriculado
+    //agrega un nuevo matriculado
     public void agregarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         GestorDatosGenerales gd = new GestorDatosGenerales();
@@ -41,7 +41,7 @@ public class GestorMatriculado {
         con.close();
     }
     
-//agrega un nuevo matriculado
+    //agrega un nuevo matriculado
     public void modificarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         GestorDatosGenerales gd = new GestorDatosGenerales();
@@ -71,4 +71,20 @@ public class GestorMatriculado {
         con.close();
         return idMatriculado;
     }
+    
+    public Matriculado obtenerMatriculadoxLegajo (int legajo) throws SQLException{
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmtId = con.createStatement();
+        ResultSet query = stmtId.executeQuery("SELECT dg.id_datos_generales, m.profesion FROM Datos_Generales dg join Matriculados m ON m.id_datos_generales = dg.id_datos_generales WHERE m.legajo_matriculado = " + legajo);
+        Matriculado m = new Matriculado();
+        if (query.next()) {
+            m.setProfesion(query.getString("profesion"));
+            m.setDatos(query.getInt("id_datos_generales"));
+        }
+        query.close();
+        stmtId.close();
+        con.close();
+        return m;
+    }
+    
 }

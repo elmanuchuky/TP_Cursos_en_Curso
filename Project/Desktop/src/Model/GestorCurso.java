@@ -41,6 +41,7 @@ public class GestorCurso {
         dias[5] = "Viernes";
         dias[6] = "Sabado";
     }
+    
     public void agregar(Curso c) throws SQLException, ClassNotFoundException{
         forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion,user,pass);
@@ -80,9 +81,6 @@ public class GestorCurso {
         comando.close();
         con.close();
     }
-    
-    
-    
     
     public Curso obtenerCurso(int i) throws ClassNotFoundException, SQLException{
         Curso c = new Curso();
@@ -137,6 +135,7 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
+
     public ArrayList<Curso> obtenerCursoEnCurso() throws ClassNotFoundException {
             ArrayList<Curso> cursos = new ArrayList<Curso>();
         try {
@@ -255,5 +254,19 @@ public class GestorCurso {
         comando.close();
         con.close();
         return cursos;
+    }
+    
+    public String obtenerStringCurso (int idCuersante) throws SQLException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmtIdCu = con.createStatement();
+        ResultSet queryCu = stmtIdCu.executeQuery("SELECT c.nombre +' '+ c.fecha_inicio as 'curso' FROM Inscripciones i JOIN Cursos c on (c.id_curso = i.id_inscripcion) WHERE i.id_cursante = " +idCuersante );
+        String curso = "";
+        if (queryCu.next()) {
+            curso = queryCu.getString("curso");
+        }
+        queryCu.close();
+        stmtIdCu.close();
+        con.close();
+        return curso;
     }
 }
