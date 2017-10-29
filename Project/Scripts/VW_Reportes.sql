@@ -1,6 +1,6 @@
-/*Consultar cursos próximos de inicio con respecto a la fecha actual 
+/*Consultar cursos prï¿½ximos de inicio con respecto a la fecha actual 
 (> getdate()), debe mostrar el nombre del curso, la fecha de inicio, 
-la duración total en semanas, el costo, día y horario y la carga 
+la duraciï¿½n total en semanas, el costo, dï¿½a y horario y la carga 
 horaria del mismo*/
 --Todos
 GO
@@ -41,7 +41,7 @@ GROUP BY p.id_inscripcion
 GO
 CREATE VIEW vw_preinscriptos_cursos_x_comenzar_o_en_curso
 AS
-SELECT c.nombre Curso, dg.apellido + ' ' + dg.nombre Cursante, td.tipo + ' ' + dg.dni Documento, c.fecha_inicio [Fecha de inicio], vm.[Monto pagado] [Monto pagado], c.costo [Total del curso]
+SELECT c.nombre Curso, dg.apellido + ' ' + dg.nombre Cursante, td.tipo + ' ' + CONVERT(varchar(50), dg.dni) Documento, c.fecha_inicio [Fecha de inicio], vm.[Monto pagado] [Monto pagado], c.costo [Total del curso]
 FROM Inscripciones i join Cursos c on c.id_curso = i.id_curso join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales join Tipos_Dni td on td.id_tipo_dni = dg.id_tipo_dni join vw_listar_pagos_totales vm on vm.Id = i.id_inscripcion
 WHERE i.id_estado = 1 AND GETDATE() < c.fecha_inicio
 ORDER BY 4, 1, 2
@@ -75,7 +75,7 @@ pago y el 80% de asistencia (validar que este aprobado,
 precio_total - monto adeudado = 0 y porcentaje de asistencia ok) 
 mostrando apellido y nombre del inscripto, curso al que pertenece y 
 porcentaje de asistencia al mismo //esto ultimo puede ser opcional 
-dar opinión*/
+dar opiniï¿½n*/
 GO
 CREATE VIEW vw_consultar_inscriptos_aptos_certificado
 AS
@@ -85,8 +85,8 @@ WHERE i.id_inscripcion in (SELECT vw.id_inscripcion FROM vw_inscripciones_con_pr
 AND i.id_inscripcion in (SELECT vw.id_inscripcion FROM vw_inscripciones_con_pago_completo vw)
 
 /*Debe permitir consultar todos los matriculados registrados en el 
-colegio de Informática, mostrando el legajo, todos sus datos personales 
-y la profesión*/
+colegio de Informï¿½tica, mostrando el legajo, todos sus datos personales 
+y la profesiï¿½n*/
 GO
 CREATE VIEW vw_consultar_matriculados
 AS
