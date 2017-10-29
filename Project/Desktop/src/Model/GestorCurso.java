@@ -256,4 +256,17 @@ public class GestorCurso {
         con.close();
         return cursos;
     }
+    
+    public String obtenerFechaFinalizacionCurso (String fecha, int cantidad) throws ClassNotFoundException, SQLException{
+        forName(ClasForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement comando = con.prepareStatement("exec sp_obtener_fecha_fin ?, ?");
+        comando.setString(1, fecha);
+        comando.setInt(2, cantidad);
+        ResultSet consulta = comando.executeQuery();
+        if(consulta.next()){
+            return consulta.getString(1);
+        }
+        return "";
+    }
 }
