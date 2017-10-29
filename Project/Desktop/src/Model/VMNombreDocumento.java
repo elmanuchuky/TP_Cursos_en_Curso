@@ -39,6 +39,6 @@ public class VMNombreDocumento {
 
     @Override
     public String toString() {
-        return "VMNombreDocumento{" + "nombreCompleto=" + nombreCompleto + ", documento=" + documento + '}';
+        return nombreCompleto + "  -  " + documento;
     }
 }

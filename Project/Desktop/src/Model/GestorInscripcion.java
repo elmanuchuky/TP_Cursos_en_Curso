@@ -161,7 +161,7 @@ public class GestorInscripcion {
             VMNombreDocumento datos = new VMNombreDocumento();
             
             datos.setNombreCompleto(query.getString("Inscriptio"));
-            datos.setDocumento(query.getString("Docuento"));
+            datos.setDocumento(query.getString("Documento"));
             
             lista.add(datos);
         }
