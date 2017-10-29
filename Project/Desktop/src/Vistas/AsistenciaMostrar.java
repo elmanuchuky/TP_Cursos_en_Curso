@@ -5,7 +5,10 @@
  */
 package Vistas;
 
+import Model.Curso;
+import Model.DatosGenerales;
 import Model.GestorCurso;
+import Model.GestorDatosGenerales;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -32,11 +35,13 @@ import java.io.IOException;
 public class AsistenciaMostrar extends javax.swing.JFrame {
 
     GestorCurso g;
+    GestorDatosGenerales gd;
     private int interfas;
 
     public AsistenciaMostrar() {
         initComponents();
         g = new GestorCurso();
+        gd = new GestorDatosGenerales();
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -271,11 +276,26 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        try {
+            Curso c = g.obtenerCurso(((Curso)cmbCursos.getSelectedItem()).getIdCurso());
+            DatosGenerales d = gd.obtenerDatosGeneralesXMail(txtMail.getText());
+            String alumno = d.getNombre() + " " + d.getApellido();
+            String documento = ""+ d.getDni();
+            String fechaInicio = c.getFechaInicio();
+            String fechaFinal = g.obtenerFechaFinalCurso(c.getFechaInicio(),c.getDuracionTotalSemanas());
+//            String[] datoshora = c.getDiaHorario().split(" |:");
+            String horas = ""+c.getCargaHoraria();
+            String nombreCurso = c.getDescripcion();
+            generarCertificado(alumno,documento,fechaInicio,fechaFinal,horas,nombreCurso);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas,String curso){
-        String nombreArchivo = "";
         try {
             Document doc = new Document(PageSize.A4.rotate());
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\Certificado"+alumno+".pdf"));
