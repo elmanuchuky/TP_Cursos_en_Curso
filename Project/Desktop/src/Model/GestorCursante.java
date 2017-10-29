@@ -81,4 +81,18 @@ public class GestorCursante {
             stmtCu.executeUpdate();
             stmtCu.close();
     }
+    
+    public int obtenerIdCursantexIdDatosGenerales (int idDatos) throws SQLException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmtIdCu = con.createStatement();
+        ResultSet queryCu = stmtIdCu.executeQuery("SELECT c.id_cursante FROM Cursantes c JOIN Datos_Generales dt on (c.id_datos_generales = dt.id_datos_generales) WHERE c.id_datos_generales = " +idDatos );
+        int Id = 0;
+        if (queryCu.next()) {
+            Id = queryCu.getInt("id_cursante");
+        }
+        queryCu.close();
+        stmtIdCu.close();
+        con.close();
+        return Id;
+    }
 }

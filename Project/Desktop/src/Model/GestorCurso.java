@@ -249,5 +249,17 @@ public class GestorCurso {
         return cursos;
     }
     
-    
+    public String obtenerStringCurso (int idCuersante) throws SQLException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmtIdCu = con.createStatement();
+        ResultSet queryCu = stmtIdCu.executeQuery("SELECT c.nombre +' '+ c.fecha_inicio as 'curso' FROM Inscripciones i JOIN Cursos c on (c.id_curso = i.id_inscripcion) WHERE i.id_cursante = " +idCuersante );
+        String curso = "";
+        if (queryCu.next()) {
+            curso = queryCu.getString("curso");
+        }
+        queryCu.close();
+        stmtIdCu.close();
+        con.close();
+        return curso;
+    }
 }
