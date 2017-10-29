@@ -5,7 +5,10 @@
  */
 package Vistas;
 
+import Model.ComboNuevoCursante;
 import Model.GestorCurso;
+import Model.GestorInscripcion;
+import Model.VMNombreDocumento;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -13,6 +16,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +26,7 @@ import javax.swing.DefaultComboBoxModel;
 public class ConsultaInscripcion extends javax.swing.JFrame {
 
     GestorCurso g;
+    
     public ConsultaInscripcion() {
         initComponents();
         g = new GestorCurso();
@@ -92,6 +98,20 @@ public class ConsultaInscripcion extends javax.swing.JFrame {
 
     private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
         //Consulta con parametro de curso, solo miestra inscriptos en el curso
+        GestorInscripcion gi = new GestorInscripcion();
+        DefaultListModel lm = new DefaultListModel();
+JOptionPane.showMessageDialog(null, "2");
+        try {
+JOptionPane.showMessageDialog(null, gi.listado(((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId()) + " - " + ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+            for (VMNombreDocumento elemento : gi.listado(((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId())) {
+                lm.addElement(elemento.toString());
+            }
+            jltListado.setModel(lm);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmbCursosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
