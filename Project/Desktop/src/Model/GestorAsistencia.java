@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -196,10 +197,9 @@ public class GestorAsistencia {
         forName(classForName);
         ArrayList<String> alumnos = new ArrayList<>();
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        PreparedStatement comando = con.prepareStatement("exec sp_listado_cursantes_x_curso ?");
+        PreparedStatement comando = con.prepareStatement("exec sp_listado_cursantes_x_curso_nuevo ?");
         comando.setInt(1, idCurso);
         ResultSet consulta = comando.executeQuery();
-        alumnos.add("Alumnno");
         while (consulta.next()) {
             alumnos.add(consulta.getString("Cursante"));
         }
@@ -208,5 +208,21 @@ public class GestorAsistencia {
         con.close();
         
         return alumnos;
+    }    
+    public int obtenerCursantesPorCursoCantidad(int idCurso) throws ClassNotFoundException, SQLException {
+        int i = 0;
+        forName(classForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement comando = con.prepareStatement("exec sp_listado_cursantes_x_curso_nuevo ?");
+        comando.setInt(1, idCurso);
+        ResultSet consulta = comando.executeQuery();
+        while (consulta.next()) {
+            i++;
+        }
+        consulta.close();
+        comando.close();
+        con.close();
+        
+        return i;
     }
 }

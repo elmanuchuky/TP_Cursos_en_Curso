@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Model.ComboCurso;
 import Model.GestorAsistencia;
 import Model.GestorCurso;
 import java.awt.Image;
@@ -38,17 +39,17 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
 
         initComponents();
-        cargarTablaAsistencia();
-        g = new GestorCurso();
         ga = new GestorAsistencia();
+        g = new GestorCurso();
         try {
+            
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ga = new GestorAsistencia();
+        cargarTablaAsistencia();
         fecha = new GregorianCalendar();
         anio = fecha.get(Calendar.YEAR);
         mes = fecha.get(Calendar.MONTH);
@@ -99,6 +100,11 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         jLabel3.setBounds(10, 23, 36, 17);
 
         cmbCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCursoActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbCurso);
         cmbCurso.setBounds(64, 20, 283, 23);
 
@@ -134,22 +140,17 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btRegistrar.setText("Registrar");
-        btRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRegistrarActionPerformed(evt);
-            }
-        });
         getContentPane().add(btRegistrar);
         btRegistrar.setBounds(280, 330, 107, 25);
 
         lblDiaAsistencia.setText("Asistencia para el dia");
         lblDiaAsistencia.setToolTipText("");
         getContentPane().add(lblDiaAsistencia);
-        lblDiaAsistencia.setBounds(10, 335, 101, 14);
+        lblDiaAsistencia.setBounds(10, 335, 122, 16);
 
         btnModificar.setText("Modificar");
         getContentPane().add(btnModificar);
-        btnModificar.setBounds(190, 330, 75, 23);
+        btnModificar.setBounds(190, 330, 85, 25);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -179,6 +180,18 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btRegistrarActionPerformed
+
+    private void cmbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursoActionPerformed
+        try {
+            // TODO add your handling code here:
+            cargarTablaAsistencia();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_cmbCursoActionPerformed
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
@@ -242,18 +255,17 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void cargarTablaAsistencia() throws ClassNotFoundException, SQLException {
-        Object[][] data = new Object[5][2];
+        int count = 0;
+        count = ga.obtenerCursantesPorCursoCantidad(((ComboCurso)(cmbCurso.getSelectedItem())).getId());
+        Object[][] data = new Object[count][2];
         int i = 0;
-        for (int j = 0; j < 5; j++) {
-            data[i][0] = "" + j;
+        for (String s: ga.obtenerCursantesPorCurso(((ComboCurso)(cmbCurso.getSelectedItem())).getId())) {
+            data[i][0] = s;
             data[i][1] = false;
             i++;
         }
-        //DefaultTableModel model = new DefaultTableModel(data, cols) {
 
-        //tRegistrarAsistencia.setModel(data);
-        /*
-        String[] cols = {"String", "Boolean"};
+        String[] cols = {"Alumnos", "Presente"};
         DefaultTableModel model = new DefaultTableModel(data, cols) {
             @Override
             public Class<?> getColumnClass(int column) {
@@ -265,9 +277,9 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
             }
         };
 
-        tRegistrarAsistencia = new JTable(model);
-        JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
-        */
+        tRegistrarAsistencia.setModel(model);//new JTable(model);
+        //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
+
     }
 
     public void cargarComboCurso(ArrayList listaGenerica) {

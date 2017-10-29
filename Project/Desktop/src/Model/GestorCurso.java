@@ -217,6 +217,24 @@ public class GestorCurso {
         return cursos;
     }
 
+    public ArrayList<ComboCurso> ComboCursosNegro() throws SQLException, ClassNotFoundException {
+        forName(ClasForName);
+        ArrayList<ComboCurso> cursos = new ArrayList<ComboCurso>();
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("SELECT c.id_curso Id, c.nombre Curso FROM cursos c");
+        while (query.next()) {
+            ComboCurso c = new ComboCurso();
+            c.setId(query.getInt("Id"));
+            c.setNombre(query.getString("Curso"));
+            cursos.add(c);
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return cursos;
+    }
+
     public ArrayList<ComboNuevoCursante> ComboCursosIncribir() throws SQLException, ClassNotFoundException {
         forName(ClasForName);
         ArrayList<ComboNuevoCursante> cursos = new ArrayList<ComboNuevoCursante>();

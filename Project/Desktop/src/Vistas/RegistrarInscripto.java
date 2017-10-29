@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Model.ComboCurso;
 import Model.ComboNuevoCursante;
 import Model.DatosGenerales;
 import java.awt.Image;
@@ -49,7 +50,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         g = new GestorCurso();
         GestorTipoDni gtd = new GestorTipoDni();
         try {            
-            cargarComboCurso(g.ComboCursosIncribir());
+            cargarComboCurso(g.ComboCursosNegro());// CAMBIAR
             cargarComboTipoDni(gtd.obtenerTodos());
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
@@ -321,7 +322,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        gi.agregarInscripcionOtro(dg, ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                        gi.agregarInscripcionOtro(dg, ((ComboCurso)cmbCursos.getSelectedItem()).getId());
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     }
