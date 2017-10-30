@@ -63,7 +63,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         cargaCmb();
         g = new GestorCurso();
         try {
-            
+
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
@@ -325,16 +325,16 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
                 break;
             case 2: {
-            try {
-                //Curso & Fecha
-                cargarCursoYFecha();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    //Curso & Fecha
+                    cargarCursoYFecha();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        }
-                break;
+            break;
             case 3://Curso & Alumno
                 break;
         }
@@ -533,4 +533,70 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));       
     }
 
+    public void cargarCurso() {
+        try {
+            lista = ga.obtenerAsistenciasPorCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
+            DefaultTableModel model = new DefaultTableModel();
+            Object[] nombreColumna = new ArrayList[lista.get(0).size()];
+            Object[] contenido = new ArrayList[lista.get(0).size()];
+            for (ArrayList<String> arrayList : lista) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (i == 0) {
+                        nombreColumna[i] = arrayList.get(i);
+                    } else {
+                        contenido[i] = arrayList.get(i);
+                    }
+                }
+                model.addRow(contenido);
+            }
+            model.setColumnIdentifiers(nombreColumna);
+            jtTablaAsistencias.setModel(model);
+//                    public void cargarTabla(ArrayList listaGenerica)
+//    {
+//        DefaultTableModel model = new DefaultTableModel();
+//        String [] nombresColumnas = new String[2];
+//        nombresColumnas[0] = "Numero";
+//        nombresColumnas[1] = "Nombre";
+//        model.setColumnIdentifiers(nombresColumnas);
+//        
+//        for (Object item : listaGenerica) {
+//            Persona p = (Persona)item;
+//            Object [] registro = new Object[2];
+//            registro[0] = p.getId();
+//            registro[1] = p.getNombre();
+//            model.addRow(registro);
+//        }
+//        
+//        tabla.setModel(model);
+//    }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void cargarCursoCursante() {
+        try {
+            lista = ga.obtenerAsistenciasPorCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
+            DefaultTableModel model = new DefaultTableModel();
+            Object[] nombreColumna = new ArrayList[lista.get(0).size()];
+            Object[] contenido = new ArrayList[lista.get(0).size()];
+            int i = 0;
+            for (ArrayList<String> arrayList : lista) {
+                nombreColumna[i] = arrayList.get(0);
+                contenido[i] = arrayList.get((1));
+                i++;
+            }
+            model.setColumnIdentifiers(nombreColumna);
+            model.addRow(contenido);
+            jtTablaAsistencias.setModel(model);
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
