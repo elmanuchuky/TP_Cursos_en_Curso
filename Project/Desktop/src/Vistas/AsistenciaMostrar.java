@@ -11,6 +11,7 @@ import Model.DatosGenerales;
 import Model.GestorAsistencia;
 import Model.GestorCurso;
 import Model.GestorDatosGenerales;
+import Model.VMCertificado;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -40,6 +41,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     GestorCurso g;
     GestorDatosGenerales gd;
     ArrayList<ArrayList<String>> lista;
+    ArrayList<VMCertificado> vc;
     GestorAsistencia ga;
     private int interfas;
 
@@ -201,7 +203,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(80, 30, 73, 23);
+        jButton1.setBounds(610, 410, 73, 23);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -308,16 +310,17 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            Curso c = g.obtenerCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
-            DatosGenerales d = gd.obtenerDatosGeneralesXMail(txtMail.getText());
-            String alumno = d.getNombre() + " " + d.getApellido();
-            String documento = "" + d.getDni();
+            vc = ga.obtenerDatosCertificado();
+            for (VMCertificado c : vc) {
+            String alumno = c.getAlumno();
+            String documento = c.getDocumento();
             String fechaInicio = c.getFechaInicio();
-            String fechaFinal = g.obtenerFechaFinalCurso(c.getFechaInicio(), c.getDuracionTotalSemanas());
-        //    String[] datoshora = c.getDiaHorario().split(" |:");
-            String horas = "" + c.getCargaHoraria();
-            String nombreCurso = c.getDescripcion();
+            String fechaFinal = c.getFechaFinal();
+            String horas = c.getHoras();
+            String nombreCurso = c.getNombreCurso();
+                
             generarCertificado(alumno, documento, fechaInicio, fechaFinal, horas, nombreCurso);
+            }
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
