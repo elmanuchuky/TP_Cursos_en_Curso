@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,12 +37,15 @@ public class EditarCurso extends javax.swing.JFrame {
     String hora;
     int cargaHoraria;
     
+    final JDialog dialog = new JDialog();
+    
     public EditarCurso() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
         this.setLocationRelativeTo(null);
+        dialog.setAlwaysOnTop(true); 
         /*
         try {
             cargarCursosFiltro(g.TodosCursos());
@@ -114,12 +118,12 @@ public class EditarCurso extends javax.swing.JFrame {
         txtAula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtAula.setEnabled(false);
         getContentPane().add(txtAula);
-        txtAula.setBounds(70, 290, 70, 23);
+        txtAula.setBounds(70, 280, 70, 30);
 
         txtDuracion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDuracion.setEnabled(false);
         getContentPane().add(txtDuracion);
-        txtDuracion.setBounds(150, 250, 70, 23);
+        txtDuracion.setBounds(150, 233, 70, 30);
 
         jScrollPane1.setEnabled(false);
 
@@ -130,12 +134,12 @@ public class EditarCurso extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtaTema);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(90, 170, 470, 60);
+        jScrollPane1.setBounds(90, 160, 470, 60);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNombre.setEnabled(false);
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(90, 52, 470, 23);
+        txtNombre.setBounds(90, 50, 470, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Hora");
@@ -160,7 +164,7 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMinutos);
-        cmbMinutos.setBounds(510, 290, 50, 23);
+        cmbMinutos.setBounds(510, 280, 50, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Aula");
@@ -170,12 +174,12 @@ public class EditarCurso extends javax.swing.JFrame {
         cmbHora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbHora.setEnabled(false);
         getContentPane().add(cmbHora);
-        cmbHora.setBounds(450, 290, 50, 23);
+        cmbHora.setBounds(450, 280, 50, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Duracion en Semanas");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 250, 140, 17);
+        jLabel6.setBounds(10, 240, 140, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Costo $");
@@ -193,15 +197,15 @@ public class EditarCurso extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(90, 86, 470, 68);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setText(":");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(500, 290, 8, 17);
+        jLabel14.setBounds(500, 280, 8, 17);
 
         txtCargaHoraria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCargaHoraria.setEnabled(false);
         getContentPane().add(txtCargaHoraria);
-        txtCargaHoraria.setBounds(110, 330, 70, 23);
+        txtCargaHoraria.setBounds(110, 323, 70, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -211,7 +215,7 @@ public class EditarCurso extends javax.swing.JFrame {
         txtCosto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCosto.setEnabled(false);
         getContentPane().add(txtCosto);
-        txtCosto.setBounds(340, 290, 60, 23);
+        txtCosto.setBounds(340, 280, 60, 30);
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -223,12 +227,12 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(460, 330, 105, 25);
+        btnRegistrar.setBounds(460, 325, 105, 30);
 
         txtCupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCupo.setEnabled(false);
         getContentPane().add(txtCupo);
-        txtCupo.setBounds(200, 290, 70, 23);
+        txtCupo.setBounds(200, 280, 70, 30);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setEnabled(false);
@@ -238,22 +242,22 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(490, 250, 70, 23);
+        cmbAnio.setBounds(490, 233, 70, 30);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("/");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(400, 250, 8, 17);
+        jLabel13.setBounds(400, 240, 8, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setEnabled(false);
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(330, 250, 60, 23);
+        cmbDia.setBounds(330, 233, 60, 30);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(478, 250, 10, 17);
+        jLabel12.setBounds(480, 240, 10, 17);
 
         cmbMes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes1.setEnabled(false);
@@ -263,17 +267,17 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes1);
-        cmbMes1.setBounds(410, 250, 60, 23);
+        cmbMes1.setBounds(410, 233, 60, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Fecha de Inicio");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 250, 90, 17);
+        jLabel4.setBounds(230, 240, 90, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Temas");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 173, 51, 17);
+        jLabel3.setBounds(10, 170, 51, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Descripcion");
@@ -292,7 +296,7 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCursosFiltro);
-        cmbCursosFiltro.setBounds(90, 18, 470, 23);
+        cmbCursosFiltro.setBounds(90, 11, 470, 30);
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
         jLabel16.setText("jLabel13");
@@ -568,43 +572,43 @@ public class EditarCurso extends javax.swing.JFrame {
 
     private boolean esValido() {
         if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio!");
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtaDescripcion.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo descripcion no debe estar vacio!");
+            JOptionPane.showMessageDialog(dialog, "El campo descripcion no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtaTema.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo tema no debe estar vacio!");
+            JOptionPane.showMessageDialog(dialog, "El campo tema no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtAula.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo aula no debe estar vacio!");
+            JOptionPane.showMessageDialog(dialog, "El campo aula no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtDuracion.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El campo duracion debe ser un numero!");
+            JOptionPane.showMessageDialog(dialog, "El campo duracion debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtCargaHoraria.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El campo carga horaria debe ser un numero!");
+            JOptionPane.showMessageDialog(dialog, "El campo carga horaria debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtCupo.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El campo cupo debe ser un numero!");
+            JOptionPane.showMessageDialog(dialog, "El campo cupo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Double.parseDouble(txtCosto.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El campo costo debe ser un numero!");
+            JOptionPane.showMessageDialog(dialog, "El campo costo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;

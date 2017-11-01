@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +29,7 @@ import javax.swing.JOptionPane;
 public class EditarMatriculado extends javax.swing.JFrame {
 
     GestorMatriculado gm;
+    final JDialog dialog = new JDialog(); 
 
     /**
      * Creates new form EditarMatriculado
@@ -42,6 +44,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         GestorTipoDni gtd = new GestorTipoDni();
         cargarComboTipoDni(gtd.obtenerTodos());
         this.setLocationRelativeTo(null);
+        dialog.setAlwaysOnTop(true);
     }
 
     /**
@@ -101,7 +104,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtProfecion.setEnabled(false);
         getContentPane().add(txtProfecion);
-        txtProfecion.setBounds(380, 180, 250, 23);
+        txtProfecion.setBounds(380, 173, 250, 30);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
@@ -112,7 +115,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(550, 100, 80, 23);
+        cmbAnio.setBounds(550, 93, 80, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento");
@@ -127,7 +130,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNombre.setEnabled(false);
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(90, 60, 190, 23);
+        txtNombre.setBounds(90, 53, 190, 30);
 
         cmbMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
@@ -138,7 +141,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(490, 100, 50, 23);
+        cmbMes.setBounds(490, 93, 50, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Profecion");
@@ -153,17 +156,17 @@ public class EditarMatriculado extends javax.swing.JFrame {
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMail.setEnabled(false);
         getContentPane().add(txtMail);
-        txtMail.setBounds(90, 140, 540, 23);
+        txtMail.setBounds(90, 133, 540, 30);
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbTipoDocumento.setEnabled(false);
         getContentPane().add(cmbTipoDocumento);
-        cmbTipoDocumento.setBounds(90, 100, 69, 23);
+        cmbTipoDocumento.setBounds(90, 93, 69, 30);
 
         txtDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDocumento.setEnabled(false);
         getContentPane().add(txtDocumento);
-        txtDocumento.setBounds(160, 100, 123, 23);
+        txtDocumento.setBounds(160, 93, 123, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
@@ -183,12 +186,12 @@ public class EditarMatriculado extends javax.swing.JFrame {
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTelefono.setEnabled(false);
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(90, 180, 200, 23);
+        txtTelefono.setBounds(90, 173, 200, 30);
 
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtApellido.setEnabled(false);
         getContentPane().add(txtApellido);
-        txtApellido.setBounds(380, 60, 250, 23);
+        txtApellido.setBounds(380, 53, 250, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
@@ -199,7 +202,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         cmbDia.setEnabled(false);
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(430, 100, 50, 23);
+        cmbDia.setBounds(430, 93, 50, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Legajo");
@@ -216,7 +219,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMoificar);
-        btnMoificar.setBounds(520, 210, 105, 25);
+        btnMoificar.setBounds(520, 210, 105, 30);
 
         cmdGo.setText("GO");
         cmdGo.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +324,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             int idDG = gm.obtenerMatriculado(Integer.parseInt(txtLegajo.getText()));
             if (idDG > 0){
                 habilitar(true);
-                    JOptionPane.showMessageDialog(null, gdg.obtenerDatosGenerales(idDG).toString());
+                    JOptionPane.showMessageDialog(dialog, gdg.obtenerDatosGenerales(idDG).toString());
                 cargarControles(gdg.obtenerDatosGenerales(idDG));
             }else{
                 habilitar(false);
@@ -463,27 +466,27 @@ public class EditarMatriculado extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtProfecion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo profesion no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo profesion no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
