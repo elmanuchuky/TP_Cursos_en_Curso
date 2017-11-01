@@ -6,12 +6,14 @@
 package Model;
 
 import Model.Asistencia;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import static java.lang.Class.forName;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -240,5 +242,29 @@ public class GestorAsistencia {
         con.close();
         
         return i;
+    }
+
+    public ArrayList<VMCertificado> obtenerDatosCertificado() throws ClassNotFoundException, SQLException{
+        ArrayList<VMCertificado> lista = new ArrayList<>();
+        forName(classForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet consulta = comando.executeQuery("select d.nombre +' ' +d.apellido as 'alumno', d.documento as 'documento', c.fecha 'fechaInicio', dbo.sp_obtener_fecha_fin(c.fecha, c.duracion_total_semanas)'FechaFin', c.dia_horario 'horario', c.nombre as 'nombreCurso' from DatosGenerales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion in ( select * from vw_inscriptos_aptos_para_certificado");
+        while (consulta.next()) {
+            VMCertificado vc = new VMCertificado();
+            vc.setAlumno(consulta.getString(1));
+            vc.setDocumento(consulta.getString(2));
+            vc.setFechaInicio(consulta.getString(3));
+            vc.setFechaFinal(consulta.getString(4));
+            vc.setHoras(consulta.getString(5));
+            vc.setNombreCurso(consulta.getString(6));
+            
+            lista.add(vc);
+        }
+        consulta.close();
+        comando.close();
+        con.close();
+        
+        return lista;
     }
 }
