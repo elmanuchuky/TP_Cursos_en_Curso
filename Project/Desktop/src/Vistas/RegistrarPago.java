@@ -245,7 +245,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         String nombreArchivo = "" + tm;
         try {
             Document doc = new Document();
-            PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta_Recibos\\"+nombreArchivo+".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\"+nombreArchivo+".pdf"));
             doc.open();
 
             //seteamos el titulo
