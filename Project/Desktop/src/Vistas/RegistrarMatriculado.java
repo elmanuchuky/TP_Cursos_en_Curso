@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -369,30 +370,32 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
     public boolean validacion() {
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true); 
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El documento debe ser un número");
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacío");
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacío");
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo e-mail no debe estar vacío");
+            JOptionPane.showMessageDialog(dialog, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo teléfono no debe estar vacío");
+            JOptionPane.showMessageDialog(dialog, "El campo teléfono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtProfecion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo profesión no debe estar vacío");
+            JOptionPane.showMessageDialog(dialog, "El campo profesión no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
