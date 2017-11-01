@@ -23,6 +23,7 @@ import Model.TipoDni;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 
 /**
  *
@@ -35,12 +36,15 @@ public class RegistrarInscripto extends javax.swing.JFrame {
      */
     private int instancia;
     GestorCurso g;
+    final JDialog dialog = new JDialog();
+        
     
     public RegistrarInscripto() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         this.setLocationRelativeTo(null);
+        dialog.setAlwaysOnTop(true);
     }
     
     public RegistrarInscripto (int x) {
@@ -142,7 +146,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(532, 100, 50, 23);
+        cmbMes.setBounds(532, 93, 50, 30);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Mail");
@@ -156,7 +160,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(602, 100, 60, 23);
+        cmbAnio.setBounds(602, 93, 60, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
@@ -175,11 +179,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(80, 180, 240, 23);
+        txtTelefono.setBounds(80, 173, 240, 30);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
-        cmbCursos.setBounds(260, 20, 400, 23);
+        cmbCursos.setBounds(260, 13, 400, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Apellido");
@@ -188,11 +192,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtDocumento);
-        txtDocumento.setBounds(160, 100, 150, 23);
+        txtDocumento.setBounds(160, 93, 150, 30);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(77, 140, 580, 23);
+        txtMail.setBounds(80, 130, 580, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
@@ -208,7 +212,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCarcgar);
-        btnCarcgar.setBounds(560, 220, 93, 25);
+        btnCarcgar.setBounds(560, 215, 93, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Profecion");
@@ -217,7 +221,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(80, 60, 230, 23);
+        txtNombre.setBounds(80, 53, 230, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento");
@@ -231,15 +235,15 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtProfecion);
-        txtProfecion.setBounds(400, 180, 260, 23);
+        txtProfecion.setBounds(400, 173, 260, 30);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(460, 100, 50, 23);
+        cmbDia.setBounds(460, 93, 50, 30);
 
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtApellido);
-        txtApellido.setBounds(383, 60, 280, 23);
+        txtApellido.setBounds(383, 53, 280, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Telfeono");
@@ -253,11 +257,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtLegajo);
-        txtLegajo.setBounds(80, 20, 110, 23);
+        txtLegajo.setBounds(80, 13, 110, 30);
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbTipoDocumento);
-        cmbTipoDocumento.setBounds(90, 100, 65, 23);
+        cmbTipoDocumento.setBounds(90, 93, 65, 30);
 
         btnNuevoMAtriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNuevoMAtriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addMatriculado.png"))); // NOI18N
@@ -268,7 +272,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnNuevoMAtriculado);
-        btnNuevoMAtriculado.setBounds(440, 220, 100, 25);
+        btnNuevoMAtriculado.setBounds(440, 215, 100, 30);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel11.setText("jLabel1");
@@ -497,11 +501,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try {
             Integer.parseInt(txtLegajo.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El legajo debe ser un numero");
+            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return false;            
         }
         if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;            
         }
         return true;
@@ -511,37 +515,37 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try{
             Integer.parseInt(txtLegajo.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El legajo debe ser un numero");
+            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(null, "Seleccione un tipo de documento!");
+            JOptionPane.showMessageDialog(dialog, "Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -551,31 +555,31 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(null, "Seleccione un tipo de documento!");
+            JOptionPane.showMessageDialog(dialog, "Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(null, "Seleccione un curso!");
+            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;

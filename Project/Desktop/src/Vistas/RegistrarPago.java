@@ -28,6 +28,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +38,7 @@ import javax.swing.JOptionPane;
 public class RegistrarPago extends javax.swing.JFrame {
 
     GestorCurso g;
+    final JDialog dialog = new JDialog(); 
 
     public RegistrarPago() {
         initComponents();
@@ -47,6 +49,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
         }
         this.setLocationRelativeTo(null);
+        dialog.setAlwaysOnTop(true);
     }
 
     public RegistrarPago(String mail, int i, String monto) {
@@ -98,25 +101,25 @@ public class RegistrarPago extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCarga);
-        btnCarga.setBounds(323, 106, 109, 25);
+        btnCarga.setBounds(323, 106, 109, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Mail");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(15, 41, 21, 17);
+        jLabel2.setBounds(20, 30, 21, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(15, 75, 36, 17);
+        jLabel3.setBounds(20, 70, 36, 17);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(70, 38, 360, 23);
+        txtMail.setBounds(70, 20, 360, 30);
 
         txtMonto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMonto);
-        txtMonto.setBounds(72, 107, 79, 23);
+        txtMonto.setBounds(72, 100, 79, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Monto");
@@ -125,7 +128,7 @@ public class RegistrarPago extends javax.swing.JFrame {
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
-        cmbCursos.setBounds(70, 72, 362, 23);
+        cmbCursos.setBounds(70, 60, 362, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -153,7 +156,7 @@ public class RegistrarPago extends javax.swing.JFrame {
                     gp.agregarPago(p);
                     imprimirComprobante(tm,fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
                 } else {
-                    JOptionPane.showMessageDialog(null, "No existe un mail relacionado a ese curso!");
+                    JOptionPane.showMessageDialog(dialog, "No existe un mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -339,21 +342,21 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     private boolean esValido() {
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un curso!");
+            JOptionPane.showMessageDialog(dialog, "Debe seleccionar un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             double a = Double.parseDouble(txtMonto.getText());
             if (a < 0) {
-                JOptionPane.showMessageDialog(null, "El campo monto debe ser un numero positivo!");
+                JOptionPane.showMessageDialog(dialog, "El campo monto debe ser un numero positivo!", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "El campo monto debe ser un numero positivo!");
+            JOptionPane.showMessageDialog(dialog, "El campo monto debe ser un numero positivo!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
