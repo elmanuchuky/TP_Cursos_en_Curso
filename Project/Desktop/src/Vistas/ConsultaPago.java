@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,9 +29,12 @@ public class ConsultaPago extends javax.swing.JFrame {
     /**
      * Creates new form ConsultaPago
      */
+    final JDialog dialog = new JDialog();
+        
     public ConsultaPago() {
         initComponents();
         this.setLocationRelativeTo(null);
+        dialog.setAlwaysOnTop(true);
     }
 
     /**
@@ -113,7 +117,7 @@ public class ConsultaPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
-        JOptionPane.showMessageDialog(null, "2");
+        JOptionPane.showMessageDialog(dialog, "2");
 
         cargarListas();
     }//GEN-LAST:event_txtMailActionPerformed
