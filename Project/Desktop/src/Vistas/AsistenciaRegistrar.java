@@ -47,9 +47,13 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
 
         initComponents();
+        cmbInscripto.setVisible(false);
+        
         ga = new GestorAsistencia();
         gi = new GestorInscripcion();
         g = new GestorCurso();
+        this.setLocationRelativeTo(null);
+        
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -93,8 +97,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         setTitle("Registra Asistencia");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(405, 397));
-        setPreferredSize(new java.awt.Dimension(405, 397));
+        setMinimumSize(new java.awt.Dimension(405, 393));
+        setPreferredSize(new java.awt.Dimension(405, 393));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -162,23 +166,26 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         getContentPane().add(lblDiaAsistencia);
         lblDiaAsistencia.setBounds(10, 335, 101, 14);
 
+        btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.setMinimumSize(new java.awt.Dimension(107, 25));
+        btnModificar.setPreferredSize(new java.awt.Dimension(107, 25));
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
         getContentPane().add(btnModificar);
-        btnModificar.setBounds(190, 330, 75, 23);
+        btnModificar.setBounds(180, 330, 90, 25);
 
-        cmbInscripto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbInscripto.setEnabled(false);
         cmbInscripto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbInscriptoActionPerformed(evt);
             }
         });
         getContentPane().add(cmbInscripto);
-        cmbInscripto.setBounds(340, 40, 56, 20);
+        cmbInscripto.setBounds(360, 20, 28, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel1);

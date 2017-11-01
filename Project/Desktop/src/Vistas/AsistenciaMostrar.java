@@ -123,7 +123,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTablaAsistencias = new javax.swing.JTable();
         cmbCursos = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        btnGenerarCertificado = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -145,8 +145,8 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         setTitle("Asistencias (Vista)");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(680, 400));
-        setPreferredSize(new java.awt.Dimension(680, 400));
+        setMinimumSize(new java.awt.Dimension(695, 475));
+        setPreferredSize(new java.awt.Dimension(695, 475));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -194,21 +194,22 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCursos);
-        cmbCursos.setBounds(68, 11, 330, 23);
+        cmbCursos.setBounds(60, 10, 350, 23);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerarCertificado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGenerarCertificado.setText("Generar Certificado");
+        btnGenerarCertificado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGenerarCertificadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(610, 410, 73, 23);
+        getContentPane().add(btnGenerarCertificado);
+        btnGenerarCertificado.setBounds(530, 410, 150, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(22, 14, 36, 17);
+        jLabel1.setBounds(10, 20, 36, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Fecha");
@@ -263,6 +264,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 300, 170);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Filtrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +272,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(590, 40, 61, 23);
+        jButton2.setBounds(590, 40, 70, 30);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -282,15 +284,15 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 270, 300, 170);
+        jLabel8.setBounds(0, 280, 300, 170);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(300, 270, 300, 170);
+        jLabel9.setBounds(300, 280, 300, 170);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(600, 270, 300, 170);
+        jLabel10.setBounds(600, 280, 300, 170);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,7 +309,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         MenuPrincipal.vAsistenciasMostrar = false;
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGenerarCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCertificadoActionPerformed
 
         try {
             vc = ga.obtenerDatosCertificado();
@@ -327,7 +329,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnGenerarCertificadoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -488,11 +490,11 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerarCertificado;
     private javax.swing.JComboBox cmbAnio;
     private javax.swing.JComboBox cmbCursos;
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbMes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -49,8 +49,8 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
         setTitle("Consulta Pre-Inscripto");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(400, 300));
-        setPreferredSize(new java.awt.Dimension(400, 300));
+        setMinimumSize(new java.awt.Dimension(500, 300));
+        setPreferredSize(new java.awt.Dimension(500, 300));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -63,7 +63,7 @@ public class ConsultaPreInscripcion extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jltListado);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 22, 400, 278);
+        jScrollPane1.setBounds(0, 20, 500, 280);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/purple-polygonal-960x540.jpg"))); // NOI18N
         getContentPane().add(jLabel1);

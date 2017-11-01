@@ -81,7 +81,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rbtProximo);
-        rbtProximo.setBounds(160, 10, 93, 25);
+        rbtProximo.setBounds(160, 10, 89, 25);
 
         rbtActuales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtActuales.setText("Actuales");
@@ -101,7 +101,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         txtaCursos.setViewportView(jtxtaCursos);
 
         getContentPane().add(txtaCursos);
-        txtaCursos.setBounds(10, 40, 440, 270);
+        txtaCursos.setBounds(0, 40, 460, 290);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/purple-polygonal-960x540.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
