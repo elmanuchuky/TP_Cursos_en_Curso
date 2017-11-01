@@ -37,7 +37,7 @@ public class GestorMatriculado {
         comando2.setString(2, m.getProfesion());
         comando2.executeUpdate();
         comando2.close();
-            JOptionPane.showMessageDialog(null, "anda");
+            JOptionPane.showMessageDialog(null, "Se ha insertado un nuevo registro");
         con.close();
     }
     

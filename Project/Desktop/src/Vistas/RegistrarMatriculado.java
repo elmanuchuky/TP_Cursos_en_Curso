@@ -94,12 +94,12 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(490, 60, 50, 23);
+        cmbMes.setBounds(520, 60, 50, 30);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Mail");
+        jLabel9.setText("E-Mail");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 100, 21, 17);
+        jLabel9.setBounds(10, 110, 40, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
@@ -109,39 +109,39 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(550, 60, 70, 23);
+        cmbAnio.setBounds(430, 60, 70, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 20, 67, 17);
+        jLabel3.setBounds(10, 30, 67, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(480, 60, 8, 17);
+        jLabel2.setBounds(510, 70, 8, 17);
 
-        txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(90, 140, 200, 23);
+        txtTelefono.setBounds(90, 140, 200, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Apellido");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(300, 20, 58, 17);
+        jLabel4.setBounds(300, 30, 58, 17);
 
-        txtDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDocumento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(txtDocumento);
-        txtDocumento.setBounds(160, 60, 130, 23);
+        txtDocumento.setBounds(160, 60, 130, 30);
 
-        txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(90, 100, 530, 23);
+        txtMail.setBounds(90, 100, 550, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 60, 73, 17);
+        jLabel6.setBounds(10, 70, 73, 17);
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -152,48 +152,48 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(510, 180, 107, 25);
+        btnRegistrar.setBounds(530, 180, 107, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Profecion");
+        jLabel10.setText("Profesión");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(300, 140, 57, 17);
+        jLabel10.setBounds(300, 150, 56, 17);
 
-        txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(90, 20, 200, 23);
+        txtNombre.setBounds(90, 20, 200, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(300, 60, 126, 17);
+        jLabel7.setBounds(300, 70, 126, 17);
 
-        txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(txtProfecion);
-        txtProfecion.setBounds(370, 140, 250, 23);
+        txtProfecion.setBounds(370, 140, 270, 30);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(430, 60, 50, 23);
+        cmbDia.setBounds(590, 60, 50, 30);
 
-        txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(txtApellido);
-        txtApellido.setBounds(362, 20, 260, 23);
+        txtApellido.setBounds(362, 20, 280, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Telfeono");
+        jLabel8.setText("Teléfono");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 140, 52, 17);
+        jLabel8.setBounds(10, 150, 52, 17);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(540, 60, 8, 17);
+        jLabel12.setBounds(580, 70, 8, 17);
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbTipoDocumento);
-        cmbTipoDocumento.setBounds(90, 60, 69, 23);
+        cmbTipoDocumento.setBounds(90, 60, 69, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -216,7 +216,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             d.setApellido(txtApellido.getText());
             d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
             d.setDni(Integer.parseInt(txtDocumento.getText()));
-            fecha = cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+            fecha = cmbAnio.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString();
             d.setFechaNacimiento(fecha);
             d.setTelefono(txtTelefono.getText());
             d.setEmail(txtMail.getText());
@@ -372,27 +372,27 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "El documento debe ser un numero");
+            JOptionPane.showMessageDialog(null, "El documento debe ser un número");
             return false;
         }
         if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo nombre no debe estar vacío");
             return false;
         }
         if (txtApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo apellido no debe estar vacío");
             return false;
         }
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo e-mail no debe estar vacío");
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo telefono no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo teléfono no debe estar vacío");
             return false;
         }
         if (txtProfecion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo profesion no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo profesión no debe estar vacío");
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
