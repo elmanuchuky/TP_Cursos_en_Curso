@@ -186,6 +186,11 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jScrollPane1.setBounds(0, 80, 690, 330);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCursosActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbCursos);
         cmbCursos.setBounds(68, 11, 330, 23);
 
@@ -301,7 +306,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*
+
         try {
             Curso c = g.obtenerCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
             DatosGenerales d = gd.obtenerDatosGeneralesXMail(txtMail.getText());
@@ -309,7 +314,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             String documento = "" + d.getDni();
             String fechaInicio = c.getFechaInicio();
             String fechaFinal = g.obtenerFechaFinalCurso(c.getFechaInicio(), c.getDuracionTotalSemanas());
-//            String[] datoshora = c.getDiaHorario().split(" |:");
+        //    String[] datoshora = c.getDiaHorario().split(" |:");
             String horas = "" + c.getCargaHoraria();
             String nombreCurso = c.getDescripcion();
             generarCertificado(alumno, documento, fechaInicio, fechaFinal, horas, nombreCurso);
@@ -318,7 +323,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -344,6 +349,10 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCursosActionPerformed
 
     public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas, String curso) {
         try {

@@ -163,6 +163,11 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         lblDiaAsistencia.setBounds(10, 335, 101, 14);
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnModificar);
         btnModificar.setBounds(190, 330, 75, 23);
 
@@ -241,6 +246,31 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private void cmbInscriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbInscriptoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbInscriptoActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        int fila = tRegistrarAsistencia.getRowCount();
+
+        Asistencia a = new Asistencia();
+        for (int i = 0; i < fila; i++) {
+            try {
+                cmbInscripto.setSelectedItem(i);
+                a.setInscripcion(((Inscripcion) cmbInscripto.getSelectedItem()).getIdInscripcion());
+                a.setEstaPresente((boolean) tRegistrarAsistencia.getValueAt(i, 1));
+                if (a.isEstaPresente()) {
+                    esPresente = 1;
+                } else {
+                    esPresente = 0;
+                }
+
+                a.setFechaAsistencia(fechaString);
+                ga.modificarAsistencia(a);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
