@@ -8,6 +8,7 @@ package Vistas;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,9 @@ public class InicioSesion extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    String uss = "";
+    String pass = "";	
+    
     public InicioSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -39,7 +43,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpsContrasenia = new javax.swing.JPasswordField();
 
-        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setLocation(new java.awt.Point(0, 0));
@@ -118,9 +121,26 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        MenuPrincipal mp = new MenuPrincipal();
-        mp.setVisible(true);
-        this.setVisible(false);
+        uss = txtUsuario.getText();
+        pass = jpsContrasenia.getText();
+        // 1 => Fernando - 108813 => todo
+        if (uss.equals("Fernando") && pass.equals("108813")) {
+            MenuPrincipal mp = new MenuPrincipal(1);
+            mp.setVisible(true);
+            this.setVisible(false);   
+        } else if (uss.equals("Magali") && pass.equals("108826")) {
+            //2 => maga --> Magali - 108826 => asistente
+            MenuPrincipal mp = new MenuPrincipal(2);
+            mp.setVisible(true);
+            this.setVisible(false);  
+        }else if (uss.equals("Gabriel") && pass.equals("108875")) {
+            //3 => gabo --> Gabriel - 108875 => consultor
+            MenuPrincipal mp = new MenuPrincipal(3);
+            mp.setVisible(true);
+            this.setVisible(false);  
+        } else {
+            JOptionPane.showMessageDialog(null, "El usuario o la Contraseña es incorecto", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
