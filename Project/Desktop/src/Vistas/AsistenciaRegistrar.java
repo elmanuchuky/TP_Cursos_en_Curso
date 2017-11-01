@@ -37,7 +37,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     GestorAsistencia ga;
     GestorInscripcion gi;
     Calendar fecha;
-    ArrayList<Inscripcion> inscriptos;
+    ArrayList<Integer> idInscriptos;
     String fechaString;
     int esPresente;
     int anio;
@@ -216,10 +216,9 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         Asistencia a = new Asistencia();
         for (int i = 0; i < fila; i++) {
             try {
-                cmbInscripto.setSelectedItem(i);
-                a.setInscripcion(((Inscripcion) cmbInscripto.getSelectedItem()).getIdInscripcion());
+                a.setInscripcion(idInscriptos.get(i));
                 a.setEstaPresente((boolean) tRegistrarAsistencia.getValueAt(i, 1));
-                if (a.isEstaPresente()) {
+                if (!a.isEstaPresente()) {
                     esPresente = 1;
                 } else {
                     esPresente = 0;
@@ -240,7 +239,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
             // TODO add your handling code here:
             cargarTablaAsistencia();
 
-            cargarComboInscripto(gi.obtenerIdDeTodosInscriptosPorCurso(((Curso) cmbCurso.getSelectedItem()).getIdCurso()));
+            idInscriptos = (gi.obtenerIdDeTodosInscriptosPorCurso(((ComboCurso) cmbCurso.getSelectedItem()).getId()));
+            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
@@ -260,8 +260,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         Asistencia a = new Asistencia();
         for (int i = 0; i < fila; i++) {
             try {
-                cmbInscripto.setSelectedItem(i);
-                a.setInscripcion(((Inscripcion) cmbInscripto.getSelectedItem()).getIdInscripcion());
+                a.setInscripcion(idInscriptos.get(i));
                 a.setEstaPresente((boolean) tRegistrarAsistencia.getValueAt(i, 1));
                 if (a.isEstaPresente()) {
                     esPresente = 1;
@@ -362,8 +361,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                     return String.class;
                 }
             }
-        };
 
+        };
         tRegistrarAsistencia.setModel(model);//new JTable(model);
         //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
 
