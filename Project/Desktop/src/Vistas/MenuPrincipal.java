@@ -40,10 +40,40 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static boolean vConsultaInscripcion = false;
     public static boolean vConsultaPago = false;
     
+    int usuario = 0;//1 => todo //2 => asistente (No alta curso ni baja)//3 => consultor
+    
     public MenuPrincipal() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+    }
+        
+    public MenuPrincipal(int x) {
+        initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+        
+        usuario = x;
+        
+        switch (usuario)
+        {
+            case 1:
+                jmRegistrar.setEnabled(true);
+                jmAsistencia.setEnabled(true);
+                jmEditar.setEnabled(true);
+                jmConsulta.setEnabled(true);
+                break;
+            case 2:
+                jmiRegistrarCurso.setEnabled(false);
+                jmiEditarCurso.setEnabled(false);
+                break;
+            case 3:
+                jmRegistrar.setEnabled(false);
+                jmAsistencia.setEnabled(false);
+                jmEditar.setEnabled(false);
+                jmConsulta.setEnabled(true);
+                break;
+        }
     }
 
     /**
