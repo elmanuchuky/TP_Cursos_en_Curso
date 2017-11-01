@@ -87,7 +87,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         btRegistrar = new javax.swing.JButton();
         lblDiaAsistencia = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        cmbInscripto = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -178,15 +177,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         getContentPane().add(btnModificar);
         btnModificar.setBounds(180, 330, 90, 25);
 
-        cmbInscripto.setEnabled(false);
-        cmbInscripto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbInscriptoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cmbInscripto);
-        cmbInscripto.setBounds(360, 20, 28, 20);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(300, 0, 100, 170);
@@ -249,10 +239,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_cmbCursoActionPerformed
-
-    private void cmbInscriptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbInscriptoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbInscriptoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         int fila = tRegistrarAsistencia.getRowCount();
@@ -329,7 +315,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JButton btRegistrar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox cmbCurso;
-    private javax.swing.JComboBox<String> cmbInscripto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
