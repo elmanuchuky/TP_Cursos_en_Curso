@@ -192,6 +192,24 @@ public class GestorInscripcion {
         con.close();
         return lista;
     }
+     
+     public ArrayList<Inscripcion> obtenerIdDeTodosInscriptosPorCurso(int idCurso) throws ClassNotFoundException, SQLException{
+        ArrayList<Inscripcion> lista = new ArrayList<>();
+        forName(ClasForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        PreparedStatement stmtIns = con.prepareStatement("SELECT id_inscripcion from Incripcion I join Asistencias A on I.id_inscripcion = A.id_inscripcion join Cursos C on I.id_curso = C.id_curso where C.id_curso = ? order by 1");
+        ResultSet consulta = stmtIns.executeQuery();
+        while(consulta.next()){
+            Inscripcion i = new Inscripcion();
+            i.setIdInscripcion(consulta.getInt(1));
+            
+            lista.add(i);
+        }
+        consulta.close();
+        stmtIns.close();
+        con.close();
+        return lista;
+     }
     
     
 }
