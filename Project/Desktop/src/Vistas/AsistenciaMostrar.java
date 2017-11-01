@@ -39,12 +39,15 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
     GestorCurso g;
     GestorDatosGenerales gd;
+    ArrayList<ArrayList<String>> lista;
+    GestorAsistencia ga;
     private int interfas;
 
     public AsistenciaMostrar() {
         initComponents();
         g = new GestorCurso();
         gd = new GestorDatosGenerales();
+        ga = new GestorAsistencia();
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -193,7 +196,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(80, 30, 79, 25);
+        jButton1.setBounds(80, 30, 73, 23);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -260,7 +263,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(590, 40, 67, 25);
+        jButton2.setBounds(590, 40, 61, 23);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -322,7 +325,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         // TODO add your handling code here:
         switch (interfas) {
             case 1: //Curso
-
+                cargarCurso();
                 break;
             case 2: {
                 try {
@@ -336,6 +339,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
             break;
             case 3://Curso & Alumno
+                cargarCursoCursante();
                 break;
         }
 
@@ -551,24 +555,6 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             }
             model.setColumnIdentifiers(nombreColumna);
             jtTablaAsistencias.setModel(model);
-//                    public void cargarTabla(ArrayList listaGenerica)
-//    {
-//        DefaultTableModel model = new DefaultTableModel();
-//        String [] nombresColumnas = new String[2];
-//        nombresColumnas[0] = "Numero";
-//        nombresColumnas[1] = "Nombre";
-//        model.setColumnIdentifiers(nombresColumnas);
-//        
-//        for (Object item : listaGenerica) {
-//            Persona p = (Persona)item;
-//            Object [] registro = new Object[2];
-//            registro[0] = p.getId();
-//            registro[1] = p.getNombre();
-//            model.addRow(registro);
-//        }
-//        
-//        tabla.setModel(model);
-//    }
 
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
