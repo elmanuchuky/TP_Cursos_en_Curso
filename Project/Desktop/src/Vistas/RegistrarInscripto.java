@@ -293,8 +293,9 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             case 1://matriculado
                 if (esValidoM()){
                     try {
-                        gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                        gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboCurso)cmbCursos.getSelectedItem()).getId());
                     } catch (ClassNotFoundException ex) {
+                        System.out.println(ex);
                     }
                 }
             break;
