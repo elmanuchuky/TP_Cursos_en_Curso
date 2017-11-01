@@ -305,7 +305,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboNuevoCursante)cmbCursos.getSelectedItem()).getId());
+                        gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso)cmbCursos.getSelectedItem()).getId());
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
                     }
