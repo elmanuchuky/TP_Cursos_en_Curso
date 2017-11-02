@@ -105,9 +105,9 @@ public class RegistrarPago extends javax.swing.JFrame {
         btnCarga.setBounds(323, 106, 109, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Mail");
+        jLabel2.setText("E-Mail");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 30, 21, 17);
+        jLabel2.setBounds(20, 30, 40, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
@@ -123,9 +123,9 @@ public class RegistrarPago extends javax.swing.JFrame {
         txtMonto.setBounds(72, 100, 79, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Monto");
+        jLabel4.setText("Monto  $");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(15, 110, 39, 17);
+        jLabel4.setBounds(15, 110, 60, 17);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
