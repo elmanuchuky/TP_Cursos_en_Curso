@@ -67,6 +67,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         cargarDiaCombo();
         cargaCmb();
         g = new GestorCurso();
+        ga = new GestorAsistencia();
         try {
 
             cargarComboCurso(g.ComboCursosActuales());
@@ -314,14 +315,14 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         try {
             vc = ga.obtenerDatosCertificado();
             for (VMCertificado c : vc) {
-            String alumno = c.getAlumno();
-            String documento = c.getDocumento();
-            String fechaInicio = c.getFechaInicio();
-            String fechaFinal = c.getFechaFinal();
-            String horas = c.getHoras();
-            String nombreCurso = c.getNombreCurso();
-                
-            generarCertificado(alumno, documento, fechaInicio, fechaFinal, horas, nombreCurso);
+                String alumno = c.getAlumno();
+                String documento = c.getDocumento();
+                String fechaInicio = c.getFechaInicio();
+                String fechaFinal = c.getFechaFinal();
+                String horas = c.getHoras();
+                String nombreCurso = c.getNombreCurso();
+
+                generarCertificado(alumno, documento, fechaInicio, fechaFinal, horas, nombreCurso);
             }
 
         } catch (ClassNotFoundException ex) {
@@ -356,7 +357,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cmbCursosActionPerformed
 
     public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas, String curso) {
@@ -555,27 +555,25 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         try {
             lista = ga.obtenerAsistenciasPorCurso(((ComboCurso) cmbCursos.getSelectedItem()).getId());
             DefaultTableModel model = new DefaultTableModel();
-            Object[] nombreColumna = new ArrayList[lista.get(0).size()];
-            System.out.println(""+lista.get(0).size());
-            Object[] contenido = new ArrayList[lista.get(0).size()];
-            for (ArrayList<String> arrayList : lista) {
-                for (int i = 0; i < arrayList.size(); i++) {
-                    if (i == 0) {
-                        nombreColumna[i] = arrayList.get(i);
-                        System.out.println(arrayList.get(i));
+            Object[] nombreColumna = new Object[lista.size()];//new ArrayList[lista.get(1).size()];
+            Object[] contenido = new Object[lista.get(0).size()];
+            for (int i = 0; i < lista.size(); i++) {
+                for (int j = 0; j < lista.get(0).size(); j++) {
+                    if (j == 0) {
+                        nombreColumna[i] = lista.get(i).get(j);
                     } else {
-                        contenido[i] = arrayList.get(i);
+                        contenido[i] = lista.get(i).get(j);
                     }
                 }
                 model.addRow(contenido);
             }
+                        System.out.println(model.toString());
             model.setColumnIdentifiers(nombreColumna);
             jtTablaAsistencias.setModel(model);
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
         } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
