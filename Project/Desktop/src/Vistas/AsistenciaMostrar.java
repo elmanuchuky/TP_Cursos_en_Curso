@@ -27,9 +27,12 @@ import com.itextpdf.text.pdf.PdfPHeaderCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Timestamp;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -138,6 +141,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnReporte = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -283,6 +287,15 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(300, 0, 300, 170);
 
+        btnReporte.setText("Generar Lista");
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnReporte);
+        btnReporte.setBounds(90, 420, 97, 23);
+
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 280, 300, 170);
@@ -359,10 +372,18 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
     }//GEN-LAST:event_cmbCursosActionPerformed
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        java.util.Date fecha = new java.util.Date();
+
+        Timestamp tm = new Timestamp(fecha.getTime());
+        generarListado(tm);
+
+    }//GEN-LAST:event_btnReporteActionPerformed
+
     public void generarCertificado(String alumno, String documento, String fechaInicio, String fechaCierre, String horas, String curso) {
         try {
             Document doc = new Document(PageSize.A4.rotate());
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\Certificado" + alumno + ".pdf"));
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("Certificado" + alumno + ".pdf"));
 
             doc.open();
 
@@ -396,6 +417,8 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             doc.add(contenido2);
 
             doc.close();
+            
+            Desktop.getDesktop().open(new File("" + alumno +fechaInicio+".pdf"));
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (DocumentException ex) {
@@ -491,6 +514,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarCertificado;
+    private javax.swing.JButton btnReporte;
     private javax.swing.JComboBox cmbAnio;
     private javax.swing.JComboBox cmbCursos;
     private javax.swing.JComboBox cmbDia;
@@ -633,6 +657,63 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             if (j != 0) {
                 model.addRow(contenido);
             }
+        }
+    }
+
+    public void generarListado(Timestamp tm) {
+        String nombreArchivo = "" + tm.getTime();
+        try {
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, new FileOutputStream("" + nombreArchivo + ".pdf"));
+            doc.open();
+
+            //seteamos el titulo
+            Font letraTitulo = FontFactory.getFont("Verdana", 24, Font.UNDERLINE);
+            Paragraph title = new Paragraph("COMPROBANTE DE PAGO \n \n", letraTitulo);
+            title.setAlignment(Element.ALIGN_CENTER);
+
+            PdfPTable tabla = new PdfPTable(2);
+
+            tabla.addCell("RESPONSABLE");
+            tabla.addCell("CANTIDAD");
+//            for (ArrayList<String> array : lista) {
+//                tabla.addCell(array.get(0));
+//                tabla.addCell(array.get(1));
+//            }
+            //pasamos al documento (por orden) las cosas que deseamos mostrar
+            doc.add(title);
+            doc.add(tabla);
+//            
+
+            doc.close();
+            Desktop.getDesktop().open(new File("" + nombreArchivo + ".pdf"));
+//           
+
+            //Con  una tabla
+//            PdfPTable tabla = new PdfPTable(2);
+//
+//            tabla.addCell("RESPONSABLE");
+//            tabla.addCell("CANTIDAD");
+//            for (Consulta1DTO item : lista) {
+//                tabla.addCell(item.getNombreResponsable());
+//                tabla.addCell(String.valueOf(item.getCantidad()));
+//            }
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(Chunk.NEWLINE);
+//            doc.add(tabla);
+//            
+//            for (int i = 0; i < 10; i++) {
+//                doc.add(new Paragraph("Parrafo numero " + i));
+//            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (DocumentException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
     }
 }
