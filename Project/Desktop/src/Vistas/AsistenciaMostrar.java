@@ -562,12 +562,12 @@ public void cargarComboCurso(ArrayList listaGenerica) {
                     if (j == 0) {
                         nombreColumna[i] = lista.get(i).get(j);
                     } else {
-                        contenido[i] = lista.get(i).get(j);
+                        contenido[i] = lista.get(i).get(j).toString();
+                        model.addRow(contenido);
                     }
+                    System.out.println(lista.get(i).get(j) + "  i " + i + "  j " + j);
                 }
-                model.addRow(contenido);
             }
-                        System.out.println(model.toString());
             model.setColumnIdentifiers(nombreColumna);
             jtTablaAsistencias.setModel(model);
         } catch (ClassNotFoundException ex) {

@@ -28,6 +28,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -245,10 +246,10 @@ public void cargarComboCurso(ArrayList listaGenerica) {
     }
 
     public void imprimirComprobante(Timestamp tm,String fecha, String curso, double monto, int id) throws FileNotFoundException, BadElementException, IOException {
-        String nombreArchivo = "" + tm;
+        String nombreArchivo = "" + tm.getTime();
         try {
             Document doc = new Document();
-            PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Gabriel\\Desktop\\Carpeta Recibos\\"+nombreArchivo+".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("" +nombreArchivo+".pdf"));
             doc.open();
 
             //seteamos el titulo
