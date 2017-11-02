@@ -54,7 +54,7 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
         setResizable(false);
 
         lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblFraseGeneral.setText("Esta Seguro que Quiere Cerrar la Ventana de Pagos???");
+        lblFraseGeneral.setText("¿Está seguro que desea cancelar el cobro?");
 
         btnNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit.png"))); // NOI18N
@@ -105,7 +105,8 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-        RegistrarPago rp = new RegistrarPago(mail , i , monto);
+        
+        RegistrarPago rp = new RegistrarPago();
         this.setVisible(false);
         rp.setVisible(true);
     }//GEN-LAST:event_btnNoActionPerformed
