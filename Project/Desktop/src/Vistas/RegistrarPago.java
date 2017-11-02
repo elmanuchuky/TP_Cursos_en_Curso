@@ -43,14 +43,14 @@ public class RegistrarPago extends javax.swing.JFrame {
 
     public RegistrarPago() {
         initComponents();
+        dialog.setAlwaysOnTop(true);
         g = new GestorCurso();
         try {
             cargarComboCurso(g.ComboCursoProximoyActuales());
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
         }
-        this.setLocationRelativeTo(null);
-        dialog.setAlwaysOnTop(true);
+        this.setLocationRelativeTo(null);        
     }
 
     public RegistrarPago(String mail, int i, String monto) {
@@ -155,9 +155,10 @@ public class RegistrarPago extends javax.swing.JFrame {
                     Timestamp tm = new Timestamp(fecha.getTime());
                     String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
+                    JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo cobro");
                     imprimirComprobante(tm,fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
                 } else {
-                    JOptionPane.showMessageDialog(dialog, "No existe un mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dialog, "¡No existe un e-mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -259,7 +260,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             //seteamos el contenido del mensaje
             Font letraContenido = FontFactory.getFont("Verdana", 15, BaseColor.BLACK);
-            Paragraph contenido = new Paragraph("Se recibe del Colegio de Ciencias Informáticas de Córdoba, en concentimiento del pago realizado, con respecto a lo abonado en el curso de " + curso + " \n \n", letraContenido);
+            Paragraph contenido = new Paragraph("Se recibe del Colegio de Ciencias Informáticas de Córdoba, en consentimiento del pago realizado, con respecto a lo abonado en el curso de " + curso + " \n \n", letraContenido);
 
             //seteamos la imagen
             com.itextpdf.text.Image firma = com.itextpdf.text.Image.getInstance("src/Imagenes/FirmaSello.png");
@@ -343,21 +344,21 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     private boolean esValido() {
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(dialog, "Debe seleccionar un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Debe seleccionar un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             double a = Double.parseDouble(txtMonto.getText());
             if (a < 0) {
-                JOptionPane.showMessageDialog(dialog, "El campo monto debe ser un numero positivo!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "¡El campo monto debe ser un número positivo!", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El campo monto debe ser un numero positivo!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡El campo monto debe ser un número positivo!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
