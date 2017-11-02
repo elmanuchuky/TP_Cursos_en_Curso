@@ -61,7 +61,7 @@ public class VentanaCerrarSesion extends javax.swing.JFrame {
         });
 
         lblFraseGeneral.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblFraseGeneral.setText("Desea Cerrar su Sesion ???");
+        lblFraseGeneral.setText("¿Está seguro que desea cerrar su sesión?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

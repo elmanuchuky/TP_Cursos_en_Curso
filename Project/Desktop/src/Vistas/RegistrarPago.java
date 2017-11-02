@@ -156,7 +156,7 @@ public class RegistrarPago extends javax.swing.JFrame {
                     Timestamp tm = new Timestamp(fecha.getTime());
                     String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
-                    JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                    JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo cobro");
                     limpiarControles();
                     imprimirComprobante(tm, fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
                 } else {
