@@ -46,8 +46,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
     public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
 
-        initComponents();
-        cmbInscripto.setVisible(false);
+        initComponents();        
         
         ga = new GestorAsistencia();
         gi = new GestorInscripcion();
@@ -362,14 +361,5 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         cmbCurso.setModel(model);
     }
-
-    public void cargarComboInscripto(ArrayList listaGenerica) {
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-
-        for (Object elemento : listaGenerica) {
-            model.addElement(elemento);
-        }
-
-        cmbInscripto.setModel(model);
-    }
+    
 }
