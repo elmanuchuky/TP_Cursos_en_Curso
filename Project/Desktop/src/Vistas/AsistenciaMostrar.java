@@ -47,6 +47,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     ArrayList<VMCertificado> vc;
     GestorAsistencia ga;
     private int interfas;
+    String nombreCurso;
 
     public AsistenciaMostrar() {
         initComponents();
@@ -69,6 +70,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         initComponents();
         cargarDiaCombo();
         cargaCmb();
+        btnReporte.setVisible(true);
         g = new GestorCurso();
         ga = new GestorAsistencia();
         try {
@@ -367,6 +369,8 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
                 break;
         }
 
+        nombreCurso = ((ComboCurso) cmbCursos.getSelectedItem()).getNombre();
+        btnReporte.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
@@ -376,7 +380,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         java.util.Date fecha = new java.util.Date();
 
         Timestamp tm = new Timestamp(fecha.getTime());
-        generarListado(tm);
+        generarListado(tm, nombreCurso);
 
     }//GEN-LAST:event_btnReporteActionPerformed
 
@@ -417,8 +421,8 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             doc.add(contenido2);
 
             doc.close();
-            
-            Desktop.getDesktop().open(new File("" + alumno +fechaInicio+".pdf"));
+
+            Desktop.getDesktop().open(new File("" + alumno + fechaInicio + ".pdf"));
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (DocumentException ex) {
@@ -546,13 +550,15 @@ public void cargarComboCurso(ArrayList listaGenerica) {
     }
 
     private void cargarCursoYFecha() throws ClassNotFoundException, SQLException {
-        String fecha = cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString();
+        String fecha = cmbAnio.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString();
         lista = ga.obtenerAsistenciasPorCursoPorFecha(((ComboCurso) cmbCursos.getSelectedItem()).getId(), fecha);
         DefaultTableModel model = new DefaultTableModel();
         Object[] nombreColumna = new Object[lista.size()];//new ArrayList[lista.get(1).size()];
         Object[] contenido = new Object[lista.get(0).size()];
+        
         for (int i = 0; i < lista.size(); i++) {
             for (int j = 0; j < lista.get(0).size(); j++) {
+                nombreColumna[i] = lista.get(i).get(j);
                 if (j == 0) {
                     nombreColumna[i] = lista.get(i).get(j);
                 }
@@ -660,7 +666,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         }
     }
 
-    public void generarListado(Timestamp tm) {
+    public void generarListado(Timestamp tm, String nombreCurso) {
         String nombreArchivo = "" + tm.getTime();
         try {
             Document doc = new Document();
@@ -669,13 +675,13 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             //seteamos el titulo
             Font letraTitulo = FontFactory.getFont("Verdana", 24, Font.UNDERLINE);
-            Paragraph title = new Paragraph("COMPROBANTE DE PAGO \n \n", letraTitulo);
+            Paragraph title = new Paragraph("Listado de Curso " + nombreCurso + "\n \n", letraTitulo);
             title.setAlignment(Element.ALIGN_CENTER);
 
             PdfPTable tabla = new PdfPTable(2);
 
-            tabla.addCell("RESPONSABLE");
-            tabla.addCell("CANTIDAD");
+            tabla.addCell("Alumno");
+            tabla.addCell("Asistencia");
 //            for (ArrayList<String> array : lista) {
 //                tabla.addCell(array.get(0));
 //                tabla.addCell(array.get(1));
@@ -688,26 +694,6 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             doc.close();
             Desktop.getDesktop().open(new File("" + nombreArchivo + ".pdf"));
 //           
-
-            //Con  una tabla
-//            PdfPTable tabla = new PdfPTable(2);
-//
-//            tabla.addCell("RESPONSABLE");
-//            tabla.addCell("CANTIDAD");
-//            for (Consulta1DTO item : lista) {
-//                tabla.addCell(item.getNombreResponsable());
-//                tabla.addCell(String.valueOf(item.getCantidad()));
-//            }
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(tabla);
-//            
-//            for (int i = 0; i < 10; i++) {
-//                doc.add(new Paragraph("Parrafo numero " + i));
-//            }
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (DocumentException ex) {
