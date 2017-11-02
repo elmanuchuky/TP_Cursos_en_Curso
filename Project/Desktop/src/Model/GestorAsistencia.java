@@ -82,7 +82,7 @@ public class GestorAsistencia {
                 ArrayList<String> alumnos = new ArrayList<>();
                 alumnos.add(fecha);
                 PreparedStatement comando2 = con.prepareStatement("exec sp_listado_cursantes_x_curso ?");
-                comando.setInt(1, idCurso);
+                comando2.setInt(1, idCurso);
                 ResultSet consulta2 = comando2.executeQuery();
                 while (consulta2.next()) {
                     alumnos.add(consulta2.getString("Cursante"));
@@ -94,8 +94,8 @@ public class GestorAsistencia {
                 ArrayList<String> presentes = new ArrayList<>();
                 presentes.add(fecha);
                 PreparedStatement comando2 = con.prepareStatement("exec sp_asistencia_x_curso_x_fecha ?, ?");
-                comando.setInt(1, idCurso);
-                comando.setString(2, fecha);
+                comando2.setInt(1, idCurso);
+                comando2.setString(2, fecha);
                 ResultSet consulta2 = comando2.executeQuery();
                 while (consulta2.next()) {
                     boolean estaPresente = consulta2.getBoolean("Presente");

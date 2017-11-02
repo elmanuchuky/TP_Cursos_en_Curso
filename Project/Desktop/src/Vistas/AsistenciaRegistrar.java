@@ -214,6 +214,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                 }
 
                 a.setFechaAsistencia(fechaString);
+                System.out.println(a.toString());
                 ga.agregarAsistencia(a);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
