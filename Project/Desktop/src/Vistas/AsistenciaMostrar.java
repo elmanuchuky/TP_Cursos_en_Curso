@@ -561,14 +561,26 @@ public void cargarComboCurso(ArrayList listaGenerica) {
                 for (int j = 0; j < lista.get(0).size(); j++) {
                     if (j == 0) {
                         nombreColumna[i] = lista.get(i).get(j);
-                    } else {
-                        contenido[i] = lista.get(i).get(j).toString();
-                        model.addRow(contenido);
                     }
-                    System.out.println(lista.get(i).get(j) + "  i " + i + "  j " + j);
                 }
             }
             model.setColumnIdentifiers(nombreColumna);
+
+            for (int j = 0; j < lista.get(0).size(); j++) {
+                for (int i = 0; i < lista.size(); i++) {/*
+                    if (i == 0 && j != 0) {
+                        contenido[j-1] = lista.get(i).get(j);
+                    } else if(j!= 0) {
+                        contenido[j-1] = lista.get(i).get(j);
+                    }*/
+                    if (j != 0)
+                        contenido[i] = lista.get(i).get(j);
+
+                    System.out.println("" + j + "   -   " +lista.get(i).get(j));
+                }
+                if (j != 0)
+                    model.addRow(contenido);
+            }
             jtTablaAsistencias.setModel(model);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
