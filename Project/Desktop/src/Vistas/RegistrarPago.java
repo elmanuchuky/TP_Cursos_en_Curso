@@ -39,10 +39,11 @@ import javax.swing.JOptionPane;
 public class RegistrarPago extends javax.swing.JFrame {
 
     GestorCurso g;
-    final JDialog dialog = new JDialog(); 
+    final JDialog dialog = new JDialog();
 
     public RegistrarPago() {
         initComponents();
+        dialog.setAlwaysOnTop(true);
         g = new GestorCurso();
         try {
             cargarComboCurso(g.ComboCursoProximoyActuales());
@@ -50,7 +51,6 @@ public class RegistrarPago extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
         }
         this.setLocationRelativeTo(null);
-        dialog.setAlwaysOnTop(true);
     }
 
     public RegistrarPago(String mail, int i, String monto) {
@@ -105,9 +105,9 @@ public class RegistrarPago extends javax.swing.JFrame {
         btnCarga.setBounds(323, 106, 109, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Mail");
+        jLabel2.setText("E-Mail");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 30, 21, 17);
+        jLabel2.setBounds(20, 30, 40, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
@@ -123,9 +123,9 @@ public class RegistrarPago extends javax.swing.JFrame {
         txtMonto.setBounds(72, 100, 79, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Monto");
+        jLabel4.setText("Monto  $");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(15, 110, 39, 17);
+        jLabel4.setBounds(15, 110, 60, 17);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
@@ -140,7 +140,8 @@ public class RegistrarPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
-
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
         try {
             //codigo de carga
             if (esValido()) {
@@ -155,9 +156,11 @@ public class RegistrarPago extends javax.swing.JFrame {
                     Timestamp tm = new Timestamp(fecha.getTime());
                     String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
-                    imprimirComprobante(tm,fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
+                    JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                    limpiarControles();
+                    imprimirComprobante(tm, fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
                 } else {
-                    JOptionPane.showMessageDialog(dialog, "No existe un mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dialog, "¡No existe un e-mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -245,11 +248,11 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         cmbCursos.setModel(model);
     }
 
-    public void imprimirComprobante(Timestamp tm,String fecha, String curso, double monto, int id) throws FileNotFoundException, BadElementException, IOException {
+    public void imprimirComprobante(Timestamp tm, String fecha, String curso, double monto, int id) throws FileNotFoundException, BadElementException, IOException {
         String nombreArchivo = "" + tm.getTime();
         try {
             Document doc = new Document();
-            PdfWriter.getInstance(doc, new FileOutputStream("" +nombreArchivo+".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("" + nombreArchivo + ".pdf"));
             doc.open();
 
             //seteamos el titulo
@@ -259,7 +262,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             //seteamos el contenido del mensaje
             Font letraContenido = FontFactory.getFont("Verdana", 15, BaseColor.BLACK);
-            Paragraph contenido = new Paragraph("Se recibe del Colegio de Ciencias Informáticas de Córdoba, en concentimiento del pago realizado, con respecto a lo abonado en el curso de " + curso + " \n \n", letraContenido);
+            Paragraph contenido = new Paragraph("Se recibe del Colegio de Ciencias Informáticas de Córdoba, en consentimiento del pago realizado, con respecto a lo abonado en el curso de " + curso + " \n \n", letraContenido);
 
             //seteamos la imagen
             com.itextpdf.text.Image firma = com.itextpdf.text.Image.getInstance("src/Imagenes/FirmaSello.png");
@@ -343,21 +346,21 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     private boolean esValido() {
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(dialog, "Debe seleccionar un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Debe seleccionar un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             double a = Double.parseDouble(txtMonto.getText());
             if (a < 0) {
-                JOptionPane.showMessageDialog(dialog, "El campo monto debe ser un numero positivo!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(dialog, "¡El campo monto debe ser un número positivo!", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El campo monto debe ser un numero positivo!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡El campo monto debe ser un número positivo!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -366,5 +369,12 @@ public void cargarComboCurso(ArrayList listaGenerica) {
     private boolean existeMail() throws ClassNotFoundException {
         GestorInscripcion gi = new GestorInscripcion();
         return gi.existeMailEnCurso(txtMail.getText(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
+    }
+
+    private void limpiarControles() {
+
+        txtMail.setText("");
+        cmbCursos.setSelectedIndex(-1);
+        txtMonto.setText("");
     }
 }
