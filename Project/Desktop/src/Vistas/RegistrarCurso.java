@@ -118,7 +118,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
         jLabel1.setBounds(10, 20, 49, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Descripcion");
+        jLabel2.setText("Descripción");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(10, 50, 70, 17);
 
@@ -128,12 +128,12 @@ public class RegistrarCurso extends javax.swing.JFrame {
         jLabel3.setBounds(10, 130, 51, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Costo $");
+        jLabel5.setText("Costo   $");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(240, 280, 48, 17);
+        jLabel5.setBounds(240, 280, 60, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Duracion en Semanas");
+        jLabel6.setText("Duración en Semanas");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(10, 230, 140, 17);
 
@@ -189,21 +189,21 @@ public class RegistrarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes1);
-        cmbMes1.setBounds(420, 220, 58, 30);
+        cmbMes1.setBounds(430, 220, 58, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(480, 230, 8, 17);
+        jLabel12.setBounds(490, 230, 8, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(350, 220, 54, 30);
+        cmbDia.setBounds(500, 220, 54, 30);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("/");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(410, 230, 8, 17);
+        jLabel13.setBounds(420, 230, 8, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setAutoscrolls(true);
@@ -213,7 +213,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(490, 220, 70, 30);
+        cmbAnio.setBounds(350, 220, 70, 30);
 
         txtCupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtCupo);
@@ -285,7 +285,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 descripcion = txtaDescripcion.getText();
                 tema = txtaTema.getText();
                 duracion = Integer.parseInt(txtDuracion.getText());
-                fecha = cmbMes1.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                fecha = cmbAnio.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString();
                 aula = txtAula.getText();
                 cupo = Integer.parseInt(txtCupo.getText());
                 precio = Double.parseDouble(txtCosto.getText());
@@ -293,6 +293,8 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
                 Curso c = new Curso(nombre, descripcion, fecha, tema, duracion, precio, cupo, aula, hora, cargaHoraria);
                 g.agregar(c);
+                JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                limpiarControles();
             }
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
@@ -495,5 +497,23 @@ public class RegistrarCurso extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+    
+    private void limpiarControles(){
+        
+        txtNombre.setText("");
+        txtaDescripcion.setText("");
+        txtaTema.setText("");
+        txtDuracion.setText("");
+        cmbAnio.setSelectedIndex(-1);
+        cmbMes1.setSelectedIndex(-1);
+        cmbDia.setSelectedIndex(-1);
+        txtAula.setText("");
+        txtCupo.setText("");
+        txtCosto.setText("");
+        cmbHora.setSelectedIndex(-1);
+        cmbMinutos.setSelectedIndex(-1);
+        txtCargaHoraria.setText("");
+        
     }
 }
