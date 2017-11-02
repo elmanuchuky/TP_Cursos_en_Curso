@@ -146,12 +146,12 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(532, 93, 50, 30);
+        cmbMes.setBounds(540, 90, 50, 30);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Mail");
+        jLabel9.setText("E-Mail");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 140, 21, 17);
+        jLabel9.setBounds(10, 140, 50, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(602, 93, 60, 30);
+        cmbAnio.setBounds(460, 90, 60, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
@@ -175,7 +175,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(520, 100, 7, 17);
+        jLabel2.setBounds(530, 100, 7, 17);
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtTelefono);
@@ -215,9 +215,9 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         btnCarcgar.setBounds(560, 215, 93, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Profecion");
+        jLabel10.setText("Profesión");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(330, 180, 57, 17);
+        jLabel10.setBounds(330, 180, 56, 17);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtNombre);
@@ -239,21 +239,21 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(460, 93, 50, 30);
+        cmbDia.setBounds(610, 90, 50, 30);
 
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtApellido);
         txtApellido.setBounds(383, 53, 280, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Telfeono");
+        jLabel8.setText("Teléfono");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(10, 180, 52, 17);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(590, 100, 7, 17);
+        jLabel12.setBounds(600, 100, 7, 17);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtLegajo);
@@ -261,7 +261,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbTipoDocumento);
-        cmbTipoDocumento.setBounds(90, 93, 65, 30);
+        cmbTipoDocumento.setBounds(90, 90, 65, 30);
 
         btnNuevoMAtriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNuevoMAtriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addMatriculado.png"))); // NOI18N
@@ -294,6 +294,8 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 if (esValidoM()){
                     try {
                         gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboCurso)cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                        limpiarControles();
                     } catch (ClassNotFoundException ex) {
                         System.out.println(ex);
                     }
@@ -307,10 +309,12 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setApellido(txtApellido.getText());
                         dg.setTipoDni(((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
                         dg.setDni(Integer.parseInt(txtDocumento.getText()));
-                        dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
+                        dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
                         gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso)cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                        limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
                     }
@@ -324,10 +328,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setApellido(txtApellido.getText());
                         dg.setTipoDni(((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
                         dg.setDni(Integer.parseInt(txtDocumento.getText()));
-                        dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
+                        dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
                         gi.agregarInscripcionOtro(dg, ((ComboCurso)cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     }
