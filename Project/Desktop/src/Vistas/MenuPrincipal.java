@@ -191,7 +191,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmiRegistrarPago.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jmiRegistrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/send.png"))); // NOI18N
-        jmiRegistrarPago.setText("Pago");
+        jmiRegistrarPago.setText("Cobro");
         jmiRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiRegistrarPagoActionPerformed(evt);
@@ -341,7 +341,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmConsulta.add(jmiConsultaInscripto);
 
         jmiConsultaPagos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jmiConsultaPagos.setText("Pagos");
+        jmiConsultaPagos.setText("Cobros");
         jmiConsultaPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiConsultaPagosActionPerformed(evt);
