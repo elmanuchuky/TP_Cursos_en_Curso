@@ -213,7 +213,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                     esPresente = 0;
                 }
 
-                a.setFechaAsistencia(fechaString);
+                a.setFechaAsistencia("2017-11-01");
                 System.out.println(a.toString());
                 ga.agregarAsistencia(a);
             } catch (ClassNotFoundException ex) {

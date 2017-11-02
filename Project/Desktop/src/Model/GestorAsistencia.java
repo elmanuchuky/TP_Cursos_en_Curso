@@ -133,9 +133,9 @@ public class GestorAsistencia {
         comando.close();
         ArrayList<String> presentes = new ArrayList<>();
         PreparedStatement comando2 = con.prepareStatement("exec sp_asistencia_x_curso_x_fecha ?, ?");
-        comando.setInt(1, idCurso);
-        comando.setString(2, fecha);
-        ResultSet consulta2 = comando.executeQuery();
+        comando2.setInt(1, idCurso);
+        comando2.setString(2, fecha);
+        ResultSet consulta2 = comando2.executeQuery();
         presentes.add(fecha);
         while (consulta2.next()) {
             boolean estaPresente = consulta2.getBoolean("Presente");
@@ -191,7 +191,7 @@ public class GestorAsistencia {
         PreparedStatement comando2 = con.prepareStatement("exec sp_asistencia_x_inscripto_x_curso ?, ?");
         comando2.setInt(1, idCurso);
         comando2.setInt(2, gi.obtenerInscripcionConMailYCurso(email, idCurso));   
-        ResultSet consulta2 = comando.executeQuery();
+        ResultSet consulta2 = comando2.executeQuery();
         presentes.add(email);
         while (consulta2.next()) {
             boolean estaPresente = consulta2.getBoolean("Presente");
