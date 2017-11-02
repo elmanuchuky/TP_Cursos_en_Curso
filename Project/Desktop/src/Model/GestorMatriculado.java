@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,7 @@ import javax.swing.JOptionPane;
 public class GestorMatriculado {
 
     AccesoDatosVariable adv = new AccesoDatosVariable();
-    
+
     String conexion = adv.getConexion();
     String user = adv.getUser();
     String pass = adv.getPass();
@@ -28,6 +29,7 @@ public class GestorMatriculado {
 
     //agrega un nuevo matriculado
     public void agregarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
+        
         Connection con = DriverManager.getConnection(conexion, user, pass);
         GestorDatosGenerales gd = new GestorDatosGenerales();
         gd.agregarDatosGenerales(d);
@@ -36,13 +38,14 @@ public class GestorMatriculado {
         comando2.setInt(1, m.getDatos());
         comando2.setString(2, m.getProfesion());
         comando2.executeUpdate();
-        comando2.close();
-            JOptionPane.showMessageDialog(null, "Se ha insertado un nuevo registro");
+        comando2.close();               
         con.close();
     }
-    
+
     //agrega un nuevo matriculado
     public void modificarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         GestorDatosGenerales gd = new GestorDatosGenerales();
         gd.modificarDatosGenerales(d);
@@ -53,7 +56,7 @@ public class GestorMatriculado {
         comando2.setString(3, m.getProfesion());
         comando2.executeUpdate();
         comando2.close();
-            JOptionPane.showMessageDialog(null, "anda");
+        JOptionPane.showMessageDialog(null, "Se ha modificado correctamente");
         con.close();
     }
 
@@ -71,8 +74,8 @@ public class GestorMatriculado {
         con.close();
         return idMatriculado;
     }
-    
-    public Matriculado obtenerMatriculadoxLegajo (int legajo) throws SQLException{
+
+    public Matriculado obtenerMatriculadoxLegajo(int legajo) throws SQLException {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement stmtId = con.createStatement();
         ResultSet query = stmtId.executeQuery("SELECT dg.id_datos_generales, m.profesion FROM Datos_Generales dg join Matriculados m ON m.id_datos_generales = dg.id_datos_generales WHERE m.legajo_matriculado = " + legajo);
@@ -86,5 +89,5 @@ public class GestorMatriculado {
         con.close();
         return m;
     }
-    
+
 }

@@ -553,7 +553,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     public void cargarCurso() {
         try {
-            lista = ga.obtenerAsistenciasPorCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
+            lista = ga.obtenerAsistenciasPorCurso(((ComboCurso) cmbCursos.getSelectedItem()).getId());
             DefaultTableModel model = new DefaultTableModel();
             Object[] nombreColumna = new ArrayList[lista.get(0).size()];
             Object[] contenido = new ArrayList[lista.get(0).size()];

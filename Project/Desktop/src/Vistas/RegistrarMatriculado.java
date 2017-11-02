@@ -211,6 +211,8 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         if (validacion()) {
+            final JDialog dialog = new JDialog();
+            dialog.setAlwaysOnTop(true);
             DatosGenerales d = new DatosGenerales();
             Matriculado m = new Matriculado();
             d.setNombre(txtNombre.getText());
@@ -222,6 +224,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             d.setTelefono(txtTelefono.getText());
             d.setEmail(txtMail.getText());
             m.setProfesion(txtProfecion.getText());
+            JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
 
             try {
                 gm.agregarMatriculado(m, d);
@@ -230,6 +233,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
             }
+            limpiarControles();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -371,10 +375,10 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public boolean validacion() {
         final JDialog dialog = new JDialog();
-        dialog.setAlwaysOnTop(true); 
-        try{
+        dialog.setAlwaysOnTop(true);
+        try {
             Integer.parseInt(txtDocumento.getText());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -412,14 +416,28 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         }
         return true;
     }
-    
+
     private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
+
         for (Object elemento : obtenerTodos) {
             model.addElement(elemento);
         }
-        
+
         cmbTipoDocumento.setModel(model);
+    }
+
+    private void limpiarControles() {
+
+        txtNombre.setText("");
+        txtApellido.setText("");
+        cmbTipoDocumento.setSelectedIndex(-1);
+        txtDocumento.setText("");
+        cmbAnio.setSelectedIndex(-1);
+        cmbMes.setSelectedIndex(-1);
+        cmbDia.setSelectedIndex(-1);
+        txtMail.setText("");
+        txtTelefono.setText("");
+        txtProfecion.setText("");
     }
 }
