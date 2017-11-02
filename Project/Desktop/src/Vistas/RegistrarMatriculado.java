@@ -228,12 +228,12 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
 
             try {
                 gm.agregarMatriculado(m, d);
+                limpiarControles();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            limpiarControles();
+            }            
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
