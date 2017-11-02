@@ -551,22 +551,24 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     private void cargarCursoYFecha() throws ClassNotFoundException, SQLException {
         String fecha = cmbAnio.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString();
+        
         lista = ga.obtenerAsistenciasPorCursoPorFecha(((ComboCurso) cmbCursos.getSelectedItem()).getId(), fecha);
         DefaultTableModel model = new DefaultTableModel();
         Object[] nombreColumna = new Object[lista.size()];//new ArrayList[lista.get(1).size()];
+        System.out.println("nombre columna = "+lista.size());
         Object[] contenido = new Object[lista.get(0).size()];
-        
+        System.out.println("contenido = "+lista.get(0).size());
         for (int i = 0; i < lista.size(); i++) {
             for (int j = 0; j < lista.get(0).size(); j++) {
-                nombreColumna[i] = lista.get(i).get(j);
                 if (j == 0) {
                     nombreColumna[i] = lista.get(i).get(j);
+                    System.out.println(lista.get(i).get(j) + "   i: " + i + "   j:" + j);
                 }
             }
         }
         model.setColumnIdentifiers(nombreColumna);
 
-        for (int j = 0; j < lista.get(0).size(); j++) {
+        for (int j = 0; j < lista.get(1).size(); j++) {
             for (int i = 0; i < lista.size(); i++) {/*
                     if (i == 0 && j != 0) {
                         contenido[j-1] = lista.get(i).get(j);
@@ -576,15 +578,12 @@ public void cargarComboCurso(ArrayList listaGenerica) {
                 if (j != 0) {
                     contenido[i] = lista.get(i).get(j);
                 }
-
-                System.out.println("" + j + "   -   " + lista.get(i).get(j));
             }
             if (j != 0) {
                 model.addRow(contenido);
             }
         }
-        jtTablaAsistencias.setModel(model);//new JTable(model);
-        //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));       
+        jtTablaAsistencias.setModel(model);//new JTable(model);     
     }
 
     public void cargarCurso() {
@@ -603,17 +602,11 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             model.setColumnIdentifiers(nombreColumna);
 
             for (int j = 0; j < lista.get(0).size(); j++) {
-                for (int i = 0; i < lista.size(); i++) {/*
-                    if (i == 0 && j != 0) {
-                        contenido[j-1] = lista.get(i).get(j);
-                    } else if(j!= 0) {
-                        contenido[j-1] = lista.get(i).get(j);
-                    }*/
+                for (int i = 0; i < lista.size(); i++) {
+                    System.out.println("i " + i + "     j " + j + "       " + lista.get(i));
                     if (j != 0) {
                         contenido[i] = lista.get(i).get(j);
                     }
-
-                    System.out.println("" + j + "   -   " + lista.get(i).get(j));
                 }
                 if (j != 0) {
                     model.addRow(contenido);
@@ -658,12 +651,14 @@ public void cargarComboCurso(ArrayList listaGenerica) {
                     contenido[i] = lista.get(i).get(j);
                 }
 
-                System.out.println("" + j + "   -   " + lista.get(i).get(j));
+                //System.out.println("" + j + "   -   " + lista.get(i).get(j));
             }
             if (j != 0) {
                 model.addRow(contenido);
             }
         }
+        jtTablaAsistencias.setModel(model);
+
     }
 
     public void generarListado(Timestamp tm, String nombreCurso) {
