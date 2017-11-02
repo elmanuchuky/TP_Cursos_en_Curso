@@ -505,9 +505,9 @@ public class RegistrarCurso extends javax.swing.JFrame {
         txtaDescripcion.setText("");
         txtaTema.setText("");
         txtDuracion.setText("");
-        cmbAnio.setSelectedIndex(-1);
-        cmbMes1.setSelectedIndex(-1);
-        cmbDia.setSelectedIndex(-1);
+        cmbAnio.setSelectedIndex(0);
+        cmbMes1.setSelectedIndex(0);
+        cmbDia.setSelectedIndex(0);
         txtAula.setText("");
         txtCupo.setText("");
         txtCosto.setText("");

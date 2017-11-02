@@ -37,8 +37,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private int instancia;
     GestorCurso g;
     final JDialog dialog = new JDialog();
-        
-    
+
     public RegistrarInscripto() {
         initComponents();
         cargaCmb();
@@ -46,23 +45,23 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         dialog.setAlwaysOnTop(true);
     }
-    
-    public RegistrarInscripto (int x) {
+
+    public RegistrarInscripto(int x) {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         g = new GestorCurso();
         GestorTipoDni gtd = new GestorTipoDni();
-        try {            
+        try {
             cargarComboCurso(g.ComboCursosNegro());// CAMBIAR
             cargarComboTipoDni(gtd.obtenerTodos());
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
         }
         this.setLocationRelativeTo(null);
-        
+
         instancia = x;
-        switch (instancia){
+        switch (instancia) {
             case 1://matriculado
                 txtLegajo.setEnabled(true);
                 txtProfecion.setEnabled(false);
@@ -86,8 +85,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 break;
         }
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,12 +144,12 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(532, 93, 50, 30);
+        cmbMes.setBounds(540, 90, 50, 30);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Mail");
+        jLabel9.setText("E-Mail");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 140, 21, 17);
+        jLabel9.setBounds(10, 140, 50, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +158,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(602, 93, 60, 30);
+        cmbAnio.setBounds(450, 90, 80, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
@@ -175,7 +173,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(520, 100, 7, 17);
+        jLabel2.setBounds(530, 100, 7, 17);
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtTelefono);
@@ -215,9 +213,9 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         btnCarcgar.setBounds(560, 215, 93, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Profecion");
+        jLabel10.setText("Profesión");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(330, 180, 57, 17);
+        jLabel10.setBounds(330, 180, 56, 17);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtNombre);
@@ -239,21 +237,21 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(460, 93, 50, 30);
+        cmbDia.setBounds(610, 90, 50, 30);
 
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtApellido);
         txtApellido.setBounds(383, 53, 280, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Telfeono");
+        jLabel8.setText("Teléfono");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(10, 180, 52, 17);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(590, 100, 7, 17);
+        jLabel12.setBounds(600, 100, 7, 17);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtLegajo);
@@ -261,7 +259,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbTipoDocumento);
-        cmbTipoDocumento.setBounds(90, 93, 65, 30);
+        cmbTipoDocumento.setBounds(90, 90, 65, 30);
 
         btnNuevoMAtriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNuevoMAtriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addMatriculado.png"))); // NOI18N
@@ -289,50 +287,58 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
     private void btnCarcgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarcgarActionPerformed
         GestorInscripcion gi = new GestorInscripcion();
-        switch (instancia){
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
+        switch (instancia) {
             case 1://matriculado
-                if (esValidoM()){
+                if (esValidoM()) {
                     try {
-                        gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboCurso)cmbCursos.getSelectedItem()).getId());
+                        gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                        limpiarControles();
                     } catch (ClassNotFoundException ex) {
                         System.out.println(ex);
-                    }
+                    }                    
+                    
                 }
-            break;
+                break;
             case 2://Familiar
-                if (esValidoF()){
+                if (esValidoF()) {
                     try {
                         DatosGenerales dg = new DatosGenerales();
                         dg.setNombre(txtNombre.getText());
                         dg.setApellido(txtApellido.getText());
-                        dg.setTipoDni(((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
+                        dg.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
                         dg.setDni(Integer.parseInt(txtDocumento.getText()));
-                        dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
+                        dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso)cmbCursos.getSelectedItem()).getId());
+                        gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                        limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
                     }
                 }
-            break;
+                break;
             case 3://Otro
-                if (esValidoO()){
+                if (esValidoO()) {
                     try {
                         DatosGenerales dg = new DatosGenerales();
                         dg.setNombre(txtNombre.getText());
                         dg.setApellido(txtApellido.getText());
-                        dg.setTipoDni(((TipoDni)cmbTipoDocumento.getSelectedItem()).getId());
+                        dg.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
                         dg.setDni(Integer.parseInt(txtDocumento.getText()));
-                        dg.setFechaNacimiento(cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString());
+                        dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        gi.agregarInscripcionOtro(dg, ((ComboCurso)cmbCursos.getSelectedItem()).getId());
+                        gi.agregarInscripcionOtro(dg, ((ComboCurso) cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     }
                 }
-            break;
+                break;
         }
     }//GEN-LAST:event_btnCarcgarActionPerformed
 
@@ -361,14 +367,13 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnNuevoMAtriculadoActionPerformed
 
-    
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -433,154 +438,153 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
-    
-    
+
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
-        
+
         int anio = 1900;
         int mes = 1;
- 
-        Calendar cal= Calendar.getInstance(); 
-        int year = cal.get(Calendar.YEAR); 
-        
-        while (anio <= year) {            
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+
+        while (anio <= year) {
             modelAnio.addElement(anio);
             anio++;
         }
         cmbAnio.setModel(modelAnio);
-        
-        while (mes <= 12) {            
+
+        while (mes <= 12) {
             modelMes.addElement(mes);
             mes++;
         }
         cmbMes.setModel(modelMes);
-        
+
     }
 
     private void cargarDiaCombo() {
         DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
         int dia = 1;
-        int mes = cmbMes.getSelectedIndex()+1;
+        int mes = cmbMes.getSelectedIndex() + 1;
 
-        while (dia <= 28) {            
+        while (dia <= 28) {
             modelDia.addElement(dia);
             dia++;
-        } 
-        
-        if(mes == 2){
-            if((int)cmbAnio.getSelectedItem()%4 == 0 && ((int)cmbAnio.getSelectedItem()%100 != 0 || (int)cmbAnio.getSelectedItem()%400 == 0)){
+        }
+
+        if (mes == 2) {
+            if ((int) cmbAnio.getSelectedItem() % 4 == 0 && ((int) cmbAnio.getSelectedItem() % 100 != 0 || (int) cmbAnio.getSelectedItem() % 400 == 0)) {
                 modelDia.addElement(dia);
             }
-        }else if(mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12){
-            while (dia <= 31) {            
+        } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+            while (dia <= 31) {
                 modelDia.addElement(dia);
                 dia++;
             }
-        }else{
-            while (dia <= 30) {            
+        } else {
+            while (dia <= 30) {
                 modelDia.addElement(dia);
                 dia++;
             }
         }
         cmbDia.setModel(modelDia);
     }
-    
-    public void cargarComboCurso(ArrayList listaGenerica)
-    {
+
+    public void cargarComboCurso(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
+
         for (Object elemento : listaGenerica) {
             model.addElement(elemento);
         }
-        
+
         cmbCursos.setModel(model);
     }
 
     private boolean esValidoM() {
         try {
             Integer.parseInt(txtLegajo.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;            
+        if (cmbCursos.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         return true;
     }
 
     private boolean esValidoF() {
-        try{
+        try {
             Integer.parseInt(txtDocumento.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        try{
+        try {
             Integer.parseInt(txtLegajo.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtMail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtMail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (cmbTipoDocumento.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (cmbTipoDocumento.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (cmbCursos.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
     }
 
     private boolean esValidoO() {
-        try{
+        try {
             Integer.parseInt(txtDocumento.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+
+        if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtMail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtMail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtTelefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (cmbTipoDocumento.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (cmbTipoDocumento.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (cmbCursos.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -588,11 +592,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
     private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
+
         for (Object elemento : obtenerTodos) {
             model.addElement(elemento);
         }
-        
+
         cmbTipoDocumento.setModel(model);
     }
 
