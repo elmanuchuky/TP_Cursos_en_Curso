@@ -287,11 +287,14 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
     private void btnCarcgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarcgarActionPerformed
         GestorInscripcion gi = new GestorInscripcion();
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
         switch (instancia) {
             case 1://matriculado
                 if (esValidoM()) {
                     try {
                         gi.agregarInscripcionMatriculado(Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
+                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                         System.out.println(ex);
@@ -311,7 +314,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
                         gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
-                        //JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
@@ -330,7 +333,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
                         gi.agregarInscripcionOtro(dg, ((ComboCurso) cmbCursos.getSelectedItem()).getId());
-                        //JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     }
