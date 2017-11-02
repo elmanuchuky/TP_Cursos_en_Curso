@@ -147,9 +147,9 @@ public class GestorAsistencia {
         }
         consulta2.close();
         comando2.close();
-        con.close();
         lista.add(alumnos);
         lista.add(presentes);
+        con.close();
 
         return lista;
     }
