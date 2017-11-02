@@ -507,11 +507,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try {
             Integer.parseInt(txtLegajo.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;            
         }
         if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;            
         }
         return true;
@@ -521,37 +521,37 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try{
             Integer.parseInt(txtLegajo.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El legajo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -561,31 +561,31 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbCursos.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(dialog, "Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "¡Seleccione un curso!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
