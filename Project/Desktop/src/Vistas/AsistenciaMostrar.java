@@ -553,14 +553,16 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     public void cargarCurso() {
         try {
-            lista = ga.obtenerAsistenciasPorCurso(((Curso) cmbCursos.getSelectedItem()).getIdCurso());
+            lista = ga.obtenerAsistenciasPorCurso(((ComboCurso) cmbCursos.getSelectedItem()).getId());
             DefaultTableModel model = new DefaultTableModel();
             Object[] nombreColumna = new ArrayList[lista.get(0).size()];
+            System.out.println(""+lista.get(0).size());
             Object[] contenido = new ArrayList[lista.get(0).size()];
             for (ArrayList<String> arrayList : lista) {
                 for (int i = 0; i < arrayList.size(); i++) {
                     if (i == 0) {
                         nombreColumna[i] = arrayList.get(i);
+                        System.out.println(arrayList.get(i));
                     } else {
                         contenido[i] = arrayList.get(i);
                     }
@@ -571,9 +573,9 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             jtTablaAsistencias.setModel(model);
 
         } catch (SQLException ex) {
-            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
     }
 
