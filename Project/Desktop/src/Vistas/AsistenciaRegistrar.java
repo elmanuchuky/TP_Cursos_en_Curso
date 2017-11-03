@@ -165,6 +165,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         lblDiaAsistencia.setBounds(10, 335, 101, 14);
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.setMinimumSize(new java.awt.Dimension(107, 25));
         btnModificar.setPreferredSize(new java.awt.Dimension(107, 25));
@@ -174,7 +175,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnModificar);
-        btnModificar.setBounds(180, 330, 90, 25);
+        btnModificar.setBounds(160, 330, 110, 25);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel1);

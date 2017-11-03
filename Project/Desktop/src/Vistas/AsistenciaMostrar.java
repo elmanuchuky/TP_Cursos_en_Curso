@@ -229,7 +229,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("/");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(520, 14, 7, 17);
+        jLabel3.setBounds(530, 10, 7, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
@@ -239,7 +239,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(590, 10, 70, 23);
+        cmbAnio.setBounds(470, 10, 60, 23);
 
         cmbMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
@@ -249,26 +249,26 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(526, 10, 50, 23);
+        cmbMes.setBounds(540, 10, 50, 23);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(580, 10, 7, 17);
+        jLabel12.setBounds(600, 10, 7, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(466, 11, 50, 23);
+        cmbDia.setBounds(610, 10, 50, 23);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
         txtMail.setBounds(61, 45, 520, 23);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Mail");
+        jLabel4.setText("E-Mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(22, 48, 21, 17);
+        jLabel4.setBounds(10, 50, 40, 17);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
