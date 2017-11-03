@@ -221,14 +221,14 @@ public class EditarMatriculado extends javax.swing.JFrame {
         getContentPane().add(btnMoificar);
         btnMoificar.setBounds(520, 210, 105, 30);
 
-        cmdGo.setText("GO");
+        cmdGo.setText("BUSCAR");
         cmdGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdGoActionPerformed(evt);
             }
         });
         getContentPane().add(cmdGo);
-        cmdGo.setBounds(400, 10, 70, 30);
+        cmdGo.setBounds(400, 10, 80, 30);
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtLegajo.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -294,9 +294,11 @@ public class EditarMatriculado extends javax.swing.JFrame {
             d.setEmail(txtMail.getText());
             m.setProfesion(txtProfecion.getText());
             m.setLegajoMatriculado(Integer.parseInt(txtLegajo.getText()));
+            JOptionPane.showMessageDialog(dialog, "Se ha modificado con éxito el registro");
 
             try {
                 gm.modificarMatriculado(m, d);
+                limpiarControles();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -466,27 +468,27 @@ public class EditarMatriculado extends javax.swing.JFrame {
         try{
             Integer.parseInt(txtDocumento.getText());
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo teléfono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtProfecion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo profesion no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo profesión no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
@@ -541,6 +543,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
     }
 
     private void limpiarControles() {
+        txtLegajo.setText("");
         txtApellido.setText("");
         txtDocumento.setText("");
         txtMail.setText("");

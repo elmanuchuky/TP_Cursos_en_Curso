@@ -55,8 +55,7 @@ public class GestorMatriculado {
         comando2.setInt(2, m.getDatos());
         comando2.setString(3, m.getProfesion());
         comando2.executeUpdate();
-        comando2.close();
-        JOptionPane.showMessageDialog(null, "Se ha modificado correctamente");
+        comando2.close();        
         con.close();
     }
 
