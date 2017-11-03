@@ -72,9 +72,9 @@ public class ConsultaPago extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Mail");
+        jLabel2.setText("E-Mail");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 8, 30, 17);
+        jLabel2.setBounds(10, 10, 50, 17);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMail.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +83,7 @@ public class ConsultaPago extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtMail);
-        txtMail.setBounds(49, 5, 380, 23);
+        txtMail.setBounds(59, 5, 380, 30);
 
         jltListado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jltListado);

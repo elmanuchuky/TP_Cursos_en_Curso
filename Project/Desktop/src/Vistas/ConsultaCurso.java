@@ -73,7 +73,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         rbtTodos.setBounds(10, 10, 69, 25);
 
         rbtProximo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        rbtProximo.setText("proximos");
+        rbtProximo.setText("Próximos");
         rbtProximo.setOpaque(false);
         rbtProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
