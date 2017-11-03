@@ -115,7 +115,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(550, 93, 80, 30);
+        cmbAnio.setBounds(420, 90, 80, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento");
@@ -123,9 +123,9 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel7.setBounds(290, 100, 126, 17);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Mail");
+        jLabel9.setText("E-Mail");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 140, 21, 17);
+        jLabel9.setBounds(10, 140, 50, 17);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNombre.setEnabled(false);
@@ -141,12 +141,12 @@ public class EditarMatriculado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(490, 93, 50, 30);
+        cmbMes.setBounds(510, 90, 50, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Profecion");
+        jLabel10.setText("Profesión");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(310, 180, 57, 17);
+        jLabel10.setBounds(310, 180, 56, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
@@ -171,7 +171,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(540, 100, 8, 17);
+        jLabel12.setBounds(570, 100, 8, 17);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Apellido");
@@ -179,7 +179,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel4.setBounds(310, 60, 58, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Telfeono");
+        jLabel8.setText("Teléfono");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(10, 180, 52, 17);
 
@@ -196,13 +196,13 @@ public class EditarMatriculado extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("/");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(480, 100, 8, 17);
+        jLabel2.setBounds(500, 100, 8, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         cmbDia.setEnabled(false);
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(430, 93, 50, 30);
+        cmbDia.setBounds(580, 90, 50, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Legajo");
@@ -232,10 +232,10 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtLegajo.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtLegajoInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtLegajo.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +288,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             d.setApellido(txtApellido.getText());
             d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
             d.setDni(Integer.parseInt(txtDocumento.getText()));
-            String fecha = cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+            String fecha = cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString();
             d.setFechaNacimiento(fecha);
             d.setTelefono(txtTelefono.getText());
             d.setEmail(txtMail.getText());
