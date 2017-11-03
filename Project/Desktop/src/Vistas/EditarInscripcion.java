@@ -12,6 +12,7 @@ import Model.GestorCurso;
 import Model.GestorDatosGenerales;
 import Model.GestorInscripcion;
 import Model.GestorMatriculado;
+import Model.GestorTipoDni;
 import Model.Matriculado;
 import Model.TipoDni;
 import java.awt.Image;
@@ -60,6 +61,15 @@ public class EditarInscripcion extends javax.swing.JFrame {
         cargarDiaCombo();
         this.setLocationRelativeTo(null);
         dialog.setAlwaysOnTop(true);
+        
+        GestorTipoDni gtd = new GestorTipoDni();
+        try {
+            cargarComboTipoDni(gtd.obtenerTodos());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public EditarInscripcion (int x) {
@@ -605,8 +615,8 @@ public class EditarInscripcion extends javax.swing.JFrame {
                 mat = gm.obtenerMatriculadoxLegajo(legajo);
                 datos = dg.obtenerDatosGenerales(mat.getDatos());
                 id_cursante = cg.obtenerIdCursantexIdDatosGenerales(datos.getIdDatosGenerales());
-                cursoTxt = gc.obtenerStringCurso(id_cursante);
-                
+//                cursoTxt = gc.obtenerStringCurso(id_cursante);
+                System.out.println(datos.toString());
                 txtNombre.setText(datos.getNombre());
                 txtApellido.setText(datos.getApellido());
                 txtDocumento.setText("" + datos.getDni());
@@ -762,5 +772,15 @@ public class EditarInscripcion extends javax.swing.JFrame {
             return false;
         }  
         return (true);
+    }
+    
+    private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        for (Object elemento : obtenerTodos) {
+            model.addElement(elemento);
+        }
+
+        cmbTipoDocumento.setModel(model);
     }
 }
