@@ -139,7 +139,7 @@ public class InicioSesion extends javax.swing.JFrame {
             mp.setVisible(true);
             this.setVisible(false);  
         } else {
-            JOptionPane.showMessageDialog(null, "El usuario o la Contraseña es incorecto", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Usuario o la Contraseña es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
