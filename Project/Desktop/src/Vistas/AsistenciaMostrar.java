@@ -591,24 +591,20 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             lista = ga.obtenerAsistenciasPorCurso(((ComboCurso) cmbCursos.getSelectedItem()).getId());
             DefaultTableModel model = new DefaultTableModel();
             Object[] nombreColumna = new Object[lista.size()];//new ArrayList[lista.get(1).size()];
-            Object[] contenido = new Object[lista.get(0).size()];
-            for (int i = 0; i < lista.size(); i++) {
-                for (int j = 0; j < lista.get(0).size(); j++) {
-                    if (j == 0) {
-                        nombreColumna[i] = lista.get(i).get(j);
-                    }
-                }
+            Object[] contenido = new Object[lista.size()];
+            for (int j = 0; j < lista.size(); j++) {
+                nombreColumna[j] = lista.get(j).get(0);
             }
             model.setColumnIdentifiers(nombreColumna);
 
             for (int j = 0; j < lista.get(0).size(); j++) {
                 for (int i = 0; i < lista.size(); i++) {
-                    System.out.println("i " + i + "     j " + j + "       " + lista.get(i));
-                    if (j != 0) {
+                    if (j != 0){
+                        System.out.println("i" + i + "   j" + j + "   " + lista.get(i).get(j));
                         contenido[i] = lista.get(i).get(j);
                     }
                 }
-                if (j != 0) {
+                if (j != 0){
                     model.addRow(contenido);
                 }
             }

@@ -83,6 +83,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         cmbCurso = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tRegistrarAsistencia = new javax.swing.JTable();
+        txtFecha = new javax.swing.JTextField();
         btRegistrar = new javax.swing.JButton();
         lblDiaAsistencia = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
@@ -147,6 +148,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 61, 399, 256);
+        getContentPane().add(txtFecha);
+        txtFecha.setBounds(169, 0, 190, 22);
 
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -162,7 +165,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         lblDiaAsistencia.setText("Asistencia para el dia");
         lblDiaAsistencia.setToolTipText("");
         getContentPane().add(lblDiaAsistencia);
-        lblDiaAsistencia.setBounds(10, 335, 101, 14);
+        lblDiaAsistencia.setBounds(10, 335, 122, 16);
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -214,7 +217,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                     esPresente = 0;
                 }
 
-                a.setFechaAsistencia("2017-11-01");
+                a.setFechaAsistencia(txtFecha.getText());
                 System.out.println(a.toString());
                 ga.agregarAsistencia(a);
             } catch (ClassNotFoundException ex) {
@@ -324,6 +327,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDiaAsistencia;
     private javax.swing.JTable tRegistrarAsistencia;
+    private javax.swing.JTextField txtFecha;
     // End of variables declaration//GEN-END:variables
 
     public void cargarTablaAsistencia() throws ClassNotFoundException, SQLException {
@@ -350,6 +354,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         };
         tRegistrarAsistencia.setModel(model);//new JTable(model);
+        System.out.println("asd");
         //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
 
     }

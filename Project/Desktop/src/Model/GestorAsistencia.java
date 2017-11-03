@@ -249,7 +249,7 @@ public class GestorAsistencia {
         forName(classForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement comando = con.createStatement();
-        ResultSet consulta = comando.executeQuery("select d.nombre +' ' +d.apellido as 'alumno', d.documento as 'documento', c.fecha 'fechaInicio', dbo.sp_obtener_fecha_fin(c.fecha, c.duracion_total_semanas)'FechaFin', c.dia_horario 'horario', c.nombre as 'nombreCurso' from DatosGenerales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion in ( select * from vw_inscriptos_aptos_para_certificado");
+        ResultSet consulta = comando.executeQuery("select d.nombre +' ' +d.apellido as 'alumno', d.dni as 'documento', cu.fecha_inicio 'fechaInicio', dbo.fn_obtener_fecha_fin(cu.fecha_inicio, cu.duracion_total_semanas)'FechaFin', cu.dia_horario 'horario', cu.nombre as 'nombreCurso' from Datos_Generales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion in ( select Inscripto from dbo.vw_consultar_inscriptos_aptos_certificado)");
         while (consulta.next()) {
             VMCertificado vc = new VMCertificado();
             vc.setAlumno(consulta.getString(1));
