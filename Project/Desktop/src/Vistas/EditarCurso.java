@@ -46,14 +46,13 @@ public class EditarCurso extends javax.swing.JFrame {
         CargaHoraMinutos();
         this.setLocationRelativeTo(null);
         dialog.setAlwaysOnTop(true); 
-        /*
         try {
             cargarCursosFiltro(g.TodosCursos());
         } catch (SQLException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
 
     /**
@@ -324,12 +323,11 @@ public class EditarCurso extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
         try {
-            if (isValid()) {
                 nombre = txtNombre.getText();
                 descripcion= txtaDescripcion.getText();
                 tema = txtaTema.getText();
                 duracion = Integer.parseInt(txtDuracion.getText());
-                fecha = cmbDia.getSelectedItem().toString() + "/" + cmbMes1.getSelectedItem().toString() + "/" + cmbAnio.getSelectedItem().toString();
+                fecha = cmbMes1.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
                 aula = txtAula.getText();
                 cupo = Integer.parseInt(txtCupo.getText());
                 precio = Double.parseDouble(txtCosto.getText());
@@ -339,7 +337,6 @@ public class EditarCurso extends javax.swing.JFrame {
                 Curso c = new Curso(nombre,descripcion,fecha,tema,duracion,precio,cupo,aula,hora,cargaHoraria);
                 c.setIdCurso(id);
                 g.modificar(c);
-            }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
