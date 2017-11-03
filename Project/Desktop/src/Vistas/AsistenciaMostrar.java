@@ -54,6 +54,8 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         g = new GestorCurso();
         gd = new GestorDatosGenerales();
         ga = new GestorAsistencia();
+        btnReporte.setVisible(false);
+        jtTablaAsistencias.getTableHeader().setReorderingAllowed(false);
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -70,9 +72,10 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         initComponents();
         cargarDiaCombo();
         cargaCmb();
-        btnReporte.setVisible(true);
+        btnReporte.setVisible(false);
         g = new GestorCurso();
         ga = new GestorAsistencia();
+        jtTablaAsistencias.getTableHeader().setReorderingAllowed(false);
         try {
 
             cargarComboCurso(g.ComboCursosActuales());
@@ -357,6 +360,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
                 try {
                     //Curso & Fecha
                     cargarCursoYFecha();
+                    btnReporte.setVisible(true);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
@@ -370,7 +374,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         }
 
         nombreCurso = ((ComboCurso) cmbCursos.getSelectedItem()).getNombre();
-        btnReporte.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
@@ -551,18 +554,15 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     private void cargarCursoYFecha() throws ClassNotFoundException, SQLException {
         String fecha = cmbAnio.getSelectedItem().toString() + "-" + cmbMes.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString();
-        
+
         lista = ga.obtenerAsistenciasPorCursoPorFecha(((ComboCurso) cmbCursos.getSelectedItem()).getId(), fecha);
         DefaultTableModel model = new DefaultTableModel();
         Object[] nombreColumna = new Object[lista.size()];//new ArrayList[lista.get(1).size()];
-        System.out.println("nombre columna = "+lista.size());
         Object[] contenido = new Object[lista.get(0).size()];
-        System.out.println("contenido = "+lista.get(0).size());
         for (int i = 0; i < lista.size(); i++) {
             for (int j = 0; j < lista.get(0).size(); j++) {
                 if (j == 0) {
                     nombreColumna[i] = lista.get(i).get(j);
-                    System.out.println(lista.get(i).get(j) + "   i: " + i + "   j:" + j);
                 }
             }
         }
@@ -677,10 +677,12 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             tabla.addCell("Alumno");
             tabla.addCell("Asistencia");
-//            for (ArrayList<String> array : lista) {
-//                tabla.addCell(array.get(0));
-//                tabla.addCell(array.get(1));
-//            }
+            for (int i = 0; i < jtTablaAsistencias.getRowCount(); i++) {
+                tabla.addCell("" + jtTablaAsistencias.getValueAt(i, 0));
+                System.out.println(""+ i + " "+ 0 + "   " + jtTablaAsistencias.getValueAt(i, 0));
+                tabla.addCell("" + jtTablaAsistencias.getValueAt(i, 1));
+                System.out.println(""+ i + " "+ 1 + "   " + jtTablaAsistencias.getValueAt(i, 1));
+            }
             //pasamos al documento (por orden) las cosas que deseamos mostrar
             doc.add(title);
             doc.add(tabla);
