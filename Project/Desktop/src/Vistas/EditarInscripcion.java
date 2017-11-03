@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Model.ComboNuevoCursante;
 import Model.Curso;
 import Model.DatosGenerales;
 import Model.GestorCursante;
@@ -63,8 +64,10 @@ public class EditarInscripcion extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         
         GestorTipoDni gtd = new GestorTipoDni();
+        GestorCurso gc = new GestorCurso();
         try {
             cargarComboTipoDni(gtd.obtenerTodos());
+            cargarComboCurso(gc.ComboCursosIncribir());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EditarInscripcion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -111,6 +114,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        cmbCurso = new javax.swing.JComboBox<>();
         txtApellido = new javax.swing.JTextField();
         txtLegajo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -129,7 +133,6 @@ public class EditarInscripcion extends javax.swing.JFrame {
         cmbMes = new javax.swing.JComboBox();
         cmbAnio = new javax.swing.JComboBox();
         txtMailBusquea = new javax.swing.JTextField();
-        tctCurso = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -141,7 +144,6 @@ public class EditarInscripcion extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(680, 330));
-        setPreferredSize(new java.awt.Dimension(680, 330));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -186,6 +188,9 @@ public class EditarInscripcion extends javax.swing.JFrame {
         jLabel5.setText("Legajo");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(20, 60, 64, 17);
+
+        getContentPane().add(cmbCurso);
+        cmbCurso.setBounds(270, 50, 380, 30);
 
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtApellido.setEnabled(false);
@@ -297,11 +302,6 @@ public class EditarInscripcion extends javax.swing.JFrame {
         });
         getContentPane().add(txtMailBusquea);
         txtMailBusquea.setBounds(76, 10, 580, 30);
-
-        tctCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tctCurso.setEnabled(false);
-        getContentPane().add(tctCurso);
-        tctCurso.setBounds(260, 53, 390, 30);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Mail");
@@ -473,6 +473,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox cmbAnio;
+    private javax.swing.JComboBox<String> cmbCurso;
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbMes;
     private javax.swing.JComboBox<String> cmbTipoDocumento;
@@ -492,7 +493,6 @@ public class EditarInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField tctCurso;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtLegajo;
@@ -615,7 +615,7 @@ public class EditarInscripcion extends javax.swing.JFrame {
                 mat = gm.obtenerMatriculadoxLegajo(legajo);
                 datos = dg.obtenerDatosGenerales(mat.getDatos());
                 id_cursante = cg.obtenerIdCursantexIdDatosGenerales(datos.getIdDatosGenerales());
-//                cursoTxt = gc.obtenerStringCurso(id_cursante);
+                //cursoTxt = gc.obtenerStringCurso(id_cursante);
                 System.out.println(datos.toString());
                 txtNombre.setText(datos.getNombre());
                 txtApellido.setText(datos.getApellido());
@@ -782,5 +782,15 @@ public class EditarInscripcion extends javax.swing.JFrame {
         }
 
         cmbTipoDocumento.setModel(model);
+    }
+    
+    private void cargarComboCurso(ArrayList<ComboNuevoCursante> obtenerTodos) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        for (Object elemento : obtenerTodos) {
+            model.addElement(elemento);
+        }
+
+        cmbCurso.setModel(model);
     }
 }

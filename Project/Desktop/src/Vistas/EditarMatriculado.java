@@ -287,6 +287,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
             DatosGenerales d = new DatosGenerales();
             Matriculado m = new Matriculado();
             m.setIdMatriculado(idDG);
+            d.setIdDatosGenerales(idDG);
             d.setNombre(txtNombre.getText());
             d.setApellido(txtApellido.getText());
             d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
