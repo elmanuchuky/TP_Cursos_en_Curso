@@ -25,6 +25,8 @@ import com.itextpdf.text.pdf.PdfPHeaderCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -306,37 +308,10 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             doc.add(title);
             doc.add(cuerpo);
             doc.add(saldoFirma);
-//            doc.add(contenido);
-//            doc.add(contenidoSuma);
-//            doc.add(firma);
 
             doc.close();
-//            for (Consulta1DTO item : lista) {
-//                Paragraph p = new Paragraph();
-//                p.add("Responsable: " + item.getNombreResponsable());
-//                p.add("\n - Cantidad: " + item.getCantidad());
-//                doc.add(p);
-//            }
-
-            //Con  una tabla
-//            PdfPTable tabla = new PdfPTable(2);
-//
-//            tabla.addCell("RESPONSABLE");
-//            tabla.addCell("CANTIDAD");
-//            for (Consulta1DTO item : lista) {
-//                tabla.addCell(item.getNombreResponsable());
-//                tabla.addCell(String.valueOf(item.getCantidad()));
-//            }
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(Chunk.NEWLINE);
-//            doc.add(tabla);
-//            
-//            for (int i = 0; i < 10; i++) {
-//                doc.add(new Paragraph("Parrafo numero " + i));
-//            }
+            
+            Desktop.getDesktop().open(new File("" + nombreArchivo + ".pdf"));
         } catch (DocumentException ex) {
             System.out.println(ex);
         } catch (FileNotFoundException ex) {

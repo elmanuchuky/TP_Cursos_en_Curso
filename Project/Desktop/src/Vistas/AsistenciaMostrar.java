@@ -425,7 +425,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
             doc.close();
 
-            Desktop.getDesktop().open(new File("" + alumno + fechaInicio + ".pdf"));
+            Desktop.getDesktop().open(new File("" + alumno+ ".pdf"));
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (DocumentException ex) {
