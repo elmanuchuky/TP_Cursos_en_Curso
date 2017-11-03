@@ -29,10 +29,12 @@ import javax.swing.JOptionPane;
 public class EditarMatriculado extends javax.swing.JFrame {
 
     GestorMatriculado gm;
-    final JDialog dialog = new JDialog(); 
+    final JDialog dialog = new JDialog();
+    int idDG;
 
     /**
      * Creates new form EditarMatriculado
+     *
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */
@@ -232,10 +234,10 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtLegajo.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtLegajoInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtLegajo.addActionListener(new java.awt.event.ActionListener() {
@@ -284,6 +286,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
         if (validacion()) {
             DatosGenerales d = new DatosGenerales();
             Matriculado m = new Matriculado();
+            m.setIdMatriculado(idDG);
             d.setNombre(txtNombre.getText());
             d.setApellido(txtApellido.getText());
             d.setTipoDni(((TipoDni) cmbTipoDocumento.getSelectedItem()).getId());
@@ -323,12 +326,14 @@ public class EditarMatriculado extends javax.swing.JFrame {
         GestorMatriculado gm = new GestorMatriculado();
         GestorDatosGenerales gdg = new GestorDatosGenerales();
         try {
-            int idDG = gm.obtenerMatriculado(Integer.parseInt(txtLegajo.getText()));
-            if (idDG > 0){
+            idDG = gm.obtenerMatriculado(Integer.parseInt(txtLegajo.getText()));
+            Matriculado m = gm.obtenerMatriculadoxLegajo(Integer.parseInt(txtLegajo.getText()));
+            m.setIdMatriculado(idDG);
+            if (idDG > 0) {
                 habilitar(true);
-                    JOptionPane.showMessageDialog(dialog, gdg.obtenerDatosGenerales(idDG).toString());
-                cargarControles(gdg.obtenerDatosGenerales(idDG));
-            }else{
+                JOptionPane.showMessageDialog(dialog, gdg.obtenerDatosGenerales(idDG).toString());
+                cargarControles(gdg.obtenerDatosGenerales(idDG), m);
+            } else {
                 habilitar(false);
                 limpiarControles();
             }
@@ -337,13 +342,13 @@ public class EditarMatriculado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmdGoActionPerformed
 
-   
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -388,54 +393,55 @@ public class EditarMatriculado extends javax.swing.JFrame {
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
-        
+
         int anio = 1900;
         int mes = 1;
- 
-        Calendar cal= Calendar.getInstance(); 
-        int year = cal.get(Calendar.YEAR); 
-        
-        while (anio <= year) {            
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+
+        while (anio <= year) {
             modelAnio.addElement(anio);
             anio++;
         }
         cmbAnio.setModel(modelAnio);
-        
-        while (mes <= 12) {            
+
+        while (mes <= 12) {
             modelMes.addElement(mes);
             mes++;
         }
         cmbMes.setModel(modelMes);
-        
+
     }
+
     private void cargarDiaCombo() {
         DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
         int dia = 1;
-        int mes = cmbMes.getSelectedIndex()+1;
+        int mes = cmbMes.getSelectedIndex() + 1;
 
-        while (dia <= 28) {            
+        while (dia <= 28) {
             modelDia.addElement(dia);
             dia++;
-        } 
-        
-        if(mes == 2){
-            if((int)cmbAnio.getSelectedItem()%4 == 0 && ((int)cmbAnio.getSelectedItem()%100 != 0 || (int)cmbAnio.getSelectedItem()%400 == 0)){
+        }
+
+        if (mes == 2) {
+            if ((int) cmbAnio.getSelectedItem() % 4 == 0 && ((int) cmbAnio.getSelectedItem() % 100 != 0 || (int) cmbAnio.getSelectedItem() % 400 == 0)) {
                 modelDia.addElement(dia);
             }
-        }else if(mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12){
-            while (dia <= 31) {            
+        } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+            while (dia <= 31) {
                 modelDia.addElement(dia);
                 dia++;
             }
-        }else{
-            while (dia <= 30) {            
+        } else {
+            while (dia <= 30) {
                 modelDia.addElement(dia);
                 dia++;
             }
         }
         cmbDia.setModel(modelDia);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMoificar;
     private javax.swing.JComboBox cmbAnio;
@@ -465,9 +471,9 @@ public class EditarMatriculado extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean validacion() {
-        try{
+        try {
             Integer.parseInt(txtDocumento.getText());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -505,14 +511,14 @@ public class EditarMatriculado extends javax.swing.JFrame {
         }
         return true;
     }
-    
+
     private void cargarComboTipoDni(ArrayList<TipoDni> obtenerTodos) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
+
         for (Object elemento : obtenerTodos) {
             model.addElement(elemento);
         }
-        
+
         cmbTipoDocumento.setModel(model);
     }
 
@@ -530,16 +536,21 @@ public class EditarMatriculado extends javax.swing.JFrame {
         btnMoificar.setEnabled(b);
     }
 
-    private void cargarControles(DatosGenerales dg) {
+    private void cargarControles(DatosGenerales dg, Matriculado m) {
         txtApellido.setText(dg.getApellido());
         txtDocumento.setText("" + dg.getDni());
         txtMail.setText(dg.getEmail());
         txtNombre.setText(dg.getNombre());
         txtTelefono.setText(dg.getTelefono());
         cmbTipoDocumento.setSelectedIndex(0);
-        cmbAnio.setSelectedIndex(0);
-        cmbMes.setSelectedIndex(0);
-        cmbDia.setSelectedIndex(0);
+        txtProfecion.setText(m.getProfesion());
+
+        String[] datosFecha = dg.getFechaNacimiento().split("-");
+
+        cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0])) - 1900));
+        cmbMes.setSelectedIndex(Integer.parseInt(datosFecha[1]) - 1);
+        cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2]) - 1);
+
     }
 
     private void limpiarControles() {
