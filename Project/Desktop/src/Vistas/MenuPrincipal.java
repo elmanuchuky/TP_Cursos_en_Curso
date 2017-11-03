@@ -46,12 +46,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+        jmiEditarIscripcion.setEnabled(false);
+        jmiEditarIscripcionMatriculado.setEnabled(false);
+        jmiEditarIscripcionOtro.setEnabled(false);
+        jmiEditarIscripcionFamilia.setEnabled(false);
     }
         
     public MenuPrincipal(int x) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+        
+        jmiEditarIscripcion.setEnabled(false);
+        jmiEditarIscripcionMatriculado.setEnabled(false);
+        jmiEditarIscripcionOtro.setEnabled(false);
+        jmiEditarIscripcionFamilia.setEnabled(false);
         
         usuario = x;
         
@@ -61,11 +70,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jmRegistrar.setEnabled(true);
                 jmAsistencia.setEnabled(true);
                 jmEditar.setEnabled(true);
+                jmiEditarIscripcion.setEnabled(false);
                 jmConsulta.setEnabled(true);
                 break;
             case 2:
                 jmiRegistrarCurso.setEnabled(false);
                 jmiEditarCurso.setEnabled(false);
+                jmiEditarIscripcion.setEnabled(false);
                 break;
             case 3:
                 jmRegistrar.setEnabled(false);
