@@ -159,8 +159,8 @@ public class RegistrarPago extends javax.swing.JFrame {
                     String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
                     JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo cobro");
-                    limpiarControles();
                     imprimirComprobante(tm, fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
+                    limpiarControles();
                 } else {
                     JOptionPane.showMessageDialog(dialog, "¡No existe un e-mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
