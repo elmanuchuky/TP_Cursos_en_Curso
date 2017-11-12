@@ -33,9 +33,9 @@ public class GestorInscripcion {
         forName(ClasForName);
         try {
             GestorDatosGenerales gdg = new GestorDatosGenerales();
-            GestorCursante gc = new GestorCursante();
             gdg.agregarDatosGenerales(dg);
             int ultimodgd = gdg.obtenerUltimoId();
+            GestorCursante gc = new GestorCursante();
             gc.agregarCursanteOtro(ultimodgd);
             int ultimoCursante = gc.obtenerUltimoCursante();
 
@@ -57,12 +57,11 @@ public class GestorInscripcion {
         forName(ClasForName);
         try {
             GestorDatosGenerales gdg = new GestorDatosGenerales();
-            GestorMatriculado gm = new GestorMatriculado();
-            GestorCursante gc = new GestorCursante();
-
             gdg.agregarDatosGenerales(dg);
             int ultimogdg = gdg.obtenerUltimoId();
+            GestorMatriculado gm = new GestorMatriculado();
             int matriculado = gm.obtenerMatriculado(legajo);
+            GestorCursante gc = new GestorCursante();
             gc.agregarCursanteFamilia(matriculado, ultimogdg);
             int ultimoCursante = gc.obtenerUltimoCursante();
 
@@ -84,16 +83,11 @@ public class GestorInscripcion {
         forName(ClasForName);
         try {
             GestorDatosGenerales gdg = new GestorDatosGenerales();
-            System.out.println("gggg" + legajo);
-
             int idDatosGeneral = gdg.obtenerDatosPorLegajo(legajo);
-            System.out.println("vvvvv" + idDatosGeneral);
             GestorMatriculado gm = new GestorMatriculado();
             int idMatriculado = gm.obtenerMatriculado(legajo);
-            System.out.println("vvvvv" + idMatriculado);
             GestorCursante gc = new GestorCursante();
             gc.agregarCursanteMatriculado(idMatriculado, idDatosGeneral);
-            System.out.println("vvvvv");
 
             int ultimoCursante = gc.obtenerUltimoCursante();
             // Insertar nueva inscripcion

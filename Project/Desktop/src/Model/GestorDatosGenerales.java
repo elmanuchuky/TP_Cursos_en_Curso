@@ -88,11 +88,9 @@ public class GestorDatosGenerales {
             Connection con = DriverManager.getConnection(conexion, user, pass);
             Statement stmtId = con.createStatement();
             ResultSet query = stmtId.executeQuery("SELECT m.id_datos_generales id FROM Matriculados m join Datos_Generales dg on m.id_datos_generales = dg.id_datos_generales WHERE m.legajo_matriculado = " + legajo);
-        System.out.println("ttttt" + legajo);
             if (query.next()) {
                 idDG = query.getInt("id");
             }
-        System.out.println("ttttt" + idDG);
             query.close();
             stmtId.close();
             con.close();
