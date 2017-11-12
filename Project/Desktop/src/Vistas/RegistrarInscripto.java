@@ -318,8 +318,11 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
-                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                        if (gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId())) {
+                            JOptionPane.showMessageDialog(dialog, "Ese numero de legajo no existe");
+                        } else {
+                            JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                        }
                         limpiarControles();
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
@@ -543,7 +546,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             txtNombre.requestFocus();
-            return false;            
+            return false;
         }
         if (txtApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
