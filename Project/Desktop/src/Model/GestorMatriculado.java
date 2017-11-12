@@ -11,6 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -29,7 +32,7 @@ public class GestorMatriculado {
 
     //agrega un nuevo matriculado
     public void agregarMatriculado(Matriculado m, DatosGenerales d) throws SQLException, ClassNotFoundException {
-        
+
         Connection con = DriverManager.getConnection(conexion, user, pass);
         GestorDatosGenerales gd = new GestorDatosGenerales();
         gd.agregarDatosGenerales(d);
@@ -38,7 +41,7 @@ public class GestorMatriculado {
         comando2.setInt(1, m.getDatos());
         comando2.setString(2, m.getProfesion());
         comando2.executeUpdate();
-        comando2.close();               
+        comando2.close();
         con.close();
     }
 
@@ -55,7 +58,7 @@ public class GestorMatriculado {
         comando2.setInt(2, m.getDatos());
         comando2.setString(3, m.getProfesion());
         comando2.executeUpdate();
-        comando2.close();        
+        comando2.close();
         con.close();
     }
 
@@ -87,6 +90,28 @@ public class GestorMatriculado {
         stmtId.close();
         con.close();
         return m;
+    }
+
+    public ArrayList<VMMatriculado> obtenerMatriculados(String filter) {
+        ArrayList<VMMatriculado> lista = new ArrayList<>();
+        try {
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            PreparedStatement stmt = con.prepareStatement("select m.id_matriculado id, m.legajo_matriculado legajo, m.profesion profesion, dg.apellido + ', ' + dg.nombre nombre, dg.mail mail, dg.telefono telefono from Matriculados m join Datos_Generales dg on dg.id_datos_generales = m.id_datos_generales where dg.apellido + ', ' + dg.nombre like '%" + filter + "%'");
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                VMMatriculado e = new VMMatriculado();
+                e.setId(rs.getInt("id"));
+                e.setLegajo(rs.getInt("legajo"));
+                e.setProfesion(rs.getString("profesion"));
+                e.setNombre(rs.getString("nombre"));
+                e.setMail(rs.getString("mail"));
+                e.setTelefono(rs.getString("telefono"));
+                lista.add(e);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorMatriculado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
     }
 
 }

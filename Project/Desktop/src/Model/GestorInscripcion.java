@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 public class GestorInscripcion {
 
     AccesoDatosVariable adv = new AccesoDatosVariable();
-    
+
     String conexion = adv.getConexion();
     String user = adv.getUser();
     String pass = adv.getPass();
@@ -81,12 +81,17 @@ public class GestorInscripcion {
     public void agregarInscripcionMatriculado(int legajo, int idCurso) throws ClassNotFoundException {
         forName(ClasForName);
         try {
-            GestorMatriculado gm = new GestorMatriculado();
             GestorDatosGenerales gdg = new GestorDatosGenerales();
-            GestorCursante gc = new GestorCursante();
+            System.out.println("gggg" + legajo);
+
             int idDatosGeneral = gdg.obtenerDatosPorLegajo(legajo);
+            System.out.println("vvvvv" + idDatosGeneral);
+            GestorMatriculado gm = new GestorMatriculado();
             int idMatriculado = gm.obtenerMatriculado(legajo);
+            System.out.println("vvvvv" + idMatriculado);
+            GestorCursante gc = new GestorCursante();
             gc.agregarCursanteMatriculado(idMatriculado, idDatosGeneral);
+            System.out.println("vvvvv");
 
             int ultimoCursante = gc.obtenerUltimoCursante();
             // Insertar nueva inscripcion
@@ -98,9 +103,11 @@ public class GestorInscripcion {
             stmtIns.close();
             con.close();
         } catch (SQLException ex) {
+            System.out.println(ex);
+
         }
     }
-  
+
     public boolean existeMailEnCurso(String mail, int idCurso) throws ClassNotFoundException {
         forName(ClasForName);
         try {
@@ -110,7 +117,7 @@ public class GestorInscripcion {
             stmtIns.setInt(1, idCurso);
             stmtIns.setString(2, mail);
             ResultSet query = stmtIns.executeQuery();
-            if (query.next()){
+            if (query.next()) {
                 query.close();
                 stmtIns.close();
                 con.close();
@@ -124,7 +131,7 @@ public class GestorInscripcion {
         }
         return false;
     }
-    
+
     public int obtenerInscripcionConMailYCurso(String mail, int idCurso) throws ClassNotFoundException {
         forName(ClasForName);
         try {
@@ -134,7 +141,7 @@ public class GestorInscripcion {
             stmtIns.setInt(1, idCurso);
             stmtIns.setString(2, mail);
             ResultSet query = stmtIns.executeQuery();
-            if (query.next()){
+            if (query.next()) {
                 int a = query.getInt("id");
                 query.close();
                 stmtIns.close();
@@ -149,6 +156,7 @@ public class GestorInscripcion {
         }
         return -1;
     }
+
     // reporte donde se mostrara un listado del nombre completo con su correspondiente documento
     public ArrayList<VMNombreDocumento> listado(int i) throws ClassNotFoundException, SQLException {
         ArrayList<VMNombreDocumento> lista = new ArrayList<>();
@@ -160,10 +168,10 @@ public class GestorInscripcion {
 
         while (query.next()) {
             VMNombreDocumento datos = new VMNombreDocumento();
-            
+
             datos.setNombreCompleto(query.getString("Inscriptio"));
             datos.setDocumento(query.getString("Documento"));
-            
+
             lista.add(datos);
         }
         query.close();
@@ -171,7 +179,8 @@ public class GestorInscripcion {
         con.close();
         return lista;
     }
-     public ArrayList<VMPresinscripto> listadoPreinscriptos() throws ClassNotFoundException, SQLException {
+
+    public ArrayList<VMPresinscripto> listadoPreinscriptos() throws ClassNotFoundException, SQLException {
         ArrayList<VMPresinscripto> lista = new ArrayList<>();
         forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
@@ -180,7 +189,7 @@ public class GestorInscripcion {
 
         while (query.next()) {
             VMPresinscripto datos = new VMPresinscripto();
-            
+
             datos.setNombreCompleto(query.getString("Cursante"));
             datos.setDocumento(query.getString("Documento"));
             datos.setCurso(query.getString("Curso"));
@@ -192,23 +201,22 @@ public class GestorInscripcion {
         con.close();
         return lista;
     }
-     
-     public ArrayList<Integer> obtenerIdDeTodosInscriptosPorCurso(int idCurso) throws ClassNotFoundException, SQLException{
+
+    public ArrayList<Integer> obtenerIdDeTodosInscriptosPorCurso(int idCurso) throws ClassNotFoundException, SQLException {
         ArrayList<Integer> lista = new ArrayList<>();
         forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
         PreparedStatement stmtIns = con.prepareStatement("SELECT I.id_inscripcion from Inscripciones I join Cursos C on I.id_curso = C.id_curso where C.id_curso = ? order by 1");
         stmtIns.setInt(1, idCurso);
         ResultSet consulta = stmtIns.executeQuery();
-        while(consulta.next()){
+        while (consulta.next()) {
             lista.add(consulta.getInt(1));
-            
+
         }
         consulta.close();
         stmtIns.close();
         con.close();
         return lista;
-     }
-    
-    
+    }
+
 }

@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,11 +21,14 @@ import java.sql.Statement;
 public class GestorDatosGenerales {
 
     AccesoDatosVariable adv = new AccesoDatosVariable();
-    
+
     String conexion = adv.getConexion();
     String user = adv.getUser();
     String pass = adv.getPass();
     String ClasForName = adv.getClasForName();
+
+    public GestorDatosGenerales() {
+    }
 
     public void agregarDatosGenerales(DatosGenerales d) throws ClassNotFoundException, SQLException {
         Class.forName(ClasForName);
@@ -76,21 +81,30 @@ public class GestorDatosGenerales {
         return resultado;
     }
 
-    public int obtenerDatosPorLegajo(int legajo) throws SQLException {
-        Connection con = DriverManager.getConnection(conexion, user, pass);
-        Statement stmtId = con.createStatement();
-        ResultSet query = stmtId.executeQuery("SELECT m.id_datos_generales id FROM Matriculados m join Datos_Generales dg on m.id_datos_generales = dg.id_datos_generales WHERE m.legajo_matriculado = " + legajo);
+    public int obtenerDatosPorLegajo(int legajo) {
         int idDG = 0;
-        if (query.next()) {
-            idDG = query.getInt("id");
+        try {
+            Class.forName(ClasForName);
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            Statement stmtId = con.createStatement();
+            ResultSet query = stmtId.executeQuery("SELECT m.id_datos_generales id FROM Matriculados m join Datos_Generales dg on m.id_datos_generales = dg.id_datos_generales WHERE m.legajo_matriculado = " + legajo);
+        System.out.println("ttttt" + legajo);
+            if (query.next()) {
+                idDG = query.getInt("id");
+            }
+        System.out.println("ttttt" + idDG);
+            query.close();
+            stmtId.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorDatosGenerales.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GestorDatosGenerales.class.getName()).log(Level.SEVERE, null, ex);
         }
-        query.close();
-        stmtId.close();
-        con.close();
         return idDG;
     }
-    
-    public DatosGenerales obtenerDatosGenerales(int id) throws SQLException{
+
+    public DatosGenerales obtenerDatosGenerales(int id) throws SQLException {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement stmtId = con.createStatement();
         ResultSet query = stmtId.executeQuery("SELECT * FROM Datos_Generales dg join Matriculados m on m.id_datos_generales = dg.id_datos_generales WHERE m.id_matriculado = " + id);
@@ -110,8 +124,8 @@ public class GestorDatosGenerales {
         con.close();
         return dg;
     }
-    
-    public DatosGenerales obtenerDatosGeneralesXMail(String mail) throws SQLException{
+
+    public DatosGenerales obtenerDatosGeneralesXMail(String mail) throws SQLException {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement stmtId = con.createStatement();
         ResultSet query = stmtId.executeQuery("SELECT * FROM Datos_Generales dg join Matriculados m on m.id_datos_generales = dg.id_datos_generales WHERE dg.mail= " + mail);
@@ -131,5 +145,5 @@ public class GestorDatosGenerales {
         con.close();
         return dg;
     }
-    
+
 }
