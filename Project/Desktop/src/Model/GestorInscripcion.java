@@ -53,7 +53,7 @@ public class GestorInscripcion {
         }
     }
 
-    public void agregarInscripcionFamiliar(DatosGenerales dg, int legajo, int cursoId) throws ClassNotFoundException, SQLException {
+    public boolean agregarInscripcionFamiliar(DatosGenerales dg, int legajo, int cursoId) throws ClassNotFoundException, SQLException {
         forName(ClasForName);
         try {
             GestorDatosGenerales gdg = new GestorDatosGenerales();
@@ -75,7 +75,9 @@ public class GestorInscripcion {
             stmtIns.close();
             con.close();
         } catch (SQLException ex) {
+            return false;
         }
+        return true;
     }
 
     public void agregarInscripcionMatriculado(int legajo, int idCurso) throws ClassNotFoundException {
