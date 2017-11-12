@@ -9,6 +9,8 @@ import Model.Curso;
 import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -20,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -39,13 +42,14 @@ public class RegistrarCurso extends javax.swing.JFrame {
     String hora;
     int cargaHoraria;
 
-    final JDialog dialog = new JDialog(); 
-    
+    final JDialog dialog = new JDialog();
+
     public RegistrarCurso() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
+        soloLetras(txtNombre);
         this.setLocationRelativeTo(null);
         dialog.setAlwaysOnTop(true);
     }
@@ -280,7 +284,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
-            if (esValido()){
+            if (esValido()) {
                 nombre = txtNombre.getText();
                 descripcion = txtaDescripcion.getText();
                 tema = txtaTema.getText();
@@ -293,7 +297,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
                 cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
                 Curso c = new Curso(nombre, descripcion, fecha, tema, duracion, precio, cupo, aula, hora, cargaHoraria);
                 g.agregar(c);
-                JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo registro");
+                JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo curso");
                 limpiarControles();
             }
         } catch (SQLException ex) {
@@ -305,15 +309,13 @@ public class RegistrarCurso extends javax.swing.JFrame {
         MenuPrincipal.vRegistrarCurso = false;
     }//GEN-LAST:event_formWindowClosing
 
-    
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -349,6 +351,17 @@ public class RegistrarCurso extends javax.swing.JFrame {
         });
     }
 
+    public void soloLetras(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+    }    
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
@@ -456,51 +469,83 @@ public class RegistrarCurso extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean esValido() {
-        if (txtNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestFocus();
             return false;
         }
-        if (txtaDescripcion.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo descripcion no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtaDescripcion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo descripción no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtaDescripcion.requestFocus();
             return false;
         }
-        if (txtaTema.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo tema no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtaTema.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo tema no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtaTema.requestFocus();
             return false;
         }
-        if (txtAula.getText().isEmpty()){
-            JOptionPane.showMessageDialog(dialog, "El campo aula no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtDuracion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo duración no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtDuracion.requestFocus();
+            return false;
+        } else {
+            try {
+                Integer.parseInt(txtDuracion.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El campo duración debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtDuracion.requestFocus();
+                return false;
+            }
+        }
+        if (txtAula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo aula no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtAula.requestFocus();
             return false;
         }
-        try {
-            Integer.parseInt(txtDuracion.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El campo duracion debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtCupo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo cupo no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCupo.requestFocus();
             return false;
+        } else {
+            try {
+                Integer.parseInt(txtCupo.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El campo cupo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+                txtCupo.requestFocus();
+                return false;
+            }
         }
-        try {
-            Integer.parseInt(txtCargaHoraria.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El campo carga horaria debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtCosto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo costo no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCosto.requestFocus();
             return false;
+        } else {
+            try {
+                Double.parseDouble(txtCosto.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El campo costo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtCosto.requestFocus();
+                return false;
+            }
         }
-        try {
-            Integer.parseInt(txtCupo.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El campo cupo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtCargaHoraria.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo carga horaria no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCargaHoraria.requestFocus();
             return false;
-        }
-        try {
-            Double.parseDouble(txtCosto.getText());
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(dialog, "El campo costo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+        } else {
+            try {
+                Integer.parseInt(txtCargaHoraria.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El campo carga horaria debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtCargaHoraria.requestFocus();
+                return false;
+            }
         }
         return true;
     }
-    
-    private void limpiarControles(){
-        
+
+    private void limpiarControles() {
+
         txtNombre.setText("");
         txtaDescripcion.setText("");
         txtaTema.setText("");
@@ -514,6 +559,6 @@ public class RegistrarCurso extends javax.swing.JFrame {
         cmbHora.setSelectedIndex(-1);
         cmbMinutos.setSelectedIndex(-1);
         txtCargaHoraria.setText("");
-        
+
     }
 }
