@@ -12,6 +12,8 @@ import Model.Matriculado;
 import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -38,6 +41,9 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         gm = new GestorMatriculado();
         GestorTipoDni gtd = new GestorTipoDni();
         cargarComboTipoDni(gtd.obtenerTodos());
+        soloLetras(txtNombre);
+        soloLetras(txtApellido);
+        soloLetras(txtProfecion);
         this.setLocationRelativeTo(null);
     }
 
@@ -161,6 +167,11 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         jLabel10.setBounds(300, 150, 56, 17);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNombre);
         txtNombre.setBounds(90, 20, 200, 30);
 
@@ -233,7 +244,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
-            }            
+            }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -248,6 +259,10 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vRegistrarMatriculado = false;
     }//GEN-LAST:event_formWindowClosing
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     @Override
     public Image getIconImage() {
@@ -373,21 +388,33 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+    public void soloLetras(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+    }
+
     public boolean validacion() {
         final JDialog dialog = new JDialog();
         dialog.setAlwaysOnTop(true);
-        try {
-            Integer.parseInt(txtDocumento.getText());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
         if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        try {
+            Integer.parseInt(txtDocumento.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtMail.getText().isEmpty()) {
@@ -397,6 +424,13 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         if (txtTelefono.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo teléfono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
+        } else {
+            try {
+                Integer.parseInt(txtTelefono.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El teléfono debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
         }
         if (txtProfecion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo profesión no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
