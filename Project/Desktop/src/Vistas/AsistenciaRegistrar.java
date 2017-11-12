@@ -46,13 +46,13 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
     public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
 
-        initComponents();        
-        
+        initComponents();
+
         ga = new GestorAsistencia();
         gi = new GestorInscripcion();
         g = new GestorCurso();
         this.setLocationRelativeTo(null);
-        
+
         try {
             cargarComboCurso(g.ComboCursosActuales());
         } catch (SQLException ex) {
@@ -231,7 +231,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
             cargarTablaAsistencia();
 
             idInscriptos = (gi.obtenerIdDeTodosInscriptosPorCurso(((ComboCurso) cmbCurso.getSelectedItem()).getId()));
-            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
@@ -363,5 +362,5 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         cmbCurso.setModel(model);
     }
-    
+
 }
