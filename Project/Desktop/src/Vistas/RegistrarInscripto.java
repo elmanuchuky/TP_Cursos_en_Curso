@@ -20,10 +20,13 @@ import Model.GestorCurso;
 import Model.GestorInscripcion;
 import Model.GestorTipoDni;
 import Model.TipoDni;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.JTextField;
 
 /**
  *
@@ -58,6 +61,8 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
         }
+        soloLetras(txtNombre);
+        soloLetras(txtApellido);
         this.setLocationRelativeTo(null);
 
         instancia = x;
@@ -438,6 +443,17 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+    public void soloLetras(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+    }
 
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
@@ -526,35 +542,42 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         }
         if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            txtNombre.requestFocus();
+            return false;            
         }
         if (txtApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtApellido.requestFocus();
             return false;
         }
         if (txtDocumento.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo documento no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtDocumento.requestFocus();
             return false;
         } else {
             try {
                 Integer.parseInt(txtDocumento.getText());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtDocumento.requestFocus();
                 return false;
             }
         }
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtMail.requestFocus();
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtTelefono.requestFocus();
             return false;
-        }else {
+        } else {
             try {
                 Integer.parseInt(txtTelefono.getText());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(dialog, "El teléfono debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtTelefono.requestFocus();
                 return false;
             }
         }
@@ -570,28 +593,49 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     }
 
     private boolean esValidoO() {
-        try {
-            Integer.parseInt(txtDocumento.getText());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
+        if (txtDocumento.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(dialog, "El campo documento no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtDocumento.requestFocus();
             return false;
+        } else {
+            try {
+                Integer.parseInt(txtDocumento.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtDocumento.requestFocus();
+                return false;
+            }
         }
         if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestFocus();
             return false;
         }
 
         if (txtApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtApellido.requestFocus();
             return false;
         }
         if (txtMail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtMail.requestFocus();
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo teléfono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtTelefono.requestFocus();
             return false;
+        } else {
+            try {
+                Integer.parseInt(txtTelefono.getText());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(dialog, "El teléfono debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtTelefono.requestFocus();
+                return false;
+            }
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(dialog, "¡Seleccione un tipo de documento!", "Error", JOptionPane.ERROR_MESSAGE);
