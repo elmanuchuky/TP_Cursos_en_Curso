@@ -405,35 +405,42 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestFocus();
             return false;
         }
         if (txtApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo apellido no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtApellido.requestFocus();
             return false;
         }
         try {
             Integer.parseInt(txtDocumento.getText());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El documento debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+            txtDocumento.requestFocus();
             return false;
         }
         if (txtMail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo e-mail no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtMail.requestFocus();
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo teléfono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtTelefono.requestFocus();
             return false;
         } else {
             try {
                 Integer.parseInt(txtTelefono.getText());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(dialog, "El teléfono debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+                txtTelefono.requestFocus();
                 return false;
             }
         }
         if (txtProfecion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo profesión no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtProfecion.requestFocus();
             return false;
         }
         if (cmbTipoDocumento.getSelectedIndex() == -1) {
