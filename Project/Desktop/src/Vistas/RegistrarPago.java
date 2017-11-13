@@ -82,7 +82,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pago");
+        setTitle("Cobro");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(450, 193));
