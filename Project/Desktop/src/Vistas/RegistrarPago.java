@@ -26,6 +26,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,6 +35,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -53,6 +56,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
         }
         this.setLocationRelativeTo(null);
+        soloNumero(txtMonto);
     }
 
     public RegistrarPago(String mail, int i, String monto) {
@@ -351,5 +355,18 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         txtMail.setText("");
         cmbCursos.setSelectedIndex(-1);
         txtMonto.setText("");
+    }
+    
+    
+    public void soloNumero(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isLetter(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
     }
 }
