@@ -275,7 +275,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             //seteamos la letra de saldo
             Font letraSaldo = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
-            Paragraph contenidoSuma = new Paragraph("Se ha cobrado:         " + monto, letraSaldo);
+            Paragraph contenidoSuma = new Paragraph("Se ha cobrado:         $" + monto, letraSaldo);
 
             //seteamos los datos del margen derecho superior
             Font formatoDato = FontFactory.getFont("Verdana", 16, BaseColor.BLACK);
