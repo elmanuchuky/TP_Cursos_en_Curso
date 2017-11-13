@@ -44,6 +44,8 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         soloLetras(txtNombre);
         soloLetras(txtApellido);
         soloLetras(txtProfecion);
+        soloNumero(txtTelefono);
+        soloNumero(txtDocumento);
         this.setLocationRelativeTo(null);
     }
 
@@ -393,6 +395,18 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (Character.isDigit(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+    }
+    
+    public void soloNumero(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isLetter(c)) {
                     getToolkit().beep();
                     e.consume();
                 }
