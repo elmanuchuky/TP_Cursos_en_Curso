@@ -39,16 +39,16 @@ public class EditarCurso extends javax.swing.JFrame {
     double precio;
     String hora;
     int cargaHoraria;
-    
+
     final JDialog dialog = new JDialog();
-    
+
     public EditarCurso() {
         initComponents();
         cargaCmb();
         cargarDiaCombo();
         CargaHoraMinutos();
         this.setLocationRelativeTo(null);
-        dialog.setAlwaysOnTop(true); 
+        dialog.setAlwaysOnTop(true);
         try {
             cargarCursosFiltro(g.TodosCursos());
         } catch (SQLException ex) {
@@ -56,11 +56,12 @@ public class EditarCurso extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         soloNumero(txtDuracion);
         soloNumero(txtCargaHoraria);
         soloNumero(txtCupo);
         soloNumero(txtCosto);
+
     }
 
     /**
@@ -329,69 +330,62 @@ public class EditarCurso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
-        try {
-                nombre = txtNombre.getText();
-                descripcion= txtaDescripcion.getText();
-                tema = txtaTema.getText();
-                duracion = Integer.parseInt(txtDuracion.getText());
-                fecha = cmbMes1.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
-                aula = txtAula.getText();
-                cupo = Integer.parseInt(txtCupo.getText());
-                precio = Double.parseDouble(txtCosto.getText());
-                hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
-                cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
 
-                Curso c = new Curso(nombre,descripcion,fecha,tema,duracion,precio,cupo,aula,hora,cargaHoraria);
-                c.setIdCurso(id);
-                g.modificar(c);
+        try {
+            nombre = txtNombre.getText();
+            descripcion = txtaDescripcion.getText();
+            tema = txtaTema.getText();
+            duracion = Integer.parseInt(txtDuracion.getText());
+            fecha = cmbMes1.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
+            aula = txtAula.getText();
+            cupo = Integer.parseInt(txtCupo.getText());
+            precio = Double.parseDouble(txtCosto.getText());
+            hora = cmbHora.getSelectedItem().toString() + ":" + cmbMinutos.getSelectedItem().toString();
+            cargaHoraria = Integer.parseInt(txtCargaHoraria.getText());
+
+            Curso c = new Curso(nombre, descripcion, fecha, tema, duracion, precio, cupo, aula, hora, cargaHoraria);
+            c.setIdCurso(id);
+            g.modificar(c);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void cmbCursosFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosFiltroActionPerformed
-        try {
-            txtNombre.setEnabled(true);
-            txtaDescripcion.setEnabled(true);
-            txtaTema.setEnabled(true);
-            txtAula.setEnabled(true);
-            txtDuracion.setEnabled(true);
-            txtCargaHoraria.setEnabled(true);
-            txtCosto.setEnabled(true);
-            txtCupo.setEnabled(true);
-            cmbAnio.setEnabled(true);
-            cmbDia.setEnabled(true);
-            cmbHora.setEnabled(true);
-            cmbMes1.setEnabled(true);
-            cmbMinutos.setEnabled(true);
-            btnRegistrar.setEnabled(true);
+        if (cmbCursosFiltro.getSelectedIndex() != 0) {
+            try {
+                habilitarControles(true);
 
-            id = ((Curso)cmbCursosFiltro.getSelectedItem()).getIdCurso();
+                id = ((Curso) cmbCursosFiltro.getSelectedItem()).getIdCurso();
 
-            Curso c = g.obtenerCurso(id);
+                Curso c = g.obtenerCurso(id);
 
-            txtNombre.setText(c.getNombreCurso());
-            txtaDescripcion.setText(c.getDescripcion());
-            txtaTema.setText(c.getTemas());
-            txtDuracion.setText(""+c.getDuracionTotalSemanas());
-            txtAula.setText(c.getAula());
-            txtCupo.setText(""+c.getCupo());
-            txtCargaHoraria.setText(""+c.getCargaHoraria());
-            txtCosto.setText(""+c.getCosto());
+                txtNombre.setText(c.getNombreCurso());
+                txtaDescripcion.setText(c.getDescripcion());
+                txtaTema.setText(c.getTemas());
+                txtDuracion.setText("" + c.getDuracionTotalSemanas());
+                txtAula.setText(c.getAula());
+                txtCupo.setText("" + c.getCupo());
+                txtCargaHoraria.setText("" + c.getCargaHoraria());
+                txtCosto.setText("" + c.getCosto());
 
-            String[] datosFecha = c.getFechaInicio().split("-");
-            String[] datoshora = c.getDiaHorario().split(" |:");
+                String[] datosFecha = c.getFechaInicio().split("-");
+                String[] datoshora = c.getDiaHorario().split(" |:");
 
-            cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0]))-1900));
-            cmbMes1.setSelectedIndex(Integer.parseInt(datosFecha[1])-1);
-            cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2])-1);
-            cmbHora.setSelectedIndex(Integer.parseInt(datoshora[1]));
-            cmbMinutos.setSelectedIndex(Integer.parseInt(datoshora[2]));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+                cmbAnio.setSelectedIndex(((Integer.parseInt(datosFecha[0])) - 1900));
+                cmbMes1.setSelectedIndex(Integer.parseInt(datosFecha[1]) - 1);
+                cmbDia.setSelectedIndex(Integer.parseInt(datosFecha[2]) - 1);
+                cmbHora.setSelectedIndex(Integer.parseInt(datoshora[1]));
+                cmbMinutos.setSelectedIndex(Integer.parseInt(datoshora[2]));
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            limpiarControles();
+            habilitarControles(false);
         }
     }//GEN-LAST:event_cmbCursosFiltroActionPerformed
 
@@ -411,15 +405,13 @@ public class EditarCurso extends javax.swing.JFrame {
         MenuPrincipal.vEditarCurso = false;
     }//GEN-LAST:event_formWindowClosing
 
-    
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
         return retValue;
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -458,75 +450,75 @@ public class EditarCurso extends javax.swing.JFrame {
     private void cargaCmb() {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
-        
+
         int anio = 1900;
         int mes = 1;
- 
-        Calendar cal= Calendar.getInstance(); 
-        int year = cal.get(Calendar.YEAR); 
-        
-        while (anio <= year) {            
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+
+        while (anio <= year) {
             modelAnio.addElement(anio);
             anio++;
         }
         cmbAnio.setModel(modelAnio);
-        
-        while (mes <= 12) {            
+
+        while (mes <= 12) {
             modelMes.addElement(mes);
             mes++;
         }
         cmbMes1.setModel(modelMes);
-        
+
     }
 
     private void cargarDiaCombo() {
         DefaultComboBoxModel modelDia = new DefaultComboBoxModel();
         int dia = 1;
-        int mes = cmbMes1.getSelectedIndex()+1;
+        int mes = cmbMes1.getSelectedIndex() + 1;
 
-        while (dia <= 28) {            
+        while (dia <= 28) {
             modelDia.addElement(dia);
             dia++;
-        } 
-        
-        if(mes == 2){
-            if((int)cmbAnio.getSelectedItem()%4 == 0 && ((int)cmbAnio.getSelectedItem()%100 != 0 || (int)cmbAnio.getSelectedItem()%400 == 0)){
+        }
+
+        if (mes == 2) {
+            if ((int) cmbAnio.getSelectedItem() % 4 == 0 && ((int) cmbAnio.getSelectedItem() % 100 != 0 || (int) cmbAnio.getSelectedItem() % 400 == 0)) {
                 modelDia.addElement(dia);
             }
-        }else if(mes==1 || mes==3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12){
-            while (dia <= 31) {            
+        } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+            while (dia <= 31) {
                 modelDia.addElement(dia);
                 dia++;
             }
-        }else{
-            while (dia <= 30) {            
+        } else {
+            while (dia <= 30) {
                 modelDia.addElement(dia);
                 dia++;
             }
         }
         cmbDia.setModel(modelDia);
     }
-    
-    private void CargaHoraMinutos (){
+
+    private void CargaHoraMinutos() {
         DefaultComboBoxModel modelH = new DefaultComboBoxModel();
         DefaultComboBoxModel modelM = new DefaultComboBoxModel();
-        
+
         int hora = 0;
         int min = 0;
-        
-        while (hora < 24) {            
+
+        while (hora < 24) {
             modelH.addElement(hora);
             hora++;
         }
         cmbHora.setModel(modelH);
-        
-        while (min < 60) {            
+
+        while (min < 60) {
             modelM.addElement(min);
             min++;
         }
         cmbMinutos.setModel(modelM);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox cmbAnio;
@@ -565,60 +557,60 @@ public class EditarCurso extends javax.swing.JFrame {
     private javax.swing.JTextArea txtaTema;
     // End of variables declaration//GEN-END:variables
 
-    public void cargarCursosFiltro(ArrayList listaGenerica){
+    public void cargarCursosFiltro(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
+        model.addElement("que curso quiere Modificar?");
         for (Object elemento : listaGenerica) {
             model.addElement(elemento);
         }
-        
+
         cmbCursosFiltro.setModel(model);
     }
 
     private boolean esValido() {
-        if (txtNombre.getText().isEmpty()){
+        if (txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtaDescripcion.getText().isEmpty()){
+        if (txtaDescripcion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo descripcion no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtaTema.getText().isEmpty()){
+        if (txtaTema.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo tema no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (txtAula.getText().isEmpty()){
+        if (txtAula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(dialog, "El campo aula no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtDuracion.getText());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El campo duracion debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtCargaHoraria.getText());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El campo carga horaria debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtCupo.getText());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El campo cupo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Double.parseDouble(txtCosto.getText());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(dialog, "El campo costo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
     }
-    
+
     public void soloNumero(JTextField a) {
         a.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -629,5 +621,38 @@ public class EditarCurso extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    public void limpiarControles() {
+        txtNombre.setText("");
+        txtaDescripcion.setText("");
+        txtaTema.setText("");
+        txtAula.setText("");
+        txtDuracion.setText("");
+        txtCargaHoraria.setText("");
+        txtCosto.setText("");
+        txtCupo.setText("");
+        cmbAnio.setSelectedIndex(0);
+        cmbDia.setSelectedIndex(0);
+        cmbHora.setSelectedIndex(0);
+        cmbMes1.setSelectedIndex(0);
+        cmbMinutos.setSelectedIndex(0);
+    }
+
+    public void habilitarControles(boolean x) {
+        txtNombre.setEnabled(x);
+        txtaDescripcion.setEnabled(x);
+        txtaTema.setEnabled(x);
+        txtAula.setEnabled(x);
+        txtDuracion.setEnabled(x);
+        txtCargaHoraria.setEnabled(x);
+        txtCosto.setEnabled(x);
+        txtCupo.setEnabled(x);
+        cmbAnio.setEnabled(x);
+        cmbDia.setEnabled(x);
+        cmbHora.setEnabled(x);
+        cmbMes1.setEnabled(x);
+        cmbMinutos.setEnabled(x);
+        btnRegistrar.setEnabled(x);
     }
 }
