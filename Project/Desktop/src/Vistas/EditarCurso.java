@@ -9,6 +9,8 @@ import Model.Curso;
 import Model.GestorCurso;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -53,6 +56,11 @@ public class EditarCurso extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        soloNumero(txtDuracion);
+        soloNumero(txtCargaHoraria);
+        soloNumero(txtCupo);
+        soloNumero(txtCosto);
     }
 
     /**
@@ -609,5 +617,17 @@ public class EditarCurso extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+    
+    public void soloNumero(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isLetter(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
     }
 }
