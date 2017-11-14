@@ -61,6 +61,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
             Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         }
         cargarTablaAsistencia();
+        idInscriptos = (gi.obtenerIdDeTodosInscriptosPorCurso(((ComboCurso) cmbCurso.getSelectedItem()).getId()));
         fecha = new GregorianCalendar();
         anio = fecha.get(Calendar.YEAR);
         mes = fecha.get(Calendar.MONTH);

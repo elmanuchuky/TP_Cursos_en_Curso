@@ -202,7 +202,7 @@ public class GestorInscripcion {
         ArrayList<Integer> lista = new ArrayList<>();
         forName(ClasForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
-        PreparedStatement stmtIns = con.prepareStatement("SELECT I.id_inscripcion from Inscripciones I join Cursos C on I.id_curso = C.id_curso where C.id_curso = ? order by 1");
+        PreparedStatement stmtIns = con.prepareStatement("SELECT I.id_inscripcion from Inscripciones I join Cursos C on I.id_curso = C.id_curso join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales where C.id_curso = ? order by dg.apellido, dg.nombre");
         stmtIns.setInt(1, idCurso);
         ResultSet consulta = stmtIns.executeQuery();
         while (consulta.next()) {
