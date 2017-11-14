@@ -215,4 +215,14 @@ public class GestorInscripcion {
         return lista;
     }
 
+    public boolean existeMail(String text) throws SQLException {
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select distinct 1 from Datos_Generales dg join Cursantes cu on cu.id_datos_generales = dg.id_datos_generales join Inscripciones i on i.id_cursante = cu.id_cursante where mail like '" + text + "'");
+        if (rs.next()){
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Model.ComboCurso;
 import Model.ComboNuevoCursante;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -77,6 +78,7 @@ public class RegistrarPago extends javax.swing.JFrame {
     private void initComponents() {
 
         btnCarga = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtMail = new javax.swing.JTextField();
@@ -108,7 +110,17 @@ public class RegistrarPago extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCarga);
-        btnCarga.setBounds(323, 106, 109, 30);
+        btnCarga.setBounds(320, 110, 109, 30);
+
+        btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizar);
+        btnActualizar.setBounds(340, 60, 90, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("E-Mail");
@@ -121,6 +133,11 @@ public class RegistrarPago extends javax.swing.JFrame {
         jLabel3.setBounds(20, 70, 36, 17);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMailActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtMail);
         txtMail.setBounds(70, 20, 360, 30);
 
@@ -135,7 +152,7 @@ public class RegistrarPago extends javax.swing.JFrame {
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
-        cmbCursos.setBounds(70, 60, 362, 30);
+        cmbCursos.setBounds(70, 60, 260, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -156,14 +173,14 @@ public class RegistrarPago extends javax.swing.JFrame {
                     GestorInscripcion gi = new GestorInscripcion();
                     Pago p = new Pago();
                     p.setMonto(Double.parseDouble(txtMonto.getText()));
-                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId()));
+                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboCurso ) cmbCursos.getSelectedItem()).getId()));
                     java.util.Date fecha = new java.util.Date();
 
                     Timestamp tm = new Timestamp(fecha.getTime());
                     String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
                     JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo cobro");
-                    imprimirComprobante(tm, fechahoy, ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
+                    imprimirComprobante(tm, fechahoy, ((ComboCurso) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
                     limpiarControles();
                 } else {
                     JOptionPane.showMessageDialog(dialog, "¡No existe un e-mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -191,6 +208,26 @@ public class RegistrarPago extends javax.swing.JFrame {
         this.setVisible(true);
         vep.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtMailActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
+        //codigo de carga
+        if (existeMailSolo()) {
+            g = new GestorCurso();
+            cargarComboCurso(g.ComboCursosPagar(txtMail.getText()));
+        } else {
+            DefaultComboBoxModel model = new DefaultComboBoxModel();
+            model.addElement(new ComboCurso(-1, "Mail sin curso"));
+            cmbCursos.setModel(model);
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     @Override
     public Image getIconImage() {
@@ -235,6 +272,7 @@ public class RegistrarPago extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCarga;
     private javax.swing.JComboBox cmbCursos;
     private javax.swing.JLabel jLabel1;
@@ -250,7 +288,6 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         for (Object elemento : listaGenerica) {
             model.addElement(elemento);
         }
-
         cmbCursos.setModel(model);
     }
 
@@ -314,7 +351,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             doc.add(saldoFirma);
 
             doc.close();
-            
+
             Desktop.getDesktop().open(new File("" + nombreArchivo + ".pdf"));
         } catch (DocumentException ex) {
             System.out.println(ex);
@@ -345,9 +382,19 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         return true;
     }
 
+    public boolean existeMailSolo(){
+        GestorInscripcion gi = new GestorInscripcion();
+        try {
+            return gi.existeMail(txtMail.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private boolean existeMail() throws ClassNotFoundException {
         GestorInscripcion gi = new GestorInscripcion();
-        return gi.existeMailEnCurso(txtMail.getText(), ((ComboNuevoCursante) cmbCursos.getSelectedItem()).getId());
+        return gi.existeMailEnCurso(txtMail.getText(), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
     }
 
     private void limpiarControles() {
@@ -356,8 +403,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         cmbCursos.setSelectedIndex(-1);
         txtMonto.setText("");
     }
-    
-    
+
     public void soloNumero(JTextField a) {
         a.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
