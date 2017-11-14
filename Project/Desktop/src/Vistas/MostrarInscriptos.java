@@ -16,6 +16,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +30,7 @@ public class MostrarInscriptos extends javax.swing.JFrame {
      * Creates new form MostrarCursos
      */
     ArrayList<VMMatriculado> matriculados;
+    final JDialog dialog = new JDialog();
 
     public MostrarInscriptos() {
         initComponents();
@@ -36,6 +38,8 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         matriculados = gm.obtenerMatriculados("");
         cargarTabla();
         cargarCombo();
+        dialog.setAlwaysOnTop(true);
+
     }
 
     /**
@@ -83,6 +87,11 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         });
 
         btnAgregarMatriculado.setText("Nuevo matriculado");
+        btnAgregarMatriculado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarMatriculadoActionPerformed(evt);
+            }
+        });
 
         btnInscribir.setText("Inscribir");
         btnInscribir.addActionListener(new java.awt.event.ActionListener() {
@@ -160,20 +169,34 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (tblInscriptos.getSelectedRow() == -1) {
             // Mensaje de Error
-            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun registro!");
+            JOptionPane.showMessageDialog(null, "¡No se ha seleccionado ningún registro!");
         } else {
             GestorInscripcion gi = new GestorInscripcion();
             int legajo = 0;
             int idCurso = 0;
             legajo = (int) tblInscriptos.getModel().getValueAt(tblInscriptos.getSelectedRow(), 1);
-            idCurso = ((Curso)cmbCursos.getSelectedItem()).getIdCurso();
+            idCurso = ((Curso) cmbCursos.getSelectedItem()).getIdCurso();
             try {
                 gi.agregarInscripcionMatriculado(legajo, idCurso);
+                JOptionPane.showMessageDialog(dialog, "Se ha registrado una nueva inscripción");
+
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(MostrarInscriptos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnInscribirActionPerformed
+
+    private void btnAgregarMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMatriculadoActionPerformed
+        try {
+            // TODO add your handling code here:
+            RegistrarMatriculado rm = new RegistrarMatriculado();
+            rm.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MostrarInscriptos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MostrarInscriptos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAgregarMatriculadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,7 +248,7 @@ public class MostrarInscriptos extends javax.swing.JFrame {
 
     private void cargarTabla() {
         DefaultTableModel model = new DefaultTableModel();
-        Object[] columnas = {"Id", "Legajo", "Profesion", "Nombre", "Mail", "Telefono"};
+        Object[] columnas = {"Id", "Legajo", "Profesión", "Nombre", "E-Mail", "Teléfono"};
         model.setColumnIdentifiers(columnas);
         for (VMMatriculado matriculado : matriculados) {
             Object[] fila = {matriculado.getId(), matriculado.getLegajo(), matriculado.getProfesion(), matriculado.getNombre(), matriculado.getMail(), matriculado.getTelefono()};

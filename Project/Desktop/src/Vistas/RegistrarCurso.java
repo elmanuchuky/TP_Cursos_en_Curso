@@ -372,7 +372,7 @@ public class RegistrarCurso extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
 
-        while (anio <= year) {
+        while (anio <= year+1) {
             modelAnio.addElement(anio);
             anio++;
         }

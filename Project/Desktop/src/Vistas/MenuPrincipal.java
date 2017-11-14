@@ -494,8 +494,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmiRegistrarInscriptoMatriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
         if (vRegistrarInscripcion == false) {
             vRegistrarInscripcion = true;
-            RegistrarInscripto ri = new RegistrarInscripto(1);//Matriculado
-            ri.setVisible(true);
+            MostrarInscriptos mi = new MostrarInscriptos();//Matriculado            
+            mi.setVisible(true);
         }
     }//GEN-LAST:event_jmiRegistrarInscriptoMatriculadoActionPerformed
 

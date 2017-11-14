@@ -195,7 +195,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtTablaAsistencias);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 80, 690, 330);
+        jScrollPane1.setBounds(0, 80, 720, 330);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbCursos.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +214,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnGenerarCertificado);
-        btnGenerarCertificado.setBounds(530, 410, 150, 25);
+        btnGenerarCertificado.setBounds(540, 420, 150, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -229,7 +229,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("/");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(530, 10, 7, 17);
+        jLabel3.setBounds(560, 10, 7, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
@@ -239,7 +239,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(470, 10, 60, 23);
+        cmbAnio.setBounds(470, 10, 80, 23);
 
         cmbMes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
@@ -249,21 +249,21 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(540, 10, 50, 23);
+        cmbMes.setBounds(570, 10, 50, 23);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(600, 10, 7, 17);
+        jLabel12.setBounds(630, 10, 7, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(610, 10, 50, 23);
+        cmbDia.setBounds(650, 10, 50, 23);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(61, 45, 520, 23);
+        txtMail.setBounds(61, 45, 550, 23);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("E-Mail");
@@ -282,7 +282,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(590, 40, 70, 30);
+        jButton2.setBounds(630, 40, 70, 30);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -292,6 +292,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(300, 0, 300, 170);
 
+        btnReporte.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnReporte.setText("Generar Lista");
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,7 +300,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnReporte);
-        btnReporte.setBounds(90, 420, 97, 23);
+        btnReporte.setBounds(40, 420, 130, 25);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel8);
@@ -413,7 +414,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
             //seteamos el contenido del mensaje
             Font letraContenido2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
-            Paragraph contenido2 = new Paragraph("con una duracion de " + horas + " horas semanales  \n desde: " + fechaInicio + "hasta: " + fechaCierre, letraContenido2);
+            Paragraph contenido2 = new Paragraph("con una duración de " + horas + " horas semanales  \n desde: " + fechaInicio + "hasta: " + fechaCierre, letraContenido2);
             contenido2.setIndentationLeft(0);
             contenido2.setSpacingBefore(70);
             contenido2.setAlignment(Element.ALIGN_CENTER);
@@ -471,7 +472,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
 
-        int anio = 1900;
+        int anio = 2015;
         int mes = 1;
 
         Calendar cal = Calendar.getInstance();
