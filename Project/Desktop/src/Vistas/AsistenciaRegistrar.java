@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -43,6 +44,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     int anio;
     int mes;
     int dia;
+
+    final JDialog dialog = new JDialog();
 
     public AsistenciaRegistrar() throws ClassNotFoundException, SQLException {
 
@@ -68,6 +71,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         dia = fecha.get(Calendar.DAY_OF_MONTH);
         fechaString = "" + dia + "-" + (mes + 1) + "-" + anio;
         lblDiaAsistencia.setText(fechaString);
+        dialog.setAlwaysOnTop(true);
 
     }
 
@@ -150,7 +154,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 61, 399, 256);
         getContentPane().add(txtFecha);
-        txtFecha.setBounds(169, 0, 190, 22);
+        txtFecha.setBounds(169, 0, 190, 20);
 
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -166,7 +170,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         lblDiaAsistencia.setText("Asistencia para el dia");
         lblDiaAsistencia.setToolTipText("");
         getContentPane().add(lblDiaAsistencia);
-        lblDiaAsistencia.setBounds(10, 335, 122, 16);
+        lblDiaAsistencia.setBounds(10, 335, 101, 14);
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -221,6 +225,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                 //a.setFechaAsistencia(txtFecha.getText());
                 a.setFechaAsistencia(fechaString);
                 ga.agregarAsistencia(a);
+                JOptionPane.showMessageDialog(dialog, "Se ha registrado la asistencia del día");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -260,6 +265,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
                 a.setFechaAsistencia(fechaString);
                 ga.modificarAsistencia(a);
+                JOptionPane.showMessageDialog(dialog, "Se ha modificado la asistencia del día");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
