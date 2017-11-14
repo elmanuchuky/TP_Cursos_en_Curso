@@ -218,8 +218,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                     esPresente = 0;
                 }
 
-                a.setFechaAsistencia(txtFecha.getText());
-                System.out.println(a.toString());
+                //a.setFechaAsistencia(txtFecha.getText());
+                a.setFechaAsistencia(fechaString);
                 ga.agregarAsistencia(a);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
@@ -354,7 +354,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         };
         tRegistrarAsistencia.setModel(model);//new JTable(model);
-        System.out.println("asd");
         //JOptionPane.showMessageDialog(null, new JScrollPane(tRegistrarAsistencia));
 
     }
