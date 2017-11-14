@@ -13,6 +13,8 @@ import Model.Matriculado;
 import Model.TipoDni;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -30,7 +33,7 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
     GestorMatriculado gm;
     final JDialog dialog = new JDialog();
-    int idDG;
+    int idDG = 0;
 
     /**
      * Creates new form EditarMatriculado
@@ -47,6 +50,12 @@ public class EditarMatriculado extends javax.swing.JFrame {
         cargarComboTipoDni(gtd.obtenerTodos());
         this.setLocationRelativeTo(null);
         dialog.setAlwaysOnTop(true);
+        soloNumero(txtLegajo);
+        soloNumero(txtDocumento);
+        soloNumero(txtTelefono);
+        soloLetras(txtNombre);
+        soloLetras(txtApellido);
+        soloLetras(txtProfecion);
     }
 
     /**
@@ -331,14 +340,14 @@ public class EditarMatriculado extends javax.swing.JFrame {
             gm = new GestorMatriculado();
             Matriculado m = gm.obtenerMatriculadoxLegajo(Integer.parseInt(txtLegajo.getText()));
             m.setIdMatriculado(idDG);
-            if (idDG > 0) {
+            if (idDG != 0) {
                 habilitar(true);
-                JOptionPane.showMessageDialog(dialog, gdg.obtenerDatosGenerales(idDG).toString());
                 gdg = new GestorDatosGenerales();
                 cargarControles(gdg.obtenerDatosGenerales(idDG), m);
             } else {
                 habilitar(false);
                 limpiarControles();
+                JOptionPane.showMessageDialog(dialog, "No se ha encontrado ningun Matriculado");
             }
         } catch (SQLException ex) {
             Logger.getLogger(EditarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
@@ -563,9 +572,34 @@ public class EditarMatriculado extends javax.swing.JFrame {
         txtMail.setText("");
         txtNombre.setText("");
         txtTelefono.setText("");
+        txtProfecion.setText("");
         cmbTipoDocumento.setSelectedIndex(-1);
         cmbAnio.setSelectedIndex(0);
         cmbMes.setSelectedIndex(0);
         cmbDia.setSelectedIndex(0);
+    }
+    
+    public void soloNumero(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isLetter(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+    }
+    
+    public void soloLetras(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
     }
 }
