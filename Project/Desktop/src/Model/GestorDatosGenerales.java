@@ -60,7 +60,6 @@ public class GestorDatosGenerales {
         comando.setString(6, d.getFechaNacimiento());
         comando.setString(7, d.getTelefono());
         comando.setString(8, d.getEmail());
-
         comando.executeUpdate();
         comando.close();
         con.close();

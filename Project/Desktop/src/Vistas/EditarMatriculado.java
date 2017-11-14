@@ -298,10 +298,10 @@ public class EditarMatriculado extends javax.swing.JFrame {
             d.setEmail(txtMail.getText());
             m.setProfesion(txtProfecion.getText());
             m.setLegajoMatriculado(Integer.parseInt(txtLegajo.getText()));
-            JOptionPane.showMessageDialog(dialog, "Se ha modificado con éxito el registro");
 
             try {
                 gm.modificarMatriculado(m, d);
+                JOptionPane.showMessageDialog(dialog, "Se ha modificado con éxito el registro");
                 limpiarControles();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarMatriculado.class.getName()).log(Level.SEVERE, null, ex);
@@ -328,11 +328,13 @@ public class EditarMatriculado extends javax.swing.JFrame {
         GestorDatosGenerales gdg = new GestorDatosGenerales();
         try {
             idDG = gm.obtenerMatriculado(Integer.parseInt(txtLegajo.getText()));
+            gm = new GestorMatriculado();
             Matriculado m = gm.obtenerMatriculadoxLegajo(Integer.parseInt(txtLegajo.getText()));
             m.setIdMatriculado(idDG);
             if (idDG > 0) {
                 habilitar(true);
                 JOptionPane.showMessageDialog(dialog, gdg.obtenerDatosGenerales(idDG).toString());
+                gdg = new GestorDatosGenerales();
                 cargarControles(gdg.obtenerDatosGenerales(idDG), m);
             } else {
                 habilitar(false);

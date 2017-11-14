@@ -52,6 +52,7 @@ public class GestorMatriculado {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         GestorDatosGenerales gd = new GestorDatosGenerales();
         gd.modificarDatosGenerales(d);
+        gd = new GestorDatosGenerales();
         m.setDatos(gd.obtenerDatosPorLegajo(m.getLegajoMatriculado()));
         PreparedStatement comando2 = con.prepareStatement("exec sp_update_matriculado ?, ?, ?");
         comando2.setInt(1, m.getIdMatriculado());
