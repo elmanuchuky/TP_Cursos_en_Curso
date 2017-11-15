@@ -19,10 +19,10 @@ import javax.swing.JOptionPane;
  *
  * @author Gabriel
  */
-public class GestorPago {    
-    
+public class GestorPago {
+
     AccesoDatosVariable adv = new AccesoDatosVariable();
-    
+
     String conexion = adv.getConexion();
     String user = adv.getUser();
     String pass = adv.getPass();
@@ -89,8 +89,8 @@ public class GestorPago {
         ResultSet query = stmt.executeQuery();
 
         while (query.next()) {
-            if (query.getInt("Pago") > 0){
-            
+            if (query.getInt("Pago") > 0) {
+
                 VMPagosXMail datos = new VMPagosXMail();
 
                 datos.setNombre(query.getString("Curso"));
@@ -114,7 +114,7 @@ public class GestorPago {
         PreparedStatement stmt = con.prepareStatement("sp_ver_adeudado_x_mail ?"); // idCurso, idCursante
         stmt.setString(1, mail);
         ResultSet query = stmt.executeQuery();
-            JOptionPane.showMessageDialog(null, "2");
+        JOptionPane.showMessageDialog(null, "2");
 
         while (query.next()) {
             VMDeudasXMail datos = new VMDeudasXMail();
@@ -129,6 +129,7 @@ public class GestorPago {
         return lista;
     }
 // mostrar pagos de una persona con fecha y el monto
+
     public ArrayList<VMPagosXMail> PagosPorFecha(int i) throws ClassNotFoundException, SQLException {
         ArrayList<VMPagosXMail> lista = new ArrayList<>();
         forName(ClasForName);
@@ -139,7 +140,7 @@ public class GestorPago {
 
         if (query.next()) {
             VMPagosXMail datos = new VMPagosXMail();
-            
+
             datos.setFecha(query.getString("Fecha"));
             datos.setMonto(query.getFloat("Pago"));
         }
@@ -147,5 +148,23 @@ public class GestorPago {
         stmt.close();
         con.close();
         return lista;
+    }
+
+    public Pago obtenerUltimoPago() throws ClassNotFoundException, SQLException { //To change body of generated methods, choose Tools | Templates.
+        forName(ClasForName);
+        Connection con = DriverManager.getConnection(conexion, user, pass);
+        Statement comando = con.createStatement();
+        ResultSet query = comando.executeQuery("select top 1 p.monto, p.id_pago, p.fecha_pago from Pagos p order by p.id_pago desc");
+        Pago p = new Pago();
+        if (query.next()) {
+            p.setIdPago(query.getInt("id_pago"));
+            p.setMonto(query.getDouble("monto"));
+            p.setFechaPago(query.getString("fecha_pago"));
+        }
+        query.close();
+        comando.close();
+        con.close();
+        return p;
+
     }
 }

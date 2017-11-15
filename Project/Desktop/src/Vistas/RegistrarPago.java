@@ -173,14 +173,21 @@ public class RegistrarPago extends javax.swing.JFrame {
                     GestorInscripcion gi = new GestorInscripcion();
                     Pago p = new Pago();
                     p.setMonto(Double.parseDouble(txtMonto.getText()));
-                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboCurso ) cmbCursos.getSelectedItem()).getId()));
+                    p.setInscripcion(gi.obtenerInscripcionConMailYCurso(txtMail.getText(), ((ComboCurso) cmbCursos.getSelectedItem()).getId()));
                     java.util.Date fecha = new java.util.Date();
 
                     Timestamp tm = new Timestamp(fecha.getTime());
-                    String fechahoy = String.valueOf(fecha);
                     gp.agregarPago(p);
                     JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo cobro");
-                    imprimirComprobante(tm, fechahoy, ((ComboCurso) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
+                    Pago p1 = gp.obtenerUltimoPago();
+                    double montoFinal = (p.getMonto() - p1.getMonto());
+                    if (montoFinal != 0) {
+                        JOptionPane.showMessageDialog(dialog, "Se ha intentado pagar de más", "Atencion", JOptionPane.ERROR_MESSAGE);
+                        imprimirComprobante(tm, p1.getFechaPago(), ((ComboCurso) cmbCursos.getSelectedItem()).getNombre(), p1.getMonto(), p1.getIdPago());
+                    }
+                    else{
+                        imprimirComprobante(tm, p1.getFechaPago(), ((ComboCurso) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), p1.getIdPago());
+                    }
                     limpiarControles();
                 } else {
                     JOptionPane.showMessageDialog(dialog, "¡No existe un e-mail relacionado a ese curso!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -382,7 +389,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         return true;
     }
 
-    public boolean existeMailSolo(){
+    public boolean existeMailSolo() {
         GestorInscripcion gi = new GestorInscripcion();
         try {
             return gi.existeMail(txtMail.getText());
@@ -391,7 +398,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
         }
         return false;
     }
-    
+
     private boolean existeMail() throws ClassNotFoundException {
         GestorInscripcion gi = new GestorInscripcion();
         return gi.existeMailEnCurso(txtMail.getText(), ((ComboCurso) cmbCursos.getSelectedItem()).getId());
