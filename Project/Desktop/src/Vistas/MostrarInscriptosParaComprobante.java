@@ -6,9 +6,24 @@
 package Vistas;
 
 import Model.ComboCurso;
+import Model.GestorAsistencia;
 import Model.GestorCurso;
 import Model.GestorInscripcion;
+import Model.VMCertificado;
 import Model.VMInscriptosPagados;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -128,10 +143,12 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
 
     private void btnGenerarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarComprobanteActionPerformed
         // TODO add your handling code here:
-        if (cmbCursos.getSelectedIndex() != -1) {
+        if (cmbCursos.getSelectedIndex() <= 0) {
             if (tblInscriptos.getModel().getValueAt(tblInscriptos.getSelectedRow(), 2).equals("Pago completo")) {
-                // "select d.nombre + ' ' + d.apellido as 'alumno', d.dni as 'documento', cu.fecha_inicio 'fechaInicio', dbo.fn_obtener_fecha_fin(cu.fecha_inicio, cu.duracion_total_semanas)'FechaFin', cu.dia_horario 'horario', cu.nombre as 'nombreCurso' from Datos_Generales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion = " + idInscripto
-                // el PDF
+                int idInscripcion = (int) tblInscriptos.getModel().getValueAt(tblInscriptos.getSelectedRow(), 0);
+                GestorAsistencia ga = new GestorAsistencia();
+                VMCertificado vmc = ga.ObtenerCertificadoPorIdInscripcion(idInscripcion);
+                imprimirPDF(vmc);
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede realizar el certificado para este inscripto porque no cumple las condiciones");
             }
@@ -199,6 +216,54 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
             Logger.getLogger(MostrarInscriptosParaComprobante.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MostrarInscriptosParaComprobante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void imprimirPDF(VMCertificado vmc) {
+        try {
+            Document doc = new Document(PageSize.A4.rotate());
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("Certificado" + vmc.getAlumno().replace(", ", "") + ".pdf"));
+
+            doc.open();
+
+//            //seteamos el titulo
+//            Font letraTitulo = FontFactory.getFont("Verdana", 24, Font.UNDERLINE);
+//            Paragraph title = new Paragraph("Certificado", letraTitulo);
+//            title.setAlignment(Element.ALIGN_CENTER);
+            //seteamos la imagen de certificado que utilizaremos
+            com.itextpdf.text.Image certificado = com.itextpdf.text.Image.getInstance("src/Imagenes/certificado.jpg");
+            float width = doc.getPageSize().getWidth();
+            float height = doc.getPageSize().getHeight();
+            writer.getDirectContentUnder().addImage(certificado, width, 0, 0, height, 0, 0);
+
+            //seteamos el contenido del mensaje
+            Font letraContenido = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
+            Paragraph contenido = new Paragraph("  ", letraContenido);
+            Paragraph contenido1 = new Paragraph("Se hace constar que el alumno " + vmc.getAlumno() + ", \ncon Documento Nro: " + vmc.getDocumento() + "\n Asistió y aprobó el curso " + vmc.getNombreCurso(), letraContenido);
+            contenido1.setIndentationLeft(90);
+            contenido1.setSpacingBefore(120);
+
+            //seteamos el contenido del mensaje
+            Font letraContenido2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.ITALIC);
+            Paragraph contenido2 = new Paragraph("con una duración de " + vmc.getHoras() + " horas.  \n desde: " + vmc.getFechaInicio() + " hasta: " + vmc.getFechaFinal(), letraContenido2);
+            contenido2.setIndentationLeft(0);
+            contenido2.setSpacingBefore(70);
+            contenido2.setAlignment(Element.ALIGN_CENTER);
+
+            //pasamos al documento (por orden) las cosas que deseamos mostrar
+            doc.add(contenido);
+            doc.add(contenido1);
+            doc.add(contenido2);
+
+            doc.close();
+
+            Desktop.getDesktop().open(new File("Certificado" + vmc.getAlumno().replace(", ", "") + ".pdf"));
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (DocumentException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
     }
 }
