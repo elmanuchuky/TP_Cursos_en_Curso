@@ -559,7 +559,7 @@ public class EditarCurso extends javax.swing.JFrame {
 
     public void cargarCursosFiltro(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addElement("que curso quiere Modificar?");
+        model.addElement("Que curso quiere modificar?");
         for (Object elemento : listaGenerica) {
             model.addElement(elemento);
         }
