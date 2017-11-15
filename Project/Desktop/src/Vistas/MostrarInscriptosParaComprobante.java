@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,6 +69,11 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
         });
 
         btnGenerarComprobante.setText("Genenarar comprobante");
+        btnGenerarComprobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarComprobanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,6 +125,20 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
         }
         tblInscriptos.setModel(model);
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnGenerarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarComprobanteActionPerformed
+        // TODO add your handling code here:
+        if (cmbCursos.getSelectedIndex() != -1) {
+            if (tblInscriptos.getModel().getValueAt(tblInscriptos.getSelectedRow(), 2).equals("Pago completo")) {
+                // "select d.nombre + ' ' + d.apellido as 'alumno', d.dni as 'documento', cu.fecha_inicio 'fechaInicio', dbo.fn_obtener_fecha_fin(cu.fecha_inicio, cu.duracion_total_semanas)'FechaFin', cu.dia_horario 'horario', cu.nombre as 'nombreCurso' from Datos_Generales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion = " + idInscripto
+                // el PDF
+            } else {
+                JOptionPane.showMessageDialog(null, "No se puede realizar el certificado para este inscripto porque no cumple las condiciones");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado un inscripto");
+        }
+    }//GEN-LAST:event_btnGenerarComprobanteActionPerformed
 
     /**
      * @param args the command line arguments
