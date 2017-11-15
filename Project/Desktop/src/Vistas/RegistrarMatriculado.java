@@ -154,14 +154,14 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Cargar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(530, 180, 107, 30);
+        btnRegistrar.setBounds(530, 180, 93, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Profesión");
@@ -318,7 +318,7 @@ public class RegistrarMatriculado extends javax.swing.JFrame {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
 
-        int anio = 1900;
+        int anio = 1950;
         int mes = 1;
 
         Calendar cal = Calendar.getInstance();
