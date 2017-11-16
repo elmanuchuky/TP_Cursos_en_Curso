@@ -42,6 +42,7 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         cargarTabla();
         cargarCombo();
         dialog.setAlwaysOnTop(true);
+        this.setLocationRelativeTo(null);
 
     }
 

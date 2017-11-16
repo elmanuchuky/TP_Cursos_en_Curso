@@ -50,6 +50,7 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
         initComponents();
         cargarCombo();
         dialog.setAlwaysOnTop(true);
+        this.setLocationRelativeTo(null);
     }
 
     /**
