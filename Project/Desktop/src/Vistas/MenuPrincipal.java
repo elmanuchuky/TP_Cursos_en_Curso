@@ -40,6 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static boolean vConsultaInscripcion = false;
     public static boolean vConsultaPago = false;
     
+    public static boolean vCertificado = false;
     int usuario = 0;//1 => todo //2 => asistente (No alta curso ni baja)//3 => consultor
     
     public MenuPrincipal() {
@@ -128,6 +129,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmiConsultaPreInscripcion = new javax.swing.JMenuItem();
         jmiConsultaInscripto = new javax.swing.JMenuItem();
         jmiConsultaPagos = new javax.swing.JMenuItem();
+        jmCertificado = new javax.swing.JMenu();
 
         jMenu2.setText("jMenu2");
 
@@ -362,6 +364,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmbBarraMenu.add(jmConsulta);
 
+        jmCertificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/certificate.png"))); // NOI18N
+        jmCertificado.setText("Certificado");
+        jmCertificado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jmCertificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCertificadoActionPerformed(evt);
+            }
+        });
+        jmbBarraMenu.add(jmCertificado);
+
         setJMenuBar(jmbBarraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -563,6 +575,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jmiAsistenciaMostrarXCursanteActionPerformed
 
+    private void jmCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCertificadoActionPerformed
+        if (vCertificado == false){
+            vCertificado = true;
+            MostrarInscriptosParaComprobante m = new MostrarInscriptosParaComprobante();
+            m.setVisible(true);
+        }
+    }//GEN-LAST:event_jmCertificadoActionPerformed
+
     
     @Override
     public Image getIconImage() {
@@ -614,6 +634,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JMenu jmAsistencia;
+    private javax.swing.JMenu jmCertificado;
     private javax.swing.JMenu jmConsulta;
     private javax.swing.JMenu jmEditar;
     private javax.swing.JMenu jmRegistrar;

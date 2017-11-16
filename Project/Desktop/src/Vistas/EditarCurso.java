@@ -114,7 +114,6 @@ public class EditarCurso extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(580, 400));
-        setPreferredSize(new java.awt.Dimension(580, 400));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -126,12 +125,12 @@ public class EditarCurso extends javax.swing.JFrame {
         txtAula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtAula.setEnabled(false);
         getContentPane().add(txtAula);
-        txtAula.setBounds(70, 280, 70, 30);
+        txtAula.setBounds(100, 330, 70, 30);
 
         txtDuracion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDuracion.setEnabled(false);
         getContentPane().add(txtDuracion);
-        txtDuracion.setBounds(150, 233, 70, 30);
+        txtDuracion.setBounds(100, 230, 70, 30);
 
         jScrollPane1.setEnabled(false);
 
@@ -142,27 +141,27 @@ public class EditarCurso extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtaTema);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(90, 160, 470, 60);
+        jScrollPane1.setBounds(100, 160, 460, 60);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNombre.setEnabled(false);
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(90, 50, 470, 30);
+        txtNombre.setBounds(100, 50, 460, 30);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Hora");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(410, 290, 29, 17);
+        jLabel10.setBounds(230, 290, 29, 17);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Carga Horaria");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 330, 83, 17);
+        jLabel9.setBounds(10, 290, 83, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Cupo");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(160, 290, 33, 17);
+        jLabel8.setBounds(230, 340, 33, 17);
 
         cmbMinutos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMinutos.setEnabled(false);
@@ -172,27 +171,27 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMinutos);
-        cmbMinutos.setBounds(510, 280, 50, 30);
+        cmbMinutos.setBounds(400, 280, 50, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Aula");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 290, 25, 17);
+        jLabel7.setBounds(10, 340, 25, 17);
 
         cmbHora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbHora.setEnabled(false);
         getContentPane().add(cmbHora);
-        cmbHora.setBounds(450, 280, 50, 30);
+        cmbHora.setBounds(330, 280, 50, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Duracion en Semanas");
+        jLabel6.setText("Duración");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 240, 140, 17);
+        jLabel6.setBounds(10, 240, 70, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Costo $");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(280, 290, 50, 17);
+        jLabel5.setBounds(410, 340, 50, 17);
 
         jScrollPane2.setEnabled(false);
 
@@ -203,17 +202,17 @@ public class EditarCurso extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtaDescripcion);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(90, 86, 470, 68);
+        jScrollPane2.setBounds(100, 86, 460, 68);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setText(":");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(500, 280, 8, 17);
+        jLabel14.setBounds(390, 290, 8, 17);
 
         txtCargaHoraria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCargaHoraria.setEnabled(false);
         getContentPane().add(txtCargaHoraria);
-        txtCargaHoraria.setBounds(110, 323, 70, 30);
+        txtCargaHoraria.setBounds(100, 280, 70, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
@@ -223,7 +222,7 @@ public class EditarCurso extends javax.swing.JFrame {
         txtCosto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCosto.setEnabled(false);
         getContentPane().add(txtCosto);
-        txtCosto.setBounds(340, 280, 60, 30);
+        txtCosto.setBounds(480, 330, 60, 30);
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -235,12 +234,12 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(460, 325, 105, 30);
+        btnRegistrar.setBounds(450, 380, 110, 30);
 
         txtCupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCupo.setEnabled(false);
         getContentPane().add(txtCupo);
-        txtCupo.setBounds(200, 280, 70, 30);
+        txtCupo.setBounds(330, 330, 70, 30);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setEnabled(false);
@@ -250,7 +249,7 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbAnio);
-        cmbAnio.setBounds(490, 233, 70, 30);
+        cmbAnio.setBounds(330, 230, 70, 30);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("/");
@@ -260,12 +259,12 @@ public class EditarCurso extends javax.swing.JFrame {
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setEnabled(false);
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(330, 233, 60, 30);
+        cmbDia.setBounds(480, 230, 60, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(480, 240, 10, 17);
+        jLabel12.setBounds(470, 240, 10, 17);
 
         cmbMes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbMes1.setEnabled(false);
@@ -275,7 +274,7 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes1);
-        cmbMes1.setBounds(410, 233, 60, 30);
+        cmbMes1.setBounds(410, 230, 60, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Fecha de Inicio");
@@ -288,14 +287,14 @@ public class EditarCurso extends javax.swing.JFrame {
         jLabel3.setBounds(10, 170, 51, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Descripcion");
+        jLabel2.setText("Descripción");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(10, 86, 70, 17);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Cursos");
+        jLabel15.setText("Curso");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(10, 21, 42, 17);
+        jLabel15.setBounds(10, 21, 36, 17);
 
         cmbCursosFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbCursosFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +303,7 @@ public class EditarCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCursosFiltro);
-        cmbCursosFiltro.setBounds(90, 11, 470, 30);
+        cmbCursosFiltro.setBounds(100, 11, 460, 30);
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
         jLabel16.setText("jLabel13");
@@ -319,12 +318,12 @@ public class EditarCurso extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
         jLabel18.setText("jLabel13");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(-10, 260, 480, 130);
+        jLabel18.setBounds(-10, 260, 480, 160);
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textura-con-manchas-suaves-23827-2560x1600__wallpaper_480x300.jpg"))); // NOI18N
         jLabel19.setText("jLabel13");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(440, 240, 140, 130);
+        jLabel19.setBounds(440, 240, 140, 180);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -336,7 +335,7 @@ public class EditarCurso extends javax.swing.JFrame {
             descripcion = txtaDescripcion.getText();
             tema = txtaTema.getText();
             duracion = Integer.parseInt(txtDuracion.getText());
-            fecha = cmbMes1.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString() + "-" + cmbAnio.getSelectedItem().toString();
+            fecha = cmbAnio.getSelectedItem().toString() + "-" + cmbMes1.getSelectedItem().toString() + "-" + cmbDia.getSelectedItem().toString();
             aula = txtAula.getText();
             cupo = Integer.parseInt(txtCupo.getText());
             precio = Double.parseDouble(txtCosto.getText());
@@ -346,6 +345,7 @@ public class EditarCurso extends javax.swing.JFrame {
             Curso c = new Curso(nombre, descripcion, fecha, tema, duracion, precio, cupo, aula, hora, cargaHoraria);
             c.setIdCurso(id);
             g.modificar(c);
+            JOptionPane.showMessageDialog(dialog, "Se ha modificado con éxito el curso");
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EditarCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -559,7 +559,7 @@ public class EditarCurso extends javax.swing.JFrame {
 
     public void cargarCursosFiltro(ArrayList listaGenerica) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addElement("Que curso quiere modificar?");
+        model.addElement("¿Qué curso quiere modificar?");
         for (Object elemento : listaGenerica) {
             model.addElement(elemento);
         }
@@ -569,43 +569,43 @@ public class EditarCurso extends javax.swing.JFrame {
 
     private boolean esValido() {
         if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo nombre no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtaDescripcion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo descripcion no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo descripción no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtaTema.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo tema no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo tema no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (txtAula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo aula no debe estar vacio!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo aula no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtDuracion.getText());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El campo duracion debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo duración debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtCargaHoraria.getText());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El campo carga horaria debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo carga horaria debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Integer.parseInt(txtCupo.getText());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El campo cupo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo cupo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         try {
             Double.parseDouble(txtCosto.getText());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(dialog, "El campo costo debe ser un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo costo debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
