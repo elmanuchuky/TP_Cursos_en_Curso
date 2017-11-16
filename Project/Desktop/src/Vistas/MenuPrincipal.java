@@ -63,6 +63,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmiEditarIscripcionOtro.setEnabled(false);
         jmiEditarIscripcionFamilia.setEnabled(false);
         
+        jmiEditarIscripcion.setVisible(false);
+        jmiEditarIscripcionMatriculado.setVisible(false);
+        jmiEditarIscripcionOtro.setVisible(false);
+        jmiEditarIscripcionFamilia.setVisible(false);
+        
         usuario = x;
         
         switch (usuario)
