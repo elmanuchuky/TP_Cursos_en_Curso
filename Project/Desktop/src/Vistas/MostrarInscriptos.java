@@ -73,6 +73,7 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Matriculado");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(1100, 380));
