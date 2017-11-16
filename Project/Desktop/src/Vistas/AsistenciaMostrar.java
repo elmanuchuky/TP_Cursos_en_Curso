@@ -151,10 +151,10 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Asistencias (Vista)");
+        setTitle("Asistencias");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(695, 475));
+        setMinimumSize(new java.awt.Dimension(725, 475));
         setPreferredSize(new java.awt.Dimension(695, 475));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -194,7 +194,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtTablaAsistencias);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 80, 720, 330);
+        jScrollPane1.setBounds(0, 90, 720, 330);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbCursos.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +203,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCursos);
-        cmbCursos.setBounds(60, 10, 350, 23);
+        cmbCursos.setBounds(60, 10, 350, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -213,12 +213,12 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Fecha");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(426, 14, 36, 17);
+        jLabel2.setBounds(420, 10, 36, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("/");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(560, 10, 7, 17);
+        jLabel3.setBounds(550, 10, 7, 17);
 
         cmbAnio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017" }));
@@ -238,21 +238,21 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbMes);
-        cmbMes.setBounds(570, 10, 50, 23);
+        cmbMes.setBounds(560, 10, 50, 23);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(630, 10, 7, 17);
+        jLabel12.setBounds(610, 10, 7, 17);
 
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1" }));
         getContentPane().add(cmbDia);
-        cmbDia.setBounds(650, 10, 50, 23);
+        cmbDia.setBounds(620, 10, 50, 23);
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(61, 45, 550, 23);
+        txtMail.setBounds(61, 45, 550, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("E-Mail");
@@ -271,7 +271,7 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(630, 40, 70, 30);
+        jButton2.setBounds(630, 40, 70, 40);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -289,19 +289,19 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnReporte);
-        btnReporte.setBounds(40, 420, 130, 25);
+        btnReporte.setBounds(570, 430, 130, 25);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 280, 300, 170);
+        jLabel8.setBounds(0, 280, 300, 180);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(300, 280, 300, 170);
+        jLabel9.setBounds(300, 280, 300, 180);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(600, 280, 300, 170);
+        jLabel10.setBounds(600, 280, 300, 180);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

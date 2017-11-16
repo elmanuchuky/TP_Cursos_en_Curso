@@ -91,7 +91,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         setTitle("Cobro");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(450, 193));
+        setMinimumSize(new java.awt.Dimension(495, 193));
         setPreferredSize(new java.awt.Dimension(450, 193));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {

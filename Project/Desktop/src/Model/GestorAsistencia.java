@@ -124,7 +124,7 @@ public class GestorAsistencia {
         PreparedStatement comando = con.prepareStatement("exec sp_listado_cursantes_x_curso ?");
         comando.setInt(1, idCurso);
         ResultSet consulta = comando.executeQuery();
-        alumnos.add("Alumnno");
+        alumnos.add("Alumno");
         while (consulta.next()) {
             alumnos.add(consulta.getString("Cursante"));
         }
