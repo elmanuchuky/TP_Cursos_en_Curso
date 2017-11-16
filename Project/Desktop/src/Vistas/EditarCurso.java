@@ -113,7 +113,7 @@ public class EditarCurso extends javax.swing.JFrame {
         setTitle("Editar Curso");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(580, 400));
+        setMinimumSize(new java.awt.Dimension(580, 430));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
