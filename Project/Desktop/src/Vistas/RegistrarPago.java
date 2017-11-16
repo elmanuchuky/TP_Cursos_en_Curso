@@ -110,7 +110,7 @@ public class RegistrarPago extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCarga);
-        btnCarga.setBounds(320, 110, 109, 30);
+        btnCarga.setBounds(350, 120, 110, 30);
 
         btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnActualizar.setText("Actualizar");
@@ -120,7 +120,7 @@ public class RegistrarPago extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnActualizar);
-        btnActualizar.setBounds(340, 60, 90, 30);
+        btnActualizar.setBounds(370, 20, 90, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("E-Mail");
@@ -139,7 +139,7 @@ public class RegistrarPago extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtMail);
-        txtMail.setBounds(70, 20, 360, 30);
+        txtMail.setBounds(70, 20, 290, 30);
 
         txtMonto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMonto);
@@ -157,7 +157,7 @@ public class RegistrarPago extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 450, 240);
+        jLabel1.setBounds(0, 0, 500, 240);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,15 +178,17 @@ public class RegistrarPago extends javax.swing.JFrame {
 
                     Timestamp tm = new Timestamp(fecha.getTime());
                     gp.agregarPago(p);
-                    JOptionPane.showMessageDialog(dialog, "Se ha insertado un nuevo cobro");
+                    JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo cobro");
                     Pago p1 = gp.obtenerUltimoPago();
                     double montoFinal = (p.getMonto() - p1.getMonto());
                     if (montoFinal != 0) {
-                        JOptionPane.showMessageDialog(dialog, "Se ha intentado pagar de más", "Atencion", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(dialog, "Se ha intentado pagar de más", "Atención", JOptionPane.ERROR_MESSAGE);
                         imprimirComprobante(tm, p1.getFechaPago(), ((ComboCurso) cmbCursos.getSelectedItem()).getNombre(), p1.getMonto(), p1.getIdPago());
+                        this.dispose();
                     }
                     else{
                         imprimirComprobante(tm, p1.getFechaPago(), ((ComboCurso) cmbCursos.getSelectedItem()).getNombre(), p.getMonto(), p1.getIdPago());
+                        this.dispose();
                     }
                     limpiarControles();
                 } else {
@@ -231,7 +233,7 @@ public class RegistrarPago extends javax.swing.JFrame {
             cargarComboCurso(g.ComboCursosPagar(txtMail.getText()));
         } else {
             DefaultComboBoxModel model = new DefaultComboBoxModel();
-            model.addElement(new ComboCurso(-1, "Mail sin curso"));
+            model.addElement(new ComboCurso(-1, "E-Mail sin curso"));
             cmbCursos.setModel(model);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
