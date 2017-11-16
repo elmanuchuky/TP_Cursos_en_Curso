@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -219,10 +221,32 @@ public class GestorInscripcion {
         Connection con = DriverManager.getConnection(conexion, user, pass);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select distinct 1 from Datos_Generales dg join Cursantes cu on cu.id_datos_generales = dg.id_datos_generales join Inscripciones i on i.id_cursante = cu.id_cursante where mail like '" + text + "'");
-        if (rs.next()){
+        if (rs.next()) {
             return true;
         }
         return false;
+    }
+
+    public ArrayList<VMInscriptosPagados> obtenerPorCursoPagados(int idCurso) {
+        ArrayList<VMInscriptosPagados> lista = new ArrayList<>();
+        try {
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            PreparedStatement stmtIns = con.prepareStatement("SELECT i.id_inscripcion Codigo, dg.apellido + ', ' + dg.nombre Nombre, IIF(i.id_inscripcion in (SELECT vw.Codigo FROM vw_consultar_inscriptos_aptos_certificado vw), 'Pago completo', 'Pago incompleto') Pago FROM Inscripciones i join Cursantes cu on cu.id_cursante = i.id_cursante join Datos_Generales dg on dg.id_datos_generales = cu.id_datos_generales WHERE i.id_curso = " + idCurso);
+            ResultSet query = stmtIns.executeQuery();
+            while (query.next()) {
+                VMInscriptosPagados datos = new VMInscriptosPagados();
+                datos.setCodigo(query.getInt("Codigo"));
+                datos.setNombre(query.getString("Nombre"));
+                datos.setPago(query.getString("Pago"));
+                lista.add(datos);
+            }
+            query.close();
+            stmtIns.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
     }
 
 }

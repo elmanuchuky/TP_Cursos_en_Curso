@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +32,6 @@ public class GestorAsistencia {
     String classForName = adv.getClasForName();
     GestorInscripcion gi = new GestorInscripcion();
 
-    
     public void agregarAsistencia(Asistencia a) throws ClassNotFoundException, SQLException {
 
         forName(classForName);
@@ -59,7 +60,6 @@ public class GestorAsistencia {
     }
 
     //OBTENER ASISTENCIA POR CURSO
-    
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCurso(int idCurso) throws ClassNotFoundException, SQLException {
 
         forName(classForName);
@@ -115,7 +115,6 @@ public class GestorAsistencia {
     }
 
     //OBTENER ASISTENCIA POR CURSO POR FECHA
-    
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCursoPorFecha(int idCurso, String fecha) throws ClassNotFoundException, SQLException {
 
         forName(classForName);
@@ -171,7 +170,6 @@ public class GestorAsistencia {
     }
 
     //OBTENER ASISTENCIA POR CURSO POR MAIL
-    
     public ArrayList<ArrayList<String>> obtenerAsistenciasPorCursoPorMail(int idCurso, String email) throws ClassNotFoundException, SQLException {
 
         forName(classForName);
@@ -190,7 +188,7 @@ public class GestorAsistencia {
         ArrayList<String> presentes = new ArrayList<>();
         PreparedStatement comando2 = con.prepareStatement("exec sp_asistencia_x_inscripto_x_curso ?, ?");
         comando2.setInt(1, idCurso);
-        comando2.setInt(2, gi.obtenerInscripcionConMailYCurso(email, idCurso));   
+        comando2.setInt(2, gi.obtenerInscripcionConMailYCurso(email, idCurso));
         ResultSet consulta2 = comando2.executeQuery();
         presentes.add(email);
         while (consulta2.next()) {
@@ -209,7 +207,7 @@ public class GestorAsistencia {
 
         return lista;
     }
-    
+
     public ArrayList<String> obtenerCursantesPorCurso(int idCurso) throws ClassNotFoundException, SQLException {
 
         forName(classForName);
@@ -224,9 +222,10 @@ public class GestorAsistencia {
         consulta.close();
         comando.close();
         con.close();
-        
+
         return alumnos;
-    }    
+    }
+
     public int obtenerCursantesPorCursoCantidad(int idCurso) throws ClassNotFoundException, SQLException {
         int i = 0;
         forName(classForName);
@@ -240,11 +239,11 @@ public class GestorAsistencia {
         consulta.close();
         comando.close();
         con.close();
-        
+
         return i;
     }
 
-    public ArrayList<VMCertificado> obtenerDatosCertificado() throws ClassNotFoundException, SQLException{
+    public ArrayList<VMCertificado> obtenerDatosCertificado() throws ClassNotFoundException, SQLException {
         ArrayList<VMCertificado> lista = new ArrayList<>();
         forName(classForName);
         Connection con = DriverManager.getConnection(conexion, user, pass);
@@ -256,15 +255,42 @@ public class GestorAsistencia {
             vc.setDocumento(consulta.getString(2));
             vc.setFechaInicio(consulta.getString(3));
             vc.setFechaFinal(consulta.getString(4));
-            vc.setHoras(consulta.getString(5));
+            vc.setHoras("" + consulta.getInt(5));
             vc.setNombreCurso(consulta.getString(6));
-            
+
             lista.add(vc);
         }
         consulta.close();
         comando.close();
         con.close();
-        
+
         return lista;
+    }
+
+    // "select d.nombre + ' ' + d.apellido as 'alumno', d.dni as 'documento', cu.fecha_inicio 'fechaInicio', dbo.fn_obtener_fecha_fin(cu.fecha_inicio, cu.duracion_total_semanas)'FechaFin', cu.carga_horaria 'horario', cu.nombre as 'nombreCurso' from Datos_Generales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion = " + 
+    public VMCertificado ObtenerCertificadoPorIdInscripcion(int idInscripcion) {
+        VMCertificado datos = new VMCertificado();
+        try {
+            forName(classForName);
+            Connection con = DriverManager.getConnection(conexion, user, pass);
+            Statement comando = con.createStatement();
+            ResultSet consulta = comando.executeQuery("select d.nombre + ' ' + d.apellido as 'alumno', d.dni as 'documento', cu.fecha_inicio 'fechaInicio', dbo.fn_obtener_fecha_fin(cu.fecha_inicio, cu.duracion_total_semanas)'FechaFin', cu.carga_horaria 'horario', cu.nombre as 'nombreCurso' from Datos_Generales d join Cursantes c on d.id_datos_generales = c.id_datos_generales join Inscripciones i on c.id_cursante = i.id_cursante join Cursos cu on cu.id_curso = i.id_curso where id_inscripcion = " + idInscripcion);
+            if (consulta.next()) {
+                datos.setAlumno(consulta.getString(1));
+                datos.setDocumento(consulta.getString(2));
+                datos.setFechaInicio(consulta.getString(3));
+                datos.setFechaFinal(consulta.getString(4));
+                datos.setHoras("" + consulta.getInt(5));
+                datos.setNombreCurso(consulta.getString(6));
+            }
+            consulta.close();
+            comando.close();
+            con.close();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GestorAsistencia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorAsistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return datos;
     }
 }
