@@ -98,7 +98,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registra Asistencia");
+        setTitle("Registrar Asistencia");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(405, 393));
@@ -114,7 +114,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Curso");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 23, 36, 17);
+        jLabel3.setBounds(10, 30, 36, 17);
 
         cmbCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCurso);
-        cmbCurso.setBounds(64, 20, 283, 23);
+        cmbCurso.setBounds(64, 20, 300, 30);
 
         tRegistrarAsistencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tRegistrarAsistencia.setModel(new javax.swing.table.DefaultTableModel(
