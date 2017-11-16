@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,9 +44,12 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
     /**
      * Creates new form Mostrar
      */
+    final JDialog dialog = new JDialog();
+    
     public MostrarInscriptosParaComprobante() {
         initComponents();
         cargarCombo();
+        dialog.setAlwaysOnTop(true);
     }
 
     /**
@@ -267,10 +271,10 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
                 VMCertificado vmc = ga.ObtenerCertificadoPorIdInscripcion(idInscripcion);
                 imprimirPDF(vmc);
             } else {
-                JOptionPane.showMessageDialog(null, "No se puede realizar el certificado para este inscripto porque no cumple las condiciones");
+                JOptionPane.showMessageDialog(dialog, "No se puede realizar el certificado para este inscripto porque no cumple las condiciones");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se ha seleccionado un inscripto");
+            JOptionPane.showMessageDialog(dialog, "No se ha seleccionado un inscripto");
         }
     }//GEN-LAST:event_btnGenerarComprobanteActionPerformed
 
