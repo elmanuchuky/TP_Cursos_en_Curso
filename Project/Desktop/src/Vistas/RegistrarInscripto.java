@@ -292,13 +292,16 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        if (gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId())) {
-                            JOptionPane.showMessageDialog(dialog, "Ese número de legajo no existe");
-                        } else {
-                            JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
-                            limpiarControles();
+                        int ax = JOptionPane.showConfirmDialog(dialog, "Esta seguro de realizar esta Inscripcion? no se podra revertir los cambios", "Cuidado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                        if (ax == JOptionPane.YES_OPTION) {
+                            if (gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId())) {
+                                JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                            } else {
+                                JOptionPane.showMessageDialog(dialog, "Ese número de legajo no existe");
+                                limpiarControles();
+                            }
                         }
-                        
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
                     }
@@ -315,9 +318,14 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setFechaNacimiento(cmbAnio.getSelectedItem().toString() + "/" + cmbMes.getSelectedItem().toString() + "/" + cmbDia.getSelectedItem().toString());
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
-                        gi.agregarInscripcionOtro(dg, ((ComboCurso) cmbCursos.getSelectedItem()).getId());
-                        JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
-                        limpiarControles();
+                        int ax = JOptionPane.showConfirmDialog(dialog, "Esta seguro de realizar esta Inscripcion? no se podra revertir los cambios", "Cuidado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                        if (ax == JOptionPane.YES_OPTION) {
+
+                            gi.agregarInscripcionOtro(dg, ((ComboCurso) cmbCursos.getSelectedItem()).getId());
+                            JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                            limpiarControles();
+                        }
                     } catch (ClassNotFoundException ex) {
                     }
                 }
