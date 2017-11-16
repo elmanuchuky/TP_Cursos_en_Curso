@@ -98,6 +98,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
         jtxtaCursos.setLineWrap(true);
         jtxtaCursos.setRows(5);
         jtxtaCursos.setWrapStyleWord(true);
+        jtxtaCursos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtxtaCursos.setEnabled(false);
         txtaCursos.setViewportView(jtxtaCursos);
 
