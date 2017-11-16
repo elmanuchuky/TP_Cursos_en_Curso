@@ -633,26 +633,23 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
             //seteamos el titulo
             Font letraTitulo = FontFactory.getFont("Verdana", 24, Font.UNDERLINE);
-            Paragraph title = new Paragraph("Listado de Curso " + nombreCurso + "\n \n", letraTitulo);
+            Paragraph title = new Paragraph("Listado de Asistencia \n Curso: " + nombreCurso + "\n \n", letraTitulo);
             title.setAlignment(Element.ALIGN_CENTER);
-
-            Font letrafecha = FontFactory.getFont("Verdana", 16, Font.NORMAL);
-            Paragraph fecha1 = new Paragraph(" \n " + fecha + "\n \n", letrafecha);
-            fecha1.setAlignment(Element.ALIGN_CENTER);
+            
             
             PdfPTable tabla = new PdfPTable(2);
 
             tabla.addCell("Alumno");
-            tabla.addCell("Asistencia");
+            tabla.addCell(fecha);
             for (int i = 0; i < jtTablaAsistencias.getRowCount(); i++) {
                 tabla.addCell("" + jtTablaAsistencias.getValueAt(i, 0));
                 System.out.println(""+ i + " "+ 0 + "   " + jtTablaAsistencias.getValueAt(i, 0));
                 tabla.addCell("");
                 System.out.println(""+ i + " "+ 1 + "   " + jtTablaAsistencias.getValueAt(i, 1));
             }
+            tabla.setSpacingBefore(50);
             //pasamos al documento (por orden) las cosas que deseamos mostrar
             doc.add(title);
-            doc.add(fecha1);
             doc.add(tabla);
 //            
 
