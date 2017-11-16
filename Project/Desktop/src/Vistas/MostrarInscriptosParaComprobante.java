@@ -20,6 +20,8 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -60,9 +62,41 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
         cmbCursos = new javax.swing.JComboBox<>();
         btnActualizar = new javax.swing.JButton();
         btnGenerarComprobante = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Generar Certificado");
+        setAlwaysOnTop(true);
+        setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(1245, 425));
+        setPreferredSize(new java.awt.Dimension(1245, 425));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+        getContentPane().setLayout(null);
 
+        tblInscriptos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblInscriptos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -76,50 +110,133 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblInscriptos);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(-2, 60, 1230, 275);
+
+        cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(cmbCursos);
+        cmbCursos.setBounds(10, 12, 520, 23);
+
+        btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnActualizar);
+        btnActualizar.setBounds(1130, 10, 89, 25);
 
-        btnGenerarComprobante.setText("Genenarar comprobante");
+        btnGenerarComprobante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGenerarComprobante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/certificate.png"))); // NOI18N
+        btnGenerarComprobante.setText("Genenarar Certificado");
         btnGenerarComprobante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarComprobanteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGenerarComprobante);
+        btnGenerarComprobante.setBounds(1003, 350, 210, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 702, Short.MAX_VALUE)
-                        .addComponent(btnActualizar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGenerarComprobante)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGenerarComprobante)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel11.setText("jLabel1");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(0, 0, 700, 290);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel9.setText("jLabel1");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(50, 0, 700, 290);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel10.setText("jLabel1");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(90, 0, 700, 290);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel12.setText("jLabel1");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(180, 0, 700, 290);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel13.setText("jLabel1");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(140, 0, 700, 290);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel14.setText("jLabel1");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(90, 0, 700, 290);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel15.setText("jLabel1");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(230, 0, 700, 290);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel16.setText("jLabel1");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(180, 0, 700, 290);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel17.setText("jLabel1");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(270, 0, 700, 290);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel18.setText("jLabel1");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(360, 0, 700, 290);
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel19.setText("jLabel1");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(270, 0, 700, 290);
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel20.setText("jLabel1");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(320, 0, 700, 290);
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel21.setText("jLabel1");
+        getContentPane().add(jLabel21);
+        jLabel21.setBounds(450, 0, 700, 290);
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel22.setText("jLabel1");
+        getContentPane().add(jLabel22);
+        jLabel22.setBounds(360, 0, 700, 290);
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel23.setText("jLabel1");
+        getContentPane().add(jLabel23);
+        jLabel23.setBounds(410, 0, 700, 290);
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel24.setText("jLabel1");
+        getContentPane().add(jLabel24);
+        jLabel24.setBounds(540, 0, 700, 290);
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel25.setText("jLabel1");
+        getContentPane().add(jLabel25);
+        jLabel25.setBounds(450, 0, 700, 290);
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel26.setText("jLabel1");
+        getContentPane().add(jLabel26);
+        jLabel26.setBounds(500, 0, 700, 290);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel8.setText("jLabel1");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 40, 690, 390);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura.PNG"))); // NOI18N
+        jLabel6.setText("jLabel1");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(660, 40, 690, 390);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,7 +260,7 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
 
     private void btnGenerarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarComprobanteActionPerformed
         // TODO add your handling code here:
-        if (cmbCursos.getSelectedIndex() <= 0) {
+        if (cmbCursos.getSelectedIndex() >= 0) {
             if (tblInscriptos.getModel().getValueAt(tblInscriptos.getSelectedRow(), 2).equals("Pago completo")) {
                 int idInscripcion = (int) tblInscriptos.getModel().getValueAt(tblInscriptos.getSelectedRow(), 0);
                 GestorAsistencia ga = new GestorAsistencia();
@@ -157,6 +274,16 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGenerarComprobanteActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vCertificado = false;
+    }//GEN-LAST:event_formWindowClosing
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
     /**
      * @param args the command line arguments
      */
@@ -199,6 +326,26 @@ public class MostrarInscriptosParaComprobante extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnGenerarComprobante;
     private javax.swing.JComboBox<String> cmbCursos;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblInscriptos;
     // End of variables declaration//GEN-END:variables
