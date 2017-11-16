@@ -117,8 +117,6 @@ public class ConsultaPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
-        JOptionPane.showMessageDialog(dialog, "2");
-
         cargarListas();
     }//GEN-LAST:event_txtMailActionPerformed
 

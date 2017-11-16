@@ -88,7 +88,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         cmbCurso = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tRegistrarAsistencia = new javax.swing.JTable();
-        txtFecha = new javax.swing.JTextField();
         btRegistrar = new javax.swing.JButton();
         lblDiaAsistencia = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
@@ -102,7 +101,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(405, 393));
-        setPreferredSize(new java.awt.Dimension(405, 393));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -153,8 +151,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 61, 399, 256);
-        getContentPane().add(txtFecha);
-        txtFecha.setBounds(169, 0, 190, 20);
 
         btRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
@@ -333,7 +329,6 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDiaAsistencia;
     private javax.swing.JTable tRegistrarAsistencia;
-    private javax.swing.JTextField txtFecha;
     // End of variables declaration//GEN-END:variables
 
     public void cargarTablaAsistencia() throws ClassNotFoundException, SQLException {
