@@ -50,8 +50,8 @@ public class ConsultaCurso extends javax.swing.JFrame {
         setTitle("Consultar Cursos");
         setAlwaysOnTop(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(460, 325));
-        setPreferredSize(new java.awt.Dimension(460, 325));
+        setMinimumSize(new java.awt.Dimension(460, 450));
+        setPreferredSize(new java.awt.Dimension(460, 450));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -70,7 +70,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rbtTodos);
-        rbtTodos.setBounds(10, 10, 69, 25);
+        rbtTodos.setBounds(10, 10, 100, 25);
 
         rbtProximo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtProximo.setText("Próximos");
@@ -81,7 +81,7 @@ public class ConsultaCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rbtProximo);
-        rbtProximo.setBounds(160, 10, 89, 25);
+        rbtProximo.setBounds(280, 10, 93, 25);
 
         rbtActuales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rbtActuales.setText("Actuales");
@@ -92,16 +92,17 @@ public class ConsultaCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rbtActuales);
-        rbtActuales.setBounds(80, 10, 90, 25);
+        rbtActuales.setBounds(130, 10, 90, 25);
 
         jtxtaCursos.setColumns(20);
         jtxtaCursos.setLineWrap(true);
         jtxtaCursos.setRows(5);
+        jtxtaCursos.setWrapStyleWord(true);
         jtxtaCursos.setEnabled(false);
         txtaCursos.setViewportView(jtxtaCursos);
 
         getContentPane().add(txtaCursos);
-        txtaCursos.setBounds(0, 40, 460, 290);
+        txtaCursos.setBounds(10, 40, 430, 360);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/purple-polygonal-960x540.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
