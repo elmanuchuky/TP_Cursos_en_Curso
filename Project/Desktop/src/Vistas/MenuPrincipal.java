@@ -130,6 +130,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmiConsultaInscripto = new javax.swing.JMenuItem();
         jmiConsultaPagos = new javax.swing.JMenuItem();
         jmCertificado = new javax.swing.JMenu();
+        jmiGenerarCertificado = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
 
@@ -145,7 +146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jmbBarraMenu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jmRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add (2).png"))); // NOI18N
+        jmRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registered.png"))); // NOI18N
         jmRegistrar.setText("Registar");
         jmRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -372,6 +373,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jmCertificadoActionPerformed(evt);
             }
         });
+
+        jmiGenerarCertificado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jmiGenerarCertificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add (2).png"))); // NOI18N
+        jmiGenerarCertificado.setText("Generar");
+        jmiGenerarCertificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGenerarCertificadoActionPerformed(evt);
+            }
+        });
+        jmCertificado.add(jmiGenerarCertificado);
+
         jmbBarraMenu.add(jmCertificado);
 
         setJMenuBar(jmbBarraMenu);
@@ -576,12 +588,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAsistenciaMostrarXCursanteActionPerformed
 
     private void jmCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCertificadoActionPerformed
+        
+    }//GEN-LAST:event_jmCertificadoActionPerformed
+
+    private void jmiGenerarCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGenerarCertificadoActionPerformed
         if (vCertificado == false){
             vCertificado = true;
             MostrarInscriptosParaComprobante m = new MostrarInscriptosParaComprobante();
             m.setVisible(true);
         }
-    }//GEN-LAST:event_jmCertificadoActionPerformed
+    }//GEN-LAST:event_jmiGenerarCertificadoActionPerformed
 
     
     @Override
@@ -653,6 +669,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiEditarIscripcionMatriculado;
     private javax.swing.JMenuItem jmiEditarIscripcionOtro;
     private javax.swing.JMenuItem jmiEditarMatriculado;
+    private javax.swing.JMenuItem jmiGenerarCertificado;
     private javax.swing.JMenuItem jmiRegistrarCurso;
     private javax.swing.JMenu jmiRegistrarInscripto;
     private javax.swing.JMenu jmiRegistrarInscripto1;
