@@ -10,6 +10,9 @@ import Model.GestorCurso;
 import Model.GestorInscripcion;
 import Model.GestorMatriculado;
 import Model.VMMatriculado;
+import static Vistas.MenuPrincipal.vRegistrarInscripcion;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -60,9 +63,27 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         cmbCursos = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(1100, 380));
+        setPreferredSize(new java.awt.Dimension(1100, 380));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+        getContentPane().setLayout(null);
 
+        tblInscriptos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblInscriptos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -77,78 +98,99 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         tblInscriptos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tblInscriptos);
 
-        jLabel1.setText("Matriculados");
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(0, 45, 1090, 241);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Matriculados");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 10, 75, 20);
+
+        btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reload.png"))); // NOI18N
         btnActualizar.setText("Actualizar listado");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnActualizar);
+        btnActualizar.setBounds(930, 300, 151, 25);
 
+        btnAgregarMatriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAgregarMatriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
         btnAgregarMatriculado.setText("Nuevo matriculado");
         btnAgregarMatriculado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarMatriculadoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregarMatriculado);
+        btnAgregarMatriculado.setBounds(10, 300, 170, 25);
 
+        btnInscribir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnInscribir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrow.png"))); // NOI18N
         btnInscribir.setText("Inscribir");
         btnInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscribirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnInscribir);
+        btnInscribir.setBounds(810, 300, 110, 25);
 
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(txtBuscar);
+        txtBuscar.setBounds(570, 10, 420, 23);
+
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBuscar);
+        btnBuscar.setBounds(1000, 10, 80, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAgregarMatriculado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInscribir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActualizar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(203, 203, 203)
-                        .addComponent(cmbCursos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar)
-                    .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnAgregarMatriculado)
-                    .addComponent(btnInscribir))
-                .addGap(14, 14, 14))
-        );
+        cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(cmbCursos);
+        cmbCursos.setBounds(100, 10, 450, 23);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel11.setText("jLabel1");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(570, 0, 500, 350);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel12.setText("jLabel1");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(0, 0, 500, 350);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel13.setText("jLabel1");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(70, 0, 500, 350);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel14.setText("jLabel1");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(20, 0, 500, 340);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel15.setText("jLabel1");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(20, 0, 500, 340);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel16.setText("jLabel1");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(40, 0, 500, 350);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
+        jLabel17.setText("jLabel1");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(590, 0, 500, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,6 +240,16 @@ public class MostrarInscriptos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarMatriculadoActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal.vRegistrarInscripcion = false;
+    }//GEN-LAST:event_formWindowClosing
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/IconoDefinitivo.jpg"));
+        return retValue;
+    }
     /**
      * @param args the command line arguments
      */
@@ -241,6 +293,13 @@ public class MostrarInscriptos extends javax.swing.JFrame {
     private javax.swing.JButton btnInscribir;
     private javax.swing.JComboBox<String> cmbCursos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblInscriptos;
     private javax.swing.JTextField txtBuscar;
