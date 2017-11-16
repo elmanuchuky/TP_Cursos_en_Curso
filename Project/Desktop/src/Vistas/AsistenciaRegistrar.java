@@ -212,8 +212,8 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
         int fila = tRegistrarAsistencia.getRowCount();
 
         Asistencia a = new Asistencia();
-        for (int i = 0; i < fila; i++) {
-            try {
+        try {
+            for (int i = 0; i < fila; i++) {
                 a.setInscripcion(idInscriptos.get(i));
                 a.setEstaPresente((boolean) tRegistrarAsistencia.getValueAt(i, 1));
                 if (!a.isEstaPresente()) {
@@ -225,12 +225,12 @@ public class AsistenciaRegistrar extends javax.swing.JFrame {
                 //a.setFechaAsistencia(txtFecha.getText());
                 a.setFechaAsistencia(fechaString);
                 ga.agregarAsistencia(a);
-                JOptionPane.showMessageDialog(dialog, "Se ha registrado la asistencia del día");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
             }
+            JOptionPane.showMessageDialog(dialog, "Se ha registrado la asistencia del día");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btRegistrarActionPerformed
 
