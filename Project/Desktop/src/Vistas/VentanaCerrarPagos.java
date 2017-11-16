@@ -113,7 +113,7 @@ public class VentanaCerrarPagos extends javax.swing.JFrame {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         RegistrarPago rp = new RegistrarPago();
-        MenuPrincipal.vRegistrarPago = false;
+        MenuPrincipal.vRegistrarPago = true;
         this.setVisible(false);
         rp.setVisible(false);
     }//GEN-LAST:event_btnSiActionPerformed
