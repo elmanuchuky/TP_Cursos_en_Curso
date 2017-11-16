@@ -243,10 +243,10 @@ public class EditarMatriculado extends javax.swing.JFrame {
 
         txtLegajo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtLegajo.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtLegajoInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtLegajo.addActionListener(new java.awt.event.ActionListener() {

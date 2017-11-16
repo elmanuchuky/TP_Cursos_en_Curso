@@ -69,7 +69,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         switch (instancia) {
             case 1://matriculado
                 txtLegajo.setEnabled(true);
-                txtProfecion.setEnabled(false);
                 txtNombre.setEnabled(false);
                 txtApellido.setEnabled(false);
                 txtDocumento.setEnabled(false);
@@ -81,11 +80,9 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                 txtTelefono.setEnabled(false);
                 break;
             case 2://Familiar
-                txtProfecion.setEnabled(false);
                 txtLegajo.setEnabled(true);
                 break;
             case 3://Otro
-                txtProfecion.setEnabled(false);
                 txtLegajo.setEnabled(false);
                 break;
         }
@@ -113,18 +110,15 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         txtMail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnCarcgar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtProfecion = new javax.swing.JTextField();
         cmbDia = new javax.swing.JComboBox();
         txtApellido = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtLegajo = new javax.swing.JTextField();
         cmbTipoDocumento = new javax.swing.JComboBox<>();
-        btnNuevoMAtriculado = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -182,7 +176,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(90, 170, 240, 30);
+        txtTelefono.setBounds(390, 130, 270, 30);
 
         cmbCursos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbCursos);
@@ -199,7 +193,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
         txtMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtMail);
-        txtMail.setBounds(90, 130, 570, 30);
+        txtMail.setBounds(90, 130, 230, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Documento");
@@ -215,12 +209,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCarcgar);
-        btnCarcgar.setBounds(560, 215, 93, 30);
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Profesión");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(340, 180, 56, 17);
+        btnCarcgar.setBounds(560, 190, 93, 30);
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtNombre);
@@ -236,10 +225,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(10, 20, 55, 17);
 
-        txtProfecion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtProfecion);
-        txtProfecion.setBounds(400, 173, 260, 30);
-
         cmbDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbDia);
         cmbDia.setBounds(610, 90, 50, 30);
@@ -251,7 +236,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Teléfono");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 180, 52, 17);
+        jLabel8.setBounds(330, 140, 52, 17);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("/");
@@ -265,17 +250,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         cmbTipoDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(cmbTipoDocumento);
         cmbTipoDocumento.setBounds(90, 90, 65, 30);
-
-        btnNuevoMAtriculado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnNuevoMAtriculado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/addMatriculado.png"))); // NOI18N
-        btnNuevoMAtriculado.setText("Nuevo");
-        btnNuevoMAtriculado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoMAtriculadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnNuevoMAtriculado);
-        btnNuevoMAtriculado.setBounds(10, 210, 100, 30);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel11.setText("jLabel1");
@@ -319,11 +293,12 @@ public class RegistrarInscripto extends javax.swing.JFrame {
                         dg.setEmail(txtMail.getText());
                         dg.setTelefono(txtTelefono.getText());
                         if (gi.agregarInscripcionFamiliar(dg, Integer.parseInt(txtLegajo.getText()), ((ComboCurso) cmbCursos.getSelectedItem()).getId())) {
-                            JOptionPane.showMessageDialog(dialog, "Ese numero de legajo no existe");
+                            JOptionPane.showMessageDialog(dialog, "Ese número de legajo no existe");
                         } else {
                             JOptionPane.showMessageDialog(dialog, "Se ha registrado un nuevo inscripto");
+                            limpiarControles();
                         }
-                        limpiarControles();
+                        
                     } catch (ClassNotFoundException ex) {
                     } catch (SQLException ex) {
                     }
@@ -361,19 +336,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         MenuPrincipal.vRegistrarInscripcion = false;
     }//GEN-LAST:event_formWindowClosing
-
-    private void btnNuevoMAtriculadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoMAtriculadoActionPerformed
-        if (MenuPrincipal.vRegistrarMatriculado == false) {
-            MenuPrincipal.vRegistrarMatriculado = true;
-            RegistrarMatriculado rm;
-            try {
-                rm = new RegistrarMatriculado();
-                rm.setVisible(true);
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_btnNuevoMAtriculadoActionPerformed
 
     @Override
     public Image getIconImage() {
@@ -419,14 +381,12 @@ public class RegistrarInscripto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarcgar;
-    private javax.swing.JButton btnNuevoMAtriculado;
     private javax.swing.JComboBox cmbAnio;
     private javax.swing.JComboBox<String> cmbCursos;
     private javax.swing.JComboBox cmbDia;
     private javax.swing.JComboBox cmbMes;
     private javax.swing.JComboBox<String> cmbTipoDocumento;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -443,7 +403,6 @@ public class RegistrarInscripto extends javax.swing.JFrame {
     private javax.swing.JTextField txtLegajo;
     private javax.swing.JTextField txtMail;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtProfecion;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
     public void soloLetras(JTextField a) {
@@ -462,7 +421,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
         DefaultComboBoxModel modelAnio = new DefaultComboBoxModel();
         DefaultComboBoxModel modelMes = new DefaultComboBoxModel();
 
-        int anio = 1900;
+        int anio = 1950;
         int mes = 1;
 
         Calendar cal = Calendar.getInstance();
@@ -572,7 +531,7 @@ public class RegistrarInscripto extends javax.swing.JFrame {
             return false;
         }
         if (txtTelefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(dialog, "El campo telefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "El campo télefono no debe estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             txtTelefono.requestFocus();
             return false;
         } else {
