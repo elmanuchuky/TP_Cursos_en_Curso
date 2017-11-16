@@ -132,7 +132,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTablaAsistencias = new javax.swing.JTable();
         cmbCursos = new javax.swing.JComboBox();
-        btnGenerarCertificado = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -205,16 +204,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         });
         getContentPane().add(cmbCursos);
         cmbCursos.setBounds(60, 10, 350, 23);
-
-        btnGenerarCertificado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnGenerarCertificado.setText("Generar Certificado");
-        btnGenerarCertificado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerarCertificadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGenerarCertificado);
-        btnGenerarCertificado.setBounds(540, 420, 150, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Curso");
@@ -329,28 +318,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
         MenuPrincipal.vAsistenciasMostrar = false;
     }//GEN-LAST:event_formWindowClosing
 
-    private void btnGenerarCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCertificadoActionPerformed
-
-        try {
-            vc = ga.obtenerDatosCertificado();
-            for (VMCertificado c : vc) {
-                String alumno = c.getAlumno();
-                String documento = c.getDocumento();
-                String fechaInicio = c.getFechaInicio();
-                String fechaFinal = c.getFechaFinal();
-                String horas = c.getHoras();
-                String nombreCurso = c.getNombreCurso();
-
-                generarCertificado(alumno, documento, fechaInicio, fechaFinal, horas, nombreCurso);
-            }
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AsistenciaMostrar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnGenerarCertificadoActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         switch (interfas) {
@@ -382,9 +349,9 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
         java.util.Date fecha = new java.util.Date();
-
+        java.sql.Date fechasql = new java.sql.Date(fecha.getTime());
         Timestamp tm = new Timestamp(fecha.getTime());
-        generarListado(tm, nombreCurso);
+        generarListado(tm, nombreCurso,fechasql.toString());
 
     }//GEN-LAST:event_btnReporteActionPerformed
 
@@ -521,7 +488,6 @@ public class AsistenciaMostrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGenerarCertificado;
     private javax.swing.JButton btnReporte;
     private javax.swing.JComboBox cmbAnio;
     private javax.swing.JComboBox cmbCursos;
@@ -658,7 +624,7 @@ public void cargarComboCurso(ArrayList listaGenerica) {
 
     }
 
-    public void generarListado(Timestamp tm, String nombreCurso) {
+    public void generarListado(Timestamp tm, String nombreCurso, String fecha) {
         String nombreArchivo = "" + tm.getTime();
         try {
             Document doc = new Document();
@@ -670,6 +636,10 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             Paragraph title = new Paragraph("Listado de Curso " + nombreCurso + "\n \n", letraTitulo);
             title.setAlignment(Element.ALIGN_CENTER);
 
+            Font letrafecha = FontFactory.getFont("Verdana", 16, Font.NORMAL);
+            Paragraph fecha1 = new Paragraph(" \n " + fecha + "\n \n", letrafecha);
+            fecha1.setAlignment(Element.ALIGN_CENTER);
+            
             PdfPTable tabla = new PdfPTable(2);
 
             tabla.addCell("Alumno");
@@ -677,11 +647,12 @@ public void cargarComboCurso(ArrayList listaGenerica) {
             for (int i = 0; i < jtTablaAsistencias.getRowCount(); i++) {
                 tabla.addCell("" + jtTablaAsistencias.getValueAt(i, 0));
                 System.out.println(""+ i + " "+ 0 + "   " + jtTablaAsistencias.getValueAt(i, 0));
-                tabla.addCell("" + jtTablaAsistencias.getValueAt(i, 1));
+                tabla.addCell("");
                 System.out.println(""+ i + " "+ 1 + "   " + jtTablaAsistencias.getValueAt(i, 1));
             }
             //pasamos al documento (por orden) las cosas que deseamos mostrar
             doc.add(title);
+            doc.add(fecha1);
             doc.add(tabla);
 //            
 
